@@ -1,6 +1,10 @@
 <script context="module" lang="ts">
 	import { type Snippet } from 'svelte';
-	import { type HTMLTag, Rounded, Ring, type ThemeColor, type ElementPropsWithType } from '$lib/types.js';
+	import {
+		type HTMLTag,
+		type ElementPropsWithType
+	} from '$lib/types.js';
+	import { Rounded, Ring,  type ThemeColor} from '$lib/theme/index.js';
 
 	export type BoxProps<Tag extends HTMLTag> = {
 		as?: Tag;
@@ -13,8 +17,9 @@
 
 <script lang="ts" generics="Tag extends HTMLTag = 'div'">
 	import cn from 'classnames';
-	import c from '$lib/config.js';
+	import theme from '$lib/theme/theme.svelte.js';
 
+	console.log(theme);
 	let {
 		as = 'div' as Tag,
 		class: classes,
@@ -24,12 +29,9 @@
 		...rest
 	}: ElementPropsWithType<Tag, BoxProps<Tag>> = $props();
 
-	const boxClasses = $state(
-		cn(Rounded[rounded || c.options.rounded], 
-		classes)
-	);
+	const boxClasses = $state(cn(Rounded[rounded || theme.rounded], classes));
 </script>
 
 <svelte:element this={as} class={boxClasses} {...rest}>
 	{@render children()}
-</svelte:element>>
+</svelte:element>

@@ -12,6 +12,9 @@ importers:
         specifier: ^2.5.1
         version: 2.5.1
     devDependencies:
+      '@aft/config':
+        specifier: github:blujedis/aft-config#dev
+        version: https://codeload.github.com/blujedis/aft-config/tar.gz/b4b0755225c82f648828d2218f49a1e9f88c06d2
       '@playwright/test':
         specifier: ^1.28.1
         version: 1.45.2
@@ -89,6 +92,10 @@ importers:
         version: 1.6.0
 
 packages:
+
+  '@aft/config@https://codeload.github.com/blujedis/aft-config/tar.gz/b4b0755225c82f648828d2218f49a1e9f88c06d2':
+    resolution: {tarball: https://codeload.github.com/blujedis/aft-config/tar.gz/b4b0755225c82f648828d2218f49a1e9f88c06d2}
+    version: 0.0.0-development
 
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
@@ -1646,6 +1653,9 @@ packages:
   tinybench@2.8.0:
     resolution: {integrity: sha512-1/eK7zUnIklz4JUUlL+658n58XO2hHLQfSk1Zf2LKieUjxidN16eKFEoDEfjHc3ohofSSqK3X5yO6VGb6iW8Lw==}
 
+  tinycolor2@1.6.0:
+    resolution: {integrity: sha512-XPaBkWQJdsf3pLKJV9p4qN/S+fm2Oj8AIPo1BTUhg5oxkvm9+SVEGFdhyOz7tTdUTfvxMiAs4sp6/eZO2Ew+pw==}
+
   tinypool@0.8.4:
     resolution: {integrity: sha512-i11VH5gS6IFeLY3gMBQ00/MmLncVP7JLXOw1vlgkytLmJK7QnEr7NXf0LBdxfmNPAeyetukOk0bOYrJrFGjYJQ==}
     engines: {node: '>=14.0.0'}
@@ -1823,6 +1833,13 @@ packages:
     resolution: {integrity: sha512-rAbqEGa8ovJy4pyBxZM70hg4pE6gDgaQ0Sl9M3enG3I0d6H4XSAM3GeNGLKnsBpuijUow064sf7ww1nutC5/3w==}
 
 snapshots:
+
+  '@aft/config@https://codeload.github.com/blujedis/aft-config/tar.gz/b4b0755225c82f648828d2218f49a1e9f88c06d2':
+    dependencies:
+      tailwindcss: 3.4.6
+      tinycolor2: 1.6.0
+    transitivePeerDependencies:
+      - ts-node
 
   '@alloc/quick-lru@5.2.0': {}
 
@@ -3336,6 +3353,8 @@ snapshots:
       globrex: 0.1.2
 
   tinybench@2.8.0: {}
+
+  tinycolor2@1.6.0: {}
 
   tinypool@0.8.4: {}
 
