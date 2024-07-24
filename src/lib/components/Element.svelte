@@ -23,7 +23,7 @@
 		type FocusType,
 		type AriaSelectType,
 		type ThemeColor
-	} from '$lib/theme/index.js';
+	} from '$lib/theme/types.js'
 
 	export type ElementProps<Tag extends HTMLTag> = {
 		as?: Tag;
@@ -63,6 +63,8 @@
 		bgColorSoft = 'unstyled',
 		bgColorSoftHover = 'unstyled',
 		bgColorSelected = 'unstyled',
+		focusType = 'unstyled',
+		selectType = 'unstyled',
 		fontSize = 'unstyled',
 		fontColor = 'unstyled',
 		fontLeading = 'unstyled',

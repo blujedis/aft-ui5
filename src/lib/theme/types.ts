@@ -1,6 +1,6 @@
 import type { ariaSelectMap, focusMap } from './constants.js';
 
-export type ThemeColor = 'frame' | 'primary' | 'secondary' | 'tertiary' | 'danger' | 'warning' | 'success' | 'info' | 'white' | 'black' | 'light' | 'dark' | 'unstyled';
+export type ThemeColor = 'frame' | 'primary' | 'secondary' | 'tertiary' | 'danger' | 'warning' | 'success' | 'info' | 'white' | 'black' | 'unstyled';
 
 export type Size = 'unstyled' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xl2';
 
@@ -34,37 +34,53 @@ export enum Ring {
 export enum RingOffset {
   unstyled = '',
   none = 'ring-offset-0',
-  sm = 'ring-offset-1',
-  md = 'ring-offset-2',
-  lg = 'ring-offset-[3px]',
-  xl = 'ring-offset-4',
-  xl2 = 'ring-offset-8'
+  one = 'ring-offset-1',
+  two = 'ring-offset-2',
+  three = 'ring-offset-[3px]',
+  four = 'ring-offset-4',
+  eight = 'ring-offset-8'
 }
 
 export enum RingColor {
   unstyled = '',
-  white = 'ring-white dark:ring-white',
-  black = 'ring-black dark:ring-black',
   primary = 'ring-primary-500 dark:ring-primary-500',
   secondary = 'ring-secondary-500 dark:ring-secondary-500',
   tertiary = 'ring-tertiary-500 dark:ring-tertiary-500',
   danger = 'ring-danger-500 dark:ring-danger-500',
   warning = 'ring-warning-500 dark:ring-warning-500',
   success = 'ring-success-500 dark:ring-success-500',
-  info = 'ring-info-500 dark:ring-info-500'
+  info = 'ring-info-500 dark:ring-info-500',
+  frame = 'ring-frame-100 dark:ring-frame-600',
+  white = 'ring-white dark:ring-white',
+  black = 'ring-black dark:ring-black',
 }
 
 export enum BorderColor {
   unstyled = '',
-  white = 'border-white dark:border-white',
-  black = 'border-black dark:border-black',
   primary = 'border-primary-500 dark:border-primary-500',
   secondary = 'border-secondary-500 dark:border-secondary-500',
   tertiary = 'border-tertiary-500 dark:border-tertiary-500',
   danger = 'border-danger-500 dark:border-danger-500',
   warning = 'border-warning-500 dark:border-warning-500',
   success = 'border-success-500 dark:border-success-500',
-  info = 'border-info-500 dark:border-info-500'
+  info = 'border-info-500 dark:border-info-500',
+  frame = 'border-frame-100 dark:border-frame-600',
+  white = 'border-white dark:border-white',
+  black = 'border-black dark:border-black',
+}
+
+export enum DivideColor {
+  unstyled = '',
+  primary = 'divide-primary-500 dark:divide-primary-500',
+  secondary = 'divide-secondary-500 dark:divide-secondary-500',
+  tertiary = 'divide-tertiary-500 dark:divide-tertiary-500',
+  danger = 'divide-danger-500 dark:divide-danger-500',
+  warning = 'divide-warning-500 dark:divide-warning-500',
+  success = 'divide-success-500 dark:divide-success-500',
+  info = 'divide-info-500 dark:divide-info-500',
+  frame = 'divide-frame-100 dark:divide-frame-600',
+  white = 'divide-white dark:divide-white',
+  black = 'divide-black dark:divide-black',
 }
 
 export enum Outline {
@@ -80,11 +96,11 @@ export enum Outline {
 export enum OutlineOffset {
   unstyled = '',
   none = 'outline-offset-0',
-  sm = 'outline-offset-1',
-  md = 'outline-offset-2',
-  lg = 'outline-offset-[3px]',
-  xl = 'outline-offset-4',
-  xl2 = 'outline-offset-8'
+  one = 'outline-offset-1',
+  two = 'outline-offset-2',
+  three = 'outline-offset-[3px]',
+  four = 'outline-offset-4',
+  eight= 'outline-offset-8'
 }
 
 export enum Border {
@@ -273,9 +289,7 @@ export enum BgColorSelected {
 
 export enum OutlineColorFocus {
   unstyled = '',
-  white = 'focus:outline-white dark:focus:outline-white focus-visible:outline-white dark:focus-visible:outline-white focus-within:outline-white dark:focus-within:outline-white peer-focus:outline-white dark:peer-focus:outline-white',
-
-  black = 'focus:outline-black dark:focus:outline-black focus-visible:outline-black dark:focus-visible:outline-black focus-within:outline-black dark:focus-within:outline-black peer-focus:outline-black dark:peer-focus:outline-black',
+  
 
   primary = 'focus:outline-primary-500/70 dark:focus:outline-primary-500/70 focus-visible:outline-primary-500/70 dark:focus-visible:outline-primary-500/70 focus-within:outline-primary-500/70 dark:focus-within:outline-primary-500/70 peer-focus:outline-primary-500/70 dark:peer-focus:outline-primary-500/70',
 
@@ -289,11 +303,15 @@ export enum OutlineColorFocus {
 
   success = 'focus:outline-success-500/70 dark:focus:outline-success-500/70 focus-visible:outline-success-500/70 dark:focus-visible:outline-success-500/70 focus-within:outline-success-500/70 dark:focus-within:outline-success-500/70 peer-focus:outline-success-500/70 dark:peer-focus:outline-success-500/70',
 
-  info = 'focus:outline-info-500/70 dark:focus:outline-info-500/70 focus-visible:outline-info-500/70 dark:focus-visible:outline-info-500/70 focus-within:outline-info-500/70 dark:focus-within:outline-info-500/70 peer-focus:outline-info-500/70 dark:peer-focus:outline-info-500/70'
+  info = 'focus:outline-info-500/70 dark:focus:outline-info-500/70 focus-visible:outline-info-500/70 dark:focus-visible:outline-info-500/70 focus-within:outline-info-500/70 dark:focus-within:outline-info-500/70 peer-focus:outline-info-500/70 dark:peer-focus:outline-info-500/70',
+
+  white = 'focus:outline-white dark:focus:outline-white focus-visible:outline-white dark:focus-visible:outline-white focus-within:outline-white dark:focus-within:outline-white peer-focus:outline-white dark:peer-focus:outline-white',
+
+  black = 'focus:outline-black dark:focus:outline-black focus-visible:outline-black dark:focus-visible:outline-black focus-within:outline-black dark:focus-within:outline-black peer-focus:outline-black dark:peer-focus:outline-black',
 }
 
 export interface GlobalOptions {
-  focusOffset = keyof typeof RingOffset;
-rounded = keyof typeof Rounded;
-transitioned = boolean | string;
+  focusOffset: keyof typeof RingOffset;
+  rounded: keyof typeof Rounded;
+  transition: boolean | string;
 }

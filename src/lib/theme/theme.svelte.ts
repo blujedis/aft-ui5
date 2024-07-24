@@ -7,9 +7,9 @@ import cn from 'classnames';
 export type Theme = typeof _theme;
 
 const globals: GlobalOptions = {
-  focusOffset: 'unstyled',
+  focusOffset: 'none',
   rounded: 'unstyled',
-  transitioned: 'transition motion-reduce:transition-none',
+  transition: 'transition motion-reduce:transition-none',
 };
 
 const _theme = $state(globals);
