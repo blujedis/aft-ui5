@@ -1,9 +1,13 @@
 import { type GlobalOptions } from './types.js';
+import cn from 'classnames';
+
+// type Argument = string | number | boolean | undefined | null | Record<string, unknown>;
+
 
 export type Theme = typeof _theme;
 
 const globals: GlobalOptions = {
-  ringOffset: 'unstyled',
+  focusOffset: 'unstyled',
   rounded: 'unstyled',
   transitioned: 'transition motion-reduce:transition-none',
 };
@@ -18,12 +22,11 @@ export function updateTheme<T extends Theme>(theme = {} as Partial<T>) {
   return _theme;
 }
 
-export function pickDefined(value: unknown, fallback: unknown, allowFalseyFallback = false) {
-  if (typeof value !== 'undefined')
-    return value;
-  if (typeof fallback === 'undefined' && !allowFalseyFallback)
-    throw new Error(`Cannot use fallback value: "${fallback}"`);
-  return fallback;
+export function classNames(args: cn.ArgumentArray, remove = [] as string[]) {
+  const classes = cn(...args);
+  if (!remove.length) return classes;
+  return classes.split(' ').filter(c => remove.some(r => c.startsWith(r))).join(' ');
 }
+
 
 export default _theme;

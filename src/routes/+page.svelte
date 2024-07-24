@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Box from '$lib/components/Box.svelte';
+	import Box from '$lib/components/Element.svelte';
 </script>
 
 <main>
