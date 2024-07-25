@@ -23,21 +23,21 @@
 		type FocusType,
 		type AriaSelectType,
 		type ThemeColor
-	} from '$lib/theme/types.js'
+	} from '$lib/theme/types.js';
 
 	export type ElementProps<Tag extends HTMLTag> = {
 		as?: Tag;
 		border?: keyof typeof Border;
-		bgColor?: keyof typeof BgColor;
-		bgColorHover?: keyof typeof BgColorHover;
-		bgColorSoft?: keyof typeof BgColorSoft;
-		bgColorSoftHover?: keyof typeof BgColorSoftHover;
-		bgColorSelected?: keyof typeof BgColorSelected;
+		bgColor?: ThemeColor;
+		bgColorHover?: ThemeColor;
+		bgColorSoft?: ThemeColor;
+		bgColorSoftHover?: ThemeColor;
+		bgColorSelected?: ThemeColor;
 		focusType?: FocusType;
 		selectType?: AriaSelectType;
 		fontLeading?: keyof typeof FontLeading;
-		fontColor?: keyof typeof FontColor;
-		fontColorHover?: keyof typeof FontColorHover;
+		fontColor?: ThemeColor;
+		fontColorHover?: ThemeColor;
 		fontSize?: keyof typeof FontSize;
 		fontWeight?: keyof typeof FontWeight;
 		outline?: keyof typeof Outline;

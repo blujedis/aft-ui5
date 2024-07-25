@@ -100,7 +100,7 @@ export enum OutlineOffset {
   two = 'outline-offset-2',
   three = 'outline-offset-[3px]',
   four = 'outline-offset-4',
-  eight= 'outline-offset-8'
+  eight = 'outline-offset-8'
 }
 
 export enum Border {
@@ -197,6 +197,7 @@ export enum FontColor {
   warning = 'text-warning-600 dark:text-warning-300',
   success = 'text-success-600 dark:text-success-300',
   info = 'text-info-600 dark:text-info-300',
+  frame = 'text-frame-700 dark:text-frame-200',
   white = 'text-white dark:text-white',
   black = 'text-black dark:text-black'
 }
@@ -210,6 +211,7 @@ export enum FontColorHover {
   warning = 'hover:text-warning-600 dark:hover:text-warning-300',
   success = 'hover:text-success-600 dark:hover:text-success-300',
   info = 'hover:text-info-600 dark:hover:text-info-300',
+  frame = 'text-frame-900 dark:text-frame-300',
   white = 'hover:text-gray-50 dark:hover:text-gray-50',
   black = 'hover:text-gray-900 dark:hover-text-gray-950'
 }
@@ -223,6 +225,7 @@ export enum BgColor {
   warning = 'bg-warning-500 dark:bg-warning-500',
   success = 'bg-success-500 dark:bg-success-500',
   info = 'bg-info-500 dark:bg-info-500',
+  frame = 'bg-frame-200 dark:bg-frame-600',
   white = 'bg-white dark:bg-white',
   black = 'bg-black dark:bg-black'
 }
@@ -236,6 +239,7 @@ export enum BgColorHover {
   warning = 'hover:bg-warning-600 dark:hover:bg-warning-600 group-hover:bg-warning-600 dark:group-hover:bg-warning-600',
   success = 'hover:bg-success-600 dark:hover:bg-success-600 group-hover:bg-success-600 dark:group-hover:bg-success-600',
   info = 'hover:bg-info-600 dark:hover:bg-info-600 group-hover:bg-info-600 dark:group-hover:bg-info-600',
+  frame = 'hover:bg-frame-300 dark:hover:bg-frame-700 group-hover:bg-frame-300 dark:group-hover:bg-frame-700',
   white = 'hover:bg-gray-50 group-hover:bg-gray-50 dark:hover-bg-gray-50 dark:group-hover:bg-gray-50',
   black = 'hover:bg-gray-950 group-hover:bg-gray-950 dark:hover:bg-gray-950 dark:group-hover:bg-gray-950'
 }
@@ -249,6 +253,7 @@ export enum BgColorSoft {
   warning = 'bg-warning-100 dark:bg-warning-900',
   success = 'bg-success-100 dark:bg-success-900',
   info = 'bg-info-100 dark:bg-info-900',
+  frame = 'bg-frame-100 dark:bg-frame-900',
   white = 'bg-white dark:bg-white',
   black = 'bg-black dark:bg-black'
 }
@@ -262,6 +267,7 @@ export enum BgColorSoftHover {
   warning = 'hover:bg-warning-100 dark:hover:bg-warning-900 group-hover:bg-warning-100 dark:group-hover:bg-warning-900',
   success = 'hover:bg-success-100 dark:hover:bg-success-900 group-hover:bg-success-100 dark:group-hover:bg-success-900',
   info = 'hover:bg-info-100 dark:hover:bg-info-900 group-hover:bg-info-100 dark:group-hover:bg-info-900',
+  frame = 'hover:bg-frame-100 dark:hover:bg-frame-900 group-hover:bg-frame-100 dark:group-hover:bg-frame-900',
   white = 'hover:bg-gray-50 group-hover:bg-gray-50 dark:hover-bg-gray-50 dark:group-hover:bg-gray-50',
   black = 'hover:bg-gray-950 group-hover:bg-gray-950 dark:hover:bg-gray-950 dark:group-hover:bg-gray-950'
 }
@@ -282,6 +288,8 @@ export enum BgColorSelected {
 
   info = 'aria-selected:bg-info-500 dark:aria-selected:bg-info-500 aria-expanded:bg-info-500 dark:aria-expanded:bg-info-500 aria-checked:bg-info-500 dark:aria-checked:bg-info-500 aria-[current="page"]:bg-info-500 dark:aria-[current="page"]:bg-info-500',
 
+  frame = 'aria-selected:bg-frame-500 dark:aria-selected:bg-frame-500 aria-expanded:bg-frame-500 dark:aria-expanded:bg-frame-500 aria-checked:bg-frame-500 dark:aria-checked:bg-frame-500 aria-[current="page"]:bg-frame-500 dark:aria-[current="page"]:bg-frame-500',
+
   white = 'aria-selected:bg-gray-50 dark:aria-selected:bg-gray-50 aria-expanded:bg-gray-50 dark:aria-expanded:bg-gray-50 aria-checked:bg-gray-50 dark:aria-checked:bg-gray-50 aria-[current="page"]:bg-gray-50 dark:aria-[current="page"]:bg-gray-50',
 
   black = 'aria-selected:bg-gray-950 dark:aria-selected:bg-gray-950 aria-expanded:bg-gray-950 dark:aria-expanded:bg-gray-950 aria-checked:bg-gray-950 dark:aria-checked:bg-gray-950 aria-[current="page"]:bg-gray-950 dark:aria-[current="page"]:bg-gray-950'
@@ -289,7 +297,7 @@ export enum BgColorSelected {
 
 export enum OutlineColorFocus {
   unstyled = '',
-  
+
 
   primary = 'focus:outline-primary-500/70 dark:focus:outline-primary-500/70 focus-visible:outline-primary-500/70 dark:focus-visible:outline-primary-500/70 focus-within:outline-primary-500/70 dark:focus-within:outline-primary-500/70 peer-focus:outline-primary-500/70 dark:peer-focus:outline-primary-500/70',
 
@@ -304,6 +312,8 @@ export enum OutlineColorFocus {
   success = 'focus:outline-success-500/70 dark:focus:outline-success-500/70 focus-visible:outline-success-500/70 dark:focus-visible:outline-success-500/70 focus-within:outline-success-500/70 dark:focus-within:outline-success-500/70 peer-focus:outline-success-500/70 dark:peer-focus:outline-success-500/70',
 
   info = 'focus:outline-info-500/70 dark:focus:outline-info-500/70 focus-visible:outline-info-500/70 dark:focus-visible:outline-info-500/70 focus-within:outline-info-500/70 dark:focus-within:outline-info-500/70 peer-focus:outline-info-500/70 dark:peer-focus:outline-info-500/70',
+
+  frame = 'focus:outline-frame-500/70 dark:focus:outline-frame-500/70 focus-visible:outline-frame-500/70 dark:focus-visible:outline-frame-500/70 focus-within:outline-frame-500/70 dark:focus-within:outline-frame-500/70 peer-focus:outline-frame-500/70 dark:peer-focus:outline-frame-500/70',
 
   white = 'focus:outline-white dark:focus:outline-white focus-visible:outline-white dark:focus-visible:outline-white focus-within:outline-white dark:focus-within:outline-white peer-focus:outline-white dark:peer-focus:outline-white',
 
