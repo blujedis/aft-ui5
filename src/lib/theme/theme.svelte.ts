@@ -22,10 +22,10 @@ export function updateTheme<T extends Theme>(theme = {} as Partial<T>) {
   return _theme;
 }
 
-export function classNames(args: cn.ArgumentArray, remove = [] as string[]) {
+export function classNames(args: cn.ArgumentArray, removes = [] as string[]) {
   const classes = cn(...args);
-  if (!remove.length) return classes;
-  return classes.split(' ').filter(c => remove.some(r => c.startsWith(r))).join(' ');
+  if (!removes.length) return classes;
+  return classes.split(' ').filter(c => !removes.find(r => c.startsWith(r))).join(' ');
 }
 
 

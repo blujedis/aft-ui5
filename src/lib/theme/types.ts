@@ -1,12 +1,20 @@
-import type { ariaSelectMap, focusMap } from './constants.js';
+import type { ariaSelectedRemoveMap, focusRemoveMap } from './constants.js';
 
-export type ThemeColor = 'frame' | 'primary' | 'secondary' | 'tertiary' | 'danger' | 'warning' | 'success' | 'info' | 'white' | 'black' | 'unstyled';
+export type ThemeColor = keyof typeof FontColor;
 
-export type Size = 'unstyled' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xl2';
+export type FocusType = keyof typeof focusRemoveMap;
 
-export type FocusType = keyof typeof focusMap;
+export type AriaSelectType = keyof typeof ariaSelectedRemoveMap;
 
-export type AriaSelectType = keyof typeof ariaSelectMap;
+export enum Size {
+  unstyled = '',
+  xs = 'xs',
+  sm = 'sm',
+  md = 'md',
+  lg = 'lg',
+  xl = 'xl',
+  xl2 = 'xl2',
+}
 
 export enum Rounded {
   unstyled = '',
@@ -141,7 +149,7 @@ export enum DropShadow {
 
 export enum FontSize {
   unstyled = '',
-  xss = 'text-[10px] leading-3',
+  xss = 'text-[10px]',
   xs = 'text-xs',
   sm = 'text-sm',
   md = 'text-base',
@@ -197,23 +205,51 @@ export enum FontColor {
   warning = 'text-warning-600 dark:text-warning-300',
   success = 'text-success-600 dark:text-success-300',
   info = 'text-info-600 dark:text-info-300',
-  frame = 'text-frame-700 dark:text-frame-200',
+  frame = 'text-frame-700 dark:text-frame-300',
   white = 'text-white dark:text-white',
   black = 'text-black dark:text-black'
 }
 
 export enum FontColorHover {
   unstyled = '',
-  primary = 'hover:text-primary-600 dark:hover:text-primary-300',
-  secondary = 'hover:text-secondary-600 dark:hover:text-secondary-300',
-  tertiary = 'hover:text-tertiary-600 dark:hover:text-tertiary-300',
-  danger = 'hover:text-danger-600 dark:hover:text-danger-300',
-  warning = 'hover:text-warning-600 dark:hover:text-warning-300',
-  success = 'hover:text-success-600 dark:hover:text-success-300',
-  info = 'hover:text-info-600 dark:hover:text-info-300',
-  frame = 'text-frame-900 dark:text-frame-300',
+  primary = 'hover:text-primary-500 dark:hover:text-primary-200',
+  secondary = 'hover:text-secondary-500 dark:hover:text-secondary-200',
+  tertiary = 'hover:text-tertiary-500 dark:hover:text-tertiary-200',
+  danger = 'hover:text-danger-500 dark:hover:text-danger-200',
+  warning = 'hover:text-warning-500 dark:hover:text-warning-200',
+  success = 'hover:text-success-500 dark:hover:text-success-200',
+  info = 'hover:text-info-500 dark:hover:text-info-200',
+  frame = 'text-frame-600 dark:text-frame-200',
   white = 'hover:text-gray-50 dark:hover:text-gray-50',
-  black = 'hover:text-gray-900 dark:hover-text-gray-950'
+  black = 'hover:text-gray-900 dark:hover-text-gray-900'
+}
+
+export enum TextColorFilled {
+  unstyled = '',
+  primary = 'text-primary-100 dark:text-primary-300 hover:text-primary-100 dark:hover:text-primary-300',
+  secondary = 'text-secondary-100 dark:text-secondary-300 hover:text-secondary-100 dark:hover:text-secondary-300',
+  tertiary = 'text-tertiary-100 dark:text-tertiary-300 hover:text-tertiary-100 dark:hover:text-tertiary-300',
+  danger = 'text-danger-100 dark:text-danger-300 hover:text-danger-100 dark:hover:text-danger-300',
+  warning = 'text-warning-100 dark:text-warning-300 hover:text-warning-100 dark:hover:text-warning-300',
+  success = 'text-success-100 dark:text-success-300 hover:text-success-100 dark:hover:text-success-300',
+  info = 'text-info-100 dark:text-info-300 hover:text-info-100 dark:hover:text-info-300',
+  frame = 'text-frame-700 dark:text-frame-200 hover:text-frame-700 dark:hover:text-frame-200',
+  white = 'text-white dark:text-white hover:text-white dark:hover:text-white',
+  black = 'text-black dark:text-black hover:text-black dark:hover:text-black'
+}
+
+export enum TextColorUnfilled {
+  unstyled = '',
+  primary = 'text-primary-600 dark:text-primary-300 hover:text-primary-600 dark:hover:text-primary-300',
+  secondary = 'text-secondary-600 dark:text-secondary-300 hover:text-secondary-600 dark:hover:text-secondary-300',
+  tertiary = 'text-tertiary-600 dark:text-tertiary-300 hover:text-tertiary-600 dark:hover:text-tertiary-300',
+  danger = 'text-danger-600 dark:text-danger-300 hover:text-danger-600 dark:hover:text-danger-300',
+  warning = 'text-warning-600 dark:text-warning-300 hover:text-warning-600 dark:hover:text-warning-300',
+  success = 'text-success-600 dark:text-success-300 hover:text-success-600 dark:hover:text-success-300',
+  info = 'text-info-600 dark:text-info-300 hover:text-info-600 dark:hover:text-info-300',
+  frame = 'text-frame-700 dark:text-frame-200 hover:text-frame-700 dark:hover:text-frame-200',
+  white = 'text-white dark:text-white hover:text-white dark:hover:text-white',
+  black = 'text-black dark:text-black hover:text-black dark:hover:text-black'
 }
 
 export enum BgColor {
@@ -318,6 +354,36 @@ export enum OutlineColorFocus {
   white = 'focus:outline-white dark:focus:outline-white focus-visible:outline-white dark:focus-visible:outline-white focus-within:outline-white dark:focus-within:outline-white peer-focus:outline-white dark:peer-focus:outline-white',
 
   black = 'focus:outline-black dark:focus:outline-black focus-visible:outline-black dark:focus-visible:outline-black focus-within:outline-black dark:focus-within:outline-black peer-focus:outline-black dark:peer-focus:outline-black',
+}
+
+export enum FieldPaddingY {
+  unstyled = '',
+  xs = 'py-0.5',
+  sm = 'py-1',
+  md = 'py-1.5',
+  lg = 'py-2',
+  xl = 'py-2.5',
+  xl2 = 'py-3'
+}
+
+export enum FieldPaddingX {
+  unstyled = '',
+  xs = 'px-2',
+  sm = 'px-2.5',
+  md = 'px-3',
+  lg = 'px-3.5',
+  xl = 'px-5',
+  xl2 = 'px-6'
+}
+
+export enum ButtonPaddingX {
+  unstyled = '',
+  xs = 'px-3',
+  sm = 'px-3.5',
+  md = 'px-5',
+  lg = 'px-6',
+  xl = 'px-7',
+  xl2 = 'px-8'
 }
 
 export interface GlobalOptions {
