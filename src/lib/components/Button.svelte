@@ -68,8 +68,8 @@
 		ringColorHover: variant !== 'outlined' ? 'unstyled' : theme,
 		rounded: rounded || t.rounded,
 		shadow,
-		textColorFilled: variant !== 'filled' ? 'unstyled' : theme,
-		textColorUnfilled: variant === 'filled' ? 'unstyled' : theme
+		foreColorFilled: variant !== 'filled' ? 'unstyled' : theme,
+		foreColorUnfilled: variant === 'filled' ? 'unstyled' : theme
 	} as ConfigProps;
 </script>
 

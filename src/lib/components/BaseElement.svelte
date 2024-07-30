@@ -20,8 +20,8 @@
 		type ThemeColor,
 		FontColor,
 		FontColorHover,
-		TextColorFilled,
-		TextColorUnfilled,
+		ForeColorFilled,
+		ForeColorUnfilled,
 		OutlineColorFocus,
 		BgColorHover,
 		BgColorSelected,
@@ -45,6 +45,8 @@
 		fontColorHover?: ThemeColor;
 		fontSize?: keyof typeof FontSize;
 		fontWeight?: keyof typeof FontWeight;
+		foreColorFilled?: ThemeColor;
+		foreColorUnfilled?: ThemeColor;
 		outline?: keyof typeof Outline;
 		outlineOffset?: keyof typeof OutlineOffset;
 		outlineColorFocus?: ThemeColor;
@@ -55,8 +57,6 @@
 		rounded?: keyof typeof Rounded;
 		selectType?: AriaSelectType;
 		shadow?: keyof typeof Shadow;
-		textColorFilled?: ThemeColor;
-		textColorUnfilled?: ThemeColor;
 		textHover?: boolean;
 	};
 
@@ -86,6 +86,8 @@
 		fontColorHover = 'unstyled',
 		fontWeight = 'unstyled',
 		fontLeading = 'unstyled',
+		foreColorFilled = 'unstyled',
+		foreColorUnfilled = 'unstyled',
 		outline = 'unstyled',
 		outlineOffset = 'unstyled',
 		outlineColorFocus = 'unstyled',
@@ -95,8 +97,6 @@
 		ringColorHover = 'unstyled',
 		rounded = 'unstyled',
 		shadow = 'unstyled',
-		textColorFilled = 'unstyled',
-		textColorUnfilled = 'unstyled',
 		classes = '',
 		removes = [],
 		children,
@@ -124,14 +124,18 @@
 				RingOffset[ringOffset],
 				Rounded[rounded],
 				Shadow[shadow],
-				TextColorFilled[textColorFilled],
-				TextColorUnfilled[textColorUnfilled],
+				ForeColorFilled[foreColorFilled],
+				ForeColorUnfilled[foreColorUnfilled],
 				classes,
 				rest.class
 			],
 			removes
 		)
 	);
+
+	function tmp() {
+
+	}
 </script>
 
 <svelte:element this={as} class={_classes}>

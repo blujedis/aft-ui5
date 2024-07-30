@@ -7,7 +7,7 @@ type ConfValue = string | number;
 type ConfValueArg = ConfValue | [ConfValue, ConfValue];
 
 const views = './src/lib/theme';
-const output = './src/lib/theme/types.example.ts';
+const output = './src/lib/theme/types.ts';
 
 function normalize(conf: Record<string, Record<string, ConfValueArg>>) {
 	Object.keys(conf).forEach(key => {
