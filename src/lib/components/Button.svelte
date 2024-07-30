@@ -1,7 +1,13 @@
 <script context="module" lang="ts">
 	import { type ElementProps, type HTMLTag } from '$lib/types.js';
 	import { type ConfigProps } from './BaseElement.svelte';
-	import { ButtonPaddingX, FieldPaddingY, Size, type ThemeColor } from '$lib/theme/types.js';
+	import {
+		ButtonFontSize,
+		ButtonPaddingX,
+		FieldPaddingY,
+		Size,
+		type ThemeColor
+	} from '$lib/theme/types.js';
 
 	type ExtendedProps<Tag extends HTMLTag> = Tag extends 'a'
 		? { href: string | null }
@@ -38,25 +44,32 @@
 	}: ButtonProps<Tag> = $props();
 
 	const config = {
+		classes: [
+			`button button-${variant} inline-flex items-center justify-center cursor-pointer outline-none transition motion-reduce:transition-none`,
+			ButtonPaddingX[size],
+			FieldPaddingY[size],
+			ButtonFontSize[size],
+			{ 'font-medium': !rest.href },
+			{ 'ring-1': variant === 'outlined' }
+		],
+		removes: [...focusRemoveMap.visible],
+
 		bgColor: variant !== 'filled' ? 'unstyled' : theme,
 		bgColorHover: variant !== 'filled' ? 'unstyled' : theme,
 		bgSoftColor: variant !== 'soft' ? 'unstyled' : theme,
 		bgSoftColorHover: ['soft', 'ghost'].includes(variant) ? theme : 'unstyled',
-		classes: [
-			'inline-flex items-center justify-center cursor-pointer outline-none transition motion-reduce:transition-none',
-			ButtonPaddingX[size],
-			FieldPaddingY[size]
-		],
 		focusType: 'visible',
 		fontSize: size,
-		textColorFilled: variant !== 'filled' ? 'unstyled' : theme,
-		textColorUnfilled: variant === 'filled' ? 'unstyled' : theme,
 		outline: size,
 		outlineOffset: t.focusOffset,
 		outlineColorFocus: theme,
+		ring: variant !== 'outlined' ? 'unstyled' : 'inset',
+		ringColor: variant !== 'outlined' ? 'unstyled' : theme,
+		ringColorHover: variant !== 'outlined' ? 'unstyled' : theme,
 		rounded: rounded || t.rounded,
 		shadow,
-		removes: [...focusRemoveMap.visible]
+		textColorFilled: variant !== 'filled' ? 'unstyled' : theme,
+		textColorUnfilled: variant === 'filled' ? 'unstyled' : theme
 	} as ConfigProps;
 </script>
 

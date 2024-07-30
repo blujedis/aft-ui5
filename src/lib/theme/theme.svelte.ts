@@ -1,9 +1,6 @@
 import { type GlobalOptions } from './types.js';
 import cn from 'classnames';
 
-// type Argument = string | number | boolean | undefined | null | Record<string, unknown>;
-
-
 export type Theme = typeof _theme;
 
 const globals: GlobalOptions = {
@@ -27,6 +24,5 @@ export function classNames(args: cn.ArgumentArray, removes = [] as string[]) {
   if (!removes.length) return classes;
   return classes.split(' ').filter(c => !removes.find(r => c.startsWith(r))).join(' ');
 }
-
 
 export default _theme;

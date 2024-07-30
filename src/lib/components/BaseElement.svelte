@@ -24,36 +24,40 @@
 		TextColorUnfilled,
 		OutlineColorFocus,
 		BgColorHover,
-		BgColorSelected
+		BgColorSelected,
+		RingColor,
+		RingColorHover
 	} from '$lib/theme/types.js';
 
 	export type ConfigProps = {
+		classes?: string | ArgumentArray;
+		removes?: string[]; // classes that should be removed.
 		border?: keyof typeof Border;
 		bgColor?: ThemeColor;
 		bgColorHover?: ThemeColor;
 		bgColorSoft?: ThemeColor;
 		bgColorSoftHover?: ThemeColor;
 		bgColorSelected?: ThemeColor;
-		classes?: string | ArgumentArray;
+		dropShadow?: keyof typeof DropShadow;
 		focusType?: FocusType;
 		fontLeading?: keyof typeof FontLeading;
 		fontColor?: ThemeColor;
 		fontColorHover?: ThemeColor;
-		textColorFilled?: ThemeColor;
-		textColorUnfilled?: ThemeColor;
-		textHover?: boolean;
 		fontSize?: keyof typeof FontSize;
 		fontWeight?: keyof typeof FontWeight;
 		outline?: keyof typeof Outline;
 		outlineOffset?: keyof typeof OutlineOffset;
 		outlineColorFocus?: ThemeColor;
 		ring?: keyof typeof Ring;
+		ringColor?: ThemeColor;
+		ringColorHover?: ThemeColor;
 		ringOffset?: keyof typeof RingOffset;
 		rounded?: keyof typeof Rounded;
 		selectType?: AriaSelectType;
 		shadow?: keyof typeof Shadow;
-		dropShadow?: keyof typeof DropShadow;
-		removes?: string[]; // classes that should be removed.
+		textColorFilled?: ThemeColor;
+		textColorUnfilled?: ThemeColor;
+		textHover?: boolean;
 	};
 
 	export type BaseProps<Tag extends HTMLTag> = {
@@ -74,7 +78,6 @@
 		bgColorSoft = 'unstyled',
 		bgColorSoftHover = 'unstyled',
 		bgColorSelected = 'unstyled',
-		classes = '',
 		dropShadow = 'unstyled',
 		focusType = 'unstyled',
 		selectType = 'unstyled',
@@ -87,17 +90,20 @@
 		outlineOffset = 'unstyled',
 		outlineColorFocus = 'unstyled',
 		ring = 'unstyled',
+		ringColor = 'unstyled',
 		ringOffset = 'unstyled',
+		ringColorHover = 'unstyled',
 		rounded = 'unstyled',
 		shadow = 'unstyled',
 		textColorFilled = 'unstyled',
 		textColorUnfilled = 'unstyled',
+		classes = '',
 		removes = [],
 		children,
 		...rest
 	}: BaseProps<Tag> = $props();
 
-	const elemClasses = $state(
+	const _classes = $state(
 		classNames(
 			[
 				Border[border],
@@ -113,6 +119,8 @@
 				OutlineOffset[outlineOffset],
 				OutlineColorFocus[outlineColorFocus],
 				Ring[ring],
+				RingColor[ringColor],
+				RingColorHover[ringColorHover],
 				RingOffset[ringOffset],
 				Rounded[rounded],
 				Shadow[shadow],
@@ -126,6 +134,6 @@
 	);
 </script>
 
-<svelte:element this={as} >
+<svelte:element this={as} class={_classes}>
 	{@render children()}
 </svelte:element>

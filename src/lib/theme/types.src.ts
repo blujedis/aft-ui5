@@ -51,7 +51,7 @@ export enum RingOffset {
 
 export enum RingColor {
   unstyled = '',
-  primary = 'ring-primary-500 dark:ring-primary-500',
+  primary = 'ring-primary-{{=i.primary[0]}} dark:ring-primary-500',
   secondary = 'ring-secondary-500 dark:ring-secondary-500',
   tertiary = 'ring-tertiary-500 dark:ring-tertiary-500',
   danger = 'ring-danger-500 dark:ring-danger-500',

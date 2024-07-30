@@ -1,9 +1,13 @@
 <script lang="ts">
 	import Button from '$lib/components/Button.svelte';
-	import Temp from '$lib/components/Temp.svelte';
+	let color = 'red' as 'red' | 'blue';
+	function toggle() {
+		if (color === 'red') color = 'blue';
+		else color = 'red';
+	}
 </script>
 
 <main class="px-4 py-6">
-	<h1>Aft UI5</h1>
-	<Temp color="red">Temp</Temp>
+	<Button variant="outlined" theme="primary">Click Me</Button>
+	<button onclick={toggle}>toggle</button>
 </main>
