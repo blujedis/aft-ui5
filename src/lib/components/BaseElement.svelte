@@ -22,6 +22,8 @@
 		FontColorHover,
 		ForeColorFilled,
 		ForeColorUnfilled,
+		ForeColorFilledHover,
+		ForeColorUnfilledHover,
 		OutlineColorFocus,
 		BgColorHover,
 		BgColorSelected,
@@ -41,12 +43,14 @@
 		dropShadow?: keyof typeof DropShadow;
 		focusType?: FocusType;
 		fontLeading?: keyof typeof FontLeading;
-		fontColor?: ThemeColor;
-		fontColorHover?: ThemeColor;
 		fontSize?: keyof typeof FontSize;
 		fontWeight?: keyof typeof FontWeight;
+		fontColor?: ThemeColor;
+		fontColorHover?: ThemeColor;
 		foreColorFilled?: ThemeColor;
 		foreColorUnfilled?: ThemeColor;
+		foreColorFilledHover?: ThemeColor;
+		foreColorUnfilledHover?: ThemeColor;
 		outline?: keyof typeof Outline;
 		outlineOffset?: keyof typeof OutlineOffset;
 		outlineColorFocus?: ThemeColor;
@@ -88,6 +92,8 @@
 		fontLeading = 'unstyled',
 		foreColorFilled = 'unstyled',
 		foreColorUnfilled = 'unstyled',
+		foreColorFilledHover = 'unstyled',
+		foreColorUnfilledHover = 'unstyled',
 		outline = 'unstyled',
 		outlineOffset = 'unstyled',
 		outlineColorFocus = 'unstyled',
@@ -98,44 +104,40 @@
 		rounded = 'unstyled',
 		shadow = 'unstyled',
 		classes = '',
-		removes = [],
 		children,
 		...rest
 	}: BaseProps<Tag> = $props();
 
 	const _classes = $state(
-		classNames(
-			[
-				Border[border],
-				BgColor[bgColor],
-				BgColorHover[bgColorHover],
-				BgColorSelected[bgColorSelected],
-				DropShadow[dropShadow],
-				FontSize[fontSize],
-				FontColor[fontColor],
-				FontColorHover[fontColorHover],
-				FontLeading[fontLeading],
-				Outline[outline],
-				OutlineOffset[outlineOffset],
-				OutlineColorFocus[outlineColorFocus],
-				Ring[ring],
-				RingColor[ringColor],
-				RingColorHover[ringColorHover],
-				RingOffset[ringOffset],
-				Rounded[rounded],
-				Shadow[shadow],
-				ForeColorFilled[foreColorFilled],
-				ForeColorUnfilled[foreColorUnfilled],
-				classes,
-				rest.class
-			],
-			removes
-		)
+		classNames([
+			Border[border],
+			BgColor[bgColor],
+			BgColorHover[bgColorHover],
+			BgColorSelected[bgColorSelected],
+			DropShadow[dropShadow],
+			FontSize[fontSize],
+			FontLeading[fontLeading],
+			FontWeight[fontWeight],
+			FontColor[fontColor],
+			FontColorHover[fontColorHover],
+			ForeColorFilled[foreColorFilled],
+			ForeColorUnfilled[foreColorUnfilled],
+			ForeColorFilledHover[foreColorFilledHover],
+			ForeColorUnfilledHover[foreColorUnfilledHover],
+			Outline[outline],
+			OutlineOffset[outlineOffset],
+			OutlineColorFocus[outlineColorFocus],
+			Ring[ring],
+			RingColor[ringColor],
+			RingColorHover[ringColorHover],
+			RingOffset[ringOffset],
+			Rounded[rounded],
+			Shadow[shadow],
+
+			classes,
+			rest.class
+		])
 	);
-
-	function tmp() {
-
-	}
 </script>
 
 <svelte:element this={as} class={_classes}>

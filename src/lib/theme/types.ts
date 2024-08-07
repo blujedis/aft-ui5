@@ -1,10 +1,9 @@
-import type { ariaSelectedRemoveMap, focusRemoveMap } from './constants.js';
 
 export type ThemeColor = keyof typeof FontColor;
 
-export type FocusType = keyof typeof focusRemoveMap;
+export type FocusType = keyof typeof focusTypeMap;
 
-export type AriaSelectType = keyof typeof ariaSelectedRemoveMap;
+export type AriaSelectType = keyof typeof ariaSelectedMap;
 
 export enum Size {
   unstyled = '',
@@ -30,51 +29,65 @@ export enum Rounded {
 
 export enum Ring {
   unstyled = '',
-  inset = 'bg-inset',
-  none = 'bg-0',
-  sm = 'bg-1',
-  md = 'bg-2',
+  none = 'ring-0',
+  sm = 'ring-1',
+  md = 'ring-2',
   lg = 'ring',
-  xl = 'bg-4',
-  xl2 = 'bg-8'
+  xl = 'ring-4',
+  xl2 = 'ring-8'
 }
 
 export enum RingOffset {
   unstyled = '',
-  none = 'bg-offset-0',
-  one = 'bg-offset-1',
-  two = 'bg-offset-2',
-  three = 'bg-offset-[3px]',
-  four = 'bg-offset-4',
-  eight = 'bg-offset-8'
+  inset = 'ring-inset',
+  none = 'ring-offset-0',
+  one = 'ring-offset-1',
+  two = 'ring-offset-2',
+  three = 'ring-offset-[3px]',
+  four = 'ring-offset-4',
+  eight = 'ring-offset-8'
 }
+
+export const Placeholder = {
+  unstyled : '',
+  primary : '',
+  secondary : '',
+  tertiary : '',
+  danger : '',
+  warning : '',
+  success : '',
+  info : '',
+  frame : '',
+  white : '',
+  black : '',
+};
 
 export enum RingColor {
   unstyled = '',
-  primary = 'bg-primary-500 dark:bg-primary-500',
-  secondary = 'bg-secondary-500 dark:bg-secondary-500',
-  tertiary = 'bg-tertiary-500 dark:bg-tertiary-500',
-  danger = 'bg-danger-500 dark:bg-danger-500',
-  warning = 'bg-warning-500 dark:bg-warning-500',
-  success = 'bg-success-500 dark:bg-success-500',
-  info = 'bg-info-500 dark:bg-info-500',
-  frame = 'bg-frame-200 dark:bg-frame-600',
-  white = 'bg-white dark:bg-white',
-  black = 'bg-black dark:bg-black',
+  primary = 'ring-primary-500 dark:ring-primary-500',
+  secondary = 'ring-secondary-500 dark:ring-secondary-500',
+  tertiary = 'ring-tertiary-500 dark:ring-tertiary-500',
+  danger = 'ring-danger-500 dark:ring-danger-500',
+  warning = 'ring-warning-500 dark:ring-warning-500',
+  success = 'ring-success-500 dark:ring-success-500',
+  info = 'ring-info-500 dark:ring-info-500',
+  frame = 'ring-frame-200 dark:ring-frame-600',
+  white = 'ring-white dark:ring-white',
+  black = 'ring-black dark:ring-black',
 }
 
 export enum RingColorHover {
   unstyled = '',
-  primary = 'hover:bg-primary-600 dark:hover:bg-primary-600',
-  secondary = 'hover:bg-secondary-600 dark:hover:bg-secondary-600',
-  tertiary = 'hover:bg-tertiary-600 dark:hover:bg-tertiary-600',
-  danger = 'hover:bg-danger-600 dark:hover:bg-danger-600',
-  warning = 'hover:bg-warning-600 dark:hover:bg-warning-600',
-  success = 'hover:bg-success-600 dark:hover:bg-success-600',
-  info = 'hover:bg-info-600 dark:hover:bg-info-600',
-  frame = 'hover:bg-frame-300 dark:hover:bg-frame-700',
-  white = 'hover:bg-frame-50 dark:hover:bg-frame-50',
-  black = 'hover:bg-frame-900 dark:hover:bg-frame-900',
+  primary = 'hover:ring-primary-600 dark:hover:ring-primary-400',
+  secondary = 'hover:ring-secondary-600 dark:hover:ring-secondary-400',
+  tertiary = 'hover:ring-tertiary-600 dark:hover:ring-tertiary-400',
+  danger = 'hover:ring-danger-600 dark:hover:ring-danger-400',
+  warning = 'hover:ring-warning-600 dark:hover:ring-warning-400',
+  success = 'hover:ring-success-600 dark:hover:ring-success-400',
+  info = 'hover:ring-info-600 dark:hover:ring-info-400',
+  frame = 'hover:ring-frame-300 dark:hover:ring-frame-700',
+  white = 'hover:ring-frame-50 dark:hover:ring-frame-50',
+  black = 'hover:ring-frame-900 dark:hover:ring-frame-900',
 }
 
 export enum BorderColor {
@@ -93,13 +106,13 @@ export enum BorderColor {
 
 export enum BorderColorHover {
   unstyled = '',
-  primary = 'hover:border-primary-600 dark:hover:border-primary-600',
-  secondary = 'hover:border-secondary-600 dark:hover:border-secondary-600',
-  tertiary = 'hover:border-tertiary-600 dark:hover:border-tertiary-600',
-  danger = 'hover:border-danger-600 dark:hover:border-danger-600',
-  warning = 'hover:border-warning-600 dark:hover:border-warning-600',
-  success = 'hover:border-success-600 dark:hover:border-success-600',
-  info = 'hover:border-info-600 dark:hover:border-info-600',
+  primary = 'hover:border-primary-600 dark:hover:border-primary-400',
+  secondary = 'hover:border-secondary-600 dark:hover:border-secondary-400',
+  tertiary = 'hover:border-tertiary-600 dark:hover:border-tertiary-400',
+  danger = 'hover:border-danger-600 dark:hover:border-danger-400',
+  warning = 'hover:border-warning-600 dark:hover:border-warning-400',
+  success = 'hover:border-success-600 dark:hover:border-success-400',
+  info = 'hover:border-info-600 dark:hover:border-info-400',
   frame = 'hover:border-frame-300 dark:hover:border-frame-700',
   white = 'hover:border-frame-frame-50 dark:hover:border-frame-frame-50',
   black = 'hover:border-frame-frame-900 dark:hover:border-frame-frame-900',
@@ -266,7 +279,7 @@ export enum ForeColorFilled {
   black = 'text-frame-50 dark:text-frame-50'
 }
 
-export enum ForColorFilledHover {
+export enum ForeColorFilledHover {
   unstyled = '',
   primary = 'hover:text-primary-white dark:hover:text-primary-white',
   secondary = 'hover:text-secondary-white dark:hover:text-secondary-white',
@@ -294,15 +307,15 @@ export enum ForeColorUnfilled {
   black = 'text-black dark:text-black'
 }
 
-export enum ForColorUnfilledHover {
+export enum ForeColorUnfilledHover {
   unstyled = '',
-  primary = 'hover:text-primary-600 dark:hover:text-primary-300',
-  secondary = 'hover:text-secondary-600 dark:hover:text-secondary-300',
-  tertiary = 'hover:text-tertiary-600 dark:hover:text-tertiary-300',
-  danger = 'hover:text-danger-600 dark:hover:text-danger-300',
-  warning = 'hover:text-warning-600 dark:hover:text-warning-300',
-  success = 'hover:text-success-600 dark:hover:text-success-300',
-  info = 'hover:text-info-600 dark:hover:text-info-300',
+  primary = 'hover:text-primary-600 dark:hover:text-primary-100',
+  secondary = 'hover:text-secondary-600 dark:hover:text-secondary-100',
+  tertiary = 'hover:text-tertiary-600 dark:hover:text-tertiary-100',
+  danger = 'hover:text-danger-600 dark:hover:text-danger-100',
+  warning = 'hover:text-warning-600 dark:hover:text-warning-100',
+  success = 'hover:text-success-600 dark:hover:text-success-100',
+  info = 'hover:text-info-600 dark:hover:text-info-100',
   frame = 'text-frame-600 dark:text-frame-300',
   white = 'hover:text-frame-100 dark:hover:text-frame-100',
   black = 'hover:text-frame-900 dark:hover-text-frame-900'
@@ -324,13 +337,13 @@ export enum BgColor {
 
 export enum BgColorHover {
   unstyled = '',
-  primary = 'hover:bg-primary-600 dark:hover:bg-primary-600',
-  secondary = 'hover:bg-secondary-600 dark:hover:bg-secondary-600',
-  tertiary = 'hover:bg-tertiary-600 dark:hover:bg-tertiary-600',
-  danger = 'hover:bg-danger-600 dark:hover:bg-danger-600',
-  warning = 'hover:bg-warning-600 dark:hover:bg-warning-600',
-  success = 'hover:bg-success-600 dark:hover:bg-success-600',
-  info = 'hover:bg-info-600 dark:hover:bg-info-600',
+  primary = 'hover:bg-primary-600 dark:hover:bg-primary-400',
+  secondary = 'hover:bg-secondary-600 dark:hover:bg-secondary-400',
+  tertiary = 'hover:bg-tertiary-600 dark:hover:bg-tertiary-400',
+  danger = 'hover:bg-danger-600 dark:hover:bg-danger-400',
+  warning = 'hover:bg-warning-600 dark:hover:bg-warning-400',
+  success = 'hover:bg-success-600 dark:hover:bg-success-400',
+  info = 'hover:bg-info-600 dark:hover:bg-info-400',
   frame = 'hover:bg-frame-300 dark:hover:bg-frame-700',
   white = 'hover:bg-frame-50 dark:hover:bg-frame-50',
   black = 'hover:bg-frame-900 dark:hover:bg-frame-900',
@@ -338,13 +351,13 @@ export enum BgColorHover {
 
 export enum BgColorGroupHover {
   unstyled = '',
-  primary = 'group-hover:bg-primary-600 dark:group-hover:bg-primary-600',
-  secondary = 'group-hover:bg-secondary-600 dark:group-hover:bg-secondary-600',
-  tertiary = 'group-hover:bg-tertiary-600 dark:group-hover:bg-tertiary-600',
-  danger = 'group-hover:bg-danger-600 dark:group-hover:bg-danger-600',
-  warning = 'group-hover:bg-warning-600 dark:group-hover:bg-warning-600',
-  success = 'group-hover:bg-success-600 dark:group-hover:bg-success-600',
-  info = 'group-hover:bg-info-600 dark:group-hover:bg-info-600',
+  primary = 'group-hover:bg-primary-600 dark:group-hover:bg-primary-400',
+  secondary = 'group-hover:bg-secondary-600 dark:group-hover:bg-secondary-400',
+  tertiary = 'group-hover:bg-tertiary-600 dark:group-hover:bg-tertiary-400',
+  danger = 'group-hover:bg-danger-600 dark:group-hover:bg-danger-400',
+  warning = 'group-hover:bg-warning-600 dark:group-hover:bg-warning-400',
+  success = 'group-hover:bg-success-600 dark:group-hover:bg-success-400',
+  info = 'group-hover:bg-info-600 dark:group-hover:bg-info-400',
   frame = 'group-hover:bg-frame-300 dark:group-hover:bg-frame-700',
   white = 'group-hover:bg-frame-50 dark:group-hover:bg-frame-50',
   black = 'group-hover:bg-frame-900 dark:group-hover:bg-frame-900',
@@ -476,6 +489,20 @@ export enum OutlineColorFocusVisible {
   black = 'focus-visible:outline-black/70 dark:focus-visible:outline-black/70',
 }
 
+export enum OutlineColorFocusGroup {
+  unstyled = '',
+  primary = 'group-focus:outline-primary-500/70 dark:group-focus:outline-primary-500/70',
+  secondary = 'group-focus:outline-secondary-500/70 dark:group-focus:outline-secondary-500/70',
+  tertiary = 'group-focus:outline-tertiary-500/70 dark:group-focus:outline-tertiary-500/70',
+  danger = 'group-focus:outline-danger-500/70 dark:group-focus:outline-danger-500/70',
+  warning = 'group-focus:outline-warning-500/70 dark:group-focus:outline-warning-500/70',
+  success = 'group-focus:outline-success-500/70 dark:group-focus:outline-success-500/70',
+  info = 'group-focus:outline-info-500/70 dark:group-focus:outline-info-500/70',
+  frame = 'group-focus:outline-frame-500/70 dark:group-focus:outline-frame-500/70',
+  white = 'group-focus:outline-white/70 dark:group-focus:outline-white/70',
+  black = 'group-focus:outline-black/70 dark:group-focus:outline-black/70',
+}
+
 export enum OutlineColorFocusWithin {
   unstyled = '',
   primary = 'focus-within:outline-primary-500/70 dark:focus-within:outline-primary-500/70',
@@ -544,6 +571,23 @@ export enum ButtonFontSize {
   xl = FontSize.lg,
   xl2 = FontSize.xl
 }
+
+export const focusTypeMap = {
+  unstyled: Placeholder,
+  focus: OutlineColorFocus,
+  visible: OutlineColorFocusVisible,
+  within: OutlineColorFocusWithin,
+  group: OutlineColorFocusGroup,
+  peer: OutlineColorFocusPeer
+};
+
+export const ariaSelectedMap = {
+  unstyled: Placeholder,
+  selected: BgColorSelected,
+  expanded: BgColorExpanded,
+  checked: BgColorChecked,
+  current: BgColorCurrent
+};
 
 export interface GlobalOptions {
   focusOffset: keyof typeof RingOffset;

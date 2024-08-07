@@ -1,4 +1,4 @@
-// import { relative } from 'path';
+
 import { writeFileSync } from 'fs';
 import { Eta } from 'eta';
 import { readFileSync } from 'fs';

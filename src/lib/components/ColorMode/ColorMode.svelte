@@ -3,27 +3,20 @@
 	import type { Snippet } from 'svelte';
 
 	export type ColorModeProps = {
-		mode?: 'light' | 'dark' | 'auto';
+		init?: 'light' | 'dark' | 'auto';
 		children?: Snippet<[{ dark: boolean; set: (dark: boolean) => void; toggle: () => boolean }]>;
 	};
 
 	const key = 'darkmode';
+	const hasKey = browser && localStorage.getItem(key);
 	const prefersDark =
 		(browser && window.matchMedia('(prefers-color-scheme: dark)').matches) || false;
-
 	let dark = $state((browser && JSON.parse(localStorage.getItem(key) || 'false')) || false);
 
 	function getRoot() {
 		if (typeof document === 'undefined') return null;
 		return document.documentElement;
 	}
-
-	// function getStorageValue(): boolean | null {
-	// 	if (typeof localStorage === 'undefined' || !key) return null;
-	// 	const currentValue = JSON.parse(localStorage.getItem(key) || '');
-	// 	if (!currentValue) return null;
-	// 	return currentValue;
-	// }
 
 	function setStorageValue(value: boolean) {
 		if (typeof localStorage === 'undefined') return;
@@ -35,6 +28,7 @@
 		if (!root) return;
 		if (value) root.classList.add('dark');
 		else root.classList.remove('dark');
+		dark = value;
 		setStorageValue(value);
 	}
 
@@ -47,20 +41,18 @@
 
 	function toggle() {
 		const root = getRoot();
-		if (!root) return;
+		if (!root) return dark;
 		const nextValue = !dark;
 		applyMode(nextValue);
-		return dark;
+		return nextValue;
 	}
 </script>
 
 <script lang="ts">
-	let { mode = 'auto', children }: ColorModeProps = $props();
-
-	if (mode !== 'auto') {
-		set(mode === 'dark');
-	} else if (prefersDark) {
-		set(true);
+	let { init = 'auto', children }: ColorModeProps = $props();
+	if ((init !== 'auto' && !hasKey) || !hasKey) {
+		if (init !== 'auto') set(init === 'dark');
+		else set(prefersDark);
 	}
 </script>
 

@@ -1,10 +1,9 @@
-import type { ariaSelectedRemoveMap, focusRemoveMap } from './constants.js';
 
 export type ThemeColor = keyof typeof FontColor;
 
-export type FocusType = keyof typeof focusRemoveMap;
+export type FocusType = keyof typeof focusTypeMap;
 
-export type AriaSelectType = keyof typeof ariaSelectedRemoveMap;
+export type AriaSelectType = keyof typeof ariaSelectedMap;
 
 export enum Size {
   unstyled = '',
@@ -30,51 +29,65 @@ export enum Rounded {
 
 export enum Ring {
   unstyled = '',
-  inset = 'bg-inset',
-  none = 'bg-0',
-  sm = 'bg-1',
-  md = 'bg-2',
+  none = 'ring-0',
+  sm = 'ring-1',
+  md = 'ring-2',
   lg = 'ring',
-  xl = 'bg-4',
-  xl2 = 'bg-8'
+  xl = 'ring-4',
+  xl2 = 'ring-8'
 }
 
 export enum RingOffset {
   unstyled = '',
-  none = 'bg-offset-0',
-  one = 'bg-offset-1',
-  two = 'bg-offset-2',
-  three = 'bg-offset-[3px]',
-  four = 'bg-offset-4',
-  eight = 'bg-offset-8'
+  inset = 'ring-inset',
+  none = 'ring-offset-0',
+  one = 'ring-offset-1',
+  two = 'ring-offset-2',
+  three = 'ring-offset-[3px]',
+  four = 'ring-offset-4',
+  eight = 'ring-offset-8'
 }
+
+export const Placeholder = {
+  unstyled : '',
+  primary : '',
+  secondary : '',
+  tertiary : '',
+  danger : '',
+  warning : '',
+  success : '',
+  info : '',
+  frame : '',
+  white : '',
+  black : '',
+};
 
 export enum RingColor {
   unstyled = '',
-  primary = 'bg-primary-{{=i.bg.base[0]}} dark:bg-primary-{{=i.bg.base[1]}}',
-  secondary = 'bg-secondary-{{=i.bg.base[0]}} dark:bg-secondary-{{=i.bg.base[1]}}',
-  tertiary = 'bg-tertiary-{{=i.bg.base[0]}} dark:bg-tertiary-{{=i.bg.base[1]}}',
-  danger = 'bg-danger-{{=i.bg.base[0]}} dark:bg-danger-{{=i.bg.base[1]}}',
-  warning = 'bg-warning-{{=i.bg.base[0]}} dark:bg-warning-{{=i.bg.base[1]}}',
-  success = 'bg-success-{{=i.bg.base[0]}} dark:bg-success-{{=i.bg.base[1]}}',
-  info = 'bg-info-{{=i.bg.base[0]}} dark:bg-info-{{=i.bg.base[1]}}',
-  frame = 'bg-frame-{{=i.bg.frame[0]}} dark:bg-frame-{{=i.bg.frame[1]}}',
-  white = 'bg-{{=i.bg.white[0]}} dark:bg-{{=i.bg.white[1]}}',
-  black = 'bg-{{=i.bg.black[0]}} dark:bg-{{=i.bg.black[1]}}',
+  primary = 'ring-primary-{{=i.bg.base[0]}} dark:ring-primary-{{=i.bg.base[1]}}',
+  secondary = 'ring-secondary-{{=i.bg.base[0]}} dark:ring-secondary-{{=i.bg.base[1]}}',
+  tertiary = 'ring-tertiary-{{=i.bg.base[0]}} dark:ring-tertiary-{{=i.bg.base[1]}}',
+  danger = 'ring-danger-{{=i.bg.base[0]}} dark:ring-danger-{{=i.bg.base[1]}}',
+  warning = 'ring-warning-{{=i.bg.base[0]}} dark:ring-warning-{{=i.bg.base[1]}}',
+  success = 'ring-success-{{=i.bg.base[0]}} dark:ring-success-{{=i.bg.base[1]}}',
+  info = 'ring-info-{{=i.bg.base[0]}} dark:ring-info-{{=i.bg.base[1]}}',
+  frame = 'ring-frame-{{=i.bg.frame[0]}} dark:ring-frame-{{=i.bg.frame[1]}}',
+  white = 'ring-{{=i.bg.white[0]}} dark:ring-{{=i.bg.white[1]}}',
+  black = 'ring-{{=i.bg.black[0]}} dark:ring-{{=i.bg.black[1]}}',
 }
 
 export enum RingColorHover {
   unstyled = '',
-  primary = 'hover:bg-primary-{{=i.bg.baseH[0]}} dark:hover:bg-primary-{{=i.bg.baseH[1]}}',
-  secondary = 'hover:bg-secondary-{{=i.bg.baseH[0]}} dark:hover:bg-secondary-{{=i.bg.baseH[1]}}',
-  tertiary = 'hover:bg-tertiary-{{=i.bg.baseH[0]}} dark:hover:bg-tertiary-{{=i.bg.baseH[1]}}',
-  danger = 'hover:bg-danger-{{=i.bg.baseH[0]}} dark:hover:bg-danger-{{=i.bg.baseH[1]}}',
-  warning = 'hover:bg-warning-{{=i.bg.baseH[0]}} dark:hover:bg-warning-{{=i.bg.baseH[1]}}',
-  success = 'hover:bg-success-{{=i.bg.baseH[0]}} dark:hover:bg-success-{{=i.bg.baseH[1]}}',
-  info = 'hover:bg-info-{{=i.bg.baseH[0]}} dark:hover:bg-info-{{=i.bg.baseH[1]}}',
-  frame = 'hover:bg-frame-{{=i.bg.frameH[0]}} dark:hover:bg-frame-{{=i.bg.frameH[1]}}',
-  white = 'hover:bg-{{=i.bg.whiteH[0]}} dark:hover:bg-{{=i.bg.whiteH[1]}}',
-  black = 'hover:bg-{{=i.bg.blackH[0]}} dark:hover:bg-{{=i.bg.blackH[1]}}',
+  primary = 'hover:ring-primary-{{=i.bg.baseH[0]}} dark:hover:ring-primary-{{=i.bg.baseH[1]}}',
+  secondary = 'hover:ring-secondary-{{=i.bg.baseH[0]}} dark:hover:ring-secondary-{{=i.bg.baseH[1]}}',
+  tertiary = 'hover:ring-tertiary-{{=i.bg.baseH[0]}} dark:hover:ring-tertiary-{{=i.bg.baseH[1]}}',
+  danger = 'hover:ring-danger-{{=i.bg.baseH[0]}} dark:hover:ring-danger-{{=i.bg.baseH[1]}}',
+  warning = 'hover:ring-warning-{{=i.bg.baseH[0]}} dark:hover:ring-warning-{{=i.bg.baseH[1]}}',
+  success = 'hover:ring-success-{{=i.bg.baseH[0]}} dark:hover:ring-success-{{=i.bg.baseH[1]}}',
+  info = 'hover:ring-info-{{=i.bg.baseH[0]}} dark:hover:ring-info-{{=i.bg.baseH[1]}}',
+  frame = 'hover:ring-frame-{{=i.bg.frameH[0]}} dark:hover:ring-frame-{{=i.bg.frameH[1]}}',
+  white = 'hover:ring-{{=i.bg.whiteH[0]}} dark:hover:ring-{{=i.bg.whiteH[1]}}',
+  black = 'hover:ring-{{=i.bg.blackH[0]}} dark:hover:ring-{{=i.bg.blackH[1]}}',
 }
 
 export enum BorderColor {
@@ -476,6 +489,20 @@ export enum OutlineColorFocusVisible {
   black = 'focus-visible:outline-{{=i.bgFocus.black[0]}} dark:focus-visible:outline-{{=i.bgFocus.black[1]}}',
 }
 
+export enum OutlineColorFocusGroup {
+  unstyled = '',
+  primary = 'group-focus:outline-primary-{{=i.bgFocus.base[0]}} dark:group-focus:outline-primary-{{=i.bgFocus.base[1]}}',
+  secondary = 'group-focus:outline-secondary-{{=i.bgFocus.base[0]}} dark:group-focus:outline-secondary-{{=i.bgFocus.base[1]}}',
+  tertiary = 'group-focus:outline-tertiary-{{=i.bgFocus.base[0]}} dark:group-focus:outline-tertiary-{{=i.bgFocus.base[1]}}',
+  danger = 'group-focus:outline-danger-{{=i.bgFocus.base[0]}} dark:group-focus:outline-danger-{{=i.bgFocus.base[1]}}',
+  warning = 'group-focus:outline-warning-{{=i.bgFocus.base[0]}} dark:group-focus:outline-warning-{{=i.bgFocus.base[1]}}',
+  success = 'group-focus:outline-success-{{=i.bgFocus.base[0]}} dark:group-focus:outline-success-{{=i.bgFocus.base[1]}}',
+  info = 'group-focus:outline-info-{{=i.bgFocus.base[0]}} dark:group-focus:outline-info-{{=i.bgFocus.base[1]}}',
+  frame = 'group-focus:outline-frame-{{=i.bgFocus.frame[0]}} dark:group-focus:outline-frame-{{=i.bgFocus.frame[1]}}',
+  white = 'group-focus:outline-{{=i.bgFocus.white[0]}} dark:group-focus:outline-{{=i.bgFocus.white[1]}}',
+  black = 'group-focus:outline-{{=i.bgFocus.black[0]}} dark:group-focus:outline-{{=i.bgFocus.black[1]}}',
+}
+
 export enum OutlineColorFocusWithin {
   unstyled = '',
   primary = 'focus-within:outline-primary-{{=i.bgFocus.base[0]}} dark:focus-within:outline-primary-{{=i.bgFocus.base[1]}}',
@@ -544,6 +571,23 @@ export enum ButtonFontSize {
   xl = FontSize.lg,
   xl2 = FontSize.xl
 }
+
+export const focusTypeMap = {
+  unstyled: Placeholder,
+  focus: OutlineColorFocus,
+  visible: OutlineColorFocusVisible,
+  within: OutlineColorFocusWithin,
+  group: OutlineColorFocusGroup,
+  peer: OutlineColorFocusPeer
+};
+
+export const ariaSelectedMap = {
+  unstyled: Placeholder,
+  selected: BgColorSelected,
+  expanded: BgColorExpanded,
+  checked: BgColorChecked,
+  current: BgColorCurrent
+};
 
 export interface GlobalOptions {
   focusOffset: keyof typeof RingOffset;

@@ -1,11 +1,12 @@
 <script context="module" lang="ts">
 	import { type ElementProps, type HTMLTag } from '$lib/types.js';
-	import { type ConfigProps } from './BaseElement.svelte';
+	import { type ConfigProps } from '../BaseElement.svelte';
 	import {
 		ButtonFontSize,
 		ButtonPaddingX,
 		FieldPaddingY,
 		Size,
+		type FocusType,
 		type ThemeColor
 	} from '$lib/theme/types.js';
 
@@ -19,6 +20,7 @@
 		as?: Tag;
 		rounded?: ConfigProps['rounded'];
 		shadow?: ConfigProps['shadow'];
+		focusType?: FocusType;
 		size?: keyof typeof Size;
 		theme?: ThemeColor;
 		variant?: 'filled' | 'soft' | 'outlined' | 'ghost' | 'text';
@@ -27,13 +29,12 @@
 </script>
 
 <script lang="ts" generics="Tag extends HTMLTag = 'button'">
-	import BaseElement from './BaseElement.svelte';
+	import BaseElement from '../BaseElement.svelte';
 	import t from '$lib/theme/theme.svelte.js';
 	import type { AriaRole } from 'svelte/elements';
-	import { focusRemoveMap } from '$lib/theme/constants.js';
-
 	let {
 		as = 'button' as Tag,
+		focusType = 'visible',
 		rounded = 'unstyled',
 		shadow = 'unstyled',
 		size = 'md',
@@ -49,10 +50,8 @@
 			ButtonPaddingX[size],
 			FieldPaddingY[size],
 			ButtonFontSize[size],
-			{ 'font-medium': !rest.href },
-			{ 'ring-1': variant === 'outlined' }
+			{ 'font-medium': !rest.href }
 		],
-		removes: [...focusRemoveMap.visible],
 
 		bgColor: variant !== 'filled' ? 'unstyled' : theme,
 		bgColorHover: variant !== 'filled' ? 'unstyled' : theme,
@@ -60,16 +59,19 @@
 		bgSoftColorHover: ['soft', 'ghost'].includes(variant) ? theme : 'unstyled',
 		focusType: 'visible',
 		fontSize: size,
+		foreColorFilled: variant !== 'filled' ? 'unstyled' : theme,
+		foreColorUnfilled: variant === 'filled' ? 'unstyled' : theme,
+		foreColorFilledHover: variant !== 'filled' ? 'unstyled' : theme,
+		foreColorUnfilledHover: variant === 'filled' ? 'unstyled' : theme,
 		outline: size,
 		outlineOffset: t.focusOffset,
 		outlineColorFocus: theme,
-		ring: variant !== 'outlined' ? 'unstyled' : 'inset',
+		ring: variant !== 'outlined' ? 'unstyled' : 'sm',
+		ringOffset: variant !== 'outlined' ? 'unstyled' : 'inset',
 		ringColor: variant !== 'outlined' ? 'unstyled' : theme,
 		ringColorHover: variant !== 'outlined' ? 'unstyled' : theme,
 		rounded: rounded || t.rounded,
-		shadow,
-		foreColorFilled: variant !== 'filled' ? 'unstyled' : theme,
-		foreColorUnfilled: variant === 'filled' ? 'unstyled' : theme
+		shadow
 	} as ConfigProps;
 </script>
 
