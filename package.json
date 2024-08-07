@@ -31,13 +31,6 @@
 	},
 	"devDependencies": {
 		"@aft/config": "github:blujedis/aft-config#dev",
-		"@event-calendar/core": "^3.4.0",
-		"@event-calendar/day-grid": "^3.4.0",
-		"@event-calendar/interaction": "^3.4.0",
-		"@event-calendar/list": "^3.4.0",
-		"@event-calendar/resource-time-grid": "^3.4.0",
-		"@event-calendar/resource-timeline": "^3.4.0",
-		"@event-calendar/time-grid": "^3.4.0",
 		"@fontsource-variable/manrope": "^5.0.20",
 		"@playwright/test": "^1.28.1",
 		"@shikijs/rehype": "^1.12.1",

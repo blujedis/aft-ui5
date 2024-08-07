@@ -49,17 +49,18 @@ export enum RingOffset {
 }
 
 export const Placeholder = {
-  unstyled : '',
-  primary : '',
-  secondary : '',
-  tertiary : '',
-  danger : '',
-  warning : '',
-  success : '',
-  info : '',
-  frame : '',
-  white : '',
-  black : '',
+  unstyled: '',
+  primary: '',
+  secondary: '',
+  tertiary: '',
+  danger: '',
+  warning: '',
+  success: '',
+  info: '',
+  light: '',
+  dark: '',
+  white: '',
+  black: '',
 };
 
 export enum RingColor {
@@ -71,7 +72,8 @@ export enum RingColor {
   warning = 'ring-warning-{{=i.bg.base[0]}} dark:ring-warning-{{=i.bg.base[1]}}',
   success = 'ring-success-{{=i.bg.base[0]}} dark:ring-success-{{=i.bg.base[1]}}',
   info = 'ring-info-{{=i.bg.base[0]}} dark:ring-info-{{=i.bg.base[1]}}',
-  frame = 'ring-frame-{{=i.bg.frame[0]}} dark:ring-frame-{{=i.bg.frame[1]}}',
+  light = 'ring-frame-{{=i.bg.light[0]}} dark:ring-frame-{{=i.bg.light[1]}}',
+  dark = 'ring-frame-{{=i.bg.dark[0]}} dark:ring-frame-{{=i.bg.dark[1]}}',
   white = 'ring-{{=i.bg.white[0]}} dark:ring-{{=i.bg.white[1]}}',
   black = 'ring-{{=i.bg.black[0]}} dark:ring-{{=i.bg.black[1]}}',
 }
@@ -85,7 +87,8 @@ export enum RingColorHover {
   warning = 'hover:ring-warning-{{=i.bg.baseH[0]}} dark:hover:ring-warning-{{=i.bg.baseH[1]}}',
   success = 'hover:ring-success-{{=i.bg.baseH[0]}} dark:hover:ring-success-{{=i.bg.baseH[1]}}',
   info = 'hover:ring-info-{{=i.bg.baseH[0]}} dark:hover:ring-info-{{=i.bg.baseH[1]}}',
-  frame = 'hover:ring-frame-{{=i.bg.frameH[0]}} dark:hover:ring-frame-{{=i.bg.frameH[1]}}',
+  light = 'hover:ring-frame-{{=i.bg.lightH[0]}} dark:hover:ring-frame-{{=i.bg.lightH[1]}}',
+  dark = 'hover:ring-frame-{{=i.bg.darkH[0]}} dark:hover:ring-frame-{{=i.bg.darkH[1]}}',
   white = 'hover:ring-{{=i.bg.whiteH[0]}} dark:hover:ring-{{=i.bg.whiteH[1]}}',
   black = 'hover:ring-{{=i.bg.blackH[0]}} dark:hover:ring-{{=i.bg.blackH[1]}}',
 }
@@ -99,7 +102,8 @@ export enum BorderColor {
   warning = 'border-warning-{{=i.bg.base[0]}} dark:border-warning-{{=i.bg.base[1]}}',
   success = 'border-success-{{=i.bg.base[0]}} dark:border-success-{{=i.bg.base[1]}}',
   info = 'border-info-{{=i.bg.base[0]}} dark:border-info-{{=i.bg.base[1]}}',
-  frame = 'border-frame-{{=i.bg.frame[0]}} dark:border-frame-{{=i.bg.frame[1]}}',
+  light = 'border-frame-{{=i.bg.light[0]}} dark:border-frame-{{=i.bg.light[1]}}',
+  dark = 'border-frame-{{=i.bg.dark[0]}} dark:border-frame-{{=i.bg.dark[1]}}',
   white = 'border-{{=i.bg.white[0]}} dark:border-{{=i.bg.white[1]}}',
   black = 'border-{{=i.bg.black[0]}} dark:border-{{=i.bg.black[1]}}',
 }
@@ -113,7 +117,8 @@ export enum BorderColorHover {
   warning = 'hover:border-warning-{{=i.bg.baseH[0]}} dark:hover:border-warning-{{=i.bg.baseH[1]}}',
   success = 'hover:border-success-{{=i.bg.baseH[0]}} dark:hover:border-success-{{=i.bg.baseH[1]}}',
   info = 'hover:border-info-{{=i.bg.baseH[0]}} dark:hover:border-info-{{=i.bg.baseH[1]}}',
-  frame = 'hover:border-frame-{{=i.bg.frameH[0]}} dark:hover:border-frame-{{=i.bg.frameH[1]}}',
+  light = 'hover:border-frame-{{=i.bg.lightH[0]}} dark:hover:border-frame-{{=i.bg.lightH[1]}}',
+  dark = 'hover:border-frame-{{=i.bg.darkH[0]}} dark:hover:border-frame-{{=i.bg.darkH[1]}}',
   white = 'hover:border-frame-{{=i.bg.whiteH[0]}} dark:hover:border-frame-{{=i.bg.whiteH[1]}}',
   black = 'hover:border-frame-{{=i.bg.blackH[0]}} dark:hover:border-frame-{{=i.bg.blackH[1]}}',
 }
@@ -127,7 +132,8 @@ export enum DivideColor {
   warning = 'divide-warning-{{=i.bg.base[0]}} dark:divide-warning-{{=i.bg.base[1]}}',
   success = 'divide-success-{{=i.bg.base[0]}} dark:divide-success-{{=i.bg.base[1]}}',
   info = 'divide-info-{{=i.bg.base[0]}} dark:divide-info-{{=i.bg.base[1]}}',
-  frame = 'divide-frame-{{=i.bg.frame[0]}} dark:divide-frame-{{=i.bg.frame[1]}}',
+  light = 'divide-frame-{{=i.bg.light[0]}} dark:divide-frame-{{=i.bg.light[1]}}',
+  dark = 'divide-frame-{{=i.bg.dark[0]}} dark:divide-frame-{{=i.bg.dark[1]}}',
   white = 'divide-{{=i.bg.white[0]}} dark:divide-{{=i.bg.white[1]}}',
   black = 'divide-{{=i.bg.black[0]}} dark:divide-{{=i.bg.black[1]}}',
 }
@@ -246,7 +252,8 @@ export enum FontColor {
   warning = 'text-warning-{{=i.font.base[0]}} dark:text-warning-{{=i.font.base[1]}}',
   success = 'text-success-{{=i.font.base[0]}} dark:text-success-{{=i.font.base[1]}}',
   info = 'text-info-{{=i.font.base[0]}} dark:text-info-{{=i.font.base[1]}}',
-  frame = 'text-frame-{{=i.font.frame[0]}} dark:text-frame-{{=i.font.frame[1]}}',
+  light = 'text-frame-{{=i.font.light[0]}} dark:text-frame-{{=i.font.light[1]}}',
+  dark = 'text-frame-{{=i.font.dark[0]}} dark:text-frame-{{=i.font.dark[1]}}',
   white = 'text-{{=i.font.white[0]}} dark:text-{{=i.font.white[1]}}',
   black = 'text-{{=i.font.black[0]}} dark:text-{{=i.font.black[1]}}'
 }
@@ -260,7 +267,8 @@ export enum FontColorHover {
   warning = 'hover:text-warning-{{=i.font.baseH[0]}} dark:hover:text-warning-{{=i.font.baseH[1]}}',
   success = 'hover:text-success-{{=i.font.baseH[0]}} dark:hover:text-success-{{=i.font.baseH[1]}}',
   info = 'hover:text-info-{{=i.font.baseH[0]}} dark:hover:text-info-{{=i.font.baseH[1]}}',
-  frame = 'text-frame-{{=i.font.frameH[0]}} dark:text-frame-{{=i.font.frameH[1]}}',
+  light = 'text-frame-{{=i.font.lightH[0]}} dark:text-frame-{{=i.font.lightH[1]}}',
+  dark = 'text-frame-{{=i.font.darkH[0]}} dark:text-frame-{{=i.font.darkH[1]}}',
   white = 'hover:text-{{=i.font.whiteH[0]}} dark:hover:text-{{=i.font.whiteH[1]}}',
   black = 'hover:text-{{=i.font.blackH[0]}} dark:hover-text-{{=i.font.blackH[1]}}'
 }
@@ -274,7 +282,8 @@ export enum ForeColorFilled {
   warning = 'text-warning-{{=i.foreFill.base[0]}} dark:text-warning-{{=i.foreFill.base[1]}}',
   success = 'text-success-{{=i.foreFill.base[0]}} dark:text-success-{{=i.foreFill.base[1]}}',
   info = 'text-info-{{=i.foreFill.base[0]}} dark:text-info-{{=i.foreFill.base[1]}}',
-  frame = 'text-frame-{{=i.foreFill.frame[0]}} dark:text-frame-{{=i.foreFill.frame[1]}}',
+  light = 'text-frame-{{=i.foreFill.light[0]}} dark:text-frame-{{=i.foreFill.light[1]}}',
+  dark = 'text-frame-{{=i.foreFill.dark[0]}} dark:text-frame-{{=i.foreFill.dark[1]}}',
   white = 'text-{{=i.foreFill.white[0]}} dark:text-{{=i.foreFill.white[1]}}',
   black = 'text-{{=i.foreFill.black[0]}} dark:text-{{=i.foreFill.black[1]}}'
 }
@@ -288,7 +297,8 @@ export enum ForeColorFilledHover {
   warning = 'hover:text-warning-{{=i.foreFill.baseH[0]}} dark:hover:text-warning-{{=i.foreFill.baseH[1]}}',
   success = 'hover:text-success-{{=i.foreFill.baseH[0]}} dark:hover:text-success-{{=i.foreFill.baseH[1]}}',
   info = 'hover:text-info-{{=i.foreFill.baseH[0]}} dark:hover:text-info-{{=i.foreFill.baseH[1]}}',
-  frame = 'text-frame-{{=i.foreFill.frameH[0]}} dark:text-frame-{{=i.foreFill.frameH[1]}}',
+  light = 'text-frame-{{=i.foreFill.lightH[0]}} dark:text-frame-{{=i.foreFill.lightH[1]}}',
+  dark = 'text-frame-{{=i.foreFill.darkH[0]}} dark:text-frame-{{=i.foreFill.darkH[1]}}',
   white = 'hover:text-{{=i.foreFill.whiteH[0]}} dark:hover:text-{{=i.foreFill.whiteH[1]}}',
   black = 'hover:text-{{=i.foreFill.blackH[0]}} dark:hover-text-{{=i.foreFill.blackH[1]}}'
 }
@@ -302,7 +312,8 @@ export enum ForeColorUnfilled {
   warning = 'text-warning-{{=i.foreUnfill.base[0]}} dark:text-warning-{{=i.foreUnfill.base[1]}}',
   success = 'text-success-{{=i.foreUnfill.base[0]}} dark:text-success-{{=i.foreUnfill.base[1]}}',
   info = 'text-info-{{=i.foreUnfill.base[0]}} dark:text-info-{{=i.foreUnfill.base[1]}}',
-  frame = 'text-frame-{{=i.foreUnfill.frame[0]}} dark:text-frame-{{=i.foreUnfill.frame[1]}}',
+  light = 'text-frame-{{=i.foreUnfill.light[0]}} dark:text-frame-{{=i.foreUnfill.light[1]}}',
+  dark = 'text-frame-{{=i.foreUnfill.dark[0]}} dark:text-frame-{{=i.foreUnfill.dark[1]}}',
   white = 'text-{{=i.foreUnfill.white[0]}} dark:text-{{=i.foreUnfill.white[1]}}',
   black = 'text-{{=i.foreUnfill.black[0]}} dark:text-{{=i.foreUnfill.black[1]}}'
 }
@@ -316,7 +327,8 @@ export enum ForeColorUnfilledHover {
   warning = 'hover:text-warning-{{=i.foreUnfill.baseH[0]}} dark:hover:text-warning-{{=i.foreUnfill.baseH[1]}}',
   success = 'hover:text-success-{{=i.foreUnfill.baseH[0]}} dark:hover:text-success-{{=i.foreUnfill.baseH[1]}}',
   info = 'hover:text-info-{{=i.foreUnfill.baseH[0]}} dark:hover:text-info-{{=i.foreUnfill.baseH[1]}}',
-  frame = 'text-frame-{{=i.foreUnfill.frameH[0]}} dark:text-frame-{{=i.foreUnfill.frameH[1]}}',
+  light = 'text-frame-{{=i.foreUnfill.lightH[0]}} dark:text-frame-{{=i.foreUnfill.lightH[1]}}',
+  dark = 'text-frame-{{=i.foreUnfill.darkH[0]}} dark:text-frame-{{=i.foreUnfill.darkH[1]}}',
   white = 'hover:text-{{=i.foreUnfill.whiteH[0]}} dark:hover:text-{{=i.foreUnfill.whiteH[1]}}',
   black = 'hover:text-{{=i.foreUnfill.blackH[0]}} dark:hover-text-{{=i.foreUnfill.blackH[1]}}'
 }
@@ -330,7 +342,8 @@ export enum BgColor {
   warning = 'bg-warning-{{=i.bg.base[0]}} dark:bg-warning-{{=i.bg.base[1]}}',
   success = 'bg-success-{{=i.bg.base[0]}} dark:bg-success-{{=i.bg.base[1]}}',
   info = 'bg-info-{{=i.bg.base[0]}} dark:bg-info-{{=i.bg.base[1]}}',
-  frame = 'bg-frame-{{=i.bg.frame[0]}} dark:bg-frame-{{=i.bg.frame[1]}}',
+  light = 'bg-frame-{{=i.bg.light[0]}} dark:bg-frame-{{=i.bg.light[1]}}',
+  dark = 'bg-frame-{{=i.bg.dark[0]}} dark:bg-frame-{{=i.bg.dark[1]}}',
   white = 'bg-{{=i.bg.white[0]}} dark:bg-{{=i.bg.white[1]}}',
   black = 'bg-{{=i.bg.black[0]}} dark:bg-{{=i.bg.black[1]}}',
 }
@@ -344,7 +357,8 @@ export enum BgColorHover {
   warning = 'hover:bg-warning-{{=i.bg.baseH[0]}} dark:hover:bg-warning-{{=i.bg.baseH[1]}}',
   success = 'hover:bg-success-{{=i.bg.baseH[0]}} dark:hover:bg-success-{{=i.bg.baseH[1]}}',
   info = 'hover:bg-info-{{=i.bg.baseH[0]}} dark:hover:bg-info-{{=i.bg.baseH[1]}}',
-  frame = 'hover:bg-frame-{{=i.bg.frameH[0]}} dark:hover:bg-frame-{{=i.bg.frameH[1]}}',
+  light = 'hover:bg-frame-{{=i.bg.lightH[0]}} dark:hover:bg-frame-{{=i.bg.lightH[1]}}',
+  dark = 'hover:bg-frame-{{=i.bg.darkH[0]}} dark:hover:bg-frame-{{=i.bg.darkH[1]}}',
   white = 'hover:bg-{{=i.bg.whiteH[0]}} dark:hover:bg-{{=i.bg.whiteH[1]}}',
   black = 'hover:bg-{{=i.bg.blackH[0]}} dark:hover:bg-{{=i.bg.blackH[1]}}',
 }
@@ -358,7 +372,8 @@ export enum BgColorGroupHover {
   warning = 'group-hover:bg-warning-{{=i.bg.baseH[0]}} dark:group-hover:bg-warning-{{=i.bg.baseH[1]}}',
   success = 'group-hover:bg-success-{{=i.bg.baseH[0]}} dark:group-hover:bg-success-{{=i.bg.baseH[1]}}',
   info = 'group-hover:bg-info-{{=i.bg.baseH[0]}} dark:group-hover:bg-info-{{=i.bg.baseH[1]}}',
-  frame = 'group-hover:bg-frame-{{=i.bg.frameH[0]}} dark:group-hover:bg-frame-{{=i.bg.frameH[1]}}',
+  light = 'group-hover:bg-frame-{{=i.bg.lightH[0]}} dark:group-hover:bg-frame-{{=i.bg.lightH[1]}}',
+  dark = 'group-hover:bg-frame-{{=i.bg.darkH[0]}} dark:group-hover:bg-frame-{{=i.bg.darkH[1]}}',
   white = 'group-hover:bg-{{=i.bg.whiteH[0]}} dark:group-hover:bg-{{=i.bg.whiteH[1]}}',
   black = 'group-hover:bg-{{=i.bg.blackH[0]}} dark:group-hover:bg-{{=i.bg.blackH[1]}}',
 }
@@ -372,7 +387,8 @@ export enum BgColorSoft {
   warning = 'bg-warning-{{=i.bgSoft.base[0]}} dark:bg-warning-{{=i.bgSoft.base[1]}}',
   success = 'bg-success-{{=i.bgSoft.base[0]}} dark:bg-success-{{=i.bgSoft.base[1]}}',
   info = 'bg-info-{{=i.bgSoft.base[0]}} dark:bg-info-{{=i.bgSoft.base[1]}}',
-  frame = 'bg-frame-{{=i.bgSoft.frame[0]}} dark:bg-frame-{{=i.bgSoft.frame[1]}}',
+  light = 'bg-frame-{{=i.bgSoft.light[0]}} dark:bg-frame-{{=i.bgSoft.light[1]}}',
+  dark = 'bg-frame-{{=i.bgSoft.dark[0]}} dark:bg-frame-{{=i.bgSoft.dark[1]}}',
   white = 'bg-{{=i.bgSoft.white[0]}} dark:bg-{{=i.bgSoft.white[1]}}',
   black = 'bg-{{=i.bgSoft.black[0]}} dark:bg-{{=i.bgSoft.black[1]}}',
 }
@@ -386,7 +402,8 @@ export enum BgColorSoftHover {
   warning = 'hover:bg-warning-{{=i.bgSoft.baseH[0]}} dark:hover:bg-warning-{{=i.bgSoft.baseH[1]}}',
   success = 'hover:bg-success-{{=i.bgSoft.baseH[0]}} dark:hover:bg-success-{{=i.bgSoft.baseH[1]}}',
   info = 'hover:bg-info-{{=i.bgSoft.baseH[0]}} dark:hover:bg-info-{{=i.bgSoft.baseH[1]}}',
-  frame = 'hover:bg-frame-{{=i.bgSoft.frameH[0]}} dark:hover:bg-frame-{{=i.bgSoft.frameH[1]}}',
+  light = 'hover:bg-frame-{{=i.bgSoft.lightH[0]}} dark:hover:bg-frame-{{=i.bgSoft.lightH[1]}}',
+  dark = 'hover:bg-frame-{{=i.bgSoft.darkH[0]}} dark:hover:bg-frame-{{=i.bgSoft.darkH[1]}}',
   white = 'hover:bg-{{=i.bgSoft.whiteH[0]}} dark:hover:bg-{{=i.bgSoft.whiteH[1]}}',
   black = 'hover:bg-{{=i.bgSoft.blackH[0]}} dark:hover:bg-{{=i.bgSoft.blackH[1]}}',
 }
@@ -400,7 +417,8 @@ export enum BgColorSoftGroupHover {
   warning = 'group-hover:bg-warning-{{=i.bgSoft.baseH[0]}} dark:group-hover:bg-warning-{{=i.bgSoft.baseH[1]}}',
   success = 'group-hover:bg-success-{{=i.bgSoft.baseH[0]}} dark:group-hover:bg-success-{{=i.bgSoft.baseH[1]}}',
   info = 'group-hover:bg-info-{{=i.bgSoft.baseH[0]}} dark:group-hover:bg-info-{{=i.bgSoft.baseH[1]}}',
-  frame = 'group-hover:bg-frame-{{=i.bgSoft.frameH[0]}} dark:group-hover:bg-frame-{{=i.bgSoft.frameH[1]}}',
+  light = 'group-hover:bg-frame-{{=i.bgSoft.lightH[0]}} dark:group-hover:bg-frame-{{=i.bgSoft.lightH[1]}}',
+  dark = 'group-hover:bg-frame-{{=i.bgSoft.darkH[0]}} dark:group-hover:bg-frame-{{=i.bgSoft.darkH[1]}}',
   white = 'group-hover:bg-{{=i.bgSoft.whiteH[0]}} dark:group-hover:bg-{{=i.bgSoft.whiteH[1]}}',
   black = 'group-hover:bg-{{=i.bgSoft.blackH[0]}} dark:group-hover:bg-{{=i.bgSoft.blackH[1]}}',
 }
@@ -414,7 +432,8 @@ export enum BgColorSelected {
   warning = 'aria-selected:bg-warning-{{=i.bgSelect.base[0]}} dark:aria-selected:bg-warning-{{=i.bgSelect.base[1]}}',
   success = 'aria-selected:bg-success-{{=i.bgSelect.base[0]}} dark:aria-selected:bg-success-{{=i.bgSelect.base[1]}}',
   info = 'aria-selected:bg-info-{{=i.bgSelect.base[0]}} dark:aria-selected:bg-info-{{=i.bgSelect.base[1]}}',
-  frame = 'aria-selected:bg-frame-{{=i.bgSelect.frame[0]}} dark:aria-selected:bg-frame-{{=i.bgSelect.frame[1]}}',
+  light = 'aria-selected:bg-frame-{{=i.bgSelect.light[0]}} dark:aria-selected:bg-frame-{{=i.bgSelect.light[1]}}',
+  dark = 'aria-selected:bg-frame-{{=i.bgSelect.dark[0]}} dark:aria-selected:bg-frame-{{=i.bgSelect.dark[1]}}',
   white = 'aria-selected:bg-{{=i.bgSelect.white[0]}} dark:aria-selected:bg-{{=i.bgSelect.white[1]}}',
   black = 'aria-selected:bg-{{=i.bgSelect.black[0]}} dark:aria-selected:bg-{{=i.bgSelect.black[1]}}',
 }
@@ -428,7 +447,8 @@ export enum BgColorExpanded {
   warning = 'aria-expanded:bg-warning-{{=i.bgSelect.base[0]}} dark:aria-expanded:bg-warning-{{=i.bgSelect.base[1]}}',
   success = 'aria-expanded:bg-success-{{=i.bgSelect.base[0]}} dark:aria-expanded:bg-success-{{=i.bgSelect.base[1]}}',
   info = 'aria-expanded:bg-info-{{=i.bgSelect.base[0]}} dark:aria-expanded:bg-info-{{=i.bgSelect.base[1]}}',
-  frame = 'aria-expanded:bg-frame-{{=i.bgSelect.frame[0]}} dark:aria-expanded:bg-frame-{{=i.bgSelect.frame[1]}}',
+  light = 'aria-expanded:bg-frame-{{=i.bgSelect.light[0]}} dark:aria-expanded:bg-frame-{{=i.bgSelect.light[1]}}',
+  dark = 'aria-expanded:bg-frame-{{=i.bgSelect.dark[0]}} dark:aria-expanded:bg-frame-{{=i.bgSelect.dark[1]}}',
   white = 'aria-expanded:bg-{{=i.bgSelect.white[0]}} dark:aria-expanded:bg-{{=i.bgSelect.white[1]}}',
   black = 'aria-expanded:bg-{{=i.bgSelect.black[0]}} dark:aria-expanded:bg-{{=i.bgSelect.black[1]}}',
 }
@@ -442,7 +462,8 @@ export enum BgColorChecked {
   warning = 'aria-checked:bg-warning-{{=i.bgSelect.base[0]}} dark:aria-checked:bg-warning-{{=i.bgSelect.base[1]}}',
   success = 'aria-checked:bg-success-{{=i.bgSelect.base[0]}} dark:aria-checked:bg-success-{{=i.bgSelect.base[1]}}',
   info = 'aria-checked:bg-info-{{=i.bgSelect.base[0]}} dark:aria-checked:bg-info-{{=i.bgSelect.base[1]}}',
-  frame = 'aria-checked:bg-frame-{{=i.bgSelect.frame[0]}} dark:aria-checked:bg-frame-{{=i.bgSelect.frame[1]}}',
+  light = 'aria-checked:bg-frame-{{=i.bgSelect.light[0]}} dark:aria-checked:bg-frame-{{=i.bgSelect.light[1]}}',
+  dark = 'aria-checked:bg-frame-{{=i.bgSelect.dark[0]}} dark:aria-checked:bg-frame-{{=i.bgSelect.dark[1]}}',
   white = 'aria-checked:bg-{{=i.bgSelect.white[0]}} dark:aria-checked:bg-{{=i.bgSelect.white[1]}}',
   black = 'aria-checked:bg-{{=i.bgSelect.black[0]}} dark:aria-checked:bg-{{=i.bgSelect.black[1]}}',
 }
@@ -456,7 +477,8 @@ export enum BgColorCurrent {
   warning = 'aria-[current="page"]:bg-warning-{{=i.bgSelect.base[0]}} dark:aria-[current="page"]:bg-warning-{{=i.bgSelect.base[1]}}',
   success = 'aria-[current="page"]:bg-success-{{=i.bgSelect.base[0]}} dark:aria-[current="page"]:bg-success-{{=i.bgSelect.base[1]}}',
   info = 'aria-[current="page"]:bg-info-{{=i.bgSelect.base[0]}} dark:aria-[current="page"]:bg-info-{{=i.bgSelect.base[1]}}',
-  frame = 'aria-[current="page"]:bg-frame-{{=i.bgSelect.frame[0]}} dark:aria-[current="page"]:bg-frame-{{=i.bgSelect.frame[1]}}',
+  light = 'aria-[current="page"]:bg-frame-{{=i.bgSelect.light[0]}} dark:aria-[current="page"]:bg-frame-{{=i.bgSelect.light[1]}}',
+  dark = 'aria-[current="page"]:bg-frame-{{=i.bgSelect.dark[0]}} dark:aria-[current="page"]:bg-frame-{{=i.bgSelect.dark[1]}}',
   white = 'aria-[current="page"]:bg-{{=i.bgSelect.white[0]}} dark:aria-[current="page"]:bg-{{=i.bgSelect.white[1]}}',
   black = 'aria-[current="page"]:bg-{{=i.bgSelect.black[0]}} dark:aria-[current="page"]:bg-{{=i.bgSelect.black[1]}}',
 }
@@ -470,7 +492,8 @@ export enum OutlineColorFocus {
   warning = 'focus:outline-warning-{{=i.bgFocus.base[0]}} dark:focus:outline-warning-{{=i.bgFocus.base[1]}}',
   success = 'focus:outline-success-{{=i.bgFocus.base[0]}} dark:focus:outline-success-{{=i.bgFocus.base[1]}}',
   info = 'focus:outline-info-{{=i.bgFocus.base[0]}} dark:focus:outline-info-{{=i.bgFocus.base[1]}}',
-  frame = 'focus:outline-frame-{{=i.bgFocus.frame[0]}} dark:focus:outline-frame-{{=i.bgFocus.frame[1]}}',
+  light = 'focus:outline-frame-{{=i.bgFocus.light[0]}} dark:focus:outline-frame-{{=i.bgFocus.light[1]}}',
+  dark = 'focus:outline-frame-{{=i.bgFocus.dark[0]}} dark:focus:outline-frame-{{=i.bgFocus.dark[1]}}',
   white = 'focus:outline-{{=i.bgFocus.white[0]}} dark:focus:outline-{{=i.bgFocus.white[1]}}',
   black = 'focus:outline-{{=i.bgFocus.black[0]}} dark:focus:outline-{{=i.bgFocus.black[1]}}',
 }
@@ -484,7 +507,8 @@ export enum OutlineColorFocusVisible {
   warning = 'focus-visible:outline-warning-{{=i.bgFocus.base[0]}} dark:focus-visible:outline-warning-{{=i.bgFocus.base[1]}}',
   success = 'focus-visible:outline-success-{{=i.bgFocus.base[0]}} dark:focus-visible:outline-success-{{=i.bgFocus.base[1]}}',
   info = 'focus-visible:outline-info-{{=i.bgFocus.base[0]}} dark:focus-visible:outline-info-{{=i.bgFocus.base[1]}}',
-  frame = 'focus-visible:outline-frame-{{=i.bgFocus.frame[0]}} dark:focus-visible:outline-frame-{{=i.bgFocus.frame[1]}}',
+  light = 'focus-visible:outline-frame-{{=i.bgFocus.light[0]}} dark:focus-visible:outline-frame-{{=i.bgFocus.light[1]}}',
+  dark = 'focus-visible:outline-frame-{{=i.bgFocus.dark[0]}} dark:focus-visible:outline-frame-{{=i.bgFocus.dark[1]}}',
   white = 'focus-visible:outline-{{=i.bgFocus.white[0]}} dark:focus-visible:outline-{{=i.bgFocus.white[1]}}',
   black = 'focus-visible:outline-{{=i.bgFocus.black[0]}} dark:focus-visible:outline-{{=i.bgFocus.black[1]}}',
 }
@@ -498,7 +522,8 @@ export enum OutlineColorFocusGroup {
   warning = 'group-focus:outline-warning-{{=i.bgFocus.base[0]}} dark:group-focus:outline-warning-{{=i.bgFocus.base[1]}}',
   success = 'group-focus:outline-success-{{=i.bgFocus.base[0]}} dark:group-focus:outline-success-{{=i.bgFocus.base[1]}}',
   info = 'group-focus:outline-info-{{=i.bgFocus.base[0]}} dark:group-focus:outline-info-{{=i.bgFocus.base[1]}}',
-  frame = 'group-focus:outline-frame-{{=i.bgFocus.frame[0]}} dark:group-focus:outline-frame-{{=i.bgFocus.frame[1]}}',
+  light = 'group-focus:outline-frame-{{=i.bgFocus.light[0]}} dark:group-focus:outline-frame-{{=i.bgFocus.light[1]}}',
+  dark = 'group-focus:outline-frame-{{=i.bgFocus.dark[0]}} dark:group-focus:outline-frame-{{=i.bgFocus.dark[1]}}',
   white = 'group-focus:outline-{{=i.bgFocus.white[0]}} dark:group-focus:outline-{{=i.bgFocus.white[1]}}',
   black = 'group-focus:outline-{{=i.bgFocus.black[0]}} dark:group-focus:outline-{{=i.bgFocus.black[1]}}',
 }
@@ -512,7 +537,8 @@ export enum OutlineColorFocusWithin {
   warning = 'focus-within:outline-warning-{{=i.bgFocus.base[0]}} dark:focus-within:outline-warning-{{=i.bgFocus.base[1]}}',
   success = 'focus-within:outline-success-{{=i.bgFocus.base[0]}} dark:focus-within:outline-success-{{=i.bgFocus.base[1]}}',
   info = 'focus-within:outline-info-{{=i.bgFocus.base[0]}} dark:focus-within:outline-info-{{=i.bgFocus.base[1]}}',
-  frame = 'focus-within:outline-frame-{{=i.bgFocus.frame[0]}} dark:focus-within:outline-frame-{{=i.bgFocus.frame[1]}}',
+  light = 'focus-within:outline-frame-{{=i.bgFocus.light[0]}} dark:focus-within:outline-frame-{{=i.bgFocus.light[1]}}',
+  dark = 'focus-within:outline-frame-{{=i.bgFocus.dark[0]}} dark:focus-within:outline-frame-{{=i.bgFocus.dark[1]}}',
   white = 'focus-within:outline-{{=i.bgFocus.white[0]}} dark:focus-within:outline-{{=i.bgFocus.white[1]}}',
   black = 'focus-within:outline-{{=i.bgFocus.black[0]}} dark:focus-within:outline-{{=i.bgFocus.black[1]}}',
 }
@@ -526,7 +552,8 @@ export enum OutlineColorFocusPeer {
   warning = 'peer-focus:outline-warning-{{=i.bgFocus.base[0]}} dark:peer-focus:outline-warning-{{=i.bgFocus.base[1]}}',
   success = 'peer-focus:outline-success-{{=i.bgFocus.base[0]}} dark:peer-focus:outline-success-{{=i.bgFocus.base[1]}}',
   info = 'peer-focus:outline-info-{{=i.bgFocus.base[0]}} dark:peer-focus:outline-info-{{=i.bgFocus.base[1]}}',
-  frame = 'peer-focus:outline-frame-{{=i.bgFocus.frame[0]}} dark:peer-focus:outline-frame-{{=i.bgFocus.frame[1]}}',
+  light = 'peer-focus:outline-frame-{{=i.bgFocus.light[0]}} dark:peer-focus:outline-frame-{{=i.bgFocus.light[1]}}',
+  dark = 'peer-focus:outline-frame-{{=i.bgFocus.dark[0]}} dark:peer-focus:outline-frame-{{=i.bgFocus.dark[1]}}',
   white = 'peer-focus:outline-{{=i.bgFocus.white[0]}} dark:peer-focus:outline-{{=i.bgFocus.white[1]}}',
   black = 'peer-focus:outline-{{=i.bgFocus.black[0]}} dark:peer-focus:outline-{{=i.bgFocus.black[1]}}',
 }
@@ -594,3 +621,5 @@ export interface GlobalOptions {
   rounded: keyof typeof Rounded;
   transition: boolean | string;
 }
+
+export const colors = Object.keys(BgColor) as ThemeColor[];

@@ -15,27 +15,6 @@ importers:
       '@aft/config':
         specifier: github:blujedis/aft-config#dev
         version: https://codeload.github.com/blujedis/aft-config/tar.gz/b4b0755225c82f648828d2218f49a1e9f88c06d2
-      '@event-calendar/core':
-        specifier: ^3.4.0
-        version: 3.4.0
-      '@event-calendar/day-grid':
-        specifier: ^3.4.0
-        version: 3.4.0
-      '@event-calendar/interaction':
-        specifier: ^3.4.0
-        version: 3.4.0
-      '@event-calendar/list':
-        specifier: ^3.4.0
-        version: 3.4.0
-      '@event-calendar/resource-time-grid':
-        specifier: ^3.4.0
-        version: 3.4.0
-      '@event-calendar/resource-timeline':
-        specifier: ^3.4.0
-        version: 3.4.0
-      '@event-calendar/time-grid':
-        specifier: ^3.4.0
-        version: 3.4.0
       '@fontsource-variable/manrope':
         specifier: ^5.0.20
         version: 5.0.20
@@ -328,27 +307,6 @@ packages:
   '@eslint/object-schema@2.1.4':
     resolution: {integrity: sha512-BsWiH1yFGjXXS2yvrf5LyuoSIIbPrGUWob917o+BTKuZ7qJdxX8aJLRxs1fS9n6r7vESrq1OUqb68dANcFXuQQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
-  '@event-calendar/core@3.4.0':
-    resolution: {integrity: sha512-b7Kx214hRs6MNfRbnN/L29kgWsBI+Zv2KrU0Gp0H/alqN9yJR+6YNaqcaAo3NV4DiCo+9moBOlZ4KbbpZhnulQ==}
-
-  '@event-calendar/day-grid@3.4.0':
-    resolution: {integrity: sha512-BlZLM4fiqb4kPtis4tX5jg8XcbhmIOesgc8qhUjooEmWcPc8GZvW4Ob0UYt0Js/HjX+u4IvNdVUsNDzJe8o2Dw==}
-
-  '@event-calendar/interaction@3.4.0':
-    resolution: {integrity: sha512-cizgMNdaPbeONCoBeMODglzn2dH6lLhpoaCdU4uBb2EOafe3DdtiK5yj+G4QjLOz+GcB3BomT8lwgzCQaD9akg==}
-
-  '@event-calendar/list@3.4.0':
-    resolution: {integrity: sha512-e1WuxTKN5fkVVepFKGyIm9z4o92hx/mT/XZ9oqr8CvJlbTmnvrD9It0d9OsWnluMGB3nKyqcVknCIoL+TVlYzw==}
-
-  '@event-calendar/resource-time-grid@3.4.0':
-    resolution: {integrity: sha512-j0Tl1NAtBaelm/58BwEVl0G3YvaNA/E3z14zbsrhbJKFxR+MDp/vtzJTGyVxj/4MQUU2BkQIWWlTZKddhpDrFQ==}
-
-  '@event-calendar/resource-timeline@3.4.0':
-    resolution: {integrity: sha512-EpxUrMQ1UJYuzqmHkj59+INme1CErPTWoN98Sl3Yk7zOuUXzcofWnlbgIfj2+N9Z8J/JyCAKN4bb0ffsbpMJGQ==}
-
-  '@event-calendar/time-grid@3.4.0':
-    resolution: {integrity: sha512-F/TOzLh25puKzRyRHohY7yVM3dlQXlMYNrCOLF6T8BALW9bT/YfQHkYuF5v3qXRVF7K/9yols3vdxC94Dgvfng==}
 
   '@fontsource-variable/manrope@5.0.20':
     resolution: {integrity: sha512-LKL0aM0DxYj8i/zUTb5Nru0mS3YoezPZaeWY7aIxEKVX1xVBLpPHlFq0NoK2iUXhL6HoD0XMYwc6KVa8I/ayKg==}
@@ -834,9 +792,6 @@ packages:
   classnames@2.5.1:
     resolution: {integrity: sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==}
 
-  code-red@1.0.4:
-    resolution: {integrity: sha512-7qJWqItLA8/VPVlKJlFXU+NBlo/qyfs39aJcuMT/2ere32ZqvF5OSxgdM5xOfJJ7O429gg2HM47y8v9P+9wrNw==}
-
   color-convert@2.0.1:
     resolution: {integrity: sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==}
     engines: {node: '>=7.0.0'}
@@ -868,10 +823,6 @@ packages:
   cross-spawn@7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
     engines: {node: '>= 8'}
-
-  css-tree@2.3.1:
-    resolution: {integrity: sha512-6Fv1DV/TYw//QF5IzQdqsNDjx/wc8TrMBZsqjL9eW01tWb7R7k/mq+/VXfJCl7SoD5emsJop9cOByJZfs8hYIw==}
-    engines: {node: ^10 || ^12.20.0 || ^14.13.0 || >=15.0.0}
 
   cssesc@3.0.0:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
@@ -1482,9 +1433,6 @@ packages:
   mdast-util-to-string@4.0.0:
     resolution: {integrity: sha512-0H44vDimn51F0YwvxSJSm0eCDOJTRlmN0R1yBh4HLj9wiV1Dn0QoXGbvFAWj2hSItVTlCmBF1hqKlIyUBVFLPg==}
 
-  mdn-data@2.0.30:
-    resolution: {integrity: sha512-GaqWWShW4kv/G9IEucWScBx9G1/vsFZZJUO+tD26M8J8z3Kw5RDQjaoZe03YAClgeS/SWPOcb4nkFBTEi5DUEA==}
-
   merge-stream@2.0.0:
     resolution: {integrity: sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==}
 
@@ -1763,9 +1711,6 @@ packages:
 
   pathval@1.1.1:
     resolution: {integrity: sha512-Dp6zGqpTdETdR63lehJYPeIOqpiNBNtc7BpWSLrOje7UaIsE5aY92r/AunQA7rsXvet3lrJ3JnZX29UPTKXyKQ==}
-
-  periscopic@3.1.0:
-    resolution: {integrity: sha512-vKiQ8RRtkl9P+r/+oefh25C3fhybptkHKCZSPlcXiJux2tJF55GnEj3BVn4A5gKfq9NWWXXrxkHBwVPUfH0opw==}
 
   picocolors@1.0.1:
     resolution: {integrity: sha512-anP1Z8qwhkbmu7MFP5iTt+wQKXgwzf7zTyGlcdzabySa9vd0Xt392U0rVmz9poOaBj0uHJKyyo9/upk0HrEQew==}
@@ -2163,10 +2108,6 @@ packages:
     peerDependencies:
       svelte: ^3.55 || ^4.0.0-next.0 || ^4.0 || ^5.0.0-next.0
       typescript: ^4.9.4 || ^5.0.0
-
-  svelte@4.2.18:
-    resolution: {integrity: sha512-d0FdzYIiAePqRJEb90WlJDkjUEx42xhivxN8muUBmfZnP+tzUgz12DJ2hRJi8sIHCME7jeK1PTMgKPSfTd8JrA==}
-    engines: {node: '>=16'}
 
   svelte@5.0.0-next.200:
     resolution: {integrity: sha512-Tf1cOsl2WTmn/TB7k151OFRdoYTIVtAwVThVPeuI+hymUkNd4esn3ApEPxV9r5loqfItBI0z4+EX1nbH4EeEAg==}
@@ -2594,41 +2535,6 @@ snapshots:
   '@eslint/js@9.7.0': {}
 
   '@eslint/object-schema@2.1.4': {}
-
-  '@event-calendar/core@3.4.0':
-    dependencies:
-      svelte: 4.2.18
-
-  '@event-calendar/day-grid@3.4.0':
-    dependencies:
-      '@event-calendar/core': 3.4.0
-      svelte: 4.2.18
-
-  '@event-calendar/interaction@3.4.0':
-    dependencies:
-      '@event-calendar/core': 3.4.0
-      svelte: 4.2.18
-
-  '@event-calendar/list@3.4.0':
-    dependencies:
-      '@event-calendar/core': 3.4.0
-      svelte: 4.2.18
-
-  '@event-calendar/resource-time-grid@3.4.0':
-    dependencies:
-      '@event-calendar/core': 3.4.0
-      '@event-calendar/time-grid': 3.4.0
-      svelte: 4.2.18
-
-  '@event-calendar/resource-timeline@3.4.0':
-    dependencies:
-      '@event-calendar/core': 3.4.0
-      svelte: 4.2.18
-
-  '@event-calendar/time-grid@3.4.0':
-    dependencies:
-      '@event-calendar/core': 3.4.0
-      svelte: 4.2.18
 
   '@fontsource-variable/manrope@5.0.20': {}
 
@@ -3142,14 +3048,6 @@ snapshots:
 
   classnames@2.5.1: {}
 
-  code-red@1.0.4:
-    dependencies:
-      '@jridgewell/sourcemap-codec': 1.5.0
-      '@types/estree': 1.0.5
-      acorn: 8.12.1
-      estree-walker: 3.0.3
-      periscopic: 3.1.0
-
   color-convert@2.0.1:
     dependencies:
       color-name: 1.1.4
@@ -3176,11 +3074,6 @@ snapshots:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
-
-  css-tree@2.3.1:
-    dependencies:
-      mdn-data: 2.0.30
-      source-map-js: 1.2.0
 
   cssesc@3.0.0: {}
 
@@ -3964,8 +3857,6 @@ snapshots:
     dependencies:
       '@types/mdast': 4.0.4
 
-  mdn-data@2.0.30: {}
-
   merge-stream@2.0.0: {}
 
   merge2@1.4.1: {}
@@ -4335,12 +4226,6 @@ snapshots:
   pathe@1.1.2: {}
 
   pathval@1.1.1: {}
-
-  periscopic@3.1.0:
-    dependencies:
-      '@types/estree': 1.0.5
-      estree-walker: 3.0.3
-      is-reference: 3.0.2
 
   picocolors@1.0.1: {}
 
@@ -4758,23 +4643,6 @@ snapshots:
       pascal-case: 3.1.2
       svelte: 5.0.0-next.200
       typescript: 5.5.4
-
-  svelte@4.2.18:
-    dependencies:
-      '@ampproject/remapping': 2.3.0
-      '@jridgewell/sourcemap-codec': 1.5.0
-      '@jridgewell/trace-mapping': 0.3.25
-      '@types/estree': 1.0.5
-      acorn: 8.12.1
-      aria-query: 5.3.0
-      axobject-query: 4.1.0
-      code-red: 1.0.4
-      css-tree: 2.3.1
-      estree-walker: 3.0.3
-      is-reference: 3.0.2
-      locate-character: 3.0.0
-      magic-string: 0.30.10
-      periscopic: 3.1.0
 
   svelte@5.0.0-next.200:
     dependencies:

@@ -108,8 +108,8 @@
 		...rest
 	}: BaseProps<Tag> = $props();
 
-	const _classes = $state(
-		classNames([
+	const _classes = 
+	$derived(classNames([
 			Border[border],
 			BgColor[bgColor],
 			BgColorHover[bgColorHover],
@@ -136,8 +136,8 @@
 
 			classes,
 			rest.class
-		])
-	);
+		]));
+
 </script>
 
 <svelte:element this={as} class={_classes}>

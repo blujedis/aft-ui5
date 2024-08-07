@@ -1,7 +1,7 @@
 ---
 title: Example
 description: Example post.
-date: '2024-5-16'
+date: '2024/5/16'
 categories:
   - component
   - button
@@ -9,24 +9,18 @@ published: true
 ---
 
 <script>
-  import Button from './Button.svelte';
-  import Widget from '$components/ExampleWidget.svelte';
+  import ButtonExample from './ButtonExample.svelte';
 </script>
 
-## Components
+### Component
 
-You can use Svelte components inside Markdown.
+Button component example.
 
-<!-- <Counter start={10} /> -->
-<Button>Click Me</Button>
+<ButtonExample />
 
-## Widgets
+### Implementation
 
-<Widget />
-
-## Code Blocks
-
-Syntax highlighting is done with Shiki.
+How to implement the Button component.
 
 ```svelte
 <script lang="ts">
@@ -38,7 +32,7 @@ Syntax highlighting is done with Shiki.
 </button>
 ```
 
-## Images
+### Images
 
 Media inside the **static** folder is served from `/`.
 

@@ -27,7 +27,7 @@ async function parseMarkdown(content) {
  * @param {string} content
  */
 function escapeHtml(content) {
-	content = content.replace(/{/g, '&#123;').replace(/}/g, '&#125;'); 
+	content = content.replace(/{/g, '&#123;').replace(/}/g, '&#125;');
 	const componentRegex = /<[A-Z].*/g;
 	const components = content.match(componentRegex);
 	components?.forEach((component) => {

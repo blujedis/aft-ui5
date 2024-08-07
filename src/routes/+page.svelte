@@ -1,15 +1,19 @@
-<!-- <script lang="ts">
-	import Button from '$lib/components/Button/Button.svelte';
-	import ColorMode from '$lib/components/ColorMode/ColorMode.svelte';
+<script lang="ts">
+	import ButtonExample from '$lib/components/Button/ButtonExample.svelte';
 </script>
 
-<main class="px-4 py-6">
-	<Button variant="outlined" theme="primary">Click Me</Button>
-	<ColorMode init="light">
-		{#snippet children(prop)}
-			<button class="text-sm mt-4 block" onclick={prop.toggle}>Dark Mode: {prop.dark}</button>
-		{/snippet}
-	</ColorMode>
-</main> -->
-
 <a href="/Button">View Button</a>
+
+<!-- <div class="flex space-x-2">
+	{#each colors as color}
+		<button onclick={() => changeTheme(color)}>{color}</button>
+	{/each}
+</div>
+<div class="my-4">
+	<button
+		class="bg-frame-100 text-sm px-4 py-1.5 shadow-sm hover:bg-frame-200/70 transition-all"
+		onclick={() => (active = !active)}>Toggle Element</button
+	>
+</div> -->
+
+<ButtonExample />

@@ -26,6 +26,8 @@
 		variant?: 'filled' | 'soft' | 'outlined' | 'ghost' | 'text';
 	} & ExtendedProps<Tag> &
 		ElementProps<Tag>;
+
+	export const buttonVariants = ['filled', 'soft', 'outlined', 'ghost', 'text'] as const;
 </script>
 
 <script lang="ts" generics="Tag extends HTMLTag = 'button'">
@@ -38,13 +40,13 @@
 		rounded = 'unstyled',
 		shadow = 'unstyled',
 		size = 'md',
-		theme = 'frame',
+		theme = 'light',
 		variant = 'filled',
 		children,
 		...rest
 	}: ButtonProps<Tag> = $props();
 
-	const config = {
+	const config = $derived({
 		classes: [
 			`button button-${variant} inline-flex items-center justify-center cursor-pointer outline-none transition motion-reduce:transition-none`,
 			ButtonPaddingX[size],
@@ -72,7 +74,7 @@
 		ringColorHover: variant !== 'outlined' ? 'unstyled' : theme,
 		rounded: rounded || t.rounded,
 		shadow
-	} as ConfigProps;
+	}) as ConfigProps;
 </script>
 
 <BaseElement {...rest} {...config} {as}>

@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { createHighlighter, type HighlighterCore } from 'shiki';
 
-	let { component }: { component: string } = $props();
-
 	let editor: 'loading' | 'ready' = $state('loading');
 	let highlighter: HighlighterCore;
 	let html = $state(
