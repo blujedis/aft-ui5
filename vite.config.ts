@@ -3,6 +3,7 @@ import { defineConfig } from 'vitest/config';
 import { buildTokens } from './genTokens.js';
 import { resolve } from 'path';
 
+
 export default defineConfig({
 	plugins: [
 		{
@@ -17,8 +18,22 @@ export default defineConfig({
 	server: {
 		fs: {
 			allow: ['..']
+		},
+		port: 5174,
+		watch: {
+			ignored: [
+				'./watchTokens.ts',
+				'./static/**',
+				'./node_modules/**',
+				'./dist/**',
+				'./coverage/**',
+				'./test/**',
+				'./.tmp/**',
+				'./src/lib/theme/types.ts'
+			]
 		}
 	},
+	clearScreen: false,
 	resolve: {
 		alias: {
 			$components: resolve('src/components'),
@@ -29,3 +44,4 @@ export default defineConfig({
 		include: ['src/**/*.{test,spec}.{js,ts}']
 	}
 });
+

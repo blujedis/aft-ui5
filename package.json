@@ -2,7 +2,7 @@
 	"name": "ui5",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "vite dev --host",
 		"build": "vite build && npm run package",
 		"preview": "vite preview",
 		"package": "svelte-kit sync && svelte-package && publint",
@@ -74,6 +74,7 @@
 	"types": "./dist/index.d.ts",
 	"type": "module",
 	"dependencies": {
-		"classnames": "^2.5.1"
+		"classnames": "^2.5.1",
+		"tailwind-merge": "^2.4.0"
 	}
 }

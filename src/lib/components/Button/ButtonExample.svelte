@@ -6,24 +6,26 @@
 	let theme = 'primary' as ThemeColor;
 </script>
 
-<div class="flex space-x-8">
+<div class="flex space-x-8 max-w-lg">
 	<div class="flex-col">
-		<div class="font-semibold mb-1">Variants</div>
-		<div class="flex flex-wrap space-x-2">
+		<div class="font-semibold mb-2">Variants</div>
+		<div class="flex flex-wrap -mt-1 -mr-2">
 			{#each variants as name}
-				<button onclick={() => (variant = name)}>{name}</button>
+				<button class="mt-1 mr-2" onclick={() => (variant = name)}>{name}</button>
 			{/each}
 		</div>
 	</div>
 
 	<div class="flex-col">
-		<div class="font-semibold mb-1">Themes</div>
-		<div class="flex flex-wrap space-x-2">
+		<div class="font-semibold mb-2">Themes</div>
+		<div class="flex flex-wrap -mt-2 -mr-2">
 			{#each colors as color}
-				<button onclick={() => (theme = color)}>{color}</button>
+				<button class="mt-1 mr-2" onclick={() => (theme = color)}>{color}</button>
 			{/each}
 		</div>
 	</div>
 </div>
 
-<Button {variant} {theme}>Click</Button>
+<div class="mt-4">
+	<Button {variant} {theme}>Click</Button>
+</div>
