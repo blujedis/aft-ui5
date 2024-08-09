@@ -54,6 +54,9 @@ const placeholderBuild = {
 
 export function normalizeTuple(key: string, tuple: (string | number)[]) {
 	let name = key.replace(/H$/, '');
+	if (tuple.length === 1) {
+		tuple= [tuple[0], tuple[0]]; // array provided with only first element.
+	}
 		// get the normalized color name for light/dark this is always "frame"
 		name = ['light', 'dark', 'lightH', 'darkH'].includes(key) ? 'frame' : key.replace(/H$/, '');
 		name = ['white', 'whiteH', 'black', 'blackH'].includes(key) ? '' : name;
@@ -107,8 +110,6 @@ export function buildTokens() {
 
 	const confStr = readFileSync('./tokens.json').toString();
 	const conf = normalize(JSON.parse(confStr));
-
-	console.log(conf);
 
 	const eta = new Eta({
 		views,

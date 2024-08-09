@@ -243,10 +243,6 @@ export enum FontLeading {
   loose = 'leading-loose'
 }
 
-
-
-
-
 export enum FontColor {
   unstyled = '',
   primary = 'text-primary-500 dark:text-primary-200',
@@ -257,9 +253,9 @@ export enum FontColor {
   success = 'text-success-500 dark:text-success-200',
   info = 'text-info-500 dark:text-info-200',
   light = 'text-frame-500 dark:text-frame-200',
-  dark = 'text-frame-500 dark:text-frame-200 ',
+  dark = 'text-frame-600 dark:text-frame-200 ',
   white = 'text-white dark:text-white',
-  black = 'text-gray-800 dark:text-gray-900'
+  black = 'text-black dark:text-black'
 }
 
 export enum FontColorHover {
@@ -272,9 +268,39 @@ export enum FontColorHover {
   success = 'hover:text-success-600 dark:hover:text-success-300',
   info = 'hover:text-info-600 dark:hover:text-info-300',
   light = 'hover:text-frame-600 dark:hover:text-frame-300',
-  dark = 'hover:text-frame-600 dark:hover:text-frame-300 ',
-  white = 'hover:text-gray-50 dark:hover:text-gray-100',
-  black = 'hover:text-black dark:hover-text-black'
+  dark = 'hover:text-frame-700 dark:hover:text-frame-300 ',
+  white = 'hover:text-gray-100 dark:hover:text-gray-100',
+  black = 'hover:text-gray-900 dark:hover:text-gray-900'
+}
+
+export enum ForeColorText {
+  unstyled = '',
+  primary = 'text-primary-500 dark:text-primary-200',
+  secondary = 'text-secondary-500 dark:text-secondary-200',
+  tertiary = 'text-tertiary-500 dark:text-tertiary-200',
+  danger = 'text-danger-500 dark:text-danger-200',
+  warning = 'text-warning-500 dark:text-warning-200',
+  success = 'text-success-500 dark:text-success-200',
+  info = 'text-info-500 dark:text-info-200',
+  light = 'text-frame-500 dark:text-frame-200',
+  dark = 'text-frame-600 dark:text-frame-200 ',
+  white = 'text-gray-600 dark:text-white',
+  black = 'text-gray-800 dark:text-gray-50'
+}
+
+export enum ForeColorTextHover {
+  unstyled = '',
+  primary = 'hover:text-primary-600 dark:hover:text-primary-300',
+  secondary = 'hover:text-secondary-600 dark:hover:text-secondary-300',
+  tertiary = 'hover:text-tertiary-600 dark:hover:text-tertiary-300',
+  danger = 'hover:text-danger-600 dark:hover:text-danger-300',
+  warning = 'hover:text-warning-600 dark:hover:text-warning-300',
+  success = 'hover:text-success-600 dark:hover:text-success-300',
+  info = 'hover:text-info-600 dark:hover:text-info-300',
+  light = 'hover:text-frame-600 dark:hover:text-frame-300',
+  dark = 'hover:text-frame-700 dark:hover:text-frame-300 ',
+  white = 'hover:text-gray-700 dark:hover:text-gray-100',
+  black = 'hover:text-black dark:hover:text-gray-100'
 }
 
 export enum ForeColorFilled {
@@ -286,10 +312,10 @@ export enum ForeColorFilled {
   warning = 'text-warning-50 dark:text-warning-50',
   success = 'text-success-50 dark:text-success-50',
   info = 'text-info-50 dark:text-info-50',
-  light = 'text-frame-500 dark:text-frame-500',
+  light = 'text-frame-500 dark:text-frame-800',
   dark = 'text-frame-50 dark:text-frame-50 ',
-  white = 'text-gray-700 dark:text-undefined',
-  black = 'text-white dark:text-white'
+  white = 'text-gray-600 dark:text-gray-600',
+  black = 'text-gray-50 dark:text-gray-50'
 }
 
 export enum ForeColorFilledHover {
@@ -301,10 +327,10 @@ export enum ForeColorFilledHover {
   warning = 'hover:text-warning-100 dark:hover:text-warning-100',
   success = 'hover:text-success-100 dark:hover:text-success-100',
   info = 'hover:text-info-100 dark:hover:text-info-100',
-  light = 'hover:text-frame-600 dark:hover:text-frame-600',
+  light = 'hover:text-frame-600 dark:hover:text-frame-900',
   dark = 'hover:text-frame-100 dark:hover:text-frame-100 ',
-  white = 'hover:text-gray-800 dark:hover:text-undefined',
-  black = 'hover:text-gray-50 dark:hover-text-undefined'
+  white = 'hover:text-gray-700 dark:hover:text-gray-700',
+  black = 'hover:text-gray-100 dark:hover:text-gray-100'
 }
 
 export enum ForeColorSoft {
@@ -317,9 +343,9 @@ export enum ForeColorSoft {
   success = 'text-success-500 dark:text-success-200',
   info = 'text-info-500 dark:text-info-200',
   light = 'text-frame-500 dark:text-frame-200',
-  dark = 'text-frame-500 dark:text-frame-200 ',
-  white = 'text-gray-700 dark:text-white',
-  black = 'text-gray-700 dark:text-gray-300'
+  dark = 'text-frame-600 dark:text-frame-200 ',
+  white = 'text-gray-600 dark:text-gray-600',
+  black = 'text-gray-50 dark:text-gray-50'
 }
 
 export enum ForeColorSoftHover {
@@ -332,9 +358,9 @@ export enum ForeColorSoftHover {
   success = 'hover:text-success-600 dark:hover:text-success-300',
   info = 'hover:text-info-600 dark:hover:text-info-300',
   light = 'hover:text-frame-600 dark:hover:text-frame-300',
-  dark = 'hover:text-frame-600 dark:hover:text-frame-300 ',
-  white = 'hover:text-gray-800 dark:hover:text-gray-200',
-  black = 'hover:text-gray-800 dark:hover-text-gray-400'
+  dark = 'hover:text-frame-700 dark:hover:text-frame-300 ',
+  white = 'hover:text-gray-700 dark:hover:text-gray-700',
+  black = 'hover:text-gray-100 dark:hover:text-gray-100'
 }
 
 export enum ForeColorGhost {
@@ -347,8 +373,8 @@ export enum ForeColorGhost {
   success = 'text-success-500 dark:text-success-200',
   info = 'text-info-500 dark:text-info-200',
   light = 'text-frame-500 dark:text-frame-200',
-  dark = 'text-frame-500 dark:text-frame-200 ',
-  white = 'text-gray-700 dark:text-white',
+  dark = 'text-frame-600 dark:text-frame-200 ',
+  white = 'text-gray-600 dark:text-white',
   black = 'text-white dark:text-gray-300'
 }
 
@@ -362,9 +388,9 @@ export enum ForeColorGhostHover {
   success = 'hover:text-success-600 dark:hover:text-success-300',
   info = 'hover:text-info-600 dark:hover:text-info-300',
   light = 'hover:text-frame-600 dark:hover:text-frame-300',
-  dark = 'hover:text-frame-600 dark:hover:text-frame-300 ',
-  white = 'hover:text-gray-800 dark:hover:text-gray-800',
-  black = 'hover:text-gray-50 dark:hover-text-gray-400'
+  dark = 'hover:text-frame-700 dark:hover:text-frame-300 ',
+  white = 'hover:text-gray-700 dark:hover:text-gray-700',
+  black = 'hover:text-gray-50 dark:hover:text-gray-400'
 }
 
 export enum BgColor {
@@ -423,7 +449,7 @@ export enum BgColorSoft {
   info = 'bg-info-100 dark:bg-info-800',
   light = 'bg-frame-100 dark:bg-frame-700',
   dark = 'bg-frame-300 dark:bg-frame-900 ',
-  white = 'bg-white/80 dark:bg-white/80',
+  white = 'bg-white dark:bg-white',
   black = 'bg-gray-800 dark:bg-gray-900',
 }
 
@@ -438,7 +464,7 @@ export enum BgColorSoftHover {
   info = 'hover:bg-info-200 dark:hover:bg-info-900',
   light = 'hover:bg-frame-200 dark:hover:bg-frame-700/80',
   dark = 'hover:bg-frame-400 dark:hover:bg-frame-900/50 ',
-  white = 'hover:bg-gray-200 dark:hover:bg-white/70',
+  white = 'hover:bg-gray-200 dark:hover:bg-gray-200',
   black = 'hover:bg-black dark:hover:bg-black',
 }
 
@@ -453,7 +479,7 @@ export enum BgColorGhostHover {
   info = 'hover:bg-info-100 dark:hover:bg-info-800',
   light = 'hover:bg-frame-100 dark:hover:bg-frame-700',
   dark = 'hover:bg-frame-300 dark:hover:bg-frame-900 ',
-  white = 'hover:bg-white/80 dark:hover:bg-white/80',
+  white = 'hover:bg-white dark:hover:bg-white',
   black = 'hover:bg-gray-800 dark:hover:bg-gray-900',
 }
 
@@ -468,7 +494,7 @@ export enum BgColorSoftGroupHover {
   info = 'group-hover:bg-info-200 dark:group-hover:bg-info-900',
   light = 'group-hover:bg-frame-200 dark:group-hover:bg-frame-700/80',
   dark = 'group-hover:bg-frame-400 dark:group-hover:bg-frame-900/50 ',
-  white = 'group-hover:bg-gray-200 dark:group-hover:bg-white/70',
+  white = 'group-hover:bg-gray-200 dark:group-hover:bg-gray-200',
   black = 'group-hover:bg-black dark:group-hover:bg-black',
 }
 

@@ -243,10 +243,6 @@ export enum FontLeading {
   loose = 'leading-loose'
 }
 
-
-
-
-
 export enum FontColor {
   unstyled = '',
   primary = 'text-{{=i.font.primary[0]}} dark:text-{{=i.font.primary[1]}}',
@@ -274,7 +270,37 @@ export enum FontColorHover {
   light = 'hover:text-{{=i.font.lightH[0]}} dark:hover:text-{{=i.font.lightH[1]}}',
   dark = 'hover:text-{{=i.font.darkH[0]}} dark:hover:text-{{=i.font.darkH[1]}} ',
   white = 'hover:text-{{=i.font.whiteH[0]}} dark:hover:text-{{=i.font.whiteH[1]}}',
-  black = 'hover:text-{{=i.font.blackH[0]}} dark:hover-text-{{=i.font.blackH[1]}}'
+  black = 'hover:text-{{=i.font.blackH[0]}} dark:hover:text-{{=i.font.blackH[1]}}'
+}
+
+export enum ForeColorText {
+  unstyled = '',
+  primary = 'text-{{=i.foreText.primary[0]}} dark:text-{{=i.foreText.primary[1]}}',
+  secondary = 'text-{{=i.foreText.secondary[0]}} dark:text-{{=i.foreText.secondary[1]}}',
+  tertiary = 'text-{{=i.foreText.tertiary[0]}} dark:text-{{=i.foreText.tertiary[1]}}',
+  danger = 'text-{{=i.foreText.danger[0]}} dark:text-{{=i.foreText.danger[1]}}',
+  warning = 'text-{{=i.foreText.warning[0]}} dark:text-{{=i.foreText.warning[1]}}',
+  success = 'text-{{=i.foreText.success[0]}} dark:text-{{=i.foreText.success[1]}}',
+  info = 'text-{{=i.foreText.info[0]}} dark:text-{{=i.foreText.info[1]}}',
+  light = 'text-{{=i.foreText.light[0]}} dark:text-{{=i.foreText.light[1]}}',
+  dark = 'text-{{=i.foreText.dark[0]}} dark:text-{{=i.foreText.dark[1]}} ',
+  white = 'text-{{=i.foreText.white[0]}} dark:text-{{=i.foreText.white[1]}}',
+  black = 'text-{{=i.foreText.black[0]}} dark:text-{{=i.foreText.black[1]}}'
+}
+
+export enum ForeColorTextHover {
+  unstyled = '',
+  primary = 'hover:text-{{=i.foreText.primaryH[0]}} dark:hover:text-{{=i.foreText.primaryH[1]}}',
+  secondary = 'hover:text-{{=i.foreText.secondaryH[0]}} dark:hover:text-{{=i.foreText.secondaryH[1]}}',
+  tertiary = 'hover:text-{{=i.foreText.tertiaryH[0]}} dark:hover:text-{{=i.foreText.tertiaryH[1]}}',
+  danger = 'hover:text-{{=i.foreText.dangerH[0]}} dark:hover:text-{{=i.foreText.dangerH[1]}}',
+  warning = 'hover:text-{{=i.foreText.warningH[0]}} dark:hover:text-{{=i.foreText.warningH[1]}}',
+  success = 'hover:text-{{=i.foreText.successH[0]}} dark:hover:text-{{=i.foreText.successH[1]}}',
+  info = 'hover:text-{{=i.foreText.infoH[0]}} dark:hover:text-{{=i.foreText.infoH[1]}}',
+  light = 'hover:text-{{=i.foreText.lightH[0]}} dark:hover:text-{{=i.foreText.lightH[1]}}',
+  dark = 'hover:text-{{=i.foreText.darkH[0]}} dark:hover:text-{{=i.foreText.darkH[1]}} ',
+  white = 'hover:text-{{=i.foreText.whiteH[0]}} dark:hover:text-{{=i.foreText.whiteH[1]}}',
+  black = 'hover:text-{{=i.foreText.blackH[0]}} dark:hover:text-{{=i.foreText.blackH[1]}}'
 }
 
 export enum ForeColorFilled {
@@ -304,7 +330,7 @@ export enum ForeColorFilledHover {
   light = 'hover:text-{{=i.foreFill.lightH[0]}} dark:hover:text-{{=i.foreFill.lightH[1]}}',
   dark = 'hover:text-{{=i.foreFill.darkH[0]}} dark:hover:text-{{=i.foreFill.darkH[1]}} ',
   white = 'hover:text-{{=i.foreFill.whiteH[0]}} dark:hover:text-{{=i.foreFill.whiteH[1]}}',
-  black = 'hover:text-{{=i.foreFill.blackH[0]}} dark:hover-text-{{=i.foreFill.blackH[1]}}'
+  black = 'hover:text-{{=i.foreFill.blackH[0]}} dark:hover:text-{{=i.foreFill.blackH[1]}}'
 }
 
 export enum ForeColorSoft {
@@ -334,7 +360,7 @@ export enum ForeColorSoftHover {
   light = 'hover:text-{{=i.foreSoft.lightH[0]}} dark:hover:text-{{=i.foreSoft.lightH[1]}}',
   dark = 'hover:text-{{=i.foreSoft.darkH[0]}} dark:hover:text-{{=i.foreSoft.darkH[1]}} ',
   white = 'hover:text-{{=i.foreSoft.whiteH[0]}} dark:hover:text-{{=i.foreSoft.whiteH[1]}}',
-  black = 'hover:text-{{=i.foreSoft.blackH[0]}} dark:hover-text-{{=i.foreSoft.blackH[1]}}'
+  black = 'hover:text-{{=i.foreSoft.blackH[0]}} dark:hover:text-{{=i.foreSoft.blackH[1]}}'
 }
 
 export enum ForeColorGhost {
@@ -364,7 +390,7 @@ export enum ForeColorGhostHover {
   light = 'hover:text-{{=i.foreGhost.lightH[0]}} dark:hover:text-{{=i.foreGhost.lightH[1]}}',
   dark = 'hover:text-{{=i.foreGhost.darkH[0]}} dark:hover:text-{{=i.foreGhost.darkH[1]}} ',
   white = 'hover:text-{{=i.foreGhost.whiteH[0]}} dark:hover:text-{{=i.foreGhost.whiteH[1]}}',
-  black = 'hover:text-{{=i.foreGhost.blackH[0]}} dark:hover-text-{{=i.foreGhost.blackH[1]}}'
+  black = 'hover:text-{{=i.foreGhost.blackH[0]}} dark:hover:text-{{=i.foreGhost.blackH[1]}}'
 }
 
 export enum BgColor {

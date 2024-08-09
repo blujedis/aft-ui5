@@ -30,7 +30,7 @@
 	{#each variants as v} 
 		<div class="font-semibold mb-2">{v}</div>
 		<div class="mb-8 grid grid-cols-11 gap-2">
-			{#each colors.filter(c => c !== 'unstyled') as c} 
+			{#each colors.filter(c => !['unstyled', 'black'].includes(c)) as c} 
 			<Button variant={v} theme={c}>Click</Button>
 			{/each}
 		</div>
