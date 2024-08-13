@@ -1,6 +1,21 @@
 <script lang="ts">
-	import VariantList from '$components/VariantList.svelte';
-	import Stack, { stackVariants as variants } from './Stack.svelte';
+	import Avatar from '../avatar/Avatar.svelte';
+	import Image from '../image/Image.svelte';
+	import Stack from './Stack.svelte';
+	const urls = [
+		'https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+		'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+		'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80',
+		'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
+	];
 </script>
 
-<VariantList component={Stack} {variants} props={{ size: 'md' }} />
+<div>
+	<Stack vertical>
+		{#each urls as url}
+			<Avatar size="lg" stacked>
+				<Image src={url} />
+			</Avatar>
+		{/each}
+	</Stack>
+</div>

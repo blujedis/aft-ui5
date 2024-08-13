@@ -20,7 +20,7 @@ export default defineConfig({
 		fs: {
 			allow: ['..']
 		},
-		port: 5173,
+		port: 5174,
 		watch: {
 			ignored: [
 				'./watchTokens.ts',

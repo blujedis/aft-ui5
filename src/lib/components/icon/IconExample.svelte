@@ -3,4 +3,4 @@
 	import Icon, { iconVariants as variants } from './Icon.svelte';
 </script>
 
-<VariantList component={Icon} {variants} props={{ icon: 'mdi:home' }} />
+<VariantList component={Icon} {variants} props={{ icon: 'mdi:account-hard-hat-outline' }} />

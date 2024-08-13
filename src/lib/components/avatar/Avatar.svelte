@@ -5,6 +5,7 @@
 	import { AvatarSize, Size, type ThemeColor, FillColor, FillColorSoft } from '$lib/theme/types.js';
 
 	export type AvatarProps = {
+		mode?: 'icon' | 'image';
 		removable?: boolean;
 		rounded?: ConfigProps['rounded'];
 		shadow?: ConfigProps['shadow'];
@@ -12,7 +13,7 @@
 		stacked?: boolean;
 		theme?: ThemeColor;
 		variant?: 'unstyled' | 'filled' | 'soft' | 'outlined';
-		children: Snippet<[]>;
+		children: Snippet;
 	} & ElementProps<'span'>;
 
 	export const avatarVariants = [
@@ -29,6 +30,7 @@
 	import { boolToValue } from '$lib/utils/misc.js';
 
 	let {
+		mode,
 		rounded,
 		shadow,
 		size = 'md',
@@ -44,18 +46,19 @@
 			`avatar avatar-${variant} avatar-${theme} inline-flex items-center 
 			justify-center outline-none relative overflow-hidden`,
 			t.transition,
-			stacked && ``,
+			stacked &&
+				`ring-2 ring-[color:rgb(var(--body-bg-light))] dark:ring-[color:rgb(var(--body-bg-dark))]`,
 			AvatarSize[size],
-			['filled', 'outlined'].includes(variant) ? FillColor[theme] : '',
-			variant === 'soft' ? FillColorSoft[theme] : ''
+			['filled', 'outlined'].includes(variant) && FillColor[theme],
+			variant === 'soft' && FillColorSoft[theme]
 		],
 		fontSize: size,
 		ringWidth: variant !== 'outlined' ? undefined : 'sm',
 		ringOffset: variant !== 'outlined' ? undefined : 'inset',
 		ringColor: variant !== 'outlined' ? undefined : theme,
 		ringColorHover: variant !== 'outlined' ? undefined : theme,
-		rounded: boolToValue(t.rounded, rounded || 'md'),
-		shadow: boolToValue(t.shadows, shadow || 'sm')
+		rounded: boolToValue(t.rounded, rounded, 'full'),
+		shadow: boolToValue(t.shadows, shadow, 'sm')
 	}) as ConfigProps;
 </script>
 

@@ -289,7 +289,7 @@ warning: 'text-warning-500 dark:text-warning-500',
 success: 'text-success-500 dark:text-success-500',
 info: 'text-info-500 dark:text-info-500',
 light: 'text-frame-400 dark:text-frame-400',
-dark: 'text-frame-600 dark:text-frame-500 ',
+dark: 'text-frame-600 dark:text-frame-600 ',
 white: 'text-white dark:text-white',
 }
 
@@ -303,7 +303,7 @@ warning: 'hover:text-warning-600 dark:hover:text-warning-600',
 success: 'hover:text-success-600 dark:hover:text-success-600',
 info: 'hover:text-info-600 dark:hover:text-info-600',
 light: 'hover:text-frame-500 dark:hover:text-frame-500',
-dark: 'hover:text-frame-700 dark:hover:text-frame-600 ',
+dark: 'hover:text-frame-700 dark:hover:text-frame-700 ',
 white: 'hover:text-frame-100 dark:hover:text-frame-100',
 }
 
@@ -317,7 +317,7 @@ warning: 'text-warning-100 dark:text-warning-800',
 success: 'text-success-100 dark:text-success-800',
 info: 'text-info-100 dark:text-info-800',
 light: 'text-frame-200 dark:text-frame-500',
-dark: 'text-frame-500 dark:text-frame-800 ',
+dark: 'text-frame-500 dark:text-frame-900/60 ',
 white: 'text-white dark:text-white',
 }
 
@@ -345,7 +345,7 @@ warning: 'stroke-warning-500 dark:stroke-warning-500',
 success: 'stroke-success-500 dark:stroke-success-500',
 info: 'stroke-info-500 dark:stroke-info-500',
 light: 'stroke-frame-400 dark:stroke-frame-400',
-dark: 'stroke-frame-600 dark:stroke-frame-500 ',
+dark: 'stroke-frame-600 dark:stroke-frame-600 ',
 white: 'stroke-white dark:stroke-white',
 }
 
@@ -359,7 +359,7 @@ warning: 'hover:stroke-warning-600 dark:hover:stroke-warning-600',
 success: 'hover:stroke-success-600 dark:hover:stroke-success-600',
 info: 'hover:stroke-info-600 dark:hover:stroke-info-600',
 light: 'hover:stroke-frame-500 dark:hover:stroke-frame-500',
-dark: 'hover:stroke-frame-700 dark:hover:stroke-frame-600 ',
+dark: 'hover:stroke-frame-700 dark:hover:stroke-frame-700 ',
 white: 'hover:stroke-frame-100 dark:hover:stroke-frame-100',
 }
 
@@ -374,7 +374,7 @@ warning: 'stroke-warning-100 dark:stroke-warning-800',
 success: 'stroke-success-100 dark:stroke-success-800',
 info: 'stroke-info-100 dark:stroke-info-800',
 light: 'stroke-frame-200 dark:stroke-frame-500',
-dark: 'stroke-frame-500 dark:stroke-frame-800 ',
+dark: 'stroke-frame-500 dark:stroke-frame-900/60 ',
 white: 'stroke-white dark:stroke-white',
 
 }
@@ -598,7 +598,7 @@ warning: 'bg-warning-100 dark:bg-warning-800',
 success: 'bg-success-100 dark:bg-success-800',
 info: 'bg-info-100 dark:bg-info-800',
 light: 'bg-frame-200 dark:bg-frame-500',
-dark: 'bg-frame-500 dark:bg-frame-800 ',
+dark: 'bg-frame-500 dark:bg-frame-900/60 ',
 white: 'bg-white dark:bg-white',
 
 }
@@ -628,7 +628,7 @@ warning: 'hover:bg-warning-100 dark:hover:bg-warning-800',
 success: 'hover:bg-success-100 dark:hover:bg-success-800',
 info: 'hover:bg-info-100 dark:hover:bg-info-800',
 light: 'hover:bg-frame-200 dark:hover:bg-frame-500',
-dark: 'hover:bg-frame-500 dark:hover:bg-frame-800 ',
+dark: 'hover:bg-frame-500 dark:hover:bg-frame-900/60 ',
 white: 'hover:bg-white dark:hover:bg-white',
 
 }
