@@ -2,10 +2,10 @@ import { error } from '@sveltejs/kit';
 
 export async function load({ params: { component } }) {
   try {
-    const module = await import(`../../../src/lib/components/${component}/${component}.md`);
+    const name = component.charAt(0).toUpperCase() + component.slice(1);
+    const module = await import(`../../lib/components/${component}/${name}Example.svelte`);
     return {
       content: module.default,
-      meta: module.metadata
     }
   } catch (e) {
     console.log(e);

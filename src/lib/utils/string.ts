@@ -1,30 +1,16 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-type RenderResult = {
-  head: string;
-  html: string;
-  css: {
-    code: string;
-    map: string | null;
-  }
-};
+import type { Page } from '@sveltejs/kit';
 
-type ComponentRenderProps<T extends abstract new (...args: any) => any> =
-  ConstructorParameters<T>[0]['props'];
-
-type RenderFunction<
-  T extends abstract new (...args: any) => any,
-  TProps = ComponentRenderProps<T>
-> = (props: TProps) => RenderResult;
-
-type ComponentWithRender<T extends abstract new (...args: any) => any> = T & {
-  render: RenderFunction<T>
-};
-
-export function renderToString<T extends abstract new (...args: any) => any>(
-  Component: T,
-  props: ComponentRenderProps<T>
+export function capitalize(value: string) {
+  return value.charAt(0).toUpperCase() + value.slice(1);
+}
+/**
+ * When string match uses index of or includes
+ * otherwise use RegExp with .test().
+ */
+export function pageIsActive(
+  page: Page<Record<string, string>, string | null>,
+  match: string | RegExp
 ) {
-  const { render } = Component as ComponentWithRender<T>;
-  const { html } = render(props);
-  return html;
+  if (typeof match === 'string') return page.url.pathname.includes(match);
+  return match.test(page.url.pathname);
 }

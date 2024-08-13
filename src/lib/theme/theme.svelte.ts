@@ -1,28 +1,22 @@
-import { type GlobalOptions } from './types.js';
-import cn from 'classnames';
+import { globals } from './constants.js';
 
-export type Theme = typeof _theme;
+export type Theme = typeof currentTheme;
 
-const globals: GlobalOptions = {
-  focusOffset: 'none',
-  rounded: 'unstyled',
-  transition: 'transition motion-reduce:transition-none',
-};
-
-const _theme = $state(globals);
+const currentTheme = $state(globals);
 
 export function updateTheme<T extends Theme>(theme = {} as Partial<T>) {
   for (const k in theme) {
     if (typeof theme[k] === 'undefined') continue;
-    (_theme as T)[k] = { ...(_theme as T)[k], ...theme[k] };
+
+    (currentTheme as T)[k] = { ...(currentTheme as T)[k], ...theme[k] };
   }
-  return _theme;
+  return currentTheme;
 }
 
-export function classNames(args: cn.ArgumentArray, removes = [] as string[]) {
-  const classes = cn(...args);
-  if (!removes.length) return classes;
-  return classes.split(' ').filter(c => !removes.find(r => c.startsWith(r))).join(' ');
-}
+// export function classNames(args: cn.ArgumentArray, removes = [] as string[]) {
+//   const classes = cn(...args);
+//   if (!removes.length) return classes;
+//   return classes.split(' ').filter(c => !removes.find(r => c.startsWith(r))).join(' ');
+// }
 
-export default _theme;
+export default currentTheme;

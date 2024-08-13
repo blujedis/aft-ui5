@@ -1,0 +1,54 @@
+<script context="module" lang="ts">
+	import {
+		type ThemeColor,
+		FillColor,
+		FillColorHover,
+		FillColorSoft,
+		FillColorSoftHover,
+		IconSize,
+		StrokeColor,
+		StrokeColorHover
+	} from '$lib/theme/types.js';
+	import type { IconProps as IconifyIconProps } from '@iconify/svelte';
+	import Icon from '@iconify/svelte';
+	import clsx from 'clsx';
+
+	export type IconProps = IconifyIconProps & {
+		class?: string | null;
+		hoverable?: boolean;
+		size?: keyof typeof IconSize;
+		theme?: ThemeColor;
+		stroke?: ThemeColor;
+		variant?: 'unstyled' | 'filled' | 'soft' | 'outlined';
+	};
+	export const iconVariants = ['filled', 'soft', 'outlined'] as IconProps['variant'][];
+</script>
+
+<script lang="ts">
+	let {
+		class: initClass = '',
+		hoverable,
+		icon,
+		size = 'sm',
+		stroke,
+		theme = 'unstyled', // by default will inherit from parent.
+		variant = 'filled',
+		...rest
+	}: IconProps = $props();
+
+	const iconClasses = $derived(
+		clsx(
+			`icon icon-${theme} inline-flex pointer-events-none`,
+			hoverable && 'pointer-events-auto',
+			['filled', 'outlined'].includes(variant) && FillColor[theme],
+			['filled', 'outlined'].includes(variant) && hoverable && FillColorHover[theme],
+			variant === 'soft' && FillColorSoft[theme],
+			variant === 'soft' && hoverable && FillColorSoftHover[theme],
+			(variant === 'outlined' || stroke) && StrokeColor[theme],
+			(variant === 'outlined' || stroke) && hoverable && StrokeColorHover[theme],
+			IconSize[size]
+		)
+	);
+</script>
+
+<Icon {...rest} {icon} class={iconClasses} aria-hidden={true} />

@@ -1,7 +1,8 @@
-export { default as BoxComponent } from './BaseElement.svelte';
-export { default as ColorMode } from './ColorMode/ColorMode.svelte';
-export { default as Button } from './Button/Button.svelte';
+export { default as BoxComponent } from './Base.svelte';
+export { default as ColorMode } from './colormode/ColorMode.svelte';
+export { default as Button } from './button/Button.svelte';
+export { default as Icon } from './icon/Icon.svelte';
 
-export * from './BaseElement.svelte';
-export * from './ColorMode/ColorMode.svelte';
-export * from './Button/Button.svelte';
+export * from './Base.svelte';
+export * from './colormode/ColorMode.svelte';
+export * from './button/Button.svelte';

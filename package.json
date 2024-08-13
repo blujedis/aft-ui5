@@ -15,6 +15,10 @@
 		"test:integration": "playwright test",
 		"test:unit": "vitest"
 	},
+	"type": "module",
+	"homepage": "http://localhost:5174",
+	"svelte": "./dist/index.js",
+	"types": "./dist/index.d.ts",
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
@@ -26,8 +30,15 @@
 		"!dist/**/*.test.*",
 		"!dist/**/*.spec.*"
 	],
+	"dependencies": {
+		"@floating-ui/dom": "^1.6.10",
+		"@iconify/svelte": "^4.0.2",
+		"dot-prop": "^9.0.0",
+		"md5": "^2.3.0",
+		"tailwind-merge": "^2.4.0"
+	},
 	"peerDependencies": {
-		"svelte": "^5.0.0-next.1"
+		"svelte": "^5.0.0-next.2"
 	},
 	"devDependencies": {
 		"@aft/config": "github:blujedis/aft-config#dev",
@@ -43,6 +54,7 @@
 		"@types/eslint": "^8.56.7",
 		"@types/node": "^20.14.12",
 		"autoprefixer": "^10.4.19",
+		"clsx": "^2.1.1",
 		"core": "link:@types/event-calendar/core",
 		"eslint": "^9.0.0",
 		"eslint-config-prettier": "^9.1.0",
@@ -69,12 +81,5 @@
 		"unified": "^11.0.5",
 		"vite": "^5.0.11",
 		"vitest": "^1.2.0"
-	},
-	"svelte": "./dist/index.js",
-	"types": "./dist/index.d.ts",
-	"type": "module",
-	"dependencies": {
-		"classnames": "^2.5.1",
-		"tailwind-merge": "^2.4.0"
 	}
 }

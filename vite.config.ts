@@ -1,6 +1,7 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vitest/config';
 import { buildTokens } from './genTokens.js';
+
 import { resolve } from 'path';
 
 
@@ -19,7 +20,7 @@ export default defineConfig({
 		fs: {
 			allow: ['..']
 		},
-		port: 5174,
+		port: 5173,
 		watch: {
 			ignored: [
 				'./watchTokens.ts',
@@ -29,7 +30,6 @@ export default defineConfig({
 				'./coverage/**',
 				'./test/**',
 				'./.tmp/**',
-				'./src/lib/theme/types.ts'
 			]
 		}
 	},
