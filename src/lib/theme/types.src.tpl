@@ -18,6 +18,20 @@ dark: '',
 white: '',
 };
 
+export const AlertIcons = {
+// primary: '',
+// secondary: '',
+// tertiary: '',
+danger: 'mdi:dangerous',
+warning: 'mdi:alert-outline',
+info: 'mdi:information-outline',
+success: 'mdi:check',
+// white: '',
+// light: '',
+// dark: '',
+// unstyled: ''
+};
+
 export const Size = {
 unstyled: '',
 xs: 'xs',

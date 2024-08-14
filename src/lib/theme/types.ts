@@ -2,7 +2,7 @@ export type FocusType = keyof typeof FocusTypes;
 export type SelectType = keyof typeof SelectTypes;
 export type ThemeColor = keyof typeof FontColor;
 
-export const build = ['avatar', 'badge', 'button', 'icon', 'image', 'stack'];
+export const build = ['alert', 'avatar', 'badge', 'button', 'icon', 'image', 'stack'];
 
 export const Placeholder = {
 unstyled: '',
@@ -317,7 +317,7 @@ warning: 'text-warning-100 dark:text-warning-800',
 success: 'text-success-100 dark:text-success-800',
 info: 'text-info-100 dark:text-info-800',
 light: 'text-frame-200 dark:text-frame-500',
-dark: 'text-frame-500 dark:text-frame-900/60 ',
+dark: 'text-frame-500 dark:text-frame-700 ',
 white: 'text-white dark:text-white',
 }
 
@@ -331,7 +331,7 @@ warning: 'hover:text-warning-200 dark:hover:text-warning-900',
 success: 'hover:text-success-200 dark:hover:text-success-900',
 info: 'hover:text-info-200 dark:hover:text-info-900',
 light: 'hover:text-frame-300 dark:hover:text-frame-600',
-dark: 'hover:text-frame-600 dark:hover:text-frame-950/50 ',
+dark: 'hover:text-frame-600 dark:hover:text-frame-800 ',
 white: 'hover:text-frame-200 dark:hover:text-frame-200',
 }
 
@@ -374,7 +374,7 @@ warning: 'stroke-warning-100 dark:stroke-warning-800',
 success: 'stroke-success-100 dark:stroke-success-800',
 info: 'stroke-info-100 dark:stroke-info-800',
 light: 'stroke-frame-200 dark:stroke-frame-500',
-dark: 'stroke-frame-500 dark:stroke-frame-900/60 ',
+dark: 'stroke-frame-500 dark:stroke-frame-700 ',
 white: 'stroke-white dark:stroke-white',
 
 }
@@ -389,7 +389,7 @@ warning: 'hover:stroke-warning-200 dark:hover:stroke-warning-900',
 success: 'hover:stroke-success-200 dark:hover:stroke-success-900',
 info: 'hover:stroke-info-200 dark:hover:stroke-info-900',
 light: 'hover:stroke-frame-300 dark:hover:stroke-frame-600',
-dark: 'hover:stroke-frame-600 dark:hover:stroke-frame-950/50 ',
+dark: 'hover:stroke-frame-600 dark:hover:stroke-frame-800 ',
 white: 'hover:stroke-frame-200 dark:hover:stroke-frame-200',
 }
 
@@ -598,7 +598,7 @@ warning: 'bg-warning-100 dark:bg-warning-800',
 success: 'bg-success-100 dark:bg-success-800',
 info: 'bg-info-100 dark:bg-info-800',
 light: 'bg-frame-200 dark:bg-frame-500',
-dark: 'bg-frame-500 dark:bg-frame-900/60 ',
+dark: 'bg-frame-500 dark:bg-frame-700 ',
 white: 'bg-white dark:bg-white',
 
 }
@@ -613,7 +613,7 @@ warning: 'hover:bg-warning-200 dark:hover:bg-warning-900',
 success: 'hover:bg-success-200 dark:hover:bg-success-900',
 info: 'hover:bg-info-200 dark:hover:bg-info-900',
 light: 'hover:bg-frame-300 dark:hover:bg-frame-600',
-dark: 'hover:bg-frame-600 dark:hover:bg-frame-950/50 ',
+dark: 'hover:bg-frame-600 dark:hover:bg-frame-800 ',
 white: 'hover:bg-frame-200 dark:hover:bg-frame-200',
 
 }
@@ -628,7 +628,7 @@ warning: 'hover:bg-warning-100 dark:hover:bg-warning-800',
 success: 'hover:bg-success-100 dark:hover:bg-success-800',
 info: 'hover:bg-info-100 dark:hover:bg-info-800',
 light: 'hover:bg-frame-200 dark:hover:bg-frame-500',
-dark: 'hover:bg-frame-500 dark:hover:bg-frame-900/60 ',
+dark: 'hover:bg-frame-500 dark:hover:bg-frame-700 ',
 white: 'hover:bg-white dark:hover:bg-white',
 
 }
@@ -643,7 +643,7 @@ warning: 'group-hover:bg-warning-200 dark:group-hover:bg-warning-900',
 success: 'group-hover:bg-success-200 dark:group-hover:bg-success-900',
 info: 'group-hover:bg-info-200 dark:group-hover:bg-info-900',
 light: 'group-hover:bg-frame-300 dark:group-hover:bg-frame-600',
-dark: 'group-hover:bg-frame-600 dark:group-hover:bg-frame-950/50 ',
+dark: 'group-hover:bg-frame-600 dark:group-hover:bg-frame-800 ',
 white: 'group-hover:bg-frame-200 dark:group-hover:bg-frame-200',
 
 }

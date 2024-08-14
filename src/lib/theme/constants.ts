@@ -11,3 +11,4 @@ export const globals: GlobalOptions = {
   shadows: true,
   transition: 'transition motion-reduce:transition-none',
 };
+

@@ -3,6 +3,7 @@
 	import { type ElementProps, type HTMLTag, type TransitionFn, type UseFn } from '$lib/types.js';
 	import { clsx, type ClassValue } from 'clsx';
 	import { twMerge } from 'tailwind-merge';
+	import { transitioner, type TransitionOptions } from '$lib/utils/transitioner.js';
 	import {
 		type SelectType,
 		type FocusType,
@@ -44,8 +45,7 @@
 		selectedType?: SelectType;
 		selectedTheme?: ThemeColor;
 		shadow?: keyof typeof Shadow;
-		transition?: TransitionFn;
-		transitionParams?: Record<string, unknown>;
+		transition?: TransitionOptions;
 		use?: UseFn;
 		useParams?: Record<string, unknown>;
 		visible?: boolean;
@@ -83,10 +83,9 @@
 		selectedTheme = 'unstyled',
 		shadow = 'unstyled',
 		transition,
-		transitionParams = {},
 		use = (node: HTMLElement, params: Record<string, unknown>) => {},
 		useParams = {},
-		visible,
+		visible = $bindable(),
 		classes: parentClasses = '',
 		class: userClasses = '',
 		children,
@@ -124,7 +123,7 @@
 			this={as}
 			bind:this={node}
 			use:use={useParams}
-			transition:transition={transitionParams}
+			transition:transitioner={transition}
 			class={classes}
 			{...rest}
 		>
@@ -135,7 +134,7 @@
 			this={as}
 			bind:this={node}
 			use:use={useParams}
-			transition:transition={transitionParams}
+			transition:transitioner={transition}
 			class={classes}
 			{...rest}
 		/>
