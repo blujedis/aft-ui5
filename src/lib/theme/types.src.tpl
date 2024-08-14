@@ -191,7 +191,7 @@ md: 'px-5',
 lg: 'px-6',
 xl: 'px-7',
 xl2: 'px-8'
-}
+};
 
 export const BadgePaddingX = {
 unstyled: '',
@@ -201,7 +201,17 @@ md: 'px-1.5',
 lg: 'px-2',
 xl: 'px-2 ',
 xl2: 'px-2.5'
-}
+};
+
+export const AlertPadding = {
+unstyled: '',
+xs: 'p-2.5',
+sm: 'p-3',
+md: 'p-4',
+lg: 'p-5',
+xl: 'p-6',
+xl2: 'p-7'
+};
 
 export const IconSize = {
 unstyled: '',
@@ -212,7 +222,18 @@ lg: 'h-8 w-8',
 xl: 'h-10 w-10',
 xl2: 'h-12 w-12',
 full: 'w-full h-full'
-}
+};
+
+export const AlertIconSize = {
+unstyled: '',
+xs: 'h-4 w-4',
+sm: 'h-4.5 w-4.5',
+md: 'h-5 w-5',
+lg: 'h-6 w-6',
+xl: 'h-7 w-7',
+xl2: 'h-8 w-8'
+};
+
 
 export const FontSize = {
 unstyled: '',
@@ -230,7 +251,7 @@ xl6: 'text-6xl',
 xl7: 'text-7xl',
 xl8: 'text-8xl',
 xl9: 'text-9xl'
-}
+};
 
 
 export const ButtonFontSize = {
@@ -241,7 +262,7 @@ md: FontSize.sm,
 lg: FontSize.md,
 xl: FontSize.lg,
 xl2: FontSize.xl
-}
+};
 
 export const BadgeFontSize = {
 unstyled: '',
@@ -273,7 +294,7 @@ medium: 'font-medium',
 semibold: 'font-semibold',
 bold: 'font-bold',
 extrabold: 'font-extrabold',
-}
+};
 
 export const FontLeading = {
 unstyled: '',
@@ -291,7 +312,7 @@ snug: 'leading-snug',
 normal: 'leading-normal',
 relaxed: 'leading-relaxed',
 loose: 'leading-loose'
-}
+};
 
 export const FillColor = {
 unstyled: '',
@@ -305,7 +326,7 @@ info: 'text-{{=i.icon.info[0]}} dark:text-{{=i.icon.info[1]}}',
 light: 'text-{{=i.icon.light[0]}} dark:text-{{=i.icon.light[1]}}',
 dark: 'text-{{=i.icon.dark[0]}} dark:text-{{=i.icon.dark[1]}} ',
 white: 'text-{{=i.icon.white[0]}} dark:text-{{=i.icon.white[1]}}',
-}
+};
 
 export const FillColorHover = {
 unstyled: '',
@@ -319,7 +340,7 @@ info: 'hover:text-{{=i.icon.infoH[0]}} dark:hover:text-{{=i.icon.infoH[1]}}',
 light: 'hover:text-{{=i.icon.lightH[0]}} dark:hover:text-{{=i.icon.lightH[1]}}',
 dark: 'hover:text-{{=i.icon.darkH[0]}} dark:hover:text-{{=i.icon.darkH[1]}} ',
 white: 'hover:text-{{=i.icon.whiteH[0]}} dark:hover:text-{{=i.icon.whiteH[1]}}',
-}
+};
 
 export const FillColorSoft = {
 unstyled: '',
@@ -333,7 +354,7 @@ info: 'text-{{=i.iconSoft.info[0]}} dark:text-{{=i.iconSoft.info[1]}}',
 light: 'text-{{=i.iconSoft.light[0]}} dark:text-{{=i.iconSoft.light[1]}}',
 dark: 'text-{{=i.iconSoft.dark[0]}} dark:text-{{=i.iconSoft.dark[1]}} ',
 white: 'text-{{=i.iconSoft.white[0]}} dark:text-{{=i.iconSoft.white[1]}}',
-}
+};
 
 export const FillColorSoftHover = {
 unstyled: '',
@@ -347,7 +368,7 @@ info: 'hover:text-{{=i.iconSoft.infoH[0]}} dark:hover:text-{{=i.iconSoft.infoH[1
 light: 'hover:text-{{=i.iconSoft.lightH[0]}} dark:hover:text-{{=i.iconSoft.lightH[1]}}',
 dark: 'hover:text-{{=i.iconSoft.darkH[0]}} dark:hover:text-{{=i.iconSoft.darkH[1]}} ',
 white: 'hover:text-{{=i.iconSoft.whiteH[0]}} dark:hover:text-{{=i.iconSoft.whiteH[1]}}',
-}
+};
 
 export const StrokeColor = {
 unstyled: '',
@@ -361,7 +382,7 @@ info: 'stroke-{{=i.icon.info[0]}} dark:stroke-{{=i.icon.info[1]}}',
 light: 'stroke-{{=i.icon.light[0]}} dark:stroke-{{=i.icon.light[1]}}',
 dark: 'stroke-{{=i.icon.dark[0]}} dark:stroke-{{=i.icon.dark[1]}} ',
 white: 'stroke-{{=i.icon.white[0]}} dark:stroke-{{=i.icon.white[1]}}',
-}
+};
 
 export const StrokeColorHover = {
 unstyled: '',
@@ -375,8 +396,7 @@ info: 'hover:stroke-{{=i.icon.infoH[0]}} dark:hover:stroke-{{=i.icon.infoH[1]}}'
 light: 'hover:stroke-{{=i.icon.lightH[0]}} dark:hover:stroke-{{=i.icon.lightH[1]}}',
 dark: 'hover:stroke-{{=i.icon.darkH[0]}} dark:hover:stroke-{{=i.icon.darkH[1]}} ',
 white: 'hover:stroke-{{=i.icon.whiteH[0]}} dark:hover:stroke-{{=i.icon.whiteH[1]}}',
-}
-
+};
 
 export const StrokeColorSoft = {
 unstyled: '',
@@ -390,8 +410,7 @@ info: 'stroke-{{=i.iconSoft.info[0]}} dark:stroke-{{=i.iconSoft.info[1]}}',
 light: 'stroke-{{=i.iconSoft.light[0]}} dark:stroke-{{=i.iconSoft.light[1]}}',
 dark: 'stroke-{{=i.iconSoft.dark[0]}} dark:stroke-{{=i.iconSoft.dark[1]}} ',
 white: 'stroke-{{=i.iconSoft.white[0]}} dark:stroke-{{=i.iconSoft.white[1]}}',
-
-}
+};
 
 export const StrokeColorSoftHover = {
 unstyled: '',
@@ -405,7 +424,7 @@ info: 'hover:stroke-{{=i.iconSoft.infoH[0]}} dark:hover:stroke-{{=i.iconSoft.inf
 light: 'hover:stroke-{{=i.iconSoft.lightH[0]}} dark:hover:stroke-{{=i.iconSoft.lightH[1]}}',
 dark: 'hover:stroke-{{=i.iconSoft.darkH[0]}} dark:hover:stroke-{{=i.iconSoft.darkH[1]}} ',
 white: 'hover:stroke-{{=i.iconSoft.whiteH[0]}} dark:hover:stroke-{{=i.iconSoft.whiteH[1]}}',
-}
+};
 
 
 export const FontColor = {
@@ -420,8 +439,7 @@ info: 'text-{{=i.font.info[0]}} dark:text-{{=i.font.info[1]}}',
 light: 'text-{{=i.font.light[0]}} dark:text-{{=i.font.light[1]}}',
 dark: 'text-{{=i.font.dark[0]}} dark:text-{{=i.font.dark[1]}} ',
 white: 'text-{{=i.font.white[0]}} dark:text-{{=i.font.white[1]}}',
-
-}
+};
 
 export const FontColorHover = {
 unstyled: '',
@@ -435,8 +453,7 @@ info: 'hover:text-{{=i.font.infoH[0]}} dark:hover:text-{{=i.font.infoH[1]}}',
 light: 'hover:text-{{=i.font.lightH[0]}} dark:hover:text-{{=i.font.lightH[1]}}',
 dark: 'hover:text-{{=i.font.darkH[0]}} dark:hover:text-{{=i.font.darkH[1]}} ',
 white: 'hover:text-{{=i.font.whiteH[0]}} dark:hover:text-{{=i.font.whiteH[1]}}',
-
-}
+};
 
 export const ForeColorText = {
 unstyled: '',
@@ -450,8 +467,7 @@ info: 'text-{{=i.foreText.info[0]}} dark:text-{{=i.foreText.info[1]}}',
 light: 'text-{{=i.foreText.light[0]}} dark:text-{{=i.foreText.light[1]}}',
 dark: 'text-{{=i.foreText.dark[0]}} dark:text-{{=i.foreText.dark[1]}} ',
 white: 'text-{{=i.foreText.white[0]}} dark:text-{{=i.foreText.white[1]}}',
-
-}
+};
 
 export const ForeColorTextHover = {
 unstyled: '',
@@ -465,8 +481,7 @@ info: 'hover:text-{{=i.foreText.infoH[0]}} dark:hover:text-{{=i.foreText.infoH[1
 light: 'hover:text-{{=i.foreText.lightH[0]}} dark:hover:text-{{=i.foreText.lightH[1]}}',
 dark: 'hover:text-{{=i.foreText.darkH[0]}} dark:hover:text-{{=i.foreText.darkH[1]}} ',
 white: 'hover:text-{{=i.foreText.whiteH[0]}} dark:hover:text-{{=i.foreText.whiteH[1]}}',
-
-}
+};
 
 export const ForeColorFilled = {
 unstyled: '',
@@ -480,8 +495,7 @@ info: 'text-{{=i.foreFill.info[0]}} dark:text-{{=i.foreFill.info[1]}}',
 light: 'text-{{=i.foreFill.light[0]}} dark:text-{{=i.foreFill.light[1]}}',
 dark: 'text-{{=i.foreFill.dark[0]}} dark:text-{{=i.foreFill.dark[1]}} ',
 white: 'text-{{=i.foreFill.white[0]}} dark:text-{{=i.foreFill.white[1]}}',
-
-}
+};
 
 export const ForeColorFilledHover = {
 unstyled: '',
@@ -495,8 +509,7 @@ info: 'hover:text-{{=i.foreFill.infoH[0]}} dark:hover:text-{{=i.foreFill.infoH[1
 light: 'hover:text-{{=i.foreFill.lightH[0]}} dark:hover:text-{{=i.foreFill.lightH[1]}}',
 dark: 'hover:text-{{=i.foreFill.darkH[0]}} dark:hover:text-{{=i.foreFill.darkH[1]}} ',
 white: 'hover:text-{{=i.foreFill.whiteH[0]}} dark:hover:text-{{=i.foreFill.whiteH[1]}}',
-
-}
+};
 
 export const ForeColorSoft = {
 unstyled: '',
@@ -510,8 +523,8 @@ info: 'text-{{=i.foreSoft.info[0]}} dark:text-{{=i.foreSoft.info[1]}}',
 light: 'text-{{=i.foreSoft.light[0]}} dark:text-{{=i.foreSoft.light[1]}}',
 dark: 'text-{{=i.foreSoft.dark[0]}} dark:text-{{=i.foreSoft.dark[1]}} ',
 white: 'text-{{=i.foreSoft.white[0]}} dark:text-{{=i.foreSoft.white[1]}}',
+};
 
-}
 export const ForeColorSoftHover = {
 unstyled: '',
 primary: 'hover:text-{{=i.foreSoft.primaryH[0]}} dark:hover:text-{{=i.foreSoft.primaryH[1]}}',
@@ -524,8 +537,7 @@ info: 'hover:text-{{=i.foreSoft.infoH[0]}} dark:hover:text-{{=i.foreSoft.infoH[1
 light: 'hover:text-{{=i.foreSoft.lightH[0]}} dark:hover:text-{{=i.foreSoft.lightH[1]}}',
 dark: 'hover:text-{{=i.foreSoft.darkH[0]}} dark:hover:text-{{=i.foreSoft.darkH[1]}} ',
 white: 'hover:text-{{=i.foreSoft.whiteH[0]}} dark:hover:text-{{=i.foreSoft.whiteH[1]}}',
-
-}
+};
 
 export const ForeColorGhost = {
 unstyled: '',
@@ -539,8 +551,7 @@ info: 'text-{{=i.foreGhost.info[0]}} dark:text-{{=i.foreGhost.info[1]}}',
 light: 'text-{{=i.foreGhost.light[0]}} dark:text-{{=i.foreGhost.light[1]}}',
 dark: 'text-{{=i.foreGhost.dark[0]}} dark:text-{{=i.foreGhost.dark[1]}} ',
 white: 'text-{{=i.foreGhost.white[0]}} dark:text-{{=i.foreGhost.white[1]}}',
-
-}
+};
 
 export const ForeColorGhostHover = {
 unstyled: '',
@@ -554,8 +565,7 @@ info: 'hover:text-{{=i.foreGhost.infoH[0]}} dark:hover:text-{{=i.foreGhost.infoH
 light: 'hover:text-{{=i.foreGhost.lightH[0]}} dark:hover:text-{{=i.foreGhost.lightH[1]}}',
 dark: 'hover:text-{{=i.foreGhost.darkH[0]}} dark:hover:text-{{=i.foreGhost.darkH[1]}} ',
 white: 'hover:text-{{=i.foreGhost.whiteH[0]}} dark:hover:text-{{=i.foreGhost.whiteH[1]}}',
-
-}
+};
 
 export const BgColor = {
 unstyled: '',
@@ -569,8 +579,7 @@ info: 'bg-{{=i.bg.info[0]}} dark:bg-{{=i.bg.info[1]}}',
 light: 'bg-{{=i.bg.light[0]}} dark:bg-{{=i.bg.light[1]}}',
 dark: 'bg-{{=i.bg.dark[0]}} dark:bg-{{=i.bg.dark[1]}} ',
 white: 'bg-{{=i.bg.white[0]}} dark:bg-{{=i.bg.white[1]}}',
-
-}
+};
 
 export const BgColorHover = {
 unstyled: '',
@@ -584,8 +593,7 @@ info: 'hover:bg-{{=i.bg.infoH[0]}} dark:hover:bg-{{=i.bg.infoH[1]}}',
 light: 'hover:bg-{{=i.bg.lightH[0]}} dark:hover:bg-{{=i.bg.lightH[1]}}',
 dark: 'hover:bg-{{=i.bg.darkH[0]}} dark:hover:bg-{{=i.bg.darkH[1]}} ',
 white: 'hover:bg-{{=i.bg.whiteH[0]}} dark:hover:bg-{{=i.bg.whiteH[1]}}',
-
-}
+};
 
 export const BgColorGroupHover = {
 unstyled: '',
@@ -599,8 +607,7 @@ info: 'group-hover:bg-{{=i.bg.infoH[0]}} dark:group-hover:bg-{{=i.bg.infoH[1]}}'
 light: 'group-hover:bg-{{=i.bg.lightH[0]}} dark:group-hover:bg-{{=i.bg.lightH[1]}}',
 dark: 'group-hover:bg-{{=i.bg.darkH[0]}} dark:group-hover:bg-{{=i.bg.darkH[1]}} ',
 white: 'group-hover:bg-{{=i.bg.whiteH[0]}} dark:group-hover:bg-{{=i.bg.whiteH[1]}}',
-
-}
+};
 
 export const BgColorSoft = {
 unstyled: '',
@@ -614,8 +621,7 @@ info: 'bg-{{=i.bgSoft.info[0]}} dark:bg-{{=i.bgSoft.info[1]}}',
 light: 'bg-{{=i.bgSoft.light[0]}} dark:bg-{{=i.bgSoft.light[1]}}',
 dark: 'bg-{{=i.bgSoft.dark[0]}} dark:bg-{{=i.bgSoft.dark[1]}} ',
 white: 'bg-{{=i.bgSoft.white[0]}} dark:bg-{{=i.bgSoft.white[1]}}',
-
-}
+};
 
 export const BgColorSoftHover = {
 unstyled: '',
@@ -629,8 +635,7 @@ info: 'hover:bg-{{=i.bgSoft.infoH[0]}} dark:hover:bg-{{=i.bgSoft.infoH[1]}}',
 light: 'hover:bg-{{=i.bgSoft.lightH[0]}} dark:hover:bg-{{=i.bgSoft.lightH[1]}}',
 dark: 'hover:bg-{{=i.bgSoft.darkH[0]}} dark:hover:bg-{{=i.bgSoft.darkH[1]}} ',
 white: 'hover:bg-{{=i.bgSoft.whiteH[0]}} dark:hover:bg-{{=i.bgSoft.whiteH[1]}}',
-
-}
+};
 
 export const BgColorGhostHover = {
 unstyled: '',
@@ -644,8 +649,7 @@ info: 'hover:bg-{{=i.bgGhost.info[0]}} dark:hover:bg-{{=i.bgGhost.info[1]}}',
 light: 'hover:bg-{{=i.bgGhost.light[0]}} dark:hover:bg-{{=i.bgGhost.light[1]}}',
 dark: 'hover:bg-{{=i.bgGhost.dark[0]}} dark:hover:bg-{{=i.bgGhost.dark[1]}} ',
 white: 'hover:bg-{{=i.bgGhost.white[0]}} dark:hover:bg-{{=i.bgGhost.white[1]}}',
-
-}
+};
 
 export const BgColorSoftGroupHover = {
 unstyled: '',
@@ -659,8 +663,7 @@ info: 'group-hover:bg-{{=i.bgSoft.infoH[0]}} dark:group-hover:bg-{{=i.bgSoft.inf
 light: 'group-hover:bg-{{=i.bgSoft.lightH[0]}} dark:group-hover:bg-{{=i.bgSoft.lightH[1]}}',
 dark: 'group-hover:bg-{{=i.bgSoft.darkH[0]}} dark:group-hover:bg-{{=i.bgSoft.darkH[1]}} ',
 white: 'group-hover:bg-{{=i.bgSoft.whiteH[0]}} dark:group-hover:bg-{{=i.bgSoft.whiteH[1]}}',
-
-}
+};
 
 export const BgColorSelected = {
 unstyled: '',
@@ -674,8 +677,7 @@ info: 'aria-selected:bg-{{=i.bgSelect.info[0]}} dark:aria-selected:bg-{{=i.bgSel
 light: 'aria-selected:bg-{{=i.bgSelect.light[0]}} dark:aria-selected:bg-{{=i.bgSelect.light[1]}}',
 dark: 'aria-selected:bg-{{=i.bgSelect.dark[0]}} dark:aria-selected:bg-{{=i.bgSelect.dark[1]}} ',
 white: 'aria-selected:bg-{{=i.bgSelect.white[0]}} dark:aria-selected:bg-{{=i.bgSelect.white[1]}}',
-
-}
+};
 
 export const BgColorExpanded = {
 unstyled: '',
@@ -689,8 +691,7 @@ info: 'aria-expanded:bg-{{=i.bgSelect.info[0]}} dark:aria-expanded:bg-{{=i.bgSel
 light: 'aria-expanded:bg-{{=i.bgSelect.light[0]}} dark:aria-expanded:bg-{{=i.bgSelect.light[1]}}',
 dark: 'aria-expanded:bg-{{=i.bgSelect.dark[0]}} dark:aria-expanded:bg-{{=i.bgSelect.dark[1]}} ',
 white: 'aria-expanded:bg-{{=i.bgSelect.white[0]}} dark:aria-expanded:bg-{{=i.bgSelect.white[1]}}',
-
-}
+};
 
 export const BgColorChecked = {
 unstyled: '',
@@ -704,8 +705,7 @@ info: 'aria-checked:bg-{{=i.bgSelect.info[0]}} dark:aria-checked:bg-{{=i.bgSelec
 light: 'aria-checked:bg-{{=i.bgSelect.light[0]}} dark:aria-checked:bg-{{=i.bgSelect.light[1]}}',
 dark: 'aria-checked:bg-{{=i.bgSelect.dark[0]}} dark:aria-checked:bg-{{=i.bgSelect.dark[1]}} ',
 white: 'aria-checked:bg-{{=i.bgSelect.white[0]}} dark:aria-checked:bg-{{=i.bgSelect.white[1]}}',
-
-}
+};
 
 export const BgColorCurrent = {
 unstyled: '',
@@ -721,8 +721,7 @@ info: 'aria-[current="page"]:bg-{{=i.bgSelect.info[0]}} dark:aria-[current="page
 light: 'aria-[current="page"]:bg-{{=i.bgSelect.light[0]}} dark:aria-[current="page"]:bg-{{=i.bgSelect.light[1]}}',
 dark: 'aria-[current="page"]:bg-{{=i.bgSelect.dark[0]}} dark:aria-[current="page"]:bg-{{=i.bgSelect.dark[1]}} ',
 white: 'aria-[current="page"]:bg-{{=i.bgSelect.white[0]}} dark:aria-[current="page"]:bg-{{=i.bgSelect.white[1]}}',
-
-}
+};
 
 export const RingColor = {
 unstyled: '',
@@ -736,8 +735,7 @@ info: 'ring-{{=i.outline.info[0]}} dark:ring-{{=i.outline.info[1]}}',
 light: 'ring-{{=i.outline.light[0]}} dark:ring-{{=i.outline.light[1]}}',
 dark: 'ring-{{=i.outline.dark[0]}} dark:ring-{{=i.outline.dark[1]}}',
 white: 'ring-{{=i.outline.white[0]}} dark:ring-{{=i.outline.white[1]}}',
-
-}
+};
 
 export const RingColorHover = {
 unstyled: '',
@@ -751,8 +749,7 @@ info: 'hover:ring-{{=i.outline.infoH[0]}} dark:hover:ring-{{=i.outline.infoH[1]}
 light: 'hover:ring-{{=i.outline.lightH[0]}} dark:hover:ring-{{=i.outline.lightH[1]}}',
 dark: 'hover:ring-{{=i.outline.darkH[0]}} dark:hover:ring-{{=i.outline.darkH[1]}}',
 white: 'hover:ring-{{=i.outline.whiteH[0]}} dark:hover:ring-{{=i.outline.whiteH[1]}}',
-
-}
+};
 
 export const BorderColor = {
 unstyled: '',
@@ -766,8 +763,7 @@ info: 'border-{{=i.outline.info[0]}} dark:border-{{=i.outline.info[1]}}',
 light: 'border-{{=i.outline.light[0]}} dark:border-{{=i.outline.light[1]}}',
 dark: 'border-{{=i.outline.dark[0]}} dark:border-{{=i.outline.dark[1]}}',
 white: 'border-{{=i.outline.white[0]}} dark:border-{{=i.outline.white[1]}}',
-
-}
+};
 
 export const BorderColorHover = {
 unstyled: '',
@@ -781,8 +777,7 @@ info: 'hover:border-{{=i.outline.infoH[0]}} dark:hover:border-{{=i.outline.infoH
 light: 'hover:border-{{=i.outline.lightH[0]}} dark:hover:border-{{=i.outline.lightH[1]}}',
 dark: 'hover:border-{{=i.outline.darkH[0]}} dark:hover:border-{{=i.outline.darkH[1]}}',
 white: 'hover:border-{{=i.outline.whiteH[0]}} dark:hover:border-{{=i.outline.whiteH[1]}}',
-
-}
+};
 
 export const DivideColor = {
 unstyled: '',
@@ -796,8 +791,7 @@ info: 'divide-{{=i.outline.info[0]}} dark:divide-{{=i.outline.info[1]}}',
 light: 'divide-{{=i.outline.light[0]}} dark:divide-{{=i.outline.light[1]}}',
 dark: 'divide-{{=i.outline.dark[0]}} dark:divide-{{=i.outline.dark[1]}}',
 white: 'divide-{{=i.outline.white[0]}} dark:divide-{{=i.outline.white[1]}}',
-
-}
+};
 
 
 export const OutlineColorFocus = {
@@ -812,8 +806,7 @@ info: 'focus:outline-{{=i.outlineFocus.info[0]}} dark:focus:outline-{{=i.outline
 light: 'focus:outline-{{=i.outlineFocus.light[0]}} dark:focus:outline-{{=i.outlineFocus.light[1]}}',
 dark: 'focus:outline-{{=i.outlineFocus.dark[0]}} dark:focus:outline-{{=i.outlineFocus.dark[1]}} ',
 white: 'focus:outline-{{=i.outlineFocus.white[0]}} dark:focus:outline-{{=i.outlineFocus.white[1]}}',
-
-}
+};
 
 export const OutlineColorFocusVisible = {
 unstyled: '',
@@ -832,8 +825,7 @@ info: 'focus-visible:outline-{{=i.outlineFocus.info[0]}} dark:focus-visible:outl
 light: 'focus-visible:outline-{{=i.outlineFocus.light[0]}} dark:focus-visible:outline-{{=i.outlineFocus.light[1]}}',
 dark: 'focus-visible:outline-{{=i.outlineFocus.dark[0]}} dark:focus-visible:outline-{{=i.outlineFocus.dark[1]}} ',
 white: 'focus-visible:outline-{{=i.outlineFocus.white[0]}} dark:focus-visible:outline-{{=i.outlineFocus.white[1]}}',
-
-}
+};
 
 export const OutlineColorFocusGroup = {
 unstyled: '',
@@ -849,8 +841,7 @@ info: 'group-focus:outline-{{=i.outlineFocus.info[0]}} dark:group-focus:outline-
 light: 'group-focus:outline-{{=i.outlineFocus.light[0]}} dark:group-focus:outline-{{=i.outlineFocus.light[1]}}',
 dark: 'group-focus:outline-{{=i.outlineFocus.dark[0]}} dark:group-focus:outline-{{=i.outlineFocus.dark[1]}} ',
 white: 'group-focus:outline-{{=i.outlineFocus.white[0]}} dark:group-focus:outline-{{=i.outlineFocus.white[1]}}',
-
-}
+};
 
 export const OutlineColorFocusWithin = {
 unstyled: '',
@@ -866,8 +857,7 @@ info: 'focus-within:outline-{{=i.outlineFocus.info[0]}} dark:focus-within:outlin
 light: 'focus-within:outline-{{=i.outlineFocus.light[0]}} dark:focus-within:outline-{{=i.outlineFocus.light[1]}}',
 dark: 'focus-within:outline-{{=i.outlineFocus.dark[0]}} dark:focus-within:outline-{{=i.outlineFocus.dark[1]}} ',
 white: 'focus-within:outline-{{=i.outlineFocus.white[0]}} dark:focus-within:outline-{{=i.outlineFocus.white[1]}}',
-
-}
+};
 
 export const OutlineColorFocusPeer = {
 unstyled: '',
@@ -882,8 +872,7 @@ info: 'peer-focus:outline-{{=i.outlineFocus.info[0]}} dark:peer-focus:outline-{{
 light: 'peer-focus:outline-{{=i.outlineFocus.light[0]}} dark:peer-focus:outline-{{=i.outlineFocus.light[1]}}',
 dark: 'peer-focus:outline-{{=i.outlineFocus.dark[0]}} dark:peer-focus:outline-{{=i.outlineFocus.dark[1]}} ',
 white: 'peer-focus:outline-{{=i.outlineFocus.white[0]}} dark:peer-focus:outline-{{=i.outlineFocus.white[1]}}',
-
-}
+};
 
 export const FocusTypes = {
 unstyled: Placeholder,
@@ -908,6 +897,6 @@ focusWidth: keyof typeof OutlineWidth;
 rounded: boolean; // when true rounding are permitted.
 shadows: boolean; // when true shadows are permitted.
 transition: string | false | undefined | null;
-}
+};
 
 export const colors = Object.keys(BgColor) as ThemeColor[];

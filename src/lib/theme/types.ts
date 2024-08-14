@@ -2,7 +2,7 @@ export type FocusType = keyof typeof FocusTypes;
 export type SelectType = keyof typeof SelectTypes;
 export type ThemeColor = keyof typeof FontColor;
 
-export const build = ['alert', 'avatar', 'badge', 'button', 'icon', 'image', 'stack'];
+export const build = ['alert', 'avatar', 'badge', 'button', 'conditional', 'icon', 'image', 'stack'];
 
 export const Placeholder = {
 unstyled: '',
@@ -16,6 +16,20 @@ info: '',
 light: '',
 dark: '',
 white: '',
+};
+
+export const AlertIcons = {
+// primary: '',
+// secondary: '',
+// tertiary: '',
+danger: 'mdi:dangerous',
+warning: 'mdi:alert-outline',
+info: 'mdi:information-outline',
+success: 'mdi:check',
+// white: '',
+// light: '',
+// dark: '',
+// unstyled: ''
 };
 
 export const Size = {
@@ -177,7 +191,7 @@ md: 'px-5',
 lg: 'px-6',
 xl: 'px-7',
 xl2: 'px-8'
-}
+};
 
 export const BadgePaddingX = {
 unstyled: '',
@@ -187,7 +201,17 @@ md: 'px-1.5',
 lg: 'px-2',
 xl: 'px-2 ',
 xl2: 'px-2.5'
-}
+};
+
+export const AlertPadding = {
+unstyled: '',
+xs: 'p-2.5',
+sm: 'p-3',
+md: 'p-4',
+lg: 'p-5',
+xl: 'p-6',
+xl2: 'p-7'
+};
 
 export const IconSize = {
 unstyled: '',
@@ -198,7 +222,18 @@ lg: 'h-8 w-8',
 xl: 'h-10 w-10',
 xl2: 'h-12 w-12',
 full: 'w-full h-full'
-}
+};
+
+export const AlertIconSize = {
+unstyled: '',
+xs: 'h-4 w-4',
+sm: 'h-4.5 w-4.5',
+md: 'h-5 w-5',
+lg: 'h-6 w-6',
+xl: 'h-7 w-7',
+xl2: 'h-8 w-8'
+};
+
 
 export const FontSize = {
 unstyled: '',
@@ -216,7 +251,7 @@ xl6: 'text-6xl',
 xl7: 'text-7xl',
 xl8: 'text-8xl',
 xl9: 'text-9xl'
-}
+};
 
 
 export const ButtonFontSize = {
@@ -227,7 +262,7 @@ md: FontSize.sm,
 lg: FontSize.md,
 xl: FontSize.lg,
 xl2: FontSize.xl
-}
+};
 
 export const BadgeFontSize = {
 unstyled: '',
@@ -259,7 +294,7 @@ medium: 'font-medium',
 semibold: 'font-semibold',
 bold: 'font-bold',
 extrabold: 'font-extrabold',
-}
+};
 
 export const FontLeading = {
 unstyled: '',
@@ -277,7 +312,7 @@ snug: 'leading-snug',
 normal: 'leading-normal',
 relaxed: 'leading-relaxed',
 loose: 'leading-loose'
-}
+};
 
 export const FillColor = {
 unstyled: '',
@@ -291,7 +326,7 @@ info: 'text-info-500 dark:text-info-500',
 light: 'text-frame-400 dark:text-frame-400',
 dark: 'text-frame-600 dark:text-frame-600 ',
 white: 'text-white dark:text-white',
-}
+};
 
 export const FillColorHover = {
 unstyled: '',
@@ -305,7 +340,7 @@ info: 'hover:text-info-600 dark:hover:text-info-600',
 light: 'hover:text-frame-500 dark:hover:text-frame-500',
 dark: 'hover:text-frame-700 dark:hover:text-frame-700 ',
 white: 'hover:text-frame-100 dark:hover:text-frame-100',
-}
+};
 
 export const FillColorSoft = {
 unstyled: '',
@@ -319,7 +354,7 @@ info: 'text-info-100 dark:text-info-800',
 light: 'text-frame-200 dark:text-frame-500',
 dark: 'text-frame-500 dark:text-frame-700 ',
 white: 'text-white dark:text-white',
-}
+};
 
 export const FillColorSoftHover = {
 unstyled: '',
@@ -333,7 +368,7 @@ info: 'hover:text-info-200 dark:hover:text-info-900',
 light: 'hover:text-frame-300 dark:hover:text-frame-600',
 dark: 'hover:text-frame-600 dark:hover:text-frame-800 ',
 white: 'hover:text-frame-200 dark:hover:text-frame-200',
-}
+};
 
 export const StrokeColor = {
 unstyled: '',
@@ -347,7 +382,7 @@ info: 'stroke-info-500 dark:stroke-info-500',
 light: 'stroke-frame-400 dark:stroke-frame-400',
 dark: 'stroke-frame-600 dark:stroke-frame-600 ',
 white: 'stroke-white dark:stroke-white',
-}
+};
 
 export const StrokeColorHover = {
 unstyled: '',
@@ -361,8 +396,7 @@ info: 'hover:stroke-info-600 dark:hover:stroke-info-600',
 light: 'hover:stroke-frame-500 dark:hover:stroke-frame-500',
 dark: 'hover:stroke-frame-700 dark:hover:stroke-frame-700 ',
 white: 'hover:stroke-frame-100 dark:hover:stroke-frame-100',
-}
-
+};
 
 export const StrokeColorSoft = {
 unstyled: '',
@@ -376,8 +410,7 @@ info: 'stroke-info-100 dark:stroke-info-800',
 light: 'stroke-frame-200 dark:stroke-frame-500',
 dark: 'stroke-frame-500 dark:stroke-frame-700 ',
 white: 'stroke-white dark:stroke-white',
-
-}
+};
 
 export const StrokeColorSoftHover = {
 unstyled: '',
@@ -391,7 +424,7 @@ info: 'hover:stroke-info-200 dark:hover:stroke-info-900',
 light: 'hover:stroke-frame-300 dark:hover:stroke-frame-600',
 dark: 'hover:stroke-frame-600 dark:hover:stroke-frame-800 ',
 white: 'hover:stroke-frame-200 dark:hover:stroke-frame-200',
-}
+};
 
 
 export const FontColor = {
@@ -406,8 +439,7 @@ info: 'text-info-500 dark:text-info-200',
 light: 'text-frame-400 dark:text-frame-200',
 dark: 'text-frame-600 dark:text-frame-200 ',
 white: 'text-white dark:text-white',
-
-}
+};
 
 export const FontColorHover = {
 unstyled: '',
@@ -421,8 +453,7 @@ info: 'hover:text-info-600 dark:hover:text-info-300',
 light: 'hover:text-frame-500 dark:hover:text-frame-300',
 dark: 'hover:text-frame-700 dark:hover:text-frame-300 ',
 white: 'hover:text-frame-100 dark:hover:text-frame-100',
-
-}
+};
 
 export const ForeColorText = {
 unstyled: '',
@@ -436,8 +467,7 @@ info: 'text-info-500 dark:text-info-200',
 light: 'text-frame-600 dark:text-frame-200',
 dark: 'text-frame-600 dark:text-frame-200 ',
 white: 'text-frame-600 dark:text-white',
-
-}
+};
 
 export const ForeColorTextHover = {
 unstyled: '',
@@ -451,8 +481,7 @@ info: 'hover:text-info-600 dark:hover:text-info-300',
 light: 'hover:text-frame-700 dark:hover:text-frame-300',
 dark: 'hover:text-frame-700 dark:hover:text-frame-300 ',
 white: 'hover:text-frame-700 dark:hover:text-frame-100',
-
-}
+};
 
 export const ForeColorFilled = {
 unstyled: '',
@@ -466,8 +495,7 @@ info: 'text-info-50 dark:text-info-50',
 light: 'text-frame-600 dark:text-frame-800',
 dark: 'text-frame-50 dark:text-frame-50 ',
 white: 'text-frame-600 dark:text-frame-600',
-
-}
+};
 
 export const ForeColorFilledHover = {
 unstyled: '',
@@ -481,8 +509,7 @@ info: 'hover:text-info-100 dark:hover:text-info-100',
 light: 'hover:text-frame-700 dark:hover:text-frame-900',
 dark: 'hover:text-frame-100 dark:hover:text-frame-100 ',
 white: 'hover:text-frame-700 dark:hover:text-frame-700',
-
-}
+};
 
 export const ForeColorSoft = {
 unstyled: '',
@@ -496,8 +523,8 @@ info: 'text-info-500 dark:text-info-200',
 light: 'text-frame-600 dark:text-frame-200',
 dark: 'text-frame-50 dark:text-frame-200 ',
 white: 'text-frame-600 dark:text-frame-600',
+};
 
-}
 export const ForeColorSoftHover = {
 unstyled: '',
 primary: 'hover:text-primary-600 dark:hover:text-primary-300',
@@ -510,8 +537,7 @@ info: 'hover:text-info-600 dark:hover:text-info-300',
 light: 'hover:text-frame-700 dark:hover:text-frame-300',
 dark: 'hover:text-frame-100 dark:hover:text-frame-300 ',
 white: 'hover:text-frame-700 dark:hover:text-frame-700',
-
-}
+};
 
 export const ForeColorGhost = {
 unstyled: '',
@@ -525,8 +551,7 @@ info: 'text-info-500 dark:text-info-200',
 light: 'text-frame-600 dark:text-frame-200',
 dark: 'text-frame-700 dark:text-frame-200 ',
 white: 'text-frame-600 dark:text-white',
-
-}
+};
 
 export const ForeColorGhostHover = {
 unstyled: '',
@@ -540,8 +565,7 @@ info: 'hover:text-info-600 dark:hover:text-info-300',
 light: 'hover:text-frame-700 dark:hover:text-frame-200',
 dark: 'hover:text-frame-50 dark:hover:text-frame-300 ',
 white: 'hover:text-frame-700 dark:hover:text-frame-700',
-
-}
+};
 
 export const BgColor = {
 unstyled: '',
@@ -555,8 +579,7 @@ info: 'bg-info-500 dark:bg-info-500',
 light: 'bg-frame-200 dark:bg-frame-300',
 dark: 'bg-frame-600 dark:bg-frame-700 ',
 white: 'bg-white dark:bg-white',
-
-}
+};
 
 export const BgColorHover = {
 unstyled: '',
@@ -570,8 +593,7 @@ info: 'hover:bg-info-600 dark:hover:bg-info-600',
 light: 'hover:bg-frame-300 dark:hover:bg-frame-400',
 dark: 'hover:bg-frame-700 dark:hover:bg-frame-800 ',
 white: 'hover:bg-frame-200 dark:hover:bg-frame-200',
-
-}
+};
 
 export const BgColorGroupHover = {
 unstyled: '',
@@ -585,8 +607,7 @@ info: 'group-hover:bg-info-600 dark:group-hover:bg-info-600',
 light: 'group-hover:bg-frame-300 dark:group-hover:bg-frame-400',
 dark: 'group-hover:bg-frame-700 dark:group-hover:bg-frame-800 ',
 white: 'group-hover:bg-frame-200 dark:group-hover:bg-frame-200',
-
-}
+};
 
 export const BgColorSoft = {
 unstyled: '',
@@ -600,8 +621,7 @@ info: 'bg-info-100 dark:bg-info-800',
 light: 'bg-frame-200 dark:bg-frame-500',
 dark: 'bg-frame-500 dark:bg-frame-700 ',
 white: 'bg-white dark:bg-white',
-
-}
+};
 
 export const BgColorSoftHover = {
 unstyled: '',
@@ -615,8 +635,7 @@ info: 'hover:bg-info-200 dark:hover:bg-info-900',
 light: 'hover:bg-frame-300 dark:hover:bg-frame-600',
 dark: 'hover:bg-frame-600 dark:hover:bg-frame-800 ',
 white: 'hover:bg-frame-200 dark:hover:bg-frame-200',
-
-}
+};
 
 export const BgColorGhostHover = {
 unstyled: '',
@@ -630,8 +649,7 @@ info: 'hover:bg-info-100 dark:hover:bg-info-800',
 light: 'hover:bg-frame-200 dark:hover:bg-frame-500',
 dark: 'hover:bg-frame-500 dark:hover:bg-frame-700 ',
 white: 'hover:bg-white dark:hover:bg-white',
-
-}
+};
 
 export const BgColorSoftGroupHover = {
 unstyled: '',
@@ -645,8 +663,7 @@ info: 'group-hover:bg-info-200 dark:group-hover:bg-info-900',
 light: 'group-hover:bg-frame-300 dark:group-hover:bg-frame-600',
 dark: 'group-hover:bg-frame-600 dark:group-hover:bg-frame-800 ',
 white: 'group-hover:bg-frame-200 dark:group-hover:bg-frame-200',
-
-}
+};
 
 export const BgColorSelected = {
 unstyled: '',
@@ -660,8 +677,7 @@ info: 'aria-selected:bg-info-500 dark:aria-selected:bg-info-500',
 light: 'aria-selected:bg-frame-200 dark:aria-selected:bg-frame-300',
 dark: 'aria-selected:bg-frame-600 dark:aria-selected:bg-frame-700 ',
 white: 'aria-selected:bg-white dark:aria-selected:bg-white',
-
-}
+};
 
 export const BgColorExpanded = {
 unstyled: '',
@@ -675,8 +691,7 @@ info: 'aria-expanded:bg-info-500 dark:aria-expanded:bg-info-500',
 light: 'aria-expanded:bg-frame-200 dark:aria-expanded:bg-frame-300',
 dark: 'aria-expanded:bg-frame-600 dark:aria-expanded:bg-frame-700 ',
 white: 'aria-expanded:bg-white dark:aria-expanded:bg-white',
-
-}
+};
 
 export const BgColorChecked = {
 unstyled: '',
@@ -690,8 +705,7 @@ info: 'aria-checked:bg-info-500 dark:aria-checked:bg-info-500',
 light: 'aria-checked:bg-frame-200 dark:aria-checked:bg-frame-300',
 dark: 'aria-checked:bg-frame-600 dark:aria-checked:bg-frame-700 ',
 white: 'aria-checked:bg-white dark:aria-checked:bg-white',
-
-}
+};
 
 export const BgColorCurrent = {
 unstyled: '',
@@ -705,8 +719,7 @@ info: 'aria-[current="page"]:bg-info-500 dark:aria-[current="page"]:bg-info-500'
 light: 'aria-[current="page"]:bg-frame-200 dark:aria-[current="page"]:bg-frame-300',
 dark: 'aria-[current="page"]:bg-frame-600 dark:aria-[current="page"]:bg-frame-700 ',
 white: 'aria-[current="page"]:bg-white dark:aria-[current="page"]:bg-white',
-
-}
+};
 
 export const RingColor = {
 unstyled: '',
@@ -720,8 +733,7 @@ info: 'ring-info-500 dark:ring-info-500',
 light: 'ring-frame-400 dark:ring-frame-400',
 dark: 'ring-frame-600 dark:ring-frame-500',
 white: 'ring-white dark:ring-white',
-
-}
+};
 
 export const RingColorHover = {
 unstyled: '',
@@ -735,8 +747,7 @@ info: 'hover:ring-info-600 dark:hover:ring-info-600',
 light: 'hover:ring-frame-500 dark:hover:ring-frame-500',
 dark: 'hover:ring-frame-700 dark:hover:ring-frame-600',
 white: 'hover:ring-frame-200 dark:hover:ring-frame-200',
-
-}
+};
 
 export const BorderColor = {
 unstyled: '',
@@ -750,8 +761,7 @@ info: 'border-info-500 dark:border-info-500',
 light: 'border-frame-400 dark:border-frame-400',
 dark: 'border-frame-600 dark:border-frame-500',
 white: 'border-white dark:border-white',
-
-}
+};
 
 export const BorderColorHover = {
 unstyled: '',
@@ -765,8 +775,7 @@ info: 'hover:border-info-600 dark:hover:border-info-600',
 light: 'hover:border-frame-500 dark:hover:border-frame-500',
 dark: 'hover:border-frame-700 dark:hover:border-frame-600',
 white: 'hover:border-frame-200 dark:hover:border-frame-200',
-
-}
+};
 
 export const DivideColor = {
 unstyled: '',
@@ -780,8 +789,7 @@ info: 'divide-info-500 dark:divide-info-500',
 light: 'divide-frame-400 dark:divide-frame-400',
 dark: 'divide-frame-600 dark:divide-frame-500',
 white: 'divide-white dark:divide-white',
-
-}
+};
 
 
 export const OutlineColorFocus = {
@@ -796,8 +804,7 @@ info: 'focus:outline-info-500/70 dark:focus:outline-info-500/70',
 light: 'focus:outline-frame-500/70 dark:focus:outline-frame-500/70',
 dark: 'focus:outline-frame-500/70 dark:focus:outline-frame-500/70 ',
 white: 'focus:outline-white/70 dark:focus:outline-white/70',
-
-}
+};
 
 export const OutlineColorFocusVisible = {
 unstyled: '',
@@ -811,8 +818,7 @@ info: 'focus-visible:outline-info-500/70 dark:focus-visible:outline-info-500/70'
 light: 'focus-visible:outline-frame-500/70 dark:focus-visible:outline-frame-500/70',
 dark: 'focus-visible:outline-frame-500/70 dark:focus-visible:outline-frame-500/70 ',
 white: 'focus-visible:outline-white/70 dark:focus-visible:outline-white/70',
-
-}
+};
 
 export const OutlineColorFocusGroup = {
 unstyled: '',
@@ -826,8 +832,7 @@ info: 'group-focus:outline-info-500/70 dark:group-focus:outline-info-500/70',
 light: 'group-focus:outline-frame-500/70 dark:group-focus:outline-frame-500/70',
 dark: 'group-focus:outline-frame-500/70 dark:group-focus:outline-frame-500/70 ',
 white: 'group-focus:outline-white/70 dark:group-focus:outline-white/70',
-
-}
+};
 
 export const OutlineColorFocusWithin = {
 unstyled: '',
@@ -841,8 +846,7 @@ info: 'focus-within:outline-info-500/70 dark:focus-within:outline-info-500/70',
 light: 'focus-within:outline-frame-500/70 dark:focus-within:outline-frame-500/70',
 dark: 'focus-within:outline-frame-500/70 dark:focus-within:outline-frame-500/70 ',
 white: 'focus-within:outline-white/70 dark:focus-within:outline-white/70',
-
-}
+};
 
 export const OutlineColorFocusPeer = {
 unstyled: '',
@@ -856,8 +860,7 @@ info: 'peer-focus:outline-info-500/70 dark:peer-focus:outline-info-500/70',
 light: 'peer-focus:outline-frame-500/70 dark:peer-focus:outline-frame-500/70',
 dark: 'peer-focus:outline-frame-500/70 dark:peer-focus:outline-frame-500/70 ',
 white: 'peer-focus:outline-white/70 dark:peer-focus:outline-white/70',
-
-}
+};
 
 export const FocusTypes = {
 unstyled: Placeholder,
@@ -882,6 +885,6 @@ focusWidth: keyof typeof OutlineWidth;
 rounded: boolean; // when true rounding are permitted.
 shadows: boolean; // when true shadows are permitted.
 transition: string | false | undefined | null;
-}
+};
 
 export const colors = Object.keys(BgColor) as ThemeColor[];

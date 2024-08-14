@@ -1,6 +1,7 @@
 <script lang="ts">
-	import VariantList from '$components/VariantList.svelte';
-	import Alert, { alertVariants as variants } from './Alert.svelte';
+	import Alert from './Alert.svelte';
+	let visible = $state(true);
 </script>
 
-<VariantList component={Alert} {variants} props={{ size: 'md' }} />
+<button onclick={() => (visible = true)}>Show Alert</button>
+<Alert bind:visible theme="danger" icon>Whoops! that didn't work...</Alert>

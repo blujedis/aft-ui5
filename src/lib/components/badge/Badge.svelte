@@ -68,8 +68,8 @@
 		ringOffset: variant !== 'outlined' ? undefined : 'inset',
 		ringColor: variant !== 'outlined' ? undefined : theme,
 		ringColorHover: variant !== 'outlined' ? undefined : theme,
-		rounded: boolToValue(t.rounded, rounded || 'md'),
-		shadow: boolToValue(t.shadows, shadow || 'sm')
+		rounded: boolToValue(t.rounded, rounded, 'md'),
+		shadow: boolToValue(t.shadows, shadow, 'sm')
 	}) as ConfigProps;
 </script>
 

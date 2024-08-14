@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
 	import { type Snippet } from 'svelte';
-	import { type ElementProps, type HTMLTag, type TransitionFn, type UseFn } from '$lib/types.js';
+	import { type ElementProps, type HTMLTag, type UseFn } from '$lib/types.js';
 	import { clsx, type ClassValue } from 'clsx';
 	import { twMerge } from 'tailwind-merge';
 	import { transitioner, type TransitionOptions } from '$lib/utils/transitioner.js';
@@ -111,7 +111,7 @@
 				SelectTypes[selectedType][selectedTheme],
 				t.shadows && Shadow[shadow],
 				parentClasses,
-				userClasses // classes provided by parent component.
+				userClasses
 			])
 		)
 	);
@@ -123,8 +123,8 @@
 			this={as}
 			bind:this={node}
 			use:use={useParams}
-			transition:transitioner={transition}
 			class={classes}
+			transition:transitioner|global={transition}
 			{...rest}
 		>
 			{@render children()}
@@ -134,7 +134,7 @@
 			this={as}
 			bind:this={node}
 			use:use={useParams}
-			transition:transitioner={transition}
+			transition:transitioner|global={transition}
 			class={classes}
 			{...rest}
 		/>
