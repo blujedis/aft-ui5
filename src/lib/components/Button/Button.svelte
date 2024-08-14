@@ -62,7 +62,7 @@
 	import t from '$lib/theme/theme.svelte.js';
 	import type { AriaRole } from 'svelte/elements';
 	import { options } from '$lib/theme/constants.js';
-	import { boolToValue } from '$lib/utils/misc.js';
+	import { truthyOrDefault } from '$lib/utils/misc.js';
 
 	let {
 		as = 'button' as Tag,
@@ -93,7 +93,6 @@
 			variant === 'soft' ? BgColorSoft[theme] : '',
 			variant === 'soft' ? BgColorSoftHover[theme] : '',
 			variant === 'ghost' ? BgColorGhostHover[theme] : '',
-			variant === 'filled' ? BgColor[theme] : '',
 
 			variant === 'filled' ? ForeColorFilled[theme] : '',
 			variant === 'filled' ? ForeColorFilledHover[theme] : '',
@@ -114,10 +113,10 @@
 		ringOffset: variant !== 'outlined' ? undefined : 'inset',
 		ringColor: variant !== 'outlined' ? undefined : theme,
 		ringColorHover: variant !== 'outlined' ? undefined : theme,
-		rounded: boolToValue(t.rounded, rounded || 'md'),
+		rounded: truthyOrDefault(t.rounded, rounded || 'md'),
 		selectedType: selectable ? 'checked' : undefined,
 		selectedTheme: selectable ? selectedTheme || theme : undefined,
-		shadow: boolToValue(t.shadows, shadow || 'sm')
+		shadow: truthyOrDefault(t.shadow, shadow || 'sm')
 	}) as ConfigProps;
 
 	const attributes = {} as Record<string, unknown>;

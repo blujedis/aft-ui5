@@ -18,6 +18,16 @@ dark: '',
 white: '',
 };
 
+export const Animate = {
+unstyled: '',
+none: 'animate-none',
+bounce: 'motion-safe:animate-bounce',
+ping: 'motion-safe:animate-ping',
+pulse: 'motion-safe:animate-pulse',
+spin: 'motion-safe:animate-spin'
+};
+
+
 export const AlertIcons = {
 // primary: '',
 // secondary: '',

@@ -35,7 +35,7 @@
 	import BaseElement from '$lib/components/Base.svelte';
 	import t from '$lib/theme/theme.svelte.js';
 	import type { Snippet } from 'svelte';
-	import { boolToValue } from '$lib/utils/misc.js';
+	import { truthyOrDefault } from '$lib/utils/misc.js';
 
 	let {
 		removable,
@@ -68,13 +68,16 @@
 		ringOffset: variant !== 'outlined' ? undefined : 'inset',
 		ringColor: variant !== 'outlined' ? undefined : theme,
 		ringColorHover: variant !== 'outlined' ? undefined : theme,
-		rounded: boolToValue(t.rounded, rounded, 'md'),
-		shadow: boolToValue(t.shadows, shadow, 'sm')
+		rounded: truthyOrDefault(t.rounded, rounded, 'md'),
+		shadow: truthyOrDefault(t.shadow, shadow, 'sm')
 	}) as ConfigProps;
 </script>
 
 <BaseElement {...base} {...rest} as="span">
-	{@render children()}
+	<div class="mb-0.5">
+		<!-- helps alignment a litte -->
+		{@render children()}
+	</div>
 	{#if removable}
 		<svg
 			class="w-2 h-2 ml-1"

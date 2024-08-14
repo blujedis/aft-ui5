@@ -6,6 +6,7 @@
 	export type StackProps = {
 		aspect?: keyof typeof ImageAspect;
 		lazy?: boolean;
+		rounded?: ConfigProps['rounded'];
 		size?: keyof typeof ImageSize;
 		variant?: 'default';
 	} & ElementProps<'img'>;
@@ -20,6 +21,7 @@
 	let {
 		aspect = 'unstyled',
 		lazy,
+		rounded,
 		size = 'unstyled',
 		variant = 'default',
 		children,
@@ -32,8 +34,10 @@
 			t.transition,
 			ImageSize[size],
 			ImageAspect[aspect],
-			aspect === 'video' ? 'h-auto' : ''
-		]
+			aspect === 'video' ? 'h-auto' : '',
+			rounded === 'full' && 'overflow-hidden'
+		],
+		rounded
 	}) as ConfigProps;
 </script>
 

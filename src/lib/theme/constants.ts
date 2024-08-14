@@ -8,7 +8,7 @@ export const globals: GlobalOptions = {
   focusOffset: 'none',
   focusWidth: 'lg',
   rounded: true,
-  shadows: true,
+  shadow: true,
   transition: 'transition motion-reduce:transition-none',
 };
 

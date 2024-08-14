@@ -107,9 +107,9 @@
 				RingColor[ringColor],
 				RingColorHover[ringColorHover],
 				RingOffset[ringOffset],
-				t.rounded && Rounded[rounded],
+				Rounded[rounded],
 				SelectTypes[selectedType][selectedTheme],
-				t.shadows && Shadow[shadow],
+				Shadow[shadow],
 				parentClasses,
 				userClasses
 			])

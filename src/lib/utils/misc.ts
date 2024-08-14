@@ -6,8 +6,7 @@
  * @param value the boolean, null or undefined value to be inspected.
  * @param def the default value to be returned if value is true.
  */
-export function boolToValue(value: string | boolean | undefined | null, def: any, fallback?: any) {
-  if (value === true && typeof def === 'undefined') return fallback;
-  if (value === true) return def;
-  return value; // if falsey or a string.
+export function truthyOrDefault(value: any, def?: any) {
+  if (value) return value;
+  return def;
 }

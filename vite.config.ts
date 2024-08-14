@@ -23,7 +23,6 @@ export default defineConfig({
 		port: 5174,
 		watch: {
 			ignored: [
-				'./watchTokens.ts',
 				'./static/**',
 				'./node_modules/**',
 				'./dist/**',

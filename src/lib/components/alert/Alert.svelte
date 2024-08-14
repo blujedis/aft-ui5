@@ -50,7 +50,7 @@
 	import { type TransitionOptions } from '$lib/utils/transitioner.js';
 	import Icon from '../icon/Icon.svelte';
 	import clsx from 'clsx';
-	import { boolToValue } from '$lib/utils/misc.js';
+	import { truthyOrDefault } from '$lib/utils/misc.js';
 
 	let {
 		escapable = true,
@@ -115,8 +115,8 @@
 			t.transition
 		],
 		fontSize: size,
-		rounded: boolToValue(t.rounded, rounded, 'full'),
-		shadow: boolToValue(t.shadows, shadow, 'sm'),
+		rounded: truthyOrDefault(t.rounded, rounded, 'full'),
+		shadow: truthyOrDefault(t.shadow, shadow, 'sm'),
 		visible,
 		use: action,
 		transition: position !== 'unstyled' ? transition : undefined

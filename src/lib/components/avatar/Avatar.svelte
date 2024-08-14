@@ -13,8 +13,8 @@
 		stacked?: boolean;
 		theme?: ThemeColor;
 		variant?: 'unstyled' | 'filled' | 'soft' | 'outlined';
-		children: Snippet;
-	} & ElementProps<'span'>;
+		children: Snippet<[{ rounded: ConfigProps['rounded'] }]>;
+	} & Omit<ElementProps<'span'>, 'children'>;
 
 	export const avatarVariants = [
 		'unstyled',
@@ -27,7 +27,7 @@
 <script lang="ts">
 	import BaseElement from '$lib/components/Base.svelte';
 	import t from '$lib/theme/theme.svelte.js';
-	import { boolToValue } from '$lib/utils/misc.js';
+	import { truthyOrDefault } from '$lib/utils/misc.js';
 
 	let {
 		mode,
@@ -41,10 +41,13 @@
 		...rest
 	}: AvatarProps = $props();
 
+	const _rounded = truthyOrDefault(t.rounded && rounded);
+	const _shadow = truthyOrDefault(t.shadow && shadow);
+
 	const base = $derived({
 		classes: [
 			`avatar avatar-${variant} avatar-${theme} inline-flex items-center 
-			justify-center outline-none relative overflow-hidden`,
+			justify-center outline-none relative`,
 			t.transition,
 			stacked &&
 				`ring-2 ring-[color:rgb(var(--body-bg-light))] dark:ring-[color:rgb(var(--body-bg-dark))]`,
@@ -57,11 +60,11 @@
 		ringOffset: variant !== 'outlined' ? undefined : 'inset',
 		ringColor: variant !== 'outlined' ? undefined : theme,
 		ringColorHover: variant !== 'outlined' ? undefined : theme,
-		rounded: boolToValue(t.rounded, rounded, 'full'),
-		shadow: boolToValue(t.shadows, shadow, 'sm')
+		rounded: _rounded,
+		shadow: _shadow
 	}) as ConfigProps;
 </script>
 
 <BaseElement {...base} {...rest} as="span">
-	{@render children()}
+	{@render children({ rounded: _rounded })}
 </BaseElement>
