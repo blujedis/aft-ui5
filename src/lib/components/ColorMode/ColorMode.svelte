@@ -1,6 +1,7 @@
 <script lang="ts" context="module">
 	import { browser } from '$app/environment';
 	import type { Snippet } from 'svelte';
+	import theme from '$lib/theme/theme.svelte.js';
 
 	export type ColorModeProps = {
 		init?: 'light' | 'dark' | 'auto';
@@ -11,7 +12,8 @@
 	const hasKey = browser && localStorage.getItem(key);
 	const prefersDark =
 		(browser && window.matchMedia('(prefers-color-scheme: dark)').matches) || false;
-	let dark = $state((browser && JSON.parse(localStorage.getItem(key) || 'false')) || false);
+
+	// let dark = $state((browser && JSON.parse(localStorage.getItem(key) || 'false')) || false);
 
 	function getRoot() {
 		if (typeof document === 'undefined') return null;
@@ -28,21 +30,23 @@
 		if (!root) return;
 		if (value) root.classList.add('dark');
 		else root.classList.remove('dark');
-		dark = value;
+		// dark = value;
+		theme.dark = value;
 		setStorageValue(value);
 	}
 
 	function set(useDark = false) {
 		const root = getRoot();
 		if (!root) return;
-		dark = useDark;
-		applyMode(dark);
+		// dark = useDark;
+		theme.dark = useDark;
+		applyMode(theme.dark);
 	}
 
 	function toggle() {
 		const root = getRoot();
-		if (!root) return dark;
-		const nextValue = !dark;
+		if (!root) return theme.dark;
+		const nextValue = !theme.dark;
 		applyMode(nextValue);
 		return nextValue;
 	}
@@ -75,5 +79,5 @@
 </svelte:head>
 
 {#if children}
-	{@render children({ dark, set, toggle })}
+	{@render children({ dark: theme.dark, set, toggle })}
 {/if}

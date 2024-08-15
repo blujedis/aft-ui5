@@ -13,7 +13,7 @@
 		stacked?: boolean;
 		theme?: ThemeColor;
 		variant?: 'unstyled' | 'filled' | 'soft' | 'outlined';
-		children: Snippet<[{ rounded: ConfigProps['rounded'] }]>;
+		children: Snippet<[{ rounded: ConfigProps['rounded']; size: keyof typeof Size }]>;
 	} & Omit<ElementProps<'span'>, 'children'>;
 
 	export const avatarVariants = [
@@ -41,14 +41,14 @@
 		...rest
 	}: AvatarProps = $props();
 
-	const _rounded = truthyOrDefault(t.rounded && rounded);
-	const _shadow = truthyOrDefault(t.shadow && shadow);
+	const _rounded = truthyOrDefault(t.globals.rounded && rounded);
+	const _shadow = truthyOrDefault(t.globals.shadow && shadow);
 
 	const base = $derived({
 		classes: [
 			`avatar avatar-${variant} avatar-${theme} inline-flex items-center 
 			justify-center outline-none relative`,
-			t.transition,
+			t.globals.transition,
 			stacked &&
 				`ring-2 ring-[color:rgb(var(--body-bg-light))] dark:ring-[color:rgb(var(--body-bg-dark))]`,
 			AvatarSize[size],
@@ -66,5 +66,5 @@
 </script>
 
 <BaseElement {...base} {...rest} as="span">
-	{@render children({ rounded: _rounded })}
+	{@render children({ rounded: _rounded, size })}
 </BaseElement>

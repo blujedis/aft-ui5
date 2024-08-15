@@ -31,7 +31,7 @@
 	const base = $derived({
 		classes: [
 			`image image-${variant} object-cover`,
-			t.transition,
+			t.globals.transition,
 			ImageSize[size],
 			ImageAspect[aspect],
 			aspect === 'video' ? 'h-auto' : '',

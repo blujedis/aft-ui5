@@ -26,7 +26,7 @@
 			`stack stack-${variant} flex overflow-hidden isolate p-2`,
 			!vertical && 'flex -space-x-2',
 			vertical && 'flex-col -space-y-2',
-			t.transition
+			t.globals.transition
 		],
 		fontSize: size
 	}) as ConfigProps;

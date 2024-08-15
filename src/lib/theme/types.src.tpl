@@ -91,7 +91,7 @@ sm: 'rounded-sm',
 md: 'rounded-md',
 lg: 'rounded-lg',
 xl: 'rounded-xl',
-xl2: 'rounded-xl2',
+xl2: 'rounded-2xl',
 full: 'rounded-full',
 }
 
@@ -905,7 +905,7 @@ export interface GlobalOptions {
 focusOffset: keyof typeof OutlineOffset;
 focusWidth: keyof typeof OutlineWidth;
 rounded: boolean; // when true rounding are permitted.
-shadows: boolean; // when true shadows are permitted.
+shadow: boolean; // when true shadows are permitted.
 transition: string | false | undefined | null;
 };
 

@@ -52,7 +52,7 @@
 		classes: [
 			`badge badge-${variant} badge-${theme} inline-flex items-center 
 			justify-center outline-none`,
-			t.transition,
+			t.globals.transition,
 			removable && 'badge-removable',
 			BadgeFontSize[size],
 			BadgePaddingX[size],
@@ -68,8 +68,8 @@
 		ringOffset: variant !== 'outlined' ? undefined : 'inset',
 		ringColor: variant !== 'outlined' ? undefined : theme,
 		ringColorHover: variant !== 'outlined' ? undefined : theme,
-		rounded: truthyOrDefault(t.rounded, rounded, 'md'),
-		shadow: truthyOrDefault(t.shadow, shadow, 'sm')
+		rounded: truthyOrDefault(t.globals.rounded, rounded, 'md'),
+		shadow: truthyOrDefault(t.globals.shadow, shadow, 'sm')
 	}) as ConfigProps;
 </script>
 

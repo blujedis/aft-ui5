@@ -84,7 +84,7 @@
 		classes: [
 			`button button-${variant} button-${theme} inline-flex items-center 
 			justify-center cursor-pointer outline-none`,
-			t.transition,
+			t.globals.transition,
 			variant !== 'text' ? ButtonPaddingX[size] : '',
 			variant !== 'text' ? FieldPaddingY[size] : '',
 			ButtonFontSize[size],
@@ -113,10 +113,10 @@
 		ringOffset: variant !== 'outlined' ? undefined : 'inset',
 		ringColor: variant !== 'outlined' ? undefined : theme,
 		ringColorHover: variant !== 'outlined' ? undefined : theme,
-		rounded: truthyOrDefault(t.rounded, rounded || 'md'),
+		rounded: truthyOrDefault(t.globals.rounded, rounded || 'md'),
 		selectedType: selectable ? 'checked' : undefined,
 		selectedTheme: selectable ? selectedTheme || theme : undefined,
-		shadow: truthyOrDefault(t.shadow, shadow || 'sm')
+		shadow: truthyOrDefault(t.globals.shadow, shadow || 'sm')
 	}) as ConfigProps;
 
 	const attributes = {} as Record<string, unknown>;

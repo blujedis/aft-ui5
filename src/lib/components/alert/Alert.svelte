@@ -112,11 +112,11 @@
 			AlertPadding[size],
 			BgColorSoft[theme],
 			ForeColorText[theme],
-			t.transition
+			t.globals.transition
 		],
 		fontSize: size,
-		rounded: truthyOrDefault(t.rounded, rounded, 'full'),
-		shadow: truthyOrDefault(t.shadow, shadow, 'sm'),
+		rounded: truthyOrDefault(t.globals.rounded && rounded, 'full'),
+		shadow: truthyOrDefault(t.globals.shadow && shadow, 'sm'),
 		visible,
 		use: action,
 		transition: position !== 'unstyled' ? transition : undefined
