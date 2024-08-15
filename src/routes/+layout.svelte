@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { type Snippet } from 'svelte';
 	import { page } from '$app/stores';
-	import ColorMode from '$lib/components/colormode/ColorMode.svelte';
+	import ColorMode from '$lib/components/colormode/ColorModeInit.svelte';
 	import { capitalize, pageIsActive } from '$lib/utils/string.js';
 	import { build } from '$lib/theme/types.js';
 
@@ -41,10 +41,10 @@
 		>
 			<div class="flex-1 items-center px-8">Aft UI</div>
 			<div class="flex items-center px-8 space-x-4">
-				<ColorMode init="light">
+				<ColorMode mode="light">
 					{#snippet children(prop)}
 						<button class="text-sm block" onclick={prop.toggle}>
-							{#if prop.dark}
+							{#if prop.isDark()}
 								<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24"
 									><path
 										fill="currentColor"

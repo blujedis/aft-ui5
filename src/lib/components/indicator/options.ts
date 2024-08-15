@@ -50,21 +50,21 @@ export const IndicatorOffsetRoundFull = {
 
 export const IndicatorCounterSize = {
 	unstyled: '',
-	xs: 'w-3.5 h-3.5',
+	xs: 'w-3 h-3',
 	sm: 'w-4 h-4',
-	md: 'w-[18px] h-[18px]',
-	lg: 'h-[22px] w-[22px]',
-	xl: 'h-7 w-7',
-	xl2: 'h-10 w-10'
+	md: 'h-5 w-[16px]',
+	lg: 'h-5 w-[22px]',
+	xl: 'h-5 w-7',
+	xl2: 'h-6 w-10'
 };
 
 export const IndicatorCounterFontSize = {
 	unstyled: '',
-	xs: 'text-[0.55rem]',
+	xs: 'text-[0.45rem]',
 	sm: 'text-[0.65rem]',
 	md: 'text-[0.7rem]',
 	lg: 'text-sm',
 	xl: 'text-md',
-	xl2: 'text-2xl'
+	xl2: 'text-lg'
 };
 

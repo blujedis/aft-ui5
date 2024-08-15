@@ -25,6 +25,7 @@
 
 	export type ConfigProps = {
 		classes?: string | ClassValue | ClassValue[];
+		class?: string | null;
 		removes?: string[]; // classes that should be removed.
 		border?: keyof typeof Border;
 		dropShadow?: keyof typeof DropShadow;
@@ -54,21 +55,20 @@
 	export type BaseProps<Tag extends HTMLTag> = {
 		as: Tag;
 		children?: Snippet;
-	} & ConfigProps &
-		ElementProps<Tag>;
+	} & ConfigProps;
 </script>
 
 <script lang="ts" generics="Tag extends HTMLTag">
 	import t from '$lib/theme/theme.svelte.js';
-	import { FocusTypes, SelectTypes } from '$lib/theme/types.js';
+	import { FocusTypes, SelectedTypes } from '$lib/theme/types.js';
 
 	let {
 		as,
 		border = 'unstyled',
 		dropShadow = 'unstyled',
 		focusType = 'unstyled',
-		focusWidth = t.focusWidth,
-		focusOffset = t.focusOffset,
+		focusWidth = t.globals.focusWidth,
+		focusOffset = t.globals.focusOffset,
 		focusTheme = 'unstyled',
 		fontLeading = 'unstyled',
 		fontSize = 'unstyled',
@@ -87,10 +87,12 @@
 		useParams = {},
 		visible = $bindable(),
 		classes: parentClasses = '',
-		class: userClasses = '',
+		class: userClasses,
 		children,
 		...rest
 	}: BaseProps<Tag> = $props();
+
+	console.log(SelectedTypes[selectedType][selectedTheme]);
 
 	const classes = $derived(
 		twMerge(
@@ -108,10 +110,10 @@
 				RingColorHover[ringColorHover],
 				RingOffset[ringOffset],
 				Rounded[rounded],
-				SelectTypes[selectedType][selectedTheme],
+				SelectedTypes[selectedType][selectedTheme],
 				Shadow[shadow],
 				parentClasses,
-				userClasses
+				userClasses || ''
 			])
 		)
 	);

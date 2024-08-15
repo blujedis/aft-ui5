@@ -30,9 +30,6 @@
 			: { role: AriaRole | null };
 
 	export type ButtonProps<Tag extends HTMLTag> = {
-		/**
-		 * @prop as
-		 */
 		as?: Tag;
 		focusType?: FocusType;
 		focusTheme?: ThemeColor;
@@ -44,8 +41,8 @@
 		size?: keyof typeof Size;
 		theme?: ThemeColor;
 		variant?: 'unstyled' | 'filled' | 'soft' | 'outlined' | 'ghost' | 'text';
-	} & ExtendedProps<Tag> &
-		ElementProps<Tag>;
+		children: Snippet;
+	} & ExtendedProps<Tag>;
 
 	export const buttonVariants = [
 		'unstyled',
@@ -63,6 +60,7 @@
 	import type { AriaRole } from 'svelte/elements';
 	import { options } from '$lib/theme/constants.js';
 	import { truthyOrDefault } from '$lib/utils/misc.js';
+	import type { Snippet } from 'svelte';
 
 	let {
 		as = 'button' as Tag,
@@ -71,14 +69,14 @@
 		rounded,
 		selectable,
 		selected = $bindable(),
-		selectedTheme,
+		selectedTheme = 'primary',
 		shadow,
 		size = 'md',
 		theme = 'light',
 		variant = 'filled',
 		children,
 		...rest
-	}: ButtonProps<Tag> = $props();
+	}: ButtonProps<Tag> & ElementProps<Tag> = $props();
 
 	const base = $derived({
 		classes: [
@@ -115,7 +113,7 @@
 		ringColorHover: variant !== 'outlined' ? undefined : theme,
 		rounded: truthyOrDefault(t.globals.rounded, rounded || 'md'),
 		selectedType: selectable ? 'checked' : undefined,
-		selectedTheme: selectable ? selectedTheme || theme : undefined,
+		selectedTheme: selectable && selectedTheme,
 		shadow: truthyOrDefault(t.globals.shadow, shadow || 'sm')
 	}) as ConfigProps;
 
@@ -127,6 +125,6 @@
 	}
 </script>
 
-<BaseElement {...base} {...rest} {as}>
+<BaseElement {...base} {...rest} {...attributes} {as}>
 	{@render children()}
 </BaseElement>

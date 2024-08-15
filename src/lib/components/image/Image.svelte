@@ -24,7 +24,6 @@
 		rounded,
 		size = 'unstyled',
 		variant = 'default',
-		children,
 		...rest
 	}: StackProps = $props();
 

@@ -893,7 +893,7 @@ group: OutlineColorFocusGroup,
 peer: OutlineColorFocusPeer
 };
 
-export const SelectTypes = {
+export const SelectedTypes = {
 unstyled: Placeholder,
 selected: BgColorSelected,
 expanded: BgColorExpanded,
@@ -908,5 +908,12 @@ rounded: boolean; // when true rounding are permitted.
 shadow: boolean; // when true shadows are permitted.
 transition: string | false | undefined | null;
 };
+
+export interface Theme {
+readonly dark: boolean;
+globals: GlobalOptions;
+}
+
+export type ThemeInternal = Theme & { dark: boolean };
 
 export const colors = Object.keys(BgColor) as ThemeColor[];

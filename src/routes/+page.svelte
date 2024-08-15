@@ -1,5 +1,12 @@
 <script lang="ts">
+	import ColorMode from '$lib/components/colormode/ColorMode.svelte';
 </script>
+
+<ColorMode>
+	{#snippet children(prop)}
+		{prop.isDark()}
+	{/snippet}
+</ColorMode>
 
 <!-- <div>
 	<p class="mb-24">
