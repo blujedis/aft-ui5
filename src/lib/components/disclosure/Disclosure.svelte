@@ -91,6 +91,6 @@
 
 <svelte:window on:keydown={handleKeydown} />
 
-<Base {...base} {...rest as any} {as} role="presentation" onclickoutside={handleClose}>
+<Base {...base} {...rest as any} {as} role="presentation">
 	{@render children({ open: handleOpen, close: handleClose, toggle: handleToggle })}
 </Base>

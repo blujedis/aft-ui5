@@ -6,7 +6,7 @@
 	let visible = false;
 </script>
 
-<Disclosure bind:visible>
+<Disclosure bind:visible transition="expand">
 	{#snippet children({ open, close, toggle })}
 		<DisclosureButton>Disclosure Button</DisclosureButton>
 		<Button variant="ghost" theme="primary" onclick={toggle}>Themed Button</Button>

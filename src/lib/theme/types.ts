@@ -3,7 +3,7 @@ export type SelectedType = keyof typeof SelectedTypes;
 export type ThemeColor = keyof typeof FontColor;
 
 
-export const build = ['alert', 'avatar', 'badge', 'button', 'disclosure', 'icon', 'image', 'indicator', 'stack'];
+export const build = ['alert', 'avatar', 'badge', 'button', 'disclosure', 'icon', 'image', 'indicator', 'notifications', 'stack'];
 
 export const Placeholder = {
   unstyled: '',

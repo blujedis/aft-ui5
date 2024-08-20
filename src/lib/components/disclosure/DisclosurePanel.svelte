@@ -25,6 +25,8 @@
 	const base = $derived({
 		classes: [],
 		tabindex: -1,
+		transition: context.transition,
+		visible: context.isVisible(),
 		use: (node) => {
 			context.setPanel(node);
 			action(node); // handle focus trap.
