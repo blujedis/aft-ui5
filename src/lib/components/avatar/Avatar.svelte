@@ -25,7 +25,7 @@
 </script>
 
 <script lang="ts">
-	import BaseElement from '$lib/components/Base.svelte';
+	import Base from '$lib/components/Base.svelte';
 	import t from '$lib/theme/theme.svelte.js';
 	import { truthyOrDefault } from '$lib/utils/misc.js';
 
@@ -65,6 +65,6 @@
 	}) as ConfigProps;
 </script>
 
-<BaseElement {...base} {...rest} as="span">
+<Base {...base} {...rest} as="span">
 	{@render children({ rounded: _rounded, size })}
-</BaseElement>
+</Base>

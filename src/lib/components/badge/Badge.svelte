@@ -32,10 +32,9 @@
 </script>
 
 <script lang="ts">
-	import BaseElement from '$lib/components/Base.svelte';
+	import Base from '$lib/components/Base.svelte';
 	import t from '$lib/theme/theme.svelte.js';
 	import type { Snippet } from 'svelte';
-	import { truthyOrDefault } from '$lib/utils/misc.js';
 
 	let {
 		removable,
@@ -68,12 +67,12 @@
 		ringOffset: variant !== 'outlined' ? undefined : 'inset',
 		ringColor: variant !== 'outlined' ? undefined : theme,
 		ringColorHover: variant !== 'outlined' ? undefined : theme,
-		rounded: truthyOrDefault(t.globals.rounded, rounded, 'md'),
-		shadow: truthyOrDefault(t.globals.shadow, shadow, 'sm')
+		rounded: t.globals.rounded && rounded,
+		shadow: t.globals.shadow && shadow
 	}) as ConfigProps;
 </script>
 
-<BaseElement {...base} {...rest} as="span">
+<Base {...base} {...rest} as="span">
 	<div class="mb-0.5">
 		<!-- helps alignment a litte -->
 		{@render children()}
@@ -97,4 +96,4 @@
 
 		<span class="sr-only">Remove badge</span>
 	{/if}
-</BaseElement>
+</Base>

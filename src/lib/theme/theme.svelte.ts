@@ -7,18 +7,22 @@ const currentTheme = $state({
   globals
 }) as Theme;
 
+
 export function updateTheme<T extends Theme>(theme = {} as Partial<T>) {
   for (const k in theme) {
     if (typeof theme[k] === 'undefined') continue;
-    (currentTheme as T)[k] = { ...(currentTheme as T)[k], ...theme[k] };
+    const curVal = (currentTheme as T)[k];
+    const nextVal = theme[k];
+    if (typeof curVal === 'object' && typeof nextVal !== 'object')
+      throw new Error(`Type mismatch for prop ${k}`);
+    if (typeof curVal === 'object' && typeof nextVal === 'object' && !Array.isArray(curVal) && !Array.isArray(nextVal)) {
+      (currentTheme as T)[k] = { ...(currentTheme as T)[k], ...theme[k] };
+    }
+    else {
+      (currentTheme as T)[k] = theme[k];
+    }
   }
   return currentTheme;
 }
-
-// export function classNames(args: cn.ArgumentArray, removes = [] as string[]) {
-//   const classes = cn(...args);
-//   if (!removes.length) return classes;
-//   return classes.split(' ').filter(c => !removes.find(r => c.startsWith(r))).join(' ');
-// }
 
 export default currentTheme;

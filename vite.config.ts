@@ -1,8 +1,25 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vitest/config';
 import { buildTokens } from './genTokens.js';
-
 import { resolve } from 'path';
+import { type HmrContext, type Plugin } from 'vite';
+
+function reloadTokens(): Plugin {
+	return {
+		name: 'custom-hmr',
+		enforce: 'post',
+		handleHotUpdate({ file, server }: HmrContext) {
+			if (file.endsWith('tokens.json')) {
+				buildTokens();
+				// server.restart();
+				server.ws.send({
+					type: 'full-reload',
+					path: '*'
+				});
+			}
+		},
+	};
+}
 
 
 export default defineConfig({
@@ -14,6 +31,7 @@ export default defineConfig({
 			// handleHotUpdate: () => buildTokens(),
 			buildStart: () => buildTokens()
 		},
+		reloadTokens(),
 		sveltekit()
 	],
 	server: {

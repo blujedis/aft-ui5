@@ -31,8 +31,7 @@
 </script>
 
 <script lang="ts">
-	import BaseElement from '$lib/components/Base.svelte';
-	import t from '$lib/theme/theme.svelte.js';
+	import Base from '$lib/components/Base.svelte';
 
 	let {
 		animate = 'unstyled',
@@ -64,26 +63,21 @@
 			variant !== 'unstyled' && BgColor[theme],
 			variant !== 'unstyled' && ForeColorFilled[theme],
 			variant === 'soft' && BgColorSoft[theme],
-			// !text && IndicatorSize[size],
 			text && IndicatorCounterSize[size],
 			text && IndicatorCounterFontSize[size],
 			text && 'font-medium -top-2 -right-1',
 			text && 'px-1',
 			text && text.length > 1 && 'px-1.5',
 			text && text.length >= 2 && 'w-auto',
-			// !t.globals.rounded || !rounded || rounded !== 'full' ? IndicatorOffset[size] : '',
-			// t.globals.rounded && ['md', 'lg'].includes(rounded + '') ? IndicatorOffsetRoundMed[size] : '',
-			// t.globals.rounded && ['xl', 'xl2'].includes(rounded + '') ? IndicatorOffsetRoundXLarge[size] : '',
-			// t.globals.rounded && rounded === 'full' ? IndicatorOffsetRoundFull[size] : '',
 			!text && Animate[animate]
 		]
 	}) as ConfigProps;
 </script>
 
-<BaseElement {...base} {...rest} as="span" {style}>
+<Base {...base} {...rest} as="span" {style}>
 	{#if text}
 		<div class="mb-px">
 			{text}
 		</div>
 	{/if}
-</BaseElement>
+</Base>

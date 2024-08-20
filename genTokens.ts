@@ -115,7 +115,7 @@ export function buildTokens() {
 		tags: ['{{', '}}']
 	});
 
-	const res = eta.render('./types.src.tpl', conf);
+	const res = eta.render('./types.src.eta', conf);
 
 	unlinkSync(output);
 	writeFileSync(output, res);

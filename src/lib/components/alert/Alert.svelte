@@ -1,7 +1,8 @@
 <script context="module" lang="ts">
 	import { type ElementProps } from '$lib/types.js';
-	import type { Snippet } from 'svelte';
+	import { getContext, type Snippet } from 'svelte';
 	import { type ConfigProps } from '$lib/components/Base.svelte';
+	import { type NotificationPosition } from '$lib/hooks/notifications.svelte.js';
 	import {
 		Size,
 		type ThemeColor,
@@ -9,98 +10,81 @@
 		AlertPadding,
 		AlertIconSize,
 		BgColorSoft,
-		ForeColorText,
-		ForeColorTextHover
+		ForeColorSoft,
+		BgColor,
+		ForeColorFilled,
+		BorderColor,
+		Border
 	} from '$lib/theme/types.js';
 
 	export type AlertProps = {
+		abortable?: boolean;
 		escapable?: boolean;
-		focustrap?: boolean;
 		icon?: boolean | string | IconifyIcon;
-		position?:
-			| 'top'
-			| 'right'
-			| 'bottom'
-			| 'left'
-			| 'top-right'
-			| 'bottom-right'
-			| 'bottom-left'
-			| 'top-left'
-			| 'unstyled';
+		position?: NotificationPosition;
 		removable?: boolean; // when true can escape or click background to abort.
 		rounded?: ConfigProps['rounded'];
 		shadow?: ConfigProps['shadow'];
-		theme?: ThemeColor;
+		theme?: ThemeColor | 'default'; // default are optimal them for alert/notifications.
 		transition?: TransitionOptions;
 		size?: keyof typeof Size;
-		variant?: 'default';
+		variant?: 'unstyled' | 'filled' | 'soft';
 		visible?: any;
 		children: Snippet<[]>;
 	} & ElementProps<'div'>;
 
-	export const alertVariants = ['default'] as AlertProps['variant'][];
+	export const alertVariants = ['unstyled', 'filled', 'soft'] as AlertProps['variant'][];
 </script>
 
 <script lang="ts">
-	import BaseElement from '$lib/components/Base.svelte';
+	import Base from '$lib/components/Base.svelte';
 	import t from '$lib/theme/theme.svelte.js';
-	import { focustrap as trap } from '$lib/hooks/focustrap.js';
+	import { focustrap } from '$lib/hooks/focustrap.js';
 	import type { IconifyIcon } from '@iconify/svelte';
-	import ConditionalElement from '../conditional/ConditionalElement.svelte';
 	import { type TransitionOptions } from '$lib/utils/transitioner.js';
 	import Icon from '../icon/Icon.svelte';
 	import clsx from 'clsx';
-	import { truthyOrDefault } from '$lib/utils/misc.js';
+
+	const context = getContext('Notifications');
 
 	let {
+		abortable,
 		escapable = true,
-		focustrap = true,
 		icon,
-		position = 'unstyled',
+		position,
 		removable = true,
-		rounded = 'unstyled',
-		shadow = 'unstyled',
+		rounded,
+		shadow,
 		size = 'md',
-		theme = 'unstyled',
+		theme,
 		transition,
-		variant = 'default',
+		variant,
 		visible = $bindable(),
 		children,
 		...rest
 	}: AlertProps = $props();
 
-	const [action, handler] = trap(focustrap);
-
-	const wrapperClasses = $derived(
-		clsx(
-			'alert-wrapper absolute',
-			position === 'top' && 'top-6 transform left-1/2 -translate-x-1/2',
-			position === 'right' && 'right-6 transform top-1/2 -translate-y-1/2',
-			position === 'bottom' && 'bottom-6 transform left-1/2 -translate-x-1/2',
-			position === 'left' && 'left-6 transform top-1/2 -translate-y-1/2',
-			position === 'top-right' && 'right-6 top-6',
-			position === 'bottom-right' && 'right-6 bottom-6',
-			position === 'bottom-left' && 'left-6 bottom-6',
-			position === 'top-left' && 'left-6 top-6',
-			'max-w-sm'
-		)
-	);
+	const [action, handler] = focustrap();
 
 	const iconClasses = $derived(clsx(`alert-icon`, AlertIconSize[size]));
 
 	const closeClasses = $derived(
-		clsx(
-			`alert-close p-1.5 rounded-full inline-flex`,
-			'opacity-80 hover:opacity-100',
-			ForeColorTextHover[theme]
-		)
+		clsx(`alert-close p-1.5 rounded-full inline-flex`, 'opacity-80 hover:opacity-100')
 	);
 
 	const base = $derived({
 		classes: [
-			`alert alert-${variant} alert-${theme} flex z-50`,
+			`flex z-50`,
+			!context && 'alert alert-${variant} alert-${theme}',
+			context && 'notification notification-${variant} notification-${theme}',
+			context &&
+				position?.includes('left') &&
+				'border-l-none border-t-none border-b-none border-r-md',
+			context &&
+				!position?.includes('left') &&
+				'border-r-none border-t-none border-b-none border-l-4',
 			removable && `alert-removable`,
-			position !== 'unstyled' && 'absolute max-w-sm inline-flex',
+			position && 'absolute max-w-sm inline-flex',
 			position === 'top' && 'top-6 transform left-1/2 -translate-x-1/2',
 			position === 'right' && 'right-6 transform top-1/2 -translate-y-1/2',
 			position === 'bottom' && 'bottom-6 transform left-1/2 -translate-x-1/2',
@@ -110,16 +94,21 @@
 			position === 'bottom-left' && 'left-6 bottom-6',
 			position === 'top-left' && 'left-6 top-6',
 			AlertPadding[size],
-			BgColorSoft[theme],
-			ForeColorText[theme],
+			!context && variant === 'filled' && theme && theme !== 'default' && BgColor[theme],
+			!context && variant === 'filled' && theme && theme !== 'default' && ForeColorFilled[theme],
+			!context && variant === 'soft' && theme && theme !== 'default' && BgColorSoft[theme],
+			!context && variant === 'soft' && theme && theme !== 'default' && ForeColorSoft[theme],
+			context && 'bg-frame-600 text-frame-100', // default contrast colors.
 			t.globals.transition
 		],
+		borderColor: context && theme,
 		fontSize: size,
-		rounded: truthyOrDefault(t.globals.rounded && rounded, 'full'),
-		shadow: truthyOrDefault(t.globals.shadow && shadow, 'sm'),
+		rounded: t.globals.rounded && rounded,
+		shadow: t.globals.shadow && shadow,
 		visible,
 		use: action,
-		transition: position !== 'unstyled' ? transition : undefined
+		transition: transition,
+		role: undefined
 	}) as ConfigProps;
 
 	function handleKeydown(e: KeyboardEvent) {
@@ -128,18 +117,33 @@
 			visible = !visible;
 		}
 	}
+
+	function handleEnter<E extends Event = Event, T extends EventTarget = Element>(
+		event: E & { currentTarget: EventTarget & T }
+	) {
+		if (!context) return;
+		// placeholder.
+	}
+	function handleLeave<E extends Event = Event, T extends EventTarget = Element>(
+		event: E & { currentTarget: EventTarget & T }
+	) {
+		if (!context) return;
+		// placeholder
+	}
 </script>
 
 <svelte:window on:keydown={handleKeydown} on:keydown={handler} />
 
 {#if visible}
-	<!-- <ConditionalElement
-		as="div"
-		condition={position !== 'unstyled'}
-		class={wrapperClasses}
+	<Base
+		role="alert"
 		tabindex={-1}
-	> -->
-	<BaseElement {...base} {...rest} as="div" tabindex={-1}>
+		as="div"
+		onmouseenter={handleEnter}
+		onmouseleave={handleLeave}
+		{...base}
+		{...rest}
+	>
 		<div class="flex w-full items-start space-x-3">
 			<div class="flex-shrink-0 -mt-0.5">
 				{#if icon}
@@ -167,6 +171,5 @@
 				</div>
 			{/if}
 		</div>
-	</BaseElement>
-	<!-- </ConditionalElement> -->
+	</Base>
 {/if}

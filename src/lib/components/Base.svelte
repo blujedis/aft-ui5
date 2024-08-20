@@ -5,7 +5,6 @@
 	import { twMerge } from 'tailwind-merge';
 	import { transitioner, type TransitionOptions } from '$lib/utils/transitioner.js';
 	import {
-		type SelectType,
 		type FocusType,
 		type ThemeColor,
 		Rounded,
@@ -20,14 +19,14 @@
 		FontWeight,
 		FontLeading,
 		RingColor,
-		RingColorHover
+		RingColorHover,
+		BorderColor
 	} from '$lib/theme/types.js';
 
 	export type ConfigProps = {
 		classes?: string | ClassValue | ClassValue[];
-		class?: string | null;
-		removes?: string[]; // classes that should be removed.
-		border?: keyof typeof Border;
+		borderSize?: keyof typeof Border;
+		borderColor?: ThemeColor;
 		dropShadow?: keyof typeof DropShadow;
 		focusType?: FocusType;
 		focusTheme?: ThemeColor;
@@ -37,19 +36,18 @@
 		fontSize?: keyof typeof FontSize;
 		fontWeight?: keyof typeof FontWeight;
 		node?: HTMLElement;
-
 		ringWidth?: keyof typeof RingWidth;
 		ringColor?: ThemeColor;
 		ringColorHover?: ThemeColor;
 		ringOffset?: keyof typeof RingOffset;
 		rounded?: keyof typeof Rounded;
-		selectedType?: SelectType;
-		selectedTheme?: ThemeColor;
 		shadow?: keyof typeof Shadow;
+		style?: string | null;
 		transition?: TransitionOptions;
 		use?: UseFn;
 		useParams?: Record<string, unknown>;
 		visible?: boolean;
+		onclickoutside?: (...args: any[]) => any;
 	};
 
 	export type BaseProps<Tag extends HTMLTag> = {
@@ -60,11 +58,12 @@
 
 <script lang="ts" generics="Tag extends HTMLTag">
 	import t from '$lib/theme/theme.svelte.js';
-	import { FocusTypes, SelectedTypes } from '$lib/theme/types.js';
+	import { FocusTypes } from '$lib/theme/types.js';
 
 	let {
 		as,
-		border = 'unstyled',
+		borderSize,
+		borderColor = 'unstyled',
 		dropShadow = 'unstyled',
 		focusType = 'unstyled',
 		focusWidth = t.globals.focusWidth,
@@ -73,31 +72,32 @@
 		fontLeading = 'unstyled',
 		fontSize = 'unstyled',
 		fontWeight = 'unstyled',
-		node,
+		node = $bindable(),
 		ringWidth = 'unstyled',
 		ringColor = 'unstyled',
 		ringOffset = 'unstyled',
 		ringColorHover = 'unstyled',
 		rounded = 'unstyled',
-		selectedType = 'unstyled',
-		selectedTheme = 'unstyled',
 		shadow = 'unstyled',
 		transition,
-		use = (node: HTMLElement, params: Record<string, unknown>) => {},
+		use: initUse,
 		useParams = {},
 		visible = $bindable(),
 		classes: parentClasses = '',
 		class: userClasses,
 		children,
 		...rest
-	}: BaseProps<Tag> = $props();
+	}: BaseProps<Tag> & ElementProps<Tag> = $props();
 
-	console.log(SelectedTypes[selectedType][selectedTheme]);
+	const use = (node: HTMLElement, params: Record<string, unknown>) => {
+		if (initUse) initUse(node, params);
+	};
 
 	const classes = $derived(
 		twMerge(
 			clsx([
-				Border[border],
+				borderSize && Border[borderSize],
+				BorderColor[borderColor],
 				DropShadow[dropShadow],
 				FontLeading[fontLeading],
 				FontSize[fontSize],
@@ -110,7 +110,6 @@
 				RingColorHover[ringColorHover],
 				RingOffset[ringOffset],
 				Rounded[rounded],
-				SelectedTypes[selectedType][selectedTheme],
 				Shadow[shadow],
 				parentClasses,
 				userClasses || ''

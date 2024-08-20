@@ -1,8 +1,9 @@
 export type FocusType = keyof typeof FocusTypes;
-export type SelectType = keyof typeof SelectedTypes;
+export type SelectedType = keyof typeof SelectedTypes;
 export type ThemeColor = keyof typeof FontColor;
 
-export const build = ['alert', 'avatar', 'badge', 'button', 'icon', 'image', 'indicator', 'stack'];
+
+export const build = ['alert', 'avatar', 'badge', 'button', 'disclosure', 'icon', 'image', 'indicator', 'stack'];
 
 export const Placeholder = {
   unstyled: '',
@@ -439,58 +440,58 @@ export const StrokeColorSoftHover = {
 
 export const FontColor = {
   unstyled: '',
-  primary: 'text-primary-500 dark:text-primary-200',
-  secondary: 'text-secondary-500 dark:text-secondary-200',
-  tertiary: 'text-tertiary-500 dark:text-tertiary-200',
-  danger: 'text-danger-500 dark:text-danger-200',
-  warning: 'text-warning-500 dark:text-warning-200',
-  success: 'text-success-500 dark:text-success-200',
-  info: 'text-info-500 dark:text-info-200',
-  light: 'text-frame-400 dark:text-frame-200',
-  dark: 'text-frame-600 dark:text-frame-200 ',
+  primary: 'text-primary-500 dark:text-primary-500',
+  secondary: 'text-secondary-500 dark:text-secondary-500',
+  tertiary: 'text-tertiary-500 dark:text-tertiary-500',
+  danger: 'text-danger-500 dark:text-danger-500',
+  warning: 'text-warning-500 dark:text-warning-500',
+  success: 'text-success-500 dark:text-success-500',
+  info: 'text-info-500 dark:text-info-500',
+  light: 'text-frame-200 dark:text-frame-200',
+  dark: 'text-frame-700 dark:text-frame-700 ',
   white: 'text-white dark:text-white',
 };
 
 export const FontColorHover = {
   unstyled: '',
-  primary: 'hover:text-primary-600 dark:hover:text-primary-300',
-  secondary: 'hover:text-secondary-600 dark:hover:text-secondary-300',
-  tertiary: 'hover:text-tertiary-600 dark:hover:text-tertiary-300',
-  danger: 'hover:text-danger-600 dark:hover:text-danger-300',
-  warning: 'hover:text-warning-600 dark:hover:text-warning-300',
-  success: 'hover:text-success-600 dark:hover:text-success-300',
-  info: 'hover:text-info-600 dark:hover:text-info-300',
-  light: 'hover:text-frame-500 dark:hover:text-frame-300',
-  dark: 'hover:text-frame-700 dark:hover:text-frame-300 ',
+  primary: 'hover:text-primary-600 dark:hover:text-primary-600',
+  secondary: 'hover:text-secondary-600 dark:hover:text-secondary-600',
+  tertiary: 'hover:text-tertiary-600 dark:hover:text-tertiary-600',
+  danger: 'hover:text-danger-600 dark:hover:text-danger-600',
+  warning: 'hover:text-warning-600 dark:hover:text-warning-600',
+  success: 'hover:text-success-600 dark:hover:text-success-600',
+  info: 'hover:text-info-600 dark:hover:text-info-600',
+  light: 'hover:text-frame-300 dark:hover:text-frame-300',
+  dark: 'hover:text-frame-800 dark:hover:text-frame-800 ',
   white: 'hover:text-frame-100 dark:hover:text-frame-100',
 };
 
-export const ForeColorText = {
+export const ForeColorOutline = {
   unstyled: '',
-  primary: 'text-primary-500 dark:text-primary-200',
-  secondary: 'text-secondary-500 dark:text-secondary-200',
-  tertiary: 'text-tertiary-500 dark:text-tertiary-200',
-  danger: 'text-danger-500 dark:text-danger-200',
-  warning: 'text-warning-500 dark:text-warning-200',
-  success: 'text-success-500 dark:text-success-200',
-  info: 'text-info-500 dark:text-info-200',
+  primary: 'text-primary-500 dark:text-primary-300',
+  secondary: 'text-secondary-500 dark:text-secondary-300',
+  tertiary: 'text-tertiary-500 dark:text-tertiary-300',
+  danger: 'text-danger-500 dark:text-danger-300',
+  warning: 'text-warning-500 dark:text-warning-300',
+  success: 'text-success-500 dark:text-success-300',
+  info: 'text-info-500 dark:text-info-300',
   light: 'text-frame-600 dark:text-frame-200',
-  dark: 'text-frame-600 dark:text-frame-200 ',
-  white: 'text-frame-600 dark:text-white',
+  dark: 'text-frame-700 dark:text-frame-200 ',
+  white: 'text-white dark:text-white',
 };
 
-export const ForeColorTextHover = {
+export const ForeColorOutlineHover = {
   unstyled: '',
-  primary: 'hover:text-primary-600 dark:hover:text-primary-300',
-  secondary: 'hover:text-secondary-600 dark:hover:text-secondary-300',
-  tertiary: 'hover:text-tertiary-600 dark:hover:text-tertiary-300',
-  danger: 'hover:text-danger-600 dark:hover:text-danger-300',
-  warning: 'hover:text-warning-600 dark:hover:text-warning-300',
-  success: 'hover:text-success-600 dark:hover:text-success-300',
-  info: 'hover:text-info-600 dark:hover:text-info-300',
-  light: 'hover:text-frame-700 dark:hover:text-frame-300',
-  dark: 'hover:text-frame-700 dark:hover:text-frame-300 ',
-  white: 'hover:text-frame-700 dark:hover:text-frame-100',
+  primary: 'hover:text-primary-600 dark:hover:text-primary-400',
+  secondary: 'hover:text-secondary-600 dark:hover:text-secondary-400',
+  tertiary: 'hover:text-tertiary-600 dark:hover:text-tertiary-400',
+  danger: 'hover:text-danger-600 dark:hover:text-danger-400',
+  warning: 'hover:text-warning-600 dark:hover:text-warning-400',
+  success: 'hover:text-success-600 dark:hover:text-success-400',
+  info: 'hover:text-info-600 dark:hover:text-info-400',
+  light: 'hover:text-frame-700 dark:hover:text-frame-200',
+  dark: 'hover:text-frame-800 dark:hover:text-frame-300 ',
+  white: 'hover:text-frame-100 dark:hover:text-frame-100',
 };
 
 export const ForeColorFilled = {
@@ -523,13 +524,13 @@ export const ForeColorFilledHover = {
 
 export const ForeColorSoft = {
   unstyled: '',
-  primary: 'text-primary-500 dark:text-primary-200',
-  secondary: 'text-secondary-500 dark:text-secondary-200',
-  tertiary: 'text-tertiary-500 dark:text-tertiary-200',
-  danger: 'text-danger-500 dark:text-danger-200',
-  warning: 'text-warning-500 dark:text-warning-200',
-  success: 'text-success-500 dark:text-success-200',
-  info: 'text-info-500 dark:text-info-200',
+  primary: 'text-primary-500 dark:text-primary-300',
+  secondary: 'text-secondary-500 dark:text-secondary-300',
+  tertiary: 'text-tertiary-500 dark:text-tertiary-300',
+  danger: 'text-danger-500 dark:text-danger-300',
+  warning: 'text-warning-500 dark:text-warning-300',
+  success: 'text-success-500 dark:text-success-300',
+  info: 'text-info-500 dark:text-info-300',
   light: 'text-frame-600 dark:text-frame-200',
   dark: 'text-frame-50 dark:text-frame-200 ',
   white: 'text-frame-600 dark:text-frame-600',
@@ -537,13 +538,13 @@ export const ForeColorSoft = {
 
 export const ForeColorSoftHover = {
   unstyled: '',
-  primary: 'hover:text-primary-600 dark:hover:text-primary-300',
-  secondary: 'hover:text-secondary-600 dark:hover:text-secondary-300',
-  tertiary: 'hover:text-tertiary-600 dark:hover:text-tertiary-300',
-  danger: 'hover:text-danger-600 dark:hover:text-danger-300',
-  warning: 'hover:text-warning-600 dark:hover:text-warning-300',
-  success: 'hover:text-success-600 dark:hover:text-success-300',
-  info: 'hover:text-info-600 dark:hover:text-info-300',
+  primary: 'hover:text-primary-600 dark:hover:text-primary-400',
+  secondary: 'hover:text-secondary-600 dark:hover:text-secondary-400',
+  tertiary: 'hover:text-tertiary-600 dark:hover:text-tertiary-400',
+  danger: 'hover:text-danger-600 dark:hover:text-danger-400',
+  warning: 'hover:text-warning-600 dark:hover:text-warning-400',
+  success: 'hover:text-success-600 dark:hover:text-success-400',
+  info: 'hover:text-info-600 dark:hover:text-info-400',
   light: 'hover:text-frame-700 dark:hover:text-frame-300',
   dark: 'hover:text-frame-100 dark:hover:text-frame-300 ',
   white: 'hover:text-frame-700 dark:hover:text-frame-700',
@@ -551,27 +552,27 @@ export const ForeColorSoftHover = {
 
 export const ForeColorGhost = {
   unstyled: '',
-  primary: 'text-primary-500 dark:text-primary-200',
-  secondary: 'text-secondary-500 dark:text-secondary-200',
-  tertiary: 'text-tertiary-500 dark:text-tertiary-200',
-  danger: 'text-danger-500 dark:text-danger-200',
-  warning: 'text-warning-500 dark:text-warning-200',
-  success: 'text-success-500 dark:text-success-200',
-  info: 'text-info-500 dark:text-info-200',
+  primary: 'text-primary-500 dark:text-primary-300',
+  secondary: 'text-secondary-500 dark:text-secondary-300',
+  tertiary: 'text-tertiary-500 dark:text-tertiary-300',
+  danger: 'text-danger-500 dark:text-danger-300',
+  warning: 'text-warning-500 dark:text-warning-300',
+  success: 'text-success-500 dark:text-success-300',
+  info: 'text-info-500 dark:text-info-300',
   light: 'text-frame-600 dark:text-frame-200',
   dark: 'text-frame-700 dark:text-frame-200 ',
-  white: 'text-frame-600 dark:text-white',
+  white: 'text-white dark:text-white',
 };
 
 export const ForeColorGhostHover = {
   unstyled: '',
-  primary: 'hover:text-primary-600 dark:hover:text-primary-300',
-  secondary: 'hover:text-secondary-600 dark:hover:text-secondary-300',
-  tertiary: 'hover:text-tertiary-600 dark:hover:text-tertiary-300',
-  danger: 'hover:text-danger-600 dark:hover:text-danger-300',
-  warning: 'hover:text-warning-600 dark:hover:text-warning-300',
-  success: 'hover:text-success-600 dark:hover:text-success-300',
-  info: 'hover:text-info-600 dark:hover:text-info-300',
+  primary: 'hover:text-primary-600 dark:hover:text-primary-400',
+  secondary: 'hover:text-secondary-600 dark:hover:text-secondary-400',
+  tertiary: 'hover:text-tertiary-600 dark:hover:text-tertiary-400',
+  danger: 'hover:text-danger-600 dark:hover:text-danger-400',
+  warning: 'hover:text-warning-600 dark:hover:text-warning-400',
+  success: 'hover:text-success-600 dark:hover:text-success-400',
+  info: 'hover:text-info-600 dark:hover:text-info-400',
   light: 'hover:text-frame-700 dark:hover:text-frame-200',
   dark: 'hover:text-frame-50 dark:hover:text-frame-300 ',
   white: 'hover:text-frame-700 dark:hover:text-frame-700',
@@ -587,7 +588,7 @@ export const BgColor = {
   success: 'bg-success-500 dark:bg-success-500',
   info: 'bg-info-500 dark:bg-info-500',
   light: 'bg-frame-100 dark:bg-frame-300',
-  dark: 'bg-frame-700 dark:bg-frame-900 ',
+  dark: 'bg-frame-700 dark:bg-frame-800 ',
   white: 'bg-white dark:bg-white',
 };
 
@@ -601,7 +602,7 @@ export const BgColorHover = {
   success: 'hover:bg-success-600 dark:hover:bg-success-600',
   info: 'hover:bg-info-600 dark:hover:bg-info-600',
   light: 'hover:bg-frame-200 dark:hover:bg-frame-400',
-  dark: 'hover:bg-frame-800 dark:hover:bg-frame-950 ',
+  dark: 'hover:bg-frame-800 dark:hover:bg-frame-900 ',
   white: 'hover:bg-frame-200 dark:hover:bg-frame-200',
 };
 
@@ -615,7 +616,7 @@ export const BgColorGroupHover = {
   success: 'group-hover:bg-success-600 dark:group-hover:bg-success-600',
   info: 'group-hover:bg-info-600 dark:group-hover:bg-info-600',
   light: 'group-hover:bg-frame-200 dark:group-hover:bg-frame-400',
-  dark: 'group-hover:bg-frame-800 dark:group-hover:bg-frame-950 ',
+  dark: 'group-hover:bg-frame-800 dark:group-hover:bg-frame-900 ',
   white: 'group-hover:bg-frame-200 dark:group-hover:bg-frame-200',
 };
 
@@ -677,59 +678,122 @@ export const BgColorSoftGroupHover = {
 
 export const BgColorSelected = {
   unstyled: '',
-  primary: 'aria-selected:bg-primary-500 dark:aria-selected:bg-primary-500',
-  secondary: 'aria-selected:bg-secondary-500 dark:aria-selected:bg-secondary-500',
-  tertiary: 'aria-selected:bg-tertiary-500 dark:aria-selected:bg-tertiary-500',
-  danger: 'aria-selected:bg-danger-500 dark:aria-selected:bg-danger-500',
-  warning: 'aria-selected:bg-warning-500 dark:aria-selected:bg-warning-500',
-  success: 'aria-selected:bg-success-500 dark:aria-selected:bg-success-500',
-  info: 'aria-selected:bg-info-500 dark:aria-selected:bg-info-500',
-  light: 'aria-selected:bg-frame-100 dark:aria-selected:bg-frame-300',
-  dark: 'aria-selected:bg-frame-700 dark:aria-selected:bg-frame-900 ',
-  white: 'aria-selected:bg-white dark:aria-selected:bg-white',
+  primary: 'aria-selected:bg-primary-600 dark:aria-selected:bg-primary-600',
+  secondary: 'aria-selected:bg-secondary-600 dark:aria-selected:bg-secondary-600',
+  tertiary: 'aria-selected:bg-tertiary-600 dark:aria-selected:bg-tertiary-600',
+  danger: 'aria-selected:bg-danger-600 dark:aria-selected:bg-danger-600',
+  warning: 'aria-selected:bg-warning-600 dark:aria-selected:bg-warning-600',
+  success: 'aria-selected:bg-success-600 dark:aria-selected:bg-success-600',
+  info: 'aria-selected:bg-info-600 dark:aria-selected:bg-info-600',
+  light: 'aria-selected:bg-frame-300 dark:aria-selected:bg-frame-400',
+  dark: 'aria-selected:bg-frame-950 dark:aria-selected:bg-frame-950 ',
+  white: 'aria-selected:bg-frame-200 dark:aria-selected:bg-frame-200',
+};
+
+export const BgColorSoftSelected = {
+  unstyled: '',
+  primary: 'aria-selected:bg-primary-200 dark:aria-selected:bg-primary-900',
+  secondary: 'aria-selected:bg-secondary-200 dark:aria-selected:bg-secondary-900',
+  tertiary: 'aria-selected:bg-tertiary-200 dark:aria-selected:bg-tertiary-900',
+  danger: 'aria-selected:bg-danger-200 dark:aria-selected:bg-danger-900',
+  warning: 'aria-selected:bg-warning-200 dark:aria-selected:bg-warning-900',
+  success: 'aria-selected:bg-success-200 dark:aria-selected:bg-success-900',
+  info: 'aria-selected:bg-info-200 dark:aria-selected:bg-info-900',
+  light: 'aria-selected:bg-frame-200 dark:aria-selected:bg-frame-600',
+  dark: 'aria-selected:bg-frame-600 dark:aria-selected:bg-frame-800 ',
+  white: 'aria-selected:bg-frame-200 dark:aria-selected:bg-frame-200',
 };
 
 export const BgColorExpanded = {
   unstyled: '',
-  primary: 'aria-expanded:bg-primary-500 dark:aria-expanded:bg-primary-500',
-  secondary: 'aria-expanded:bg-secondary-500 dark:aria-expanded:bg-secondary-500',
-  tertiary: 'aria-expanded:bg-tertiary-500 dark:aria-expanded:bg-tertiary-500',
-  danger: 'aria-expanded:bg-danger-500 dark:aria-expanded:bg-danger-500',
-  warning: 'aria-expanded:bg-warning-500 dark:aria-expanded:bg-warning-500',
-  success: 'aria-expanded:bg-success-500 dark:aria-expanded:bg-success-500',
-  info: 'aria-expanded:bg-info-500 dark:aria-expanded:bg-info-500',
-  light: 'aria-expanded:bg-frame-100 dark:aria-expanded:bg-frame-300',
-  dark: 'aria-expanded:bg-frame-700 dark:aria-expanded:bg-frame-900 ',
-  white: 'aria-expanded:bg-white dark:aria-expanded:bg-white',
+  primary: 'aria-expanded:bg-primary-600 dark:aria-expanded:bg-primary-600',
+  secondary: 'aria-expanded:bg-secondary-600 dark:aria-expanded:bg-secondary-600',
+  tertiary: 'aria-expanded:bg-tertiary-600 dark:aria-expanded:bg-tertiary-600',
+  danger: 'aria-expanded:bg-danger-600 dark:aria-expanded:bg-danger-600',
+  warning: 'aria-expanded:bg-warning-600 dark:aria-expanded:bg-warning-600',
+  success: 'aria-expanded:bg-success-600 dark:aria-expanded:bg-success-600',
+  info: 'aria-expanded:bg-info-600 dark:aria-expanded:bg-info-600',
+  light: 'aria-expanded:bg-frame-300 dark:aria-expanded:bg-frame-400',
+  dark: 'aria-expanded:bg-frame-950 dark:aria-expanded:bg-frame-950 ',
+  white: 'aria-expanded:bg-frame-200 dark:aria-expanded:bg-frame-200',
 };
+
+
+export const BgColorSoftExpanded = {
+  unstyled: '',
+  primary: 'aria-expanded:bg-primary-200 dark:aria-expanded:bg-primary-900',
+  secondary: 'aria-expanded:bg-secondary-200 dark:aria-expanded:bg-secondary-900',
+  tertiary: 'aria-expanded:bg-tertiary-200 dark:aria-expanded:bg-tertiary-900',
+  danger: 'aria-expanded:bg-danger-200 dark:aria-expanded:bg-danger-900',
+  warning: 'aria-expanded:bg-warning-200 dark:aria-expanded:bg-warning-900',
+  success: 'aria-expanded:bg-success-200 dark:aria-expanded:bg-success-900',
+  info: 'aria-expanded:bg-info-200 dark:aria-expanded:bg-info-900',
+  light: 'aria-expanded:bg-frame-200 dark:aria-expanded:bg-frame-600',
+  dark: 'aria-expanded:bg-frame-600 dark:aria-expanded:bg-frame-800 ',
+  white: 'aria-expanded:bg-frame-200 dark:aria-expanded:bg-frame-200',
+};
+
+
 
 export const BgColorChecked = {
   unstyled: '',
-  primary: 'aria-checked:bg-primary-500 dark:aria-checked:bg-primary-500',
-  secondary: 'aria-checked:bg-secondary-500 dark:aria-checked:bg-secondary-500',
-  tertiary: 'aria-checked:bg-tertiary-500 dark:aria-checked:bg-tertiary-500',
-  danger: 'aria-checked:bg-danger-500 dark:aria-checked:bg-danger-500',
-  warning: 'aria-checked:bg-warning-500 dark:aria-checked:bg-warning-500',
-  success: 'aria-checked:bg-success-500 dark:aria-checked:bg-success-500',
-  info: 'aria-checked:bg-info-500 dark:aria-checked:bg-info-500',
-  light: 'aria-checked:bg-frame-100 dark:aria-checked:bg-frame-300',
-  dark: 'aria-checked:bg-frame-700 dark:aria-checked:bg-frame-900 ',
-  white: 'aria-checked:bg-white dark:aria-checked:bg-white',
+  primary: 'aria-checked:bg-primary-600 dark:aria-checked:bg-primary-600',
+  secondary: 'aria-checked:bg-secondary-600 dark:aria-checked:bg-secondary-600',
+  tertiary: 'aria-checked:bg-tertiary-600 dark:aria-checked:bg-tertiary-600',
+  danger: 'aria-checked:bg-danger-600 dark:aria-checked:bg-danger-600',
+  warning: 'aria-checked:bg-warning-600 dark:aria-checked:bg-warning-600',
+  success: 'aria-checked:bg-success-600 dark:aria-checked:bg-success-600',
+  info: 'aria-checked:bg-info-600 dark:aria-checked:bg-info-600',
+  light: 'aria-checked:bg-frame-300 dark:aria-checked:bg-frame-400',
+  dark: 'aria-checked:bg-frame-950 dark:aria-checked:bg-frame-950 ',
+  white: 'aria-checked:bg-frame-200 dark:aria-checked:bg-frame-200',
 };
+
+export const BgColorSoftChecked = {
+  unstyled: '',
+  primary: 'aria-checked:bg-primary-200 dark:aria-checked:bg-primary-900',
+  secondary: 'aria-checked:bg-secondary-200 dark:aria-checked:bg-secondary-900',
+  tertiary: 'aria-checked:bg-tertiary-200 dark:aria-checked:bg-tertiary-900',
+  danger: 'aria-checked:bg-danger-200 dark:aria-checked:bg-danger-900',
+  warning: 'aria-checked:bg-warning-200 dark:aria-checked:bg-warning-900',
+  success: 'aria-checked:bg-success-200 dark:aria-checked:bg-success-900',
+  info: 'aria-checked:bg-info-200 dark:aria-checked:bg-info-900',
+  light: 'aria-checked:bg-frame-200 dark:aria-checked:bg-frame-600',
+  dark: 'aria-checked:bg-frame-600 dark:aria-checked:bg-frame-800 ',
+  white: 'aria-checked:bg-frame-200 dark:aria-checked:bg-frame-200',
+};
+
+
+
 
 export const BgColorCurrent = {
   unstyled: '',
-  primary: 'aria-[current="page"]:bg-primary-500 dark:aria-[current="page"]:bg-primary-500',
-  secondary: 'aria-[current="page"]:bg-secondary-500dark:aria-[current="page"]:bg-secondary-500',
-  tertiary: 'aria-[current="page"]:bg-tertiary-500dark:aria-[current="page"]:bg-tertiary-500',
-  danger: 'aria-[current="page"]:bg-danger-500 dark:aria-[current="page"]:bg-danger-500',
-  warning: 'aria-[current="page"]:bg-warning-500 dark:aria-[current="page"]:bg-warning-500',
-  success: 'aria-[current="page"]:bg-success-500 dark:aria-[current="page"]:bg-success-500',
-  info: 'aria-[current="page"]:bg-info-500 dark:aria-[current="page"]:bg-info-500',
-  light: 'aria-[current="page"]:bg-frame-100 dark:aria-[current="page"]:bg-frame-300',
-  dark: 'aria-[current="page"]:bg-frame-700 dark:aria-[current="page"]:bg-frame-900 ',
-  white: 'aria-[current="page"]:bg-white dark:aria-[current="page"]:bg-white',
+  primary: 'aria-[current="page"]:bg-primary-600 dark:aria-[current="page"]:bg-primary-600',
+  secondary: 'aria-[current="page"]:bg-secondary-600 dark: aria - [current = "page"]: bg- secondary-600',
+  tertiary: 'aria-[current="page"]:bg-tertiary-600 dark: aria - [current = "page"]: bg - tertiary-600',
+  danger: 'aria-[current="page"]:bg-danger-600 dark:aria-[current="page"]:bg-danger-600',
+  warning: 'aria-[current="page"]:bg-warning-600 dark:aria-[current="page"]:bg-warning-600',
+  success: 'aria-[current="page"]:bg-success-600 dark:aria-[current="page"]:bg-success-600',
+  info: 'aria-[current="page"]:bg-info-600 dark:aria-[current="page"]:bg-info-600',
+  light: 'aria-[current="page"]:bg-frame-300 dark:aria-[current="page"]:bg-frame-400',
+  dark: 'aria-[current="page"]:bg-frame-950 dark:aria-[current="page"]:bg-frame-950 ',
+  white: 'aria-[current="page"]:bg-frame-200 dark:aria-[current="page"]:bg-frame-200',
 };
+
+export const BgColorSoftCurrent = {
+  unstyled: '',
+  primary: 'aria-[current="page"]:bg-primary-200 dark: aria - [current = "page"]: bg- primary-900',
+  secondary: 'aria-[current="page"]:bg-secondary-200 dark: aria - [current = "page"]: bg - secondary-900',
+  tertiary: 'aria-[current="page"]:bg-tertiary-200 dark: aria - [current = "page"]: bg - tertiary-900',
+  danger: 'aria-[current="page"]:bg-danger-200 dark: aria - [current = "page"]: bg - danger-900',
+  warning: 'aria-[current="page"]:bg-warning-200 dark: aria - [current = "page"]: bg - warning-900',
+  success: 'aria-[current="page"]:bg-success-200 dark: aria - [current = "page"]: bg - success-900',
+  info: 'aria-[current="page"]:bg-info-200 dark:aria-[current="page"]:bg-info-900',
+  light: 'aria-[current="page"]:bg-frame-200 dark: aria - [current = "page"]: bg - frame-600',
+  dark: 'aria-[current="page"]:bg-frame-600 dark:aria-[current="page"]:bg-frame-800 ',
+  white: 'aria-[current="page"]:bg-frame-200 dark: aria - [current = "page"]: bg - frame-200',
+};
+
 
 export const RingColor = {
   unstyled: '',
@@ -789,16 +853,16 @@ export const BorderColorHover = {
 
 export const DivideColor = {
   unstyled: '',
-  primary: 'divide-primary-500 dark:divide-primary-500',
-  secondary: 'divide-secondary-500 dark:divide-secondary-500',
-  tertiary: 'divide-tertiary-500 dark:divide-tertiary-500',
-  danger: 'divide-danger-500 dark:divide-danger-500',
-  warning: 'divide-warning-500 dark:divide-warning-500',
-  success: 'divide-success-500 dark:divide-success-500',
-  info: 'divide-info-500 dark:divide-info-500',
-  light: 'divide-frame-400 dark:divide-frame-400',
-  dark: 'divide-frame-600 dark:divide-frame-500',
-  white: 'divide-white dark:divide-white',
+  primary: 'divide-primary-300 dark:divide-primary-700',
+  secondary: 'divide-secondary-300 dark:divide-secondary-700',
+  tertiary: 'divide-tertiary-300 dark:divide-tertiary-700',
+  danger: 'divide-danger-300 dark:divide-danger-700',
+  warning: 'divide-warning-300 dark:divide-warning-700',
+  success: 'divide-success-300 dark:divide-success-700',
+  info: 'divide-info-300 dark:divide-info-700',
+  light: 'divide-frame-300 dark:divide-frame-600',
+  dark: 'divide-frame-400 dark:divide-frame-600',
+  white: 'divide-frame-200 dark:divide-frame-200',
 };
 
 
@@ -818,12 +882,12 @@ export const OutlineColorFocus = {
 
 export const OutlineColorFocusVisible = {
   unstyled: '',
-  primary: 'focus-visible:outline-primary-500/70dark:focus-visible:outline-primary-500/70',
-  secondary: 'focus-visible:outline-secondary-500/70dark:focus-visible:outline-secondary-500/70',
-  tertiary: 'focus-visible:outline-tertiary-500/70dark:focus-visible:outline-tertiary-500/70',
+  primary: 'focus-visible:outline-primary-500/70 dark:focus-visible:outline-primary-500/70',
+  secondary: 'focus-visible:outline-secondary-500/70 dark:focus-visible:outline-secondary-500/70',
+  tertiary: 'focus-visible:outline-tertiary-500/70 dark:focus-visible:outline-tertiary-500/70',
   danger: 'focus-visible:outline-danger-500/70 dark:focus-visible:outline-danger-500/70',
-  warning: 'focus-visible:outline-warning-500/70dark:focus-visible:outline-warning-500/70',
-  success: 'focus-visible:outline-success-500/70dark:focus-visible:outline-success-500/70',
+  warning: 'focus-visible:outline-warning-500/70 dark: focus - visible: outline- warning-500/70',
+  success: 'focus-visible:outline-success-500/70 dark: focus - visible: outline - success-500/70',
   info: 'focus-visible:outline-info-500/70 dark:focus-visible:outline-info-500/70',
   light: 'focus-visible:outline-frame-500/70 dark:focus-visible:outline-frame-500/70',
   dark: 'focus-visible:outline-frame-500/70 dark:focus-visible:outline-frame-500/70 ',
@@ -833,8 +897,8 @@ export const OutlineColorFocusVisible = {
 export const OutlineColorFocusGroup = {
   unstyled: '',
   primary: 'group-focus:outline-primary-500/70 dark:group-focus:outline-primary-500/70',
-  secondary: 'group-focus:outline-secondary-500/70dark:group-focus:outline-secondary-500/70',
-  tertiary: 'group-focus:outline-tertiary-500/70dark:group-focus:outline-tertiary-500/70',
+  secondary: 'group-focus:outline-secondary-500/70 dark:group-focus:outline-secondary-500/70',
+  tertiary: 'group-focus:outline-tertiary-500/70 dark:group-focus:outline-tertiary-500/70',
   danger: 'group-focus:outline-danger-500/70 dark:group-focus:outline-danger-500/70',
   warning: 'group-focus:outline-warning-500/70 dark:group-focus:outline-warning-500/70',
   success: 'group-focus:outline-success-500/70 dark:group-focus:outline-success-500/70',
@@ -847,8 +911,8 @@ export const OutlineColorFocusGroup = {
 export const OutlineColorFocusWithin = {
   unstyled: '',
   primary: 'focus-within:outline-primary-500/70 dark:focus-within:outline-primary-500/70',
-  secondary: 'focus-within:outline-secondary-500/70dark:focus-within:outline-secondary-500/70',
-  tertiary: 'focus-within:outline-tertiary-500/70dark:focus-within:outline-tertiary-500/70',
+  secondary: 'focus-within:outline-secondary-500/70 dark: focus - within: outline- secondary-500/70',
+  tertiary: 'focus-within:outline-tertiary-500/70 dark: focus - within: outline - tertiary-500/70',
   danger: 'focus-within:outline-danger-500/70 dark:focus-within:outline-danger-500/70',
   warning: 'focus-within:outline-warning-500/70 dark:focus-within:outline-warning-500/70',
   success: 'focus-within:outline-success-500/70 dark:focus-within:outline-success-500/70',
@@ -861,7 +925,7 @@ export const OutlineColorFocusWithin = {
 export const OutlineColorFocusPeer = {
   unstyled: '',
   primary: 'peer-focus:outline-primary-500/70 dark:peer-focus:outline-primary-500/70',
-  secondary: 'peer-focus:outline-secondary-500/70dark:peer-focus:outline-secondary-500/70',
+  secondary: 'peer-focus:outline-secondary-500/70 dark: peer - focus: outline- secondary-500/70',
   tertiary: 'peer-focus:outline-tertiary-500/70 dark:peer-focus:outline-tertiary-500/70',
   danger: 'peer-focus:outline-danger-500/70 dark:peer-focus:outline-danger-500/70',
   warning: 'peer-focus:outline-warning-500/70 dark:peer-focus:outline-warning-500/70',
@@ -887,6 +951,14 @@ export const SelectedTypes = {
   expanded: BgColorExpanded,
   checked: BgColorChecked,
   current: BgColorCurrent
+};
+
+export const SelectedSoftTypes = {
+  unstyled: Placeholder,
+  selected: BgColorSoftSelected,
+  expanded: BgColorSoftExpanded,
+  checked: BgColorSoftChecked,
+  current: BgColorSoftCurrent
 };
 
 export interface GlobalOptions {

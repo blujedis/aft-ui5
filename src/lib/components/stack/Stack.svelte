@@ -15,7 +15,7 @@
 </script>
 
 <script lang="ts">
-	import BaseElement from '$lib/components/Base.svelte';
+	import Base from '$lib/components/Base.svelte';
 	import t from '$lib/theme/theme.svelte.js';
 
 	let { size = 'md', variant = 'default', vertical, children, ...rest }: StackProps = $props();
@@ -32,6 +32,6 @@
 	}) as ConfigProps;
 </script>
 
-<BaseElement {...base} {...rest} as="div">
+<Base {...base} {...rest} as="div">
 	{@render children()}
-</BaseElement>
+</Base>

@@ -4,4 +4,4 @@
 </script>
 
 <button onclick={() => (visible = true)}>Show Alert</button>
-<Alert bind:visible theme="danger" icon>Whoops! that didn't work...</Alert>
+<Alert bind:visible icon theme="primary">Whoops! that didn't work...</Alert>
