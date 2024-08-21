@@ -6,17 +6,19 @@
 
 	export type ConditionalRenderProps<P extends Record<string, unknown>> = {
 		props: P;
-		Component: SvelteComponent | Snippet<[P]>;
+		Component: SvelteComponent<P> | Snippet;
 	};
 </script>
 
 <script lang="ts" generics="P extends Record<string, unknown> = Record<string, unknown>">
 	import { isComponent, isSnippet } from '$lib/utils/helpers.js';
-	let { props, Component }: ConditionalRenderProps = $props();
+	let { props, Component }: ConditionalRenderProps<P> = $props();
 </script>
 
 {#if isComponent(Component)}
-	<Component />
-{:else}
+	<Component {...props} />
+{:else if isSnippet(Component)}
 	{@render Component()}
+{:else if typeof Component === 'string'}
+	{@html Component}
 {/if}

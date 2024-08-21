@@ -2,7 +2,10 @@
 	import { type ElementProps } from '$lib/types.js';
 	import { getContext, type Snippet } from 'svelte';
 	import { type ConfigProps } from '$lib/components/Base.svelte';
-	import { type NotificationPosition } from '$lib/hooks/notifications.svelte.js';
+	import {
+		type NotificationApi,
+		type NotificationPosition
+	} from '$lib/hooks/notifications.svelte.js';
 	import {
 		Size,
 		type ThemeColor,
@@ -12,16 +15,14 @@
 		BgColorSoft,
 		ForeColorSoft,
 		BgColor,
-		ForeColorFilled,
-		BorderColor,
-		Border
+		ForeColorFilled
 	} from '$lib/theme/types.js';
 
 	export type AlertProps = {
-		abortable?: boolean;
+		readonly key?: string;
 		escapable?: boolean;
 		icon?: boolean | string | IconifyIcon;
-		position?: NotificationPosition;
+		position?: NotificationPosition | 'left' | 'right';
 		removable?: boolean; // when true can escape or click background to abort.
 		rounded?: ConfigProps['rounded'];
 		shadow?: ConfigProps['shadow'];
@@ -45,10 +46,8 @@
 	import Icon from '../icon/Icon.svelte';
 	import clsx from 'clsx';
 
-	const context = getContext('Notifications');
-
 	let {
-		abortable,
+		key,
 		escapable = true,
 		icon,
 		position,
@@ -64,10 +63,11 @@
 		...rest
 	}: AlertProps = $props();
 
+	const context = getContext<NotificationApi>('Notifications');
+
 	const [action, handler] = focustrap();
 
 	const iconClasses = $derived(clsx(`alert-icon`, AlertIconSize[size]));
-
 	const closeClasses = $derived(
 		clsx(`alert-close p-1.5 rounded-full inline-flex`, 'opacity-80 hover:opacity-100')
 	);
@@ -111,10 +111,19 @@
 		role: undefined
 	}) as ConfigProps;
 
+	function handleClose() {
+		if (!context) {
+			visible = false;
+		} else {
+			visible = false;
+			context.remove(key + '');
+		}
+	}
+
 	function handleKeydown(e: KeyboardEvent) {
 		if (!e.repeat && e.key === 'Escape' && visible && escapable && removable) {
 			e.stopPropagation();
-			visible = !visible;
+			handleClose();
 		}
 	}
 
@@ -122,13 +131,14 @@
 		event: E & { currentTarget: EventTarget & T }
 	) {
 		if (!context) return;
-		// placeholder.
+		context.lock();
 	}
+
 	function handleLeave<E extends Event = Event, T extends EventTarget = Element>(
 		event: E & { currentTarget: EventTarget & T }
 	) {
 		if (!context) return;
-		// placeholder
+		context.unlock();
 	}
 </script>
 
@@ -163,7 +173,7 @@
 			{#if removable}
 				<div class="ml-auto">
 					<div class="-mx-1.5 -my-1.5">
-						<button type="button" class={closeClasses} onclick={() => (visible = false)}>
+						<button type="button" class={closeClasses} onclick={handleClose}>
 							<span class="sr-only">Dismiss</span>
 							<Icon icon="mdi:close" class={iconClasses} />
 						</button>
