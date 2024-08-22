@@ -46,6 +46,8 @@
 	import Icon from '../icon/Icon.svelte';
 	import clsx from 'clsx';
 
+	const context = getContext<NotificationApi>('Notifications');
+
 	let {
 		key,
 		escapable = true,
@@ -57,13 +59,13 @@
 		size = 'md',
 		theme,
 		transition,
-		variant,
+		variant = !context ? 'soft' : undefined,
 		visible = $bindable(),
 		children,
 		...rest
 	}: AlertProps = $props();
 
-	const context = getContext<NotificationApi>('Notifications');
+
 
 	const [action, handler] = focustrap();
 

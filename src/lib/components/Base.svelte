@@ -90,7 +90,8 @@
 	}: BaseProps<Tag> & ElementProps<Tag> = $props();
 
 	const use = (node: HTMLElement, params: Record<string, unknown>) => {
-		if (initUse) initUse(node, params);
+		if (!initUse) return {};
+		return initUse(node, params);
 	};
 
 	const classes = $derived(

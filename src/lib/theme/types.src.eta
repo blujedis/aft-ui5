@@ -865,6 +865,35 @@ export const DivideColor = {
   white: 'divide-{{=i.divide.white[0]}} dark:divide-{{=i.divide.white[1]}}',
 };
 
+export const DivideBeforeColor = {
+  unstyled: '',
+  primary: 'before:bg-{{=i.divide.primary[0]}} dark:before:bg-{{=i.divide.primary[1]}}',
+  secondary: 'before:bg-{{=i.divide.secondary[0]}} dark:before:bg-{{=i.divide.secondary[1]}}',
+  tertiary: 'before:bg-{{=i.divide.tertiary[0]}} dark:before:bg-{{=i.divide.tertiary[1]}}',
+  danger: 'before:bg-{{=i.divide.danger[0]}} dark:before:bg-{{=i.divide.danger[1]}}',
+  warning: 'before:bg-{{=i.divide.warning[0]}} dark:before:bg-{{=i.divide.warning[1]}}',
+  success: 'before:bg-{{=i.divide.success[0]}} dark:before:bg-{{=i.divide.success[1]}}',
+  info: 'before:bg-{{=i.divide.info[0]}} dark:before:bg-{{=i.divide.info[1]}}',
+  light: 'before:bg-{{=i.divide.light[0]}} dark:before:bg-{{=i.divide.light[1]}}',
+  dark: 'before:bg-{{=i.divide.dark[0]}} dark:before:bg-{{=i.divide.dark[1]}}',
+  white: 'before:bg-{{=i.divide.white[0]}} dark:before:bg-{{=i.divide.white[1]}}',
+};
+
+export const DivideAfterColor = {
+  unstyled: '',
+  primary: 'after:bg-{{=i.divide.primary[0]}} dark:after:bg-{{=i.divide.primary[1]}}',
+  secondary: 'after:bg-{{=i.divide.secondary[0]}} dark:after:bg-{{=i.divide.secondary[1]}}',
+  tertiary: 'after:bg-{{=i.divide.tertiary[0]}} dark:after:bg-{{=i.divide.tertiary[1]}}',
+  danger: 'after:bg-{{=i.divide.danger[0]}} dark:after:bg-{{=i.divide.danger[1]}}',
+  warning: 'after:bg-{{=i.divide.warning[0]}} dark:after:bg-{{=i.divide.warning[1]}}',
+  success: 'after:bg-{{=i.divide.success[0]}} dark:after:bg-{{=i.divide.success[1]}}',
+  info: 'after:bg-{{=i.divide.info[0]}} dark:after:bg-{{=i.divide.info[1]}}',
+  light: 'after:bg-{{=i.divide.light[0]}} dark:after:bg-{{=i.divide.light[1]}}',
+  dark: 'after:bg-{{=i.divide.dark[0]}} dark:after:bg-{{=i.divide.dark[1]}}',
+  white: 'after:bg-{{=i.divide.white[0]}} dark:after:bg-{{=i.divide.white[1]}}',
+};
+
+
 
 export const OutlineColorFocus = {
   unstyled: '',

@@ -14,7 +14,7 @@
 	import { focustrap } from '$lib/hooks/focustrap.js';
 
 	const context = getContext<DisclosureContext>('Disclosure');
-	const [action, handler] = focustrap();
+	const [focustrapAction, focustrapHandler] = focustrap();
 
 	let {
 		as = 'div' as Tag,
@@ -29,7 +29,7 @@
 		visible: context.isVisible(),
 		use: (node) => {
 			context.setPanel(node);
-			action(node); // handle focus trap.
+			return focustrapAction(node); // handle focus trap.
 		}
 	}) as ConfigProps;
 
@@ -41,7 +41,7 @@
 	}
 </script>
 
-<svelte:window on:keydown={handleKeydown} on:keydown={handler} />
+<svelte:window on:keydown={handleKeydown} on:keydown={focustrapHandler} />
 
 {#if context.isVisible()}
 	<Base {...base} {...rest as any} {as}>

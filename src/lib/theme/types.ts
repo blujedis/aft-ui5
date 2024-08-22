@@ -3,7 +3,7 @@ export type SelectedType = keyof typeof SelectedTypes;
 export type ThemeColor = keyof typeof FontColor;
 
 
-export const build = ['alert', 'avatar', 'badge', 'button', 'disclosure', 'icon', 'image', 'indicator', 'kbd', 'notifications', 'stack'];
+export const build = ['alert', 'avatar', 'badge', 'button', 'disclosure', 'divider', 'drawer', 'icon', 'image', 'indicator', 'kbd', 'notifications', 'stack'];
 
 export const Placeholder = {
   unstyled: '',
@@ -853,17 +853,46 @@ export const BorderColorHover = {
 
 export const DivideColor = {
   unstyled: '',
-  primary: 'divide-primary-300 dark:divide-primary-700',
-  secondary: 'divide-secondary-300 dark:divide-secondary-700',
-  tertiary: 'divide-tertiary-300 dark:divide-tertiary-700',
-  danger: 'divide-danger-300 dark:divide-danger-700',
-  warning: 'divide-warning-300 dark:divide-warning-700',
-  success: 'divide-success-300 dark:divide-success-700',
-  info: 'divide-info-300 dark:divide-info-700',
-  light: 'divide-frame-300 dark:divide-frame-600',
-  dark: 'divide-frame-400 dark:divide-frame-600',
-  white: 'divide-frame-200 dark:divide-frame-200',
+  primary: 'divide-primary-500 dark:divide-primary-500',
+  secondary: 'divide-secondary-500 dark:divide-secondary-500',
+  tertiary: 'divide-tertiary-500 dark:divide-tertiary-500',
+  danger: 'divide-danger-500 dark:divide-danger-500',
+  warning: 'divide-warning-500 dark:divide-warning-500',
+  success: 'divide-success-500 dark:divide-success-500',
+  info: 'divide-info-500 dark:divide-info-500',
+  light: 'divide-frame-200 dark:divide-frame-200',
+  dark: 'divide-frame-700 dark:divide-frame-700',
+  white: 'divide-white dark:divide-white',
 };
+
+export const DivideBeforeColor = {
+  unstyled: '',
+  primary: 'before:bg-primary-500 dark:before:bg-primary-500',
+  secondary: 'before:bg-secondary-500 dark:before:bg-secondary-500',
+  tertiary: 'before:bg-tertiary-500 dark:before:bg-tertiary-500',
+  danger: 'before:bg-danger-500 dark:before:bg-danger-500',
+  warning: 'before:bg-warning-500 dark:before:bg-warning-500',
+  success: 'before:bg-success-500 dark:before:bg-success-500',
+  info: 'before:bg-info-500 dark:before:bg-info-500',
+  light: 'before:bg-frame-200 dark:before:bg-frame-200',
+  dark: 'before:bg-frame-700 dark:before:bg-frame-700',
+  white: 'before:bg-white dark:before:bg-white',
+};
+
+export const DivideAfterColor = {
+  unstyled: '',
+  primary: 'after:bg-primary-500 dark:after:bg-primary-500',
+  secondary: 'after:bg-secondary-500 dark:after:bg-secondary-500',
+  tertiary: 'after:bg-tertiary-500 dark:after:bg-tertiary-500',
+  danger: 'after:bg-danger-500 dark:after:bg-danger-500',
+  warning: 'after:bg-warning-500 dark:after:bg-warning-500',
+  success: 'after:bg-success-500 dark:after:bg-success-500',
+  info: 'after:bg-info-500 dark:after:bg-info-500',
+  light: 'after:bg-frame-200 dark:after:bg-frame-200',
+  dark: 'after:bg-frame-700 dark:after:bg-frame-700',
+  white: 'after:bg-white dark:after:bg-white',
+};
+
 
 
 export const OutlineColorFocus = {
