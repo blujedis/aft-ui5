@@ -2,9 +2,8 @@
 	import type { HTMLTag } from '$lib/types.js';
 	import { setContext, type Snippet } from 'svelte';
 	import { type ButtonProps } from './Button.svelte';
-	import { ensureArray } from '$lib/utils/array.js';
-	import clsx from 'clsx';
 	import { DivideColor } from '$lib/theme/types.js';
+	import { clsxm } from '$lib/utils/string.js';
 
 	export type ButtonGroupProps<Tag extends HTMLTag> = Omit<
 		ButtonProps<Tag>,
@@ -21,14 +20,12 @@
 <script lang="ts" generics="Tag extends HTMLTag = 'button'">
 	let { multiple, selected = $bindable(), children, ...rest }: ButtonGroupProps<Tag> = $props();
 
-	// selected = $state(ensureArray(selected)) as any[];
-
 	setContext('ButtonGroup', {
 		rest
 	});
 
 	const classes = $derived(
-		clsx(
+		clsxm(
 			'flex',
 			rest.variant !== 'outlined' && 'divide-x',
 			!['outlined', 'text'].includes(rest.variant + '') && DivideColor[rest.theme || 'light'],

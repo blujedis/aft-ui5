@@ -3,7 +3,7 @@ export type SelectedType = keyof typeof SelectedTypes;
 export type ThemeColor = keyof typeof FontColor;
 
 
-export const build = ['alert', 'avatar', 'badge', 'button', 'disclosure', 'divider', 'drawer', 'icon', 'image', 'indicator', 'kbd', 'notifications', 'stack'];
+export const build = ['alert', 'avatar', 'badge', 'button', 'disclosure', 'divider', 'drawer', 'icon', 'image', 'indicator', 'kbd', 'notifications', 'progress', 'stack'];
 
 export const Placeholder = {
   unstyled: '',
@@ -335,7 +335,7 @@ export const FillColor = {
   success: 'text-success-500 dark:text-success-500',
   info: 'text-info-500 dark:text-info-500',
   light: 'text-frame-400 dark:text-frame-400',
-  dark: 'text-frame-600 dark:text-frame-600 ',
+  dark: 'text-frame-600 dark:text-frame-800 ',
   white: 'text-white dark:text-white',
 };
 
@@ -349,7 +349,7 @@ export const FillColorHover = {
   success: 'hover:text-success-600 dark:hover:text-success-600',
   info: 'hover:text-info-600 dark:hover:text-info-600',
   light: 'hover:text-frame-500 dark:hover:text-frame-500',
-  dark: 'hover:text-frame-700 dark:hover:text-frame-700 ',
+  dark: 'hover:text-frame-700 dark:hover:text-frame-900 ',
   white: 'hover:text-frame-100 dark:hover:text-frame-100',
 };
 
@@ -381,6 +381,20 @@ export const FillColorSoftHover = {
   white: 'hover:text-frame-200 dark:hover:text-frame-200',
 };
 
+export const ProgressFillColor = {
+  unstyled: '',
+  primary: 'fill-primary-500 dark:fill-primary-500',
+  secondary: 'fill-secondary-500 dark:fill-secondary-500',
+  tertiary: 'fill-tertiary-500 dark:fill-tertiary-500',
+  danger: 'fill-danger-500 dark:fill-danger-500',
+  warning: 'fill-warning-500 dark:fill-warning-500',
+  success: 'fill-success-500 dark:fill-success-500',
+  info: 'fill-info-500 dark:fill-info-500',
+  light: 'fill-frame-400 dark:fill-frame-400',
+  dark: 'fill-frame-600 dark:fill-frame-800 ',
+  white: 'fill-white dark:fill-white',
+};
+
 export const StrokeColor = {
   unstyled: '',
   primary: 'stroke-primary-500 dark:stroke-primary-500',
@@ -391,7 +405,7 @@ export const StrokeColor = {
   success: 'stroke-success-500 dark:stroke-success-500',
   info: 'stroke-info-500 dark:stroke-info-500',
   light: 'stroke-frame-400 dark:stroke-frame-400',
-  dark: 'stroke-frame-600 dark:stroke-frame-600 ',
+  dark: 'stroke-frame-600 dark:stroke-frame-800 ',
   white: 'stroke-white dark:stroke-white',
 };
 
@@ -405,7 +419,7 @@ export const StrokeColorHover = {
   success: 'hover:stroke-success-600 dark:hover:stroke-success-600',
   info: 'hover:stroke-info-600 dark:hover:stroke-info-600',
   light: 'hover:stroke-frame-500 dark:hover:stroke-frame-500',
-  dark: 'hover:stroke-frame-700 dark:hover:stroke-frame-700 ',
+  dark: 'hover:stroke-frame-700 dark:hover:stroke-frame-900 ',
   white: 'hover:stroke-frame-100 dark:hover:stroke-frame-100',
 };
 
@@ -588,7 +602,7 @@ export const BgColor = {
   success: 'bg-success-500 dark:bg-success-500',
   info: 'bg-info-500 dark:bg-info-500',
   light: 'bg-frame-100 dark:bg-frame-300',
-  dark: 'bg-frame-700 dark:bg-frame-800 ',
+  dark: 'bg-frame-600 dark:bg-frame-800 ',
   white: 'bg-white dark:bg-white',
 };
 
@@ -602,7 +616,7 @@ export const BgColorHover = {
   success: 'hover:bg-success-600 dark:hover:bg-success-600',
   info: 'hover:bg-info-600 dark:hover:bg-info-600',
   light: 'hover:bg-frame-200 dark:hover:bg-frame-400',
-  dark: 'hover:bg-frame-800 dark:hover:bg-frame-900 ',
+  dark: 'hover:bg-frame-700 dark:hover:bg-frame-900 ',
   white: 'hover:bg-frame-200 dark:hover:bg-frame-200',
 };
 
@@ -616,7 +630,7 @@ export const BgColorGroupHover = {
   success: 'group-hover:bg-success-600 dark:group-hover:bg-success-600',
   info: 'group-hover:bg-info-600 dark:group-hover:bg-info-600',
   light: 'group-hover:bg-frame-200 dark:group-hover:bg-frame-400',
-  dark: 'group-hover:bg-frame-800 dark:group-hover:bg-frame-900 ',
+  dark: 'group-hover:bg-frame-700 dark:group-hover:bg-frame-900 ',
   white: 'group-hover:bg-frame-200 dark:group-hover:bg-frame-200',
 };
 
@@ -805,7 +819,7 @@ export const RingColor = {
   success: 'ring-success-500 dark:ring-success-500',
   info: 'ring-info-500 dark:ring-info-500',
   light: 'ring-frame-400 dark:ring-frame-400',
-  dark: 'ring-frame-600 dark:ring-frame-500',
+  dark: 'ring-frame-600 dark:ring-frame-600',
   white: 'ring-white dark:ring-white',
 };
 
@@ -819,7 +833,7 @@ export const RingColorHover = {
   success: 'hover:ring-success-600 dark:hover:ring-success-600',
   info: 'hover:ring-info-600 dark:hover:ring-info-600',
   light: 'hover:ring-frame-500 dark:hover:ring-frame-500',
-  dark: 'hover:ring-frame-700 dark:hover:ring-frame-600',
+  dark: 'hover:ring-frame-700 dark:hover:ring-frame-700',
   white: 'hover:ring-frame-200 dark:hover:ring-frame-200',
 };
 
@@ -833,7 +847,7 @@ export const BorderColor = {
   success: 'border-success-500 dark:border-success-500',
   info: 'border-info-500 dark:border-info-500',
   light: 'border-frame-400 dark:border-frame-400',
-  dark: 'border-frame-600 dark:border-frame-500',
+  dark: 'border-frame-600 dark:border-frame-600',
   white: 'border-white dark:border-white',
 };
 
@@ -847,7 +861,7 @@ export const BorderColorHover = {
   success: 'hover:border-success-600 dark:hover:border-success-600',
   info: 'hover:border-info-600 dark:hover:border-info-600',
   light: 'hover:border-frame-500 dark:hover:border-frame-500',
-  dark: 'hover:border-frame-700 dark:hover:border-frame-600',
+  dark: 'hover:border-frame-700 dark:hover:border-frame-700',
   white: 'hover:border-frame-200 dark:hover:border-frame-200',
 };
 
@@ -964,6 +978,36 @@ export const OutlineColorFocusPeer = {
   dark: 'peer-focus:outline-frame-500/70 dark:peer-focus:outline-frame-500/70 ',
   white: 'peer-focus:outline-white/70 dark:peer-focus:outline-white/70',
 };
+
+export const MozillaProgressBarBg ={
+  unstyled: '',
+  primary: '[&::-moz-progress-bar]:bg-primary-500 dark:[&::-moz-progress-bar]:bg-primary-500',
+  secondary: '[&::-moz-progress-bar]:bg-secondary-500 dark:[&::-moz-progress-bar]:bg-secondary-500',
+  tertiary: '[&::-moz-progress-bar]:bg-tertiary-500 dark:[&::-moz-progress-bar]:bg-tertiary-500',
+  danger: '[&::-moz-progress-bar]:bg-danger-500 dark:[&::-moz-progress-bar]:bg-danger-500',
+  warning: '[&::-moz-progress-1ar]:bg-warning-500 dark:[&::-moz-progress-bar]:bg-info-500',
+  success: '[&::-moz-progress-bar]:bg-success-500 dark:[&::-moz-progress-bar]:bg-info-500',
+  info: '[&::-moz-progress-bar]:bg-info-500 dark:[&::-moz-progress-bar]:bg-info-500',
+  light: '[&::-moz-progress-bar]:bg-frame-400 dark:[&::-moz-progress-bar]:bg-frame-400',
+  dark:  '[&::-moz-progress-bar]:bg-frame-600 dark:[&::-moz-progress-bar]:bg-frame-800',
+  white: '[&::-moz-progress-bar]:bg-white dark:[&::-moz-progress-bar]:bg-white'
+};
+
+export const WebkitProgressValue ={
+  unstyled: '',
+  primary: '[&::-webkit-progress-value]:bg-primary-500 dark:[&::-webkit-progress-value]:bg-primary-500',
+  secondary: '[&::-webkit-progress-value]:bg-secondary-500 dark:[&::-webkit-progress-value]:bg-secondary-500',
+  tertiary: '[&::-webkit-progress-value]:bg-tertiary-500 dark:[&::-webkit-progress-value]:bg-tertiary-500',
+  danger: '[&::-webkit-progress-value]:bg-danger-500 dark:[&::-webkit-progress-value]:bg-danger-500',
+  warning: '[&::-webkit-progress-value]:bg-warning-500 dark:[&::-webkit-progress-value]:bg-warning-500',
+  success: '[&::-webkit-progress-value]:bg-success-500 dark:[&::-webkit-progress-value]:bg-success-500',
+  info: '[&::-webkit-progress-value]:bg-info-500 dark:[&::-webkit-progress-value]:bg-info-500',
+  light: '[&::-webkit-progress-value]:bg-frame-400 dark:[&::-webkit-progress-value]:bg-frame-400',
+  dark: '[&::-webkit-progress-value]:bg-frame-600 dark:[&::-webkit-progress-value]:bg-frame-800',
+  white: '[&::-webkit-progress-value]:bg-white dark:[&::-webkit-progress-value]:bg-white'
+};
+
+
 
 export const FocusTypes = {
   unstyled: Placeholder,

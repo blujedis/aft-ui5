@@ -1,9 +1,9 @@
 <script context="module" lang="ts">
 	import { type Snippet } from 'svelte';
 	import { type ElementProps, type HTMLTag, type UseFn } from '$lib/types.js';
-	import { clsx, type ClassValue } from 'clsx';
-	import { twMerge } from 'tailwind-merge';
+	import { clsxm } from '$lib/utils/string.js';
 	import { transitioner, type TransitionOptions } from '$lib/utils/transitioner.js';
+	import type { ClassValue } from 'clsx';
 	import {
 		type FocusType,
 		type ThemeColor,
@@ -95,26 +95,24 @@
 	};
 
 	const classes = $derived(
-		twMerge(
-			clsx([
-				borderSize && Border[borderSize],
-				borderColor && BorderColor[borderColor],
-				dropShadow && DropShadow[dropShadow],
-				fontLeading && FontLeading[fontLeading],
-				fontSize && FontSize[fontSize],
-				fontWeight && FontWeight[fontWeight],
-				focusType && focusTheme && FocusTypes[focusType][focusTheme],
-				focusWidth && focusType !== 'unstyled' && OutlineWidth[focusWidth],
-				focusOffset && focusType !== 'unstyled' && OutlineOffset[focusOffset],
-				ringWidth && RingWidth[ringWidth],
-				ringColor && RingColor[ringColor],
-				ringColorHover && RingColorHover[ringColorHover],
-				ringOffset && RingOffset[ringOffset],
-				rounded && Rounded[rounded],
-				shadow && Shadow[shadow],
-				parentClasses,
-				userClasses || ''
-			])
+		clsxm(
+			borderSize && Border[borderSize],
+			borderColor && BorderColor[borderColor],
+			dropShadow && DropShadow[dropShadow],
+			fontLeading && FontLeading[fontLeading],
+			fontSize && FontSize[fontSize],
+			fontWeight && FontWeight[fontWeight],
+			focusType && focusTheme && FocusTypes[focusType][focusTheme],
+			focusWidth && focusType !== 'unstyled' && OutlineWidth[focusWidth],
+			focusOffset && focusType !== 'unstyled' && OutlineOffset[focusOffset],
+			ringWidth && RingWidth[ringWidth],
+			ringColor && RingColor[ringColor],
+			ringColorHover && RingColorHover[ringColorHover],
+			ringOffset && RingOffset[ringOffset],
+			rounded && Rounded[rounded],
+			shadow && Shadow[shadow],
+			parentClasses,
+			userClasses || ''
 		)
 	);
 </script>

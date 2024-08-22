@@ -6,6 +6,9 @@
 		NotificationOptions,
 		NotificationPosition
 	} from '$lib/hooks/notifications.svelte.js';
+	import { clsxm } from '$lib/utils/string.js';
+	import { flip } from 'svelte/animate';
+	import { fly, scale } from 'svelte/transition';
 
 	export type NotificationsProps = {
 		group?: string;
@@ -26,9 +29,6 @@
 <script lang="ts">
 	import { initNotifier } from '$lib/hooks/notifications.svelte.js';
 	import Alert from '../alert/Alert.svelte';
-	import clsx from 'clsx';
-	import { flip } from 'svelte/animate';
-	import { fly, scale } from 'svelte/transition';
 
 	let {
 		group = 'default',
@@ -45,14 +45,14 @@
 	setContext('Notifications', notifier);
 
 	const containerClasses = $derived(
-		clsx(
+		clsxm(
 			'flex pointer-events-none fixed inset-0 p-6 sm:p-4 z-50',
 			position.startsWith('top') && 'sm:items-start items-start',
 			position.startsWith('bottom') && 'sm:items-end items-end'
 		)
 	);
 	const listClasses = $derived(
-		clsx(
+		clsxm(
 			'notifications flex w-full flex-col space-y-2 items-center sm:items-end space-y-3',
 			['top-left', 'bottom-left', 'left'].includes(position) && 'sm:items-start',
 			['top', 'bottom'].includes(position) && 'sm:items-center'

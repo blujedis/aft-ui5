@@ -2,7 +2,7 @@
 	import { Shadow, type ThemeColor } from '$lib/theme/types.js';
 	import type { Snippet } from 'svelte';
 	import type { ConfigProps } from '../Base.svelte';
-	import clsx from 'clsx';
+	import { clsxm } from '$lib/utils/string.js';
 	import { fade, fly, type FlyParams } from 'svelte/transition';
 
 	export type DrawerProps = {
@@ -12,18 +12,18 @@
 		flyParams?: FlyParams | [FlyParams, FlyParams];
 		position?: 'left' | 'right';
 		shadow?: ConfigProps['shadow'];
-		size?: keyof typeof drawerSizeMap;
-		speed?: keyof typeof drawerSpeedMap;
+		size?: keyof typeof DrawerSizeMap;
+		speed?: keyof typeof DrawerSpeedMap;
 		visible?: boolean | number;
 		children: Snippet<[{ close: (...args: any[]) => any }]>;
 	};
 
-	const drawerPositionMap = {
+	const DrawerPositionMap = {
 		left: 'left-0 pr-10',
 		right: 'right-0 pl-10'
 	};
 
-	const drawerSizeMap = {
+	const DrawerSizeMap = {
 		unstyled: '',
 		none: 'max-w-none',
 		xs: 'max-w-56', // 'max-w-xs',
@@ -36,14 +36,14 @@
 		xl4: 'max-w-2xl'
 	};
 
-	const drawerSpeedMap = {
+	const DrawerSpeedMap = {
 		unstyled: 0,
 		slow: 600,
 		medium: 375,
 		fast: 225
 	};
 
-	const drawerOffsetMap = {
+	const DrawerOffsetMap = {
 		unstyled: {} as any,
 		none: { left: 0, right: '100%' },
 		xs: { left: -224, right: '100%' }, //  { left: -320, right: '100%' },
@@ -84,14 +84,14 @@
 	flyParams = ensureArray(flyParams) as [FlyParams, FlyParams];
 
 	let flyIn = $state({
-		x: drawerOffsetMap[size || 'unstyled'][position],
-		duration: drawerSpeedMap[speed || 'unstyled'],
+		x: DrawerOffsetMap[size || 'unstyled'][position],
+		duration: DrawerSpeedMap[speed || 'unstyled'],
 		...flyParams[0]
 	});
 
 	let flyOut = $state({
-		x: drawerOffsetMap[size || 'unstyled'][position],
-		duration: drawerSpeedMap[speed || 'unstyled'] * 0.9,
+		x: DrawerOffsetMap[size || 'unstyled'][position],
+		duration: DrawerSpeedMap[speed || 'unstyled'] * 0.9,
 		opacity: 0.75,
 		...(flyParams[1] || flyParams[0])
 	});
@@ -109,18 +109,18 @@
 	}
 
 	const drawerSizeClasses = $derived(
-		clsx('drawer-size pointer-events-auto outline-none w-screen', size && drawerSizeMap[size])
+		clsxm('drawer-size pointer-events-auto outline-none w-screen', size && DrawerSizeMap[size])
 	);
 
 	const drawerPositionClasses = $derived(
-		clsx(
+		clsxm(
 			'drawer-position pointer-events-none outline-none fixed inset-y-0 flex',
-			position && drawerPositionMap[position]
+			position && DrawerPositionMap[position]
 		)
 	);
 
 	const drawerClasses = $derived(
-		clsx(
+		clsxm(
 			'drawer outline-none inset-y-0 flex h-full z-40',
 			'body-light dark:body-dark',
 			shadow && Shadow[shadow]

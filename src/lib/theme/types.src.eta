@@ -381,6 +381,20 @@ export const FillColorSoftHover = {
   white: 'hover:text-{{=i.iconSoft.whiteH[0]}} dark:hover:text-{{=i.iconSoft.whiteH[1]}}',
 };
 
+export const ProgressFillColor = {
+  unstyled: '',
+  primary: 'fill-{{=i.icon.primary[0]}} dark:fill-{{=i.icon.primary[1]}}',
+  secondary: 'fill-{{=i.icon.secondary[0]}} dark:fill-{{=i.icon.secondary[1]}}',
+  tertiary: 'fill-{{=i.icon.tertiary[0]}} dark:fill-{{=i.icon.tertiary[1]}}',
+  danger: 'fill-{{=i.icon.danger[0]}} dark:fill-{{=i.icon.danger[1]}}',
+  warning: 'fill-{{=i.icon.warning[0]}} dark:fill-{{=i.icon.warning[1]}}',
+  success: 'fill-{{=i.icon.success[0]}} dark:fill-{{=i.icon.success[1]}}',
+  info: 'fill-{{=i.icon.info[0]}} dark:fill-{{=i.icon.info[1]}}',
+  light: 'fill-{{=i.icon.light[0]}} dark:fill-{{=i.icon.light[1]}}',
+  dark: 'fill-{{=i.icon.dark[0]}} dark:fill-{{=i.icon.dark[1]}} ',
+  white: 'fill-{{=i.icon.white[0]}} dark:fill-{{=i.icon.white[1]}}',
+};
+
 export const StrokeColor = {
   unstyled: '',
   primary: 'stroke-{{=i.icon.primary[0]}} dark:stroke-{{=i.icon.primary[1]}}',
@@ -964,6 +978,36 @@ export const OutlineColorFocusPeer = {
   dark: 'peer-focus:outline-{{=i.outlineFocus.dark[0]}} dark:peer-focus:outline-{{=i.outlineFocus.dark[1]}} ',
   white: 'peer-focus:outline-{{=i.outlineFocus.white[0]}} dark:peer-focus:outline-{{=i.outlineFocus.white[1]}}',
 };
+
+export const MozillaProgressBarBg ={
+  unstyled: '',
+  primary: '[&::-moz-progress-bar]:bg-{{=i.progress.primary[0]}} dark:[&::-moz-progress-bar]:bg-{{=i.progress.primary[1]}}',
+  secondary: '[&::-moz-progress-bar]:bg-{{=i.progress.secondary[0]}} dark:[&::-moz-progress-bar]:bg-{{=i.progress.secondary[1]}}',
+  tertiary: '[&::-moz-progress-bar]:bg-{{=i.progress.tertiary[0]}} dark:[&::-moz-progress-bar]:bg-{{=i.progress.tertiary[1]}}',
+  danger: '[&::-moz-progress-bar]:bg-{{=i.progress.danger[0]}} dark:[&::-moz-progress-bar]:bg-{{=i.progress.danger[0]}}',
+  warning: '[&::-moz-progress-1ar]:bg-{{=i.progress.warning[0]}} dark:[&::-moz-progress-bar]:bg-{{=i.progress.info[1]}}',
+  success: '[&::-moz-progress-bar]:bg-{{=i.progress.success[0]}} dark:[&::-moz-progress-bar]:bg-{{=i.progress.info[1]}}',
+  info: '[&::-moz-progress-bar]:bg-{{=i.progress.info[0]}} dark:[&::-moz-progress-bar]:bg-{{=i.progress.info[1]}}',
+  light: '[&::-moz-progress-bar]:bg-{{=i.progress.light[0]}} dark:[&::-moz-progress-bar]:bg-{{=i.progress.light[1]}}',
+  dark:  '[&::-moz-progress-bar]:bg-{{=i.progress.dark[0]}} dark:[&::-moz-progress-bar]:bg-{{=i.progress.dark[1]}}',
+  white: '[&::-moz-progress-bar]:bg-{{=i.progress.white[0]}} dark:[&::-moz-progress-bar]:bg-{{=i.progress.white[1]}}'
+};
+
+export const WebkitProgressValue ={
+  unstyled: '',
+  primary: '[&::-webkit-progress-value]:bg-{{=i.progress.primary[0]}} dark:[&::-webkit-progress-value]:bg-{{=i.progress.primary[1]}}',
+  secondary: '[&::-webkit-progress-value]:bg-{{=i.progress.secondary[0]}} dark:[&::-webkit-progress-value]:bg-{{=i.progress.secondary[1]}}',
+  tertiary: '[&::-webkit-progress-value]:bg-{{=i.progress.tertiary[0]}} dark:[&::-webkit-progress-value]:bg-{{=i.progress.tertiary[1]}}',
+  danger: '[&::-webkit-progress-value]:bg-{{=i.progress.danger[0]}} dark:[&::-webkit-progress-value]:bg-{{=i.progress.danger[1]}}',
+  warning: '[&::-webkit-progress-value]:bg-{{=i.progress.warning[0]}} dark:[&::-webkit-progress-value]:bg-{{=i.progress.warning[1]}}',
+  success: '[&::-webkit-progress-value]:bg-{{=i.progress.success[0]}} dark:[&::-webkit-progress-value]:bg-{{=i.progress.success[1]}}',
+  info: '[&::-webkit-progress-value]:bg-{{=i.progress.info[0]}} dark:[&::-webkit-progress-value]:bg-{{=i.progress.info[1]}}',
+  light: '[&::-webkit-progress-value]:bg-{{=i.progress.light[0]}} dark:[&::-webkit-progress-value]:bg-{{=i.progress.light[1]}}',
+  dark: '[&::-webkit-progress-value]:bg-{{=i.progress.dark[0]}} dark:[&::-webkit-progress-value]:bg-{{=i.progress.dark[1]}}',
+  white: '[&::-webkit-progress-value]:bg-{{=i.progress.white[0]}} dark:[&::-webkit-progress-value]:bg-{{=i.progress.white[1]}}'
+};
+
+
 
 export const FocusTypes = {
   unstyled: Placeholder,

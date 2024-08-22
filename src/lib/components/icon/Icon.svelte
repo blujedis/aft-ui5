@@ -7,9 +7,9 @@
 		FillColorSoftHover,
 		IconSize
 	} from '$lib/theme/types.js';
+	import { clsxm } from '$lib/utils/string.js';
 	import type { IconProps as IconifyIconProps } from '@iconify/svelte';
 	import Icon from '@iconify/svelte';
-	import clsx from 'clsx';
 
 	export type IconProps = IconifyIconProps & {
 		class?: string | null;
@@ -35,7 +35,7 @@
 	}: IconProps = $props();
 
 	const iconClasses = $derived(
-		clsx(
+		clsxm(
 			`icon icon-${theme} inline-flex pointer-events-none`,
 			hoverable && 'pointer-events-auto',
 			['filled'].includes(variant) && FillColor[theme],
