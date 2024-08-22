@@ -38,7 +38,7 @@ export default defineConfig({
 		fs: {
 			allow: ['..']
 		},
-		port: 5174,
+		port: 5175,
 		watch: {
 			ignored: [
 				'./static/**',

@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
 	import { type Snippet } from 'svelte';
 	import { type ElementProps, type HTMLTag, type UseFn } from '$lib/types.js';
-	import { clsxm } from '$lib/utils/string.js';
+	import { clsxm, joinStyles } from '$lib/utils/string.js';
 	import { transitioner, type TransitionOptions } from '$lib/utils/transitioner.js';
 	import type { ClassValue } from 'clsx';
 	import {
@@ -25,6 +25,7 @@
 
 	export type ConfigProps = {
 		classes?: string | ClassValue | ClassValue[];
+		styles?: string | null | false | (string | null | false)[];
 		borderSize?: keyof typeof Border;
 		borderColor?: ThemeColor;
 		dropShadow?: keyof typeof DropShadow;
@@ -42,7 +43,7 @@
 		ringOffset?: keyof typeof RingOffset;
 		rounded?: keyof typeof Rounded;
 		shadow?: keyof typeof Shadow;
-		style?: string | null;
+
 		transition?: TransitionOptions;
 		use?: UseFn;
 		useParams?: Record<string, unknown>;
@@ -59,6 +60,7 @@
 <script lang="ts" generics="Tag extends HTMLTag">
 	import t from '$lib/theme/theme.svelte.js';
 	import { FocusTypes } from '$lib/theme/types.js';
+	import { ensureArray } from '$lib/utils/array.js';
 
 	let {
 		as,
@@ -84,7 +86,9 @@
 		useParams = {},
 		visible = $bindable(),
 		classes: parentClasses = '',
+		styles: parentStyles = '',
 		class: userClasses,
+		style: userStyles,
 		children,
 		...rest
 	}: BaseProps<Tag> & ElementProps<Tag> = $props();
@@ -115,6 +119,8 @@
 			userClasses || ''
 		)
 	);
+
+	const styles = $derived(joinStyles(parentStyles, userStyles));
 </script>
 
 {#if transition && visible}
@@ -124,6 +130,7 @@
 			bind:this={node}
 			use:use={useParams}
 			class={classes}
+			style={styles}
 			transition:transitioner|global={transition}
 			{...rest}
 		>
@@ -136,13 +143,28 @@
 			use:use={useParams}
 			transition:transitioner|global={transition}
 			class={classes}
+			style={styles}
 			{...rest}
 		/>
 	{/if}
 {:else if children}
-	<svelte:element this={as} bind:this={node} use:use={useParams} class={classes} {...rest}>
+	<svelte:element
+		this={as}
+		bind:this={node}
+		use:use={useParams}
+		class={classes}
+		style={styles}
+		{...rest}
+	>
 		{@render children()}
 	</svelte:element>
 {:else}
-	<svelte:element this={as} bind:this={node} use:use={useParams} class={classes} {...rest} />
+	<svelte:element
+		this={as}
+		bind:this={node}
+		use:use={useParams}
+		class={classes}
+		style={styles}
+		{...rest}
+	/>
 {/if}

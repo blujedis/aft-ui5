@@ -1,9 +1,9 @@
 export type FocusType = keyof typeof FocusTypes;
 export type SelectedType = keyof typeof SelectedTypes;
 export type ThemeColor = keyof typeof FontColor;
+export type ThemeShade = typeof shades[number];
 
-
-export const build = ['alert', 'avatar', 'badge', 'button', 'disclosure', 'divider', 'drawer', 'icon', 'image', 'indicator', 'kbd', 'notifications', 'progress', 'stack'];
+export const build = ['alert', 'avatar', 'badge', 'button', 'disclosure', 'divider', 'drawer', 'icon', 'image', 'indicator', 'kbd', 'notifications', 'progress', 'range', 'rating', 'stack'];
 
 export const Placeholder = {
   unstyled: '',
@@ -335,7 +335,7 @@ export const FillColor = {
   success: 'text-success-500 dark:text-success-500',
   info: 'text-info-500 dark:text-info-500',
   light: 'text-frame-400 dark:text-frame-400',
-  dark: 'text-frame-600 dark:text-frame-800 ',
+  dark: 'text-frame-600 dark:text-frame-900 ',
   white: 'text-white dark:text-white',
 };
 
@@ -349,7 +349,7 @@ export const FillColorHover = {
   success: 'hover:text-success-600 dark:hover:text-success-600',
   info: 'hover:text-info-600 dark:hover:text-info-600',
   light: 'hover:text-frame-500 dark:hover:text-frame-500',
-  dark: 'hover:text-frame-700 dark:hover:text-frame-900 ',
+  dark: 'hover:text-frame-700 dark:hover:text-frame-950 ',
   white: 'hover:text-frame-100 dark:hover:text-frame-100',
 };
 
@@ -391,7 +391,7 @@ export const ProgressFillColor = {
   success: 'fill-success-500 dark:fill-success-500',
   info: 'fill-info-500 dark:fill-info-500',
   light: 'fill-frame-400 dark:fill-frame-400',
-  dark: 'fill-frame-600 dark:fill-frame-800 ',
+  dark: 'fill-frame-600 dark:fill-frame-900 ',
   white: 'fill-white dark:fill-white',
 };
 
@@ -405,7 +405,7 @@ export const StrokeColor = {
   success: 'stroke-success-500 dark:stroke-success-500',
   info: 'stroke-info-500 dark:stroke-info-500',
   light: 'stroke-frame-400 dark:stroke-frame-400',
-  dark: 'stroke-frame-600 dark:stroke-frame-800 ',
+  dark: 'stroke-frame-600 dark:stroke-frame-900 ',
   white: 'stroke-white dark:stroke-white',
 };
 
@@ -419,7 +419,7 @@ export const StrokeColorHover = {
   success: 'hover:stroke-success-600 dark:hover:stroke-success-600',
   info: 'hover:stroke-info-600 dark:hover:stroke-info-600',
   light: 'hover:stroke-frame-500 dark:hover:stroke-frame-500',
-  dark: 'hover:stroke-frame-700 dark:hover:stroke-frame-900 ',
+  dark: 'hover:stroke-frame-700 dark:hover:stroke-frame-950 ',
   white: 'hover:stroke-frame-100 dark:hover:stroke-frame-100',
 };
 
@@ -989,7 +989,7 @@ export const MozillaProgressBarBg ={
   success: '[&::-moz-progress-bar]:bg-success-500 dark:[&::-moz-progress-bar]:bg-info-500',
   info: '[&::-moz-progress-bar]:bg-info-500 dark:[&::-moz-progress-bar]:bg-info-500',
   light: '[&::-moz-progress-bar]:bg-frame-400 dark:[&::-moz-progress-bar]:bg-frame-400',
-  dark:  '[&::-moz-progress-bar]:bg-frame-600 dark:[&::-moz-progress-bar]:bg-frame-800',
+  dark:  '[&::-moz-progress-bar]:bg-frame-600 dark:[&::-moz-progress-bar]:bg-frame-900',
   white: '[&::-moz-progress-bar]:bg-white dark:[&::-moz-progress-bar]:bg-white'
 };
 
@@ -1003,7 +1003,7 @@ export const WebkitProgressValue ={
   success: '[&::-webkit-progress-value]:bg-success-500 dark:[&::-webkit-progress-value]:bg-success-500',
   info: '[&::-webkit-progress-value]:bg-info-500 dark:[&::-webkit-progress-value]:bg-info-500',
   light: '[&::-webkit-progress-value]:bg-frame-400 dark:[&::-webkit-progress-value]:bg-frame-400',
-  dark: '[&::-webkit-progress-value]:bg-frame-600 dark:[&::-webkit-progress-value]:bg-frame-800',
+  dark: '[&::-webkit-progress-value]:bg-frame-600 dark:[&::-webkit-progress-value]:bg-frame-900',
   white: '[&::-webkit-progress-value]:bg-white dark:[&::-webkit-progress-value]:bg-white'
 };
 
@@ -1050,3 +1050,5 @@ export interface Theme {
 export type ThemeInternal = Theme & { dark: boolean };
 
 export const colors = Object.keys(BgColor) as ThemeColor[];
+
+export const shades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950] as const;

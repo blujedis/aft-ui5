@@ -69,12 +69,13 @@
 
 <script lang="ts">
 	import { tweened } from 'svelte/motion';
+	import { cubicOut } from 'svelte/easing';
 
 	let {
 		animate = true,
 		delay,
-		duration,
-		easing,
+		duration = 400,
+		easing = cubicOut,
 		interpolate,
 		max = 100,
 		rounded = 'md',
