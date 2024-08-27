@@ -1,19 +1,29 @@
 <script context="module" lang="ts">
 	import { type ElementProps } from '$lib/types.js';
-	import type { Snippet } from 'svelte';
-	import { type ConfigProps } from '$lib/components/Base.svelte';
-	import { AvatarSize, Size, type ThemeColor, FillColor, FillColorSoft } from '$lib/theme/types.js';
+	import { getContext, setContext, type Snippet } from 'svelte';
+	import { type ConfigProps } from '$lib/theme/build.svelte.js';
+	import {
+		type Size,
+		type ThemeColor,
+		FillColor,
+		FillColorSoft,
+		FillColorHover,
+		FillColorSoftHover,
+		RingColor,
+		RingColorHover
+	} from '$lib/theme/types.js';
 
 	export type AvatarProps = {
+		hoverable?: boolean;
 		mode?: 'icon' | 'image';
 		removable?: boolean;
 		rounded?: ConfigProps['rounded'];
 		shadow?: ConfigProps['shadow'];
-		size?: keyof typeof Size;
+		size?: Size;
 		stacked?: boolean;
 		theme?: ThemeColor;
 		variant?: 'unstyled' | 'filled' | 'soft' | 'outlined';
-		children: Snippet<[{ rounded: ConfigProps['rounded']; size: keyof typeof Size }]>;
+		children: Snippet<[{ rounded: ConfigProps['rounded']; size: Size }]>;
 	} & Omit<ElementProps<'span'>, 'children'>;
 
 	export const avatarVariants = [
@@ -22,49 +32,72 @@
 		'soft',
 		'outlined'
 	] as AvatarProps['variant'][];
+
+	export const AvatarSize = {
+  unstyled: '',
+  xs: 'h-8 w-8',
+  sm: 'h-10 w-10',
+  md: 'h-12 w-12',
+  lg: 'h-16 w-16',
+  xl: 'h-20 w-20',
+  xl2: 'h-28 w-28'
+};
+
 </script>
 
 <script lang="ts">
-	import Base from '$lib/components/Base.svelte';
-	import t from '$lib/theme/theme.svelte.js';
-	import { truthyOrDefault } from '$lib/utils/misc.js';
+	import { buildClass } from '$lib/theme/build.svelte.js';
+	import { RingOffset, RingWidth } from '$lib/theme/constants.js';
 
 	let {
+		hoverable,
 		mode,
 		rounded,
 		shadow,
 		size = 'md',
-		stacked,
-		theme = 'light',
-		variant = 'unstyled',
+		theme,
+		variant,
 		children,
 		...rest
 	}: AvatarProps = $props();
 
-	const _rounded = truthyOrDefault(t.globals.rounded && rounded);
-	const _shadow = truthyOrDefault(t.globals.shadow && shadow);
+	const stacked = getContext('Stack') as boolean;
+	setContext('Avatar', { size, theme, variant, hoverable });
 
-	const base = $derived({
-		classes: [
-			`avatar avatar-${variant} avatar-${theme} inline-flex items-center 
+	const classes = $derived(
+		buildClass({
+			classes: [
+				`avatar avatar-${variant} avatar-${theme} inline-flex items-center 
 			justify-center outline-none relative`,
-			t.globals.transition,
-			stacked &&
-				`ring-2 ring-[color:rgb(var(--body-bg-light))] dark:ring-[color:rgb(var(--body-bg-dark))]`,
-			AvatarSize[size],
-			['filled', 'outlined'].includes(variant) && FillColor[theme],
-			variant === 'soft' && FillColorSoft[theme]
-		],
-		fontSize: size,
-		ringWidth: variant !== 'outlined' ? undefined : 'sm',
-		ringOffset: variant !== 'outlined' ? undefined : 'inset',
-		ringColor: variant !== 'outlined' ? undefined : theme,
-		ringColorHover: variant !== 'outlined' ? undefined : theme,
-		rounded: _rounded,
-		shadow: _shadow
-	}) as ConfigProps;
+				stacked && `ring-2 ring-[color:rgb(var(--bg-light))] dark:ring-[color:rgb(var(--bg-dark))]`,
+				AvatarSize[size],
+				theme && variant && ['filled', 'outlined'].includes(variant) && FillColor[theme],
+				theme && variant === 'soft' && FillColorSoft[theme],
+				theme &&
+					variant &&
+					['filled', 'outlined'].includes(variant) &&
+					hoverable &&
+					FillColorHover[theme],
+				variant === 'soft' && hoverable && FillColorSoftHover[theme || 'light'],
+				variant === 'outlined' && RingWidth['sm'],
+				variant === 'outlined' && RingOffset['inset'],
+				variant === 'outlined' && RingColor[ theme || 'light'],
+				variant === 'outlined' && hoverable && RingColorHover[theme || 'light'],
+				!theme && 'text-frame-500 dark:text-frame-500',
+				!theme && hoverable && 'hover:text-frame-600 dark:hover:text-frame-600',
+				rest.class
+			],
+			// fontSize: size,
+			// ringWidth: variant === 'outlined' && 'sm',
+			// ringOffset: variant === 'outlined' && 'inset',
+			// ringColor: variant === 'outlined' && (theme || 'light'),
+			// ringColorHover: variant === 'outlined' && hoverable && (theme || 'light'),
+			rounded,
+			shadow
+		})
+	);
 </script>
 
-<Base {...base} {...rest} as="span">
-	{@render children({ rounded: _rounded, size })}
-</Base>
+<span {...rest} class={classes}>
+	{@render children({ rounded, size })}
+</span>

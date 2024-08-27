@@ -5,11 +5,12 @@
 		FillColorHover,
 		FillColorSoft,
 		FillColorSoftHover,
-		IconSize
+		type Size
 	} from '$lib/theme/types.js';
 	import { clsxm } from '$lib/utils/string.js';
 	import type { IconProps as IconifyIconProps } from '@iconify/svelte';
 	import Icon from '@iconify/svelte';
+	import { getContext } from 'svelte';
 
 	export type IconProps = IconifyIconProps & {
 		class?: string | null;
@@ -20,16 +21,28 @@
 		variant?: 'unstyled' | 'filled' | 'soft';
 	};
 	export const iconVariants = ['filled', 'soft'] as IconProps['variant'][];
+
+	export const IconSize = {
+		unstyled: '',
+		xs: 'h-4 w-4',
+		sm: 'h-5 w-5',
+		md: 'h-6 w-6',
+		lg: 'h-8 w-8',
+		xl: 'h-10 w-10',
+		xl2: 'h-12 w-12',
+		full: 'w-full h-full'
+	};
 </script>
 
 <script lang="ts">
+	const context = getContext<{ theme: ThemeColor; size: Size; variant: string }>('Avatar');
+
 	let {
-		class: initClass = '',
 		hoverable,
 		icon,
-		size = 'sm',
+		size = (context && 'full') || 'sm',
 		stroke,
-		theme = 'unstyled', // by default will inherit from parent.
+		theme,
 		variant = 'filled',
 		...rest
 	}: IconProps = $props();
@@ -38,11 +51,13 @@
 		clsxm(
 			`icon icon-${theme} inline-flex pointer-events-none`,
 			hoverable && 'pointer-events-auto',
-			['filled'].includes(variant) && FillColor[theme],
-			['filled'].includes(variant) && hoverable && FillColorHover[theme],
-			variant === 'soft' && FillColorSoft[theme],
-			variant === 'soft' && hoverable && FillColorSoftHover[theme],
-			IconSize[size]
+			theme && ['filled'].includes(variant) && FillColor[theme],
+			theme && ['filled'].includes(variant) && hoverable && FillColorHover[theme],
+			theme && variant === 'soft' && hoverable && FillColorSoftHover[theme],
+			theme && variant === 'soft' && FillColorSoft[theme],
+			!theme && !context && '',
+			IconSize[size],
+			rest.class
 		)
 	);
 </script>

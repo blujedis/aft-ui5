@@ -1,10 +1,23 @@
 <script lang="ts">
 	import VariantList from '$components/VariantList.svelte';
+	import Icon from '../icon/Icon.svelte';
 	import Image from '../image/Image.svelte';
 	import Avatar, { avatarVariants as variants } from './Avatar.svelte';
 </script>
 
 <VariantList component={Avatar} {variants} props={{ size: 'md' }} icon="mdi:user" />
+
+<Avatar size="md">
+	<Icon icon="mdi:user" />
+</Avatar>
+
+<Avatar size="md" variant="soft">
+	<Icon icon="mdi:user" />
+</Avatar>
+
+<Avatar size="md" variant="outlined">
+	<Icon icon="mdi:user" />
+</Avatar>
 
 <Avatar size="xs">
 	<Image

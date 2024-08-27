@@ -2,13 +2,11 @@
 
 import { aft, defaultTheme } from '@aft/config';
 
-// '#161b21'
-
 const themes = {
   default: {
     ...defaultTheme
   }
-}
+};
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -19,7 +17,9 @@ export default {
   },
   plugins: [
     require('@tailwindcss/typography'),
-    require('@tailwindcss/forms'),
+    require('@tailwindcss/forms', {
+      strategy: 'class'
+    }),
     aft(themes)
   ],
 }

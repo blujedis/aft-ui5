@@ -46,7 +46,7 @@
 
 	const containerClasses = $derived(
 		clsxm(
-			'flex pointer-events-none fixed inset-0 p-6 sm:p-4 z-50',
+			'fixed inset-0 p-6 sm:p-4 pointer-events-none',
 			position.startsWith('top') && 'sm:items-start items-start',
 			position.startsWith('bottom') && 'sm:items-end items-end'
 		)

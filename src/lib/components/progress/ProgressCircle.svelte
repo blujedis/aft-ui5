@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
 	import type { Snippet } from 'svelte';
 	import type { ProgressTweenedOptions } from './ProgressBar.svelte';
-	import type { ConfigProps } from '../Base.svelte';
+	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 	import {
 		type ThemeColor,
 		type Size,
@@ -18,11 +18,11 @@
 		animate?: boolean;
 		max?: number;
 		shadow?: ConfigProps['shadow'];
-		size?: keyof typeof Size | number;
+		size?: Size | number;
 		text?: boolean | string;
 		textunit?: string;
 		theme?: ThemeColor;
-		tracksize?: keyof typeof Size | number; // fallback to "size"
+		tracksize?: Size | number; // fallback to "size"
 		value?: number;
 		children?: Snippet;
 	} & ProgressTweenedOptions;
@@ -113,7 +113,7 @@
 	);
 
 	const progressCircleTrackClasses = $derived(
-		clsxm('fill-transparent', 'stroke-frame-100 dark:stroke-frame-600')
+		clsxm('fill-transparent', 'stroke-frame-100 dark:stroke-frame-800')
 	);
 
 	const progressCircleValueClasses = $derived(

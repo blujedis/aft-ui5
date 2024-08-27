@@ -11,9 +11,9 @@
 </script>
 
 <div>
-	<Stack vertical>
+	<Stack>
 		{#each urls as url}
-			<Avatar size="lg" stacked>
+			<Avatar size="lg">
 				<Image src={url} />
 			</Avatar>
 		{/each}

@@ -1,12 +1,12 @@
 import { browser } from '$app/environment';
-import { globals } from './constants.js';
+import { options, settings } from './constants.js';
 import { type Theme } from './types.js';
 
 const currentTheme = $state({
   dark: (browser && JSON.parse(localStorage.getItem('darkmode') || 'false')) || false,
-  globals
+  settings,
+  options
 }) as Theme;
-
 
 export function updateTheme<T extends Theme>(theme = {} as Partial<T>) {
   for (const k in theme) {

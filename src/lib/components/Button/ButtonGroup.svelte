@@ -28,9 +28,12 @@
 		clsxm(
 			'flex',
 			rest.variant !== 'outlined' && 'divide-x',
-			!['outlined', 'text'].includes(rest.variant + '') && DivideColor[rest.theme || 'light'],
-			rest.variant === 'text' && 'divide-frame-300 dark:divide-frame-500',
-			rest.rounded && '[&>:not(:first-child):not(:last-child)]:rounded-none'
+			(rest.variant === 'soft' || rest.variant === 'filled') &&
+				'divide-[color:rgb(var(--bg-light))] dark:divide-[color:rgb(var(--bg-dark))]',
+			rest.variant === 'text' && DivideColor[rest.theme || 'unstyled'],
+			// rest.variant === 'text' && 'divide-frame-300 dark:divide-frame-500',
+			rest.rounded && '[&>:not(:first-child):not(:last-child)]:rounded-none',
+			'focus:z-0'
 		)
 	);
 
@@ -44,9 +47,17 @@
 			else selected = [];
 		}
 	}
+
+	function setZindex(node: HTMLDivElement) {
+		const nodes = [...node.children];
+		nodes.forEach((n, i) => {
+			const node = n as HTMLElement;
+			node.style.zIndex = i + '';
+		});
+	}
 </script>
 
-<div class={classes}>
+<div use:setZindex class={classes}>
 	{@render children({
 		...rest,
 		selectable: true,

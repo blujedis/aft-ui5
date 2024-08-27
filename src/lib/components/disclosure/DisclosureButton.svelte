@@ -10,8 +10,8 @@
 </script>
 
 <script lang="ts" generics="Tag extends HTMLTag = 'button'">
-	import Base, { type ConfigProps } from '../Base.svelte';
 	import type { ElementProps, HTMLTag } from '$lib/types.js';
+	import { buildClass } from '$lib/theme/build.svelte.js';
 
 	const context = getContext<DisclosureContext>('Disclosure');
 
@@ -22,9 +22,11 @@
 		...rest
 	}: DisclosureButtonProps<Tag> & ElementProps<Tag> = $props();
 
-	const base = $derived({
-		classes: []
-	}) as ConfigProps;
+	const classes = $derived(
+		buildClass({
+			classes: [rest.class]
+		})
+	);
 
 	function handleClick(e: Event) {
 		if (mode === 'toggle') context.toggle();
@@ -33,6 +35,13 @@
 	}
 </script>
 
-<Base onclick={handleClick} {...base} {...rest as any} {as}>
+<svelte:element
+	this={as}
+	role="button"
+	tabindex="-1"
+	onclick={handleClick}
+	{...rest}
+	class={classes}
+>
 	{@render children()}
-</Base>
+</svelte:element>

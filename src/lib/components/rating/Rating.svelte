@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
 	import type { Snippet } from 'svelte';
 	import type { ElementProps } from '$lib/types.js';
-	import type { ConfigProps } from '../Base.svelte';
+	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 	import { type RatingItemProps } from './RatingItem.svelte';
 	import { setContext } from 'svelte';
 	import { DropShadow } from '$lib/theme/types.js';
@@ -34,7 +34,7 @@
 		dropShadow?: ConfigProps['dropShadow'];
 		score?: number; // > 0 and <= count.
 		updatable?: boolean;
-		children: Snippet<[RatingMethods]>;
+		children?: Snippet<[RatingMethods]>;
 	};
 </script>
 
@@ -172,15 +172,6 @@
 		// 	}
 		// });
 	}
-
-	function handleReset() {
-		if (readonly) return;
-		updateState({
-			score,
-			active: -1,
-			selected: -1
-		});
-	}
 </script>
 
 {#snippet rateItem({ index, onMouseover, onMouseleave, onClick }: RatingMethods)}
@@ -202,6 +193,10 @@
 	onfocusout={handleCleanup}
 >
 	{#each Array(count) as r, index}
-		{@render rateItem({ index, onMouseover, onMouseleave, onClick })}
+		{#if children}
+			{@render children({ index, onMouseover, onMouseleave, onClick })}
+		{:else}
+			{@render rateItem({ index, onMouseover, onMouseleave, onClick })}
+		{/if}
 	{/each}
 </div>

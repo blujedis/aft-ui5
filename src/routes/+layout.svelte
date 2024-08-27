@@ -19,7 +19,7 @@
 <div class="flex h-full w-full fixed">
 	<div
 		class:ml-0={expanded}
-		class="-ml-52 w-52 z-10 lg:flex lg:z-0 border-r border-r-frame-200 dark:border-r-frame-700 bg-frame-50 dark:bg-frame-900 transition-all ease-in-out duration-300"
+		class="-ml-52 w-52 z-10 lg:flex lg:z-0 border-r border-r-frame-200 dark:border-r-frame-700 bg-frame-50 dark:bg-frame-800 transition-all ease-in-out duration-300"
 	>
 		<div class="w-full">
 			<div class="flex items-center justify-center h-12">Components</div>
@@ -35,7 +35,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="flex-1 h-full">
+	<div class="flex-1 h-full z-0">
 		<div
 			class="sticky flex items-center h-12 w-full border-b border-b-frame-200 dark:border-b-frame-700"
 		>

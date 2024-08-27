@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-	import { Size } from '$lib/theme/types.js';
+	import { type Size } from '$lib/theme/types.js';
 	import { getContext } from 'svelte';
 	import type { RatingContext } from './Rating.svelte';
 	import { uniqid } from '$lib/utils/misc.js';
@@ -10,7 +10,7 @@
 		background?: string; // transparent will show container page bg or set to white etc.
 		fill?: string;
 		index: number;
-		size?: keyof typeof Size;
+		size?: Size;
 		stroked?: boolean; // if true use fill for stroke color.
 	};
 

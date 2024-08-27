@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
 	import type { HTMLTag } from '$lib/types.js';
-	import type { TransitionOptions } from '$lib/utils/transitioner.js';
+	import type { TransitionParams } from '$lib/utils/transitioner.js';
 	import { setContext, type Snippet } from 'svelte';
 
 	interface SnippetMethods {
@@ -14,7 +14,7 @@
 		abortable?: boolean;
 		escapable?: boolean;
 		visible?: boolean;
-		transition?: TransitionOptions;
+		transition?: TransitionParams;
 		children: Snippet<[SnippetMethods]>;
 	};
 
@@ -22,7 +22,7 @@
 		setPanel: (node: HTMLElement) => void;
 		escapable: boolean;
 		isVisible: () => boolean;
-		transition: TransitionOptions;
+		transition: TransitionParams;
 		open: () => void;
 		close: () => void;
 		toggle: () => void;
@@ -30,8 +30,8 @@
 </script>
 
 <script lang="ts" generics="Tag extends HTMLTag = 'div'">
-	import Base, { type ConfigProps } from '../Base.svelte';
 	import { documentEvent } from '$lib/utils/events.js';
+	import { buildClass } from '$lib/theme/build.svelte.js';
 
 	let {
 		as = 'div' as Tag,
@@ -55,10 +55,13 @@
 		toggle: handleToggle
 	}) as DisclosureContext;
 
-	const base = $derived({
-		classes: [],
-		use: documentEvent('click', handleClickOutside)
-	}) as ConfigProps;
+	const clickOutside = documentEvent('click', handleClickOutside);
+
+	const classes = $derived(
+		buildClass({
+			classes: []
+		})
+	);
 
 	function handleClickOutside(e: Event & { target: HTMLElement }, node: HTMLElement) {
 		const shouldClose =
@@ -91,6 +94,6 @@
 
 <svelte:window on:keydown={handleKeydown} />
 
-<Base {...base} {...rest as any} {as} role="presentation">
+<svelte:element this={as} {...rest} use:clickOutside class={classes} role="presentation">
 	{@render children({ open: handleOpen, close: handleClose, toggle: handleToggle })}
-</Base>
+</svelte:element>

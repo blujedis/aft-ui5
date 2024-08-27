@@ -10,8 +10,9 @@
 </script>
 
 <script lang="ts" generics="Tag extends HTMLTag = 'div'">
-	import Base, { type ConfigProps } from '../Base.svelte';
 	import { focustrap } from '$lib/hooks/focustrap.js';
+	import { buildClass } from '$lib/theme/build.svelte.js';
+	import { transitioner } from '$lib/utils/transitioner.js';
 
 	const context = getContext<DisclosureContext>('Disclosure');
 	const [focustrapAction, focustrapHandler] = focustrap();
@@ -22,16 +23,16 @@
 		...rest
 	}: DisclosurePanelProps<Tag> & ElementProps<Tag> = $props();
 
-	const base = $derived({
-		classes: [],
-		tabindex: -1,
-		transition: context.transition,
-		visible: context.isVisible(),
-		use: (node) => {
-			context.setPanel(node);
-			return focustrapAction(node); // handle focus trap.
-		}
-	}) as ConfigProps;
+	const classes = $derived(
+		buildClass({
+			classes: [rest.class]
+		})
+	);
+
+	function usePanel(node: HTMLElement) {
+		context.setPanel(node);
+		return focustrapAction(node); // handle focus trap.
+	}
 
 	function handleKeydown(e: KeyboardEvent) {
 		if (!e.repeat && e.key === 'Escape' && context.isVisible() && context.escapable) {
@@ -44,7 +45,15 @@
 <svelte:window on:keydown={handleKeydown} on:keydown={focustrapHandler} />
 
 {#if context.isVisible()}
-	<Base {...base} {...rest as any} {as}>
+	<svelte:element
+		this={as}
+		role="alert"
+		tabindex="-1"
+		{...rest}
+		use:usePanel
+		transition:transitioner={context.transition}
+		class={classes}
+	>
 		{@render children()}
-	</Base>
+	</svelte:element>
 {/if}

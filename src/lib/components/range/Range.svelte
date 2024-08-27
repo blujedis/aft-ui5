@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-	import type { ConfigProps } from '../Base.svelte';
+	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 	import type { ThemeColor, Size, FocusType } from '$lib/theme/types.js';
 	import type { ElementProps } from '$lib/types.js';
 
@@ -9,7 +9,7 @@
 		focusTheme?: ThemeColor;
 		rounded?: ConfigProps['rounded'];
 		shadow?: ConfigProps['shadow'];
-		size?: keyof typeof Size;
+		size?: Size;
 		theme?: ThemeColor;
 	} & ProgressTweenedOptions;
 
@@ -93,7 +93,7 @@
 		joinStyles(
 			[
 				toColorVar('--track-background-color', 'frame-100'),
-				toColorVar('--track-background-color-dark', 'frame-600'),
+				toColorVar('--track-background-color-dark', 'frame-800'),
 				!['light', 'dark', 'white'].includes(theme) &&
 					toColorVar('--thumb-background-color', `${theme}-300`),
 				!['light', 'dark', 'white'].includes(theme) &&
@@ -104,10 +104,9 @@
 				theme === 'light' && toColorVar('--track-accent-color', `frame-400`),
 				theme === 'light' && toColorVar('--thumb-border-color', `frame-400`),
 				theme === 'dark' && toColorVar('--thumb-background-color', `frame-400`),
-				theme === 'dark' && toColorVar('--track-accent-color', `frame-900`),
-				theme === 'dark' && toColorVar('--thumb-border-color', `frame-900`),
+				theme === 'dark' && toColorVar('--track-accent-color', `frame-700`),
+				theme === 'dark' && toColorVar('--thumb-border-color', `frame-700`),
 
-				// theme === 'white' && toColorVar('--track-background-color', 'frame-100'),
 				theme === 'white' && toColorVar('--thumb-background-color', `frame-300`),
 				theme === 'white' && '--track-accent-color:#fff;',
 				theme === 'white' && '--thumb-border-color:#fff;',

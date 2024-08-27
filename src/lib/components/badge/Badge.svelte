@@ -1,23 +1,23 @@
 <script context="module" lang="ts">
 	import { type ElementProps } from '$lib/types.js';
-	import { type ConfigProps } from '$lib/components/Base.svelte';
+	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 	import {
 		BgColor,
 		BgColorSoft,
-		BadgeFontSize,
 		ForeColorFilled,
 		ForeColorSoft,
 		ForeColorSoftHover,
-		Size,
+		type Size,
 		type ThemeColor,
-		BadgePaddingX
+		RingColor
 	} from '$lib/theme/types.js';
 
 	export type BadgeProps = {
+		full?: boolean;
 		removable?: boolean;
-		rounded?: boolean | ConfigProps['rounded'];
-		shadow?: boolean | ConfigProps['shadow'];
-		size?: keyof typeof Size;
+		rounded?: ConfigProps['rounded'];
+		shadow?: ConfigProps['shadow'];
+		size?: Size;
 		theme?: ThemeColor;
 		variant?: 'unstyled' | 'filled' | 'soft' | 'outlined';
 		children: Snippet<[]>;
@@ -29,51 +29,78 @@
 		'soft',
 		'outlined'
 	] as BadgeProps['variant'][];
+
+	export const BadgeFontSize = {
+		unstyled: '',
+		xs: 'text-[10px]', // leading-3
+		sm: 'text-xs',
+		md: 'text-sm',
+		lg: 'text-md',
+		xl: 'text-lg',
+		xl2: 'text-xl'
+	};
+
+	export const BadgePaddingX = {
+  unstyled: '',
+  xs: 'px-1',
+  sm: 'px-1.5 ',
+  md: 'px-1.5',
+  lg: 'px-2',
+  xl: 'px-2 ',
+  xl2: 'px-2.5'
+};
 </script>
 
 <script lang="ts">
-	import Base from '$lib/components/Base.svelte';
-	import t from '$lib/theme/theme.svelte.js';
 	import type { Snippet } from 'svelte';
+	import { buildClass } from '$lib/theme/build.svelte.js';
+	import { RingOffset, RingWidth } from '$lib/theme/constants.js';
 
 	let {
+		full,
 		removable,
 		rounded,
 		shadow,
 		size = 'md',
-		theme = 'light',
+		theme,
 		variant = 'filled',
 		children,
 		...rest
 	}: BadgeProps = $props();
 
-	const base = $derived({
-		classes: [
-			`badge badge-${variant} badge-${theme} inline-flex items-center 
+	const classes = $derived(
+		buildClass({
+			classes: [
+				`badge badge-${variant} badge-${theme} inline-flex items-center 
 			justify-center outline-none`,
-			t.globals.transition,
-			removable && 'badge-removable',
-			BadgeFontSize[size],
-			BadgePaddingX[size],
-			variant === 'filled' ? BgColor[theme] : '',
-			variant === 'soft' ? BgColorSoft[theme] : '',
-			variant === 'filled' ? BgColor[theme] : '',
-			variant === 'filled' ? ForeColorFilled[theme] : '',
-			variant === 'soft' ? ForeColorSoft[theme] : '',
-			variant === 'soft' ? ForeColorSoftHover[theme] : ''
-		],
-		fontSize: size,
-		ringWidth: variant !== 'outlined' ? undefined : 'sm',
-		ringOffset: variant !== 'outlined' ? undefined : 'inset',
-		ringColor: variant !== 'outlined' ? undefined : theme,
-		ringColorHover: variant !== 'outlined' ? undefined : theme,
-		rounded: t.globals.rounded && rounded,
-		shadow: t.globals.shadow && shadow
-	}) as ConfigProps;
+				removable && 'badge-removable',
+				BadgeFontSize[size],
+				BadgePaddingX[size],
+				!theme && variant === 'filled' && 'bg-frame-100 dark:bg-frame-700',
+				theme && variant === 'filled' && BgColor[theme],
+				theme && variant === 'soft' && BgColorSoft[theme],
+				theme && variant === 'filled' && BgColor[theme],
+				theme && variant === 'filled' && ForeColorFilled[theme],
+				theme && variant === 'soft' && ForeColorSoft[theme],
+				theme && variant === 'soft' && ForeColorSoftHover[theme],
+				variant === 'outlined' && RingWidth['sm'],
+				variant === 'outlined' && RingOffset['inset'],
+				variant === 'outlined' && RingColor[theme || 'light'],
+				rest.class
+			],
+			// ringWidth: variant == 'outlined' && 'sm',
+			// ringOffset: variant == 'outlined' && 'inset',
+			// ringColor: variant == 'outlined' && theme,
+			// ringColorHover: variant == 'outlined' && theme,
+			full,
+			rounded,
+			shadow
+		})
+	);
 </script>
 
-<Base {...base} {...rest} as="span">
-	<div class="mb-0.5">
+<span {...rest} class={classes}>
+	<div class="mb-px">
 		<!-- helps alignment a litte -->
 		{@render children()}
 	</div>
@@ -96,4 +123,4 @@
 
 		<span class="sr-only">Remove badge</span>
 	{/if}
-</Base>
+</span>

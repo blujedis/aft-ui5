@@ -7,7 +7,7 @@
 		type ThemeColor
 	} from '$lib/theme/types.js';
 	import type { Snippet } from 'svelte';
-	import type { ConfigProps } from '../Base.svelte';
+	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 	import { clsxm } from '$lib/utils/string.js';
 	import type { ElementProps } from '$lib/types.js';
 
@@ -102,7 +102,7 @@
 
 	const classes = $derived(
 		clsxm(
-			`progress-bar progress-bar-${theme} appearance-none bg-frame-100 [&::-webkit-progress-bar]:bg-frame-100 dark:bg-frame-600 dark:[&::-webkit-progress-bar]:bg-frame-600`,
+			`progress-bar progress-bar-${theme} appearance-none bg-frame-100 [&::-webkit-progress-bar]:bg-frame-100 dark:bg-frame-800 dark:[&::-webkit-progress-bar]:bg-frame-800`,
 			theme && WebkitProgressValue[theme],
 			theme && MozillaProgressBarBg[theme],
 			size && ProgressBarSizes[size],

@@ -51,7 +51,7 @@
 							{/if}
 						</svelte:component>
 						{#if !label}
-							<div class="text-center mt-1 text-gray-500">{capitalize(m)}</div>
+							<div class="text-center mt-1 text-frame-500 dark:text-gray-400">{capitalize(m)}</div>
 						{/if}
 					</div>
 				{/each}

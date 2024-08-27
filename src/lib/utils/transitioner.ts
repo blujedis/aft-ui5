@@ -5,11 +5,11 @@ import {
   type TransitionConfig
 } from 'svelte/transition';
 
-export type TransitionerOption = keyof typeof transitionOptions;
+export type TransitionerOption = keyof typeof TransitionOptions;
 
 export type Transitions = keyof typeof transitions;
 
-export type TransitionOptions = Record<string, unknown> & { type: Transitions } | TransitionerOption | FadeParams | BlurParams | SlideParams | ScaleParams | FlyParams;
+export type TransitionParams = Record<string, unknown> & { type: Transitions } | TransitionerOption | FadeParams | BlurParams | SlideParams | ScaleParams | FlyParams;
 
 export const transitions = {
   fly,
@@ -20,7 +20,7 @@ export const transitions = {
   crossfade
 };
 
-export const transitionOptions = {
+export const TransitionOptions = {
   dissolve: { duration: 200, start: 0.5, type: 'fade' } as FadeParams,
   focus: { duration: 400, amount: 5, opacity: 0, type: 'blur' } as BlurParams,
   expand: { duration: 400, axis: 'y', type: 'slide' } as SlideParams,
@@ -30,22 +30,15 @@ export const transitionOptions = {
   reveal: { duration: 400, y: 300, type: 'fly' } as FlyParams
 };
 
-export const modalTransitions = {
-  ...transitions,
-  zoom: { duration: 200, start: 0.925, type: 'scale' },
-  swipe: { duration: 200, axis: 'y', type: 'slide' },
-  dissolve: { duration: 200, start: 0.8, type: 'fade' }
-};
-
 export function transitioner(
   node: HTMLElement,
-  options: TransitionOptions
+  options?: TransitionParams
 ): TransitionConfig {
   if (!options) return {} as TransitionConfig;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let config = options as any;
   if (typeof options === 'string')
-    config = transitionOptions[options] as Record<string, unknown> & {
+    config = TransitionOptions[options] as Record<string, unknown> & {
       type: Transitions;
     };
   else config = options;

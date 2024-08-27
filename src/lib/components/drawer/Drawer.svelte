@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
 	import { Shadow, type ThemeColor } from '$lib/theme/types.js';
 	import type { Snippet } from 'svelte';
-	import type { ConfigProps } from '../Base.svelte';
+	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 	import { clsxm } from '$lib/utils/string.js';
 	import { fade, fly, type FlyParams } from 'svelte/transition';
 
@@ -123,7 +123,8 @@
 		clsxm(
 			'drawer outline-none inset-y-0 flex h-full z-40',
 			'body-light dark:body-dark',
-			shadow && Shadow[shadow]
+			shadow && Shadow[shadow],
+			rest.class
 		)
 	);
 

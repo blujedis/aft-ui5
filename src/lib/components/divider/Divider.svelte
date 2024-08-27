@@ -1,5 +1,6 @@
 <script context="module" lang="ts">
 	import { DivideAfterColor, DivideBeforeColor, type ThemeColor } from '$lib/theme/types.js';
+	import type { ElementProps } from '$lib/types.js';
 	import { clsxm } from '$lib/utils/string.js';
 	import type { Snippet } from 'svelte';
 
@@ -12,7 +13,13 @@
 </script>
 
 <script lang="ts">
-	let { direction = 'horizontal', position = 'center', theme, children }: DividerProps = $props();
+	let {
+		direction = 'horizontal',
+		position = 'center',
+		theme,
+		children,
+		...rest
+	}: DividerProps & ElementProps<'div'> = $props();
 
 	const beforeHClasses = `before:h-px before:w-full before:flex-1 before:content-['']`;
 	const afterHClasses = `after:h-px after:w-full after:flex-1 after:content-['']`;
@@ -37,12 +44,13 @@
 			DivideBeforeColor[theme || 'unstyled'],
 			DivideAfterColor[theme || 'unstyled'],
 			!theme &&
-				`before:bg-frame-200 dark:before:bg-frame-600 after:bg-frame-200 dark:after:bg-frame-600`
+				`before:bg-frame-200 dark:before:bg-frame-600 after:bg-frame-200 dark:after:bg-frame-600`,
+			rest.class
 		)
 	);
 </script>
 
-<div class={dividerClasses}>
+<div {...rest} class={dividerClasses}>
 	<div class="mb-1">
 		{@render children()}
 	</div>

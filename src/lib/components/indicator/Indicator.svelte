@@ -1,9 +1,9 @@
 <script context="module" lang="ts">
 	import { type ElementProps } from '$lib/types.js';
-	import { type ConfigProps } from '$lib/components/Base.svelte';
+	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 	import { IndicatorCounterFontSize, IndicatorCounterSize } from './options.js';
 	import {
-		Size,
+		type Size,
 		type ThemeColor,
 		Animate,
 		BgColor,
@@ -16,7 +16,7 @@
 		diameter?: number | undefined; // em size indicator will be sized with component.
 		rounded?: ConfigProps['rounded'];
 		shadow?: ConfigProps['shadow'];
-		size?: keyof typeof Size;
+		size?: Size;
 		theme?: ThemeColor;
 		text?: string | number;
 		variant?: 'unstyled' | 'filled' | 'soft';
@@ -31,7 +31,7 @@
 </script>
 
 <script lang="ts">
-	import Base from '$lib/components/Base.svelte';
+	import { buildClass } from '$lib/theme/build.svelte.js';
 
 	let {
 		animate = 'unstyled',
@@ -54,30 +54,33 @@
 		? ''
 		: `width: ${diameter}em; height: ${diameter}em; top: ${offset}em; right: ${offset}em;`;
 
-	const base = $derived({
-		classes: [
-			`indicator indicator-${variant} indicator-${theme} absolute rounded-full inline-flex items-center justify-center ring-2 z-10`,
-			rounded === 'full' && 'ring-frame-300 dark:ring-frame-600',
-			rounded !== 'full' &&
-				'ring-[color:rgb(var(--body-bg-light))] dark:ring-[color:rgb(var(--body-bg-dark))]',
-			variant !== 'unstyled' && BgColor[theme],
-			variant !== 'unstyled' && ForeColorFilled[theme],
-			variant === 'soft' && BgColorSoft[theme],
-			text && IndicatorCounterSize[size],
-			text && IndicatorCounterFontSize[size],
-			text && 'font-medium -top-2 -right-1',
-			text && 'px-1',
-			text && text.length > 1 && 'px-1.5',
-			text && text.length >= 2 && 'w-auto',
-			!text && Animate[animate]
-		]
-	}) as ConfigProps;
+	const classes = $derived(
+		buildClass({
+			classes: [
+				`indicator indicator-${variant} indicator-${theme} absolute rounded-full inline-flex items-center justify-center ring-2 z-10`,
+				rounded === 'full' && 'ring-frame-300 dark:ring-frame-600',
+				rounded !== 'full' &&
+					'ring-[color:rgb(var(--bg-light))] dark:ring-[color:rgb(var(--bg-dark))]',
+				variant !== 'unstyled' && BgColor[theme],
+				variant !== 'unstyled' && ForeColorFilled[theme],
+				variant === 'soft' && BgColorSoft[theme],
+				text && IndicatorCounterSize[size],
+				text && IndicatorCounterFontSize[size],
+				text && 'font-medium -top-2 -right-1',
+				text && 'px-1',
+				text && text.length > 1 && 'px-1.5',
+				text && text.length >= 2 && 'w-auto',
+				!text && Animate[animate],
+				rest.class
+			]
+		})
+	);
 </script>
 
-<Base {...base} {...rest} as="span" {style}>
+<span {...rest} class={classes} {style}>
 	{#if text}
 		<div class="mb-px">
 			{text}
 		</div>
 	{/if}
-</Base>
+</span>
