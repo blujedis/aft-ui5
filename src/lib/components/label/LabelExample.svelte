@@ -4,6 +4,10 @@
 	import Label from './Label.svelte';
 </script>
 
+<div class="mb-8">
+	<Label>Default Theme</Label>
+</div>
+
 <div class="grid grid-cols-8 gap-4 mb-6">
 	{#each colors.filter((c) => c !== 'unstyled') as color}
 		<Label theme={color}>

@@ -5,7 +5,7 @@
 	import type { Snippet } from 'svelte';
 
 	export interface DividerProps {
-		direction?: 'horizontal' | 'vertical';
+		vertical?: boolean;
 		position?: 'start' | 'end' | 'center';
 		theme?: ThemeColor;
 		children: Snippet;
@@ -14,7 +14,7 @@
 
 <script lang="ts">
 	let {
-		direction = 'horizontal',
+		vertical,
 		position = 'center',
 		theme,
 		children,
@@ -29,22 +29,19 @@
 	const dividerClasses = $derived(
 		clsxm(
 			'flex items-center self-stretch whitespace-nowrap',
-			direction.startsWith('h') && `flex-row my-y h-4  [&:not(:empty)]:gap-4`,
-			direction.startsWith('v') && `flex-col h-full mx-4 my-0 [&:not(:empty)]:gap-3`,
-			position.startsWith('c') && direction.startsWith('h') && beforeHClasses + ' ' + afterHClasses,
-			position.startsWith('c') && direction.startsWith('v') && beforeVClasses + ' ' + afterVClasses,
-			position.startsWith('s') && direction.startsWith('h') && afterHClasses,
-			position.startsWith('e') && direction.startsWith('h') && beforeHClasses,
-			position.startsWith('s') &&
-				direction.startsWith('v') &&
-				afterVClasses + ' [&:not(:empty)]:gap-0 after:mt-3',
-			position.startsWith('e') &&
-				direction.startsWith('v') &&
-				beforeVClasses + ' [&:not(:empty)]:gap-0 before:mb-3',
+			!vertical && `flex-row my-y h-4  [&:not(:empty)]:gap-4`,
+			vertical && `flex-col h-full mx-4 my-0 [&:not(:empty)]:gap-3`,
+			position.startsWith('c') && !vertical && beforeHClasses + ' ' + afterHClasses,
+			position.startsWith('c') && vertical && beforeVClasses + ' ' + afterVClasses,
+			position.startsWith('s') && !vertical && afterHClasses,
+			position.startsWith('e') && !vertical && beforeHClasses,
+			position.startsWith('s') && vertical && afterVClasses + ' [&:not(:empty)]:gap-0 after:mt-3',
+			position.startsWith('e') && vertical && beforeVClasses + ' [&:not(:empty)]:gap-0 before:mb-3',
 			DivideBeforeColor[theme || 'unstyled'],
 			DivideAfterColor[theme || 'unstyled'],
 			!theme &&
 				`before:bg-frame-200 dark:before:bg-frame-600 after:bg-frame-200 dark:after:bg-frame-600`,
+			vertical && 'min-h-max w-auto',
 			rest.class
 		)
 	);

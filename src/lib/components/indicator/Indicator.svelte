@@ -2,10 +2,10 @@
 	import { type ElementProps } from '$lib/types.js';
 	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 	import { IndicatorCounterFontSize, IndicatorCounterSize } from './options.js';
+	import { Animate } from '$lib/theme/constants.js';
 	import {
 		type Size,
 		type ThemeColor,
-		Animate,
 		BgColor,
 		ForeColorFilled,
 		BgColorSoft

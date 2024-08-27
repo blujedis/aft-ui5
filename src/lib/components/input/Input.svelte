@@ -1,15 +1,7 @@
 <script context="module" lang="ts">
 	import type { ElementProps } from '$lib/types.js';
 	import { type ConfigProps } from '$lib/theme/build.svelte.js';
-	import {
-		FieldFontSize,
-		FieldPaddingX,
-		FieldPaddingY,
-		FillColor,
-		type FocusType,
-		type Size,
-		type ThemeColor
-	} from '$lib/theme/types.js';
+	import { RingColor, type FocusType, type Size, type ThemeColor } from '$lib/theme/types.js';
 
 	export interface InputProps {
 		chars?: number;
@@ -45,6 +37,7 @@
 
 <script lang="ts">
 	import { buildClass } from '$lib/theme/build.svelte.js';
+	import { FieldFontSize, FieldPaddingX, FieldPaddingY } from '$lib/theme/constants.js';
 
 	let {
 		disabled,
@@ -74,13 +67,14 @@
 				theme === 'dark' && 'dark:focus:ring-frame-500',
 				size && FieldFontSize[size],
 				size && FieldPaddingX[size],
-				size && FieldPaddingY[size]
+				size && FieldPaddingY[size],
+				theme && RingColor[theme]
 			],
 			disabled,
 			focusType,
 			focusTheme: focusTheme || theme,
 			focusOffset: 'none',
-			ringColor: theme,
+			// ringColor: theme,
 			focusRingColor: theme,
 			full,
 			rounded,

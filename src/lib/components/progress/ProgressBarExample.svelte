@@ -6,6 +6,10 @@
 	let value = 33;
 </script>
 
+<div class="mb-8">
+	<ProgressBar bind:value max={100} />
+</div>
+
 <div class="grid grid-cols-3 gap-3">
 	{#each colors.filter((c) => c !== 'unstyled') as color}
 		<div class="text-center">

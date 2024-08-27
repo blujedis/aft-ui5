@@ -2,17 +2,12 @@
 	import type { Snippet } from 'svelte';
 	import type { ProgressTweenedOptions } from './ProgressBar.svelte';
 	import { type ConfigProps } from '$lib/theme/build.svelte.js';
-	import {
-		type ThemeColor,
-		type Size,
-		DropShadow,
-		StrokeColor,
-		ProgressFillColor
-	} from '$lib/theme/types.js';
+	import { type ThemeColor, type Size, StrokeColor, ProgressFillColor } from '$lib/theme/types.js';
 	import { tweened } from 'svelte/motion';
 	import type { ElementProps } from '$lib/types.js';
 	import { clsxm } from '$lib/utils/string.js';
 	import { cubicOut } from 'svelte/easing';
+	import { DropShadow } from '$lib/theme/constants.js';
 
 	export type ProgressCircleProps = {
 		animate?: boolean;
@@ -71,7 +66,7 @@
 		size = 'md',
 		text = true,
 		textunit = '%',
-		theme = 'light',
+		theme,
 		value = $bindable(),
 		tracksize = 'md',
 		children,
@@ -113,18 +108,23 @@
 	);
 
 	const progressCircleTrackClasses = $derived(
-		clsxm('fill-transparent', 'stroke-frame-100 dark:stroke-frame-800')
+		clsxm('fill-transparent', 'stroke-frame-100 dark:stroke-frame-800/50')
 	);
 
 	const progressCircleValueClasses = $derived(
-		clsxm('fill-transparent', theme && StrokeColor[theme])
+		clsxm(
+			'fill-transparent',
+			theme && StrokeColor[theme],
+			!theme && 'stroke-frame-400 dark:stroke-frame-400'
+		)
 	);
 
 	const progressCircleTextClasses = $derived(
 		clsxm(
 			size && typeof size === 'string' && ProgressCircleTextSizes[size],
 			theme && !['light', 'dark'].includes(theme) && ProgressFillColor[theme],
-			theme && ['light', 'dark'].includes(theme) && 'fill-frame-600 dark:fill-frame-400'
+			theme && ['light', 'dark'].includes(theme) && 'fill-frame-600 dark:fill-frame-400',
+			!theme && 'fill-[color:rgb(var(--text-dark))] dark:fill-[color:rgb(var(--text-light))]'
 		)
 	);
 </script>

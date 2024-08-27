@@ -63,7 +63,7 @@
 		rounded,
 		shadow,
 		size = 'md',
-		theme = 'light',
+		theme,
 		value = $bindable(),
 		...rest
 	}: RangeProps & Omit<ElementProps<'input'>, 'size'> = $props();
@@ -93,16 +93,22 @@
 		joinStyles(
 			[
 				toColorVar('--track-background-color', 'frame-100'),
-				toColorVar('--track-background-color-dark', 'frame-800'),
-				!['light', 'dark', 'white'].includes(theme) &&
+				toColorVar('--track-background-color-dark', 'frame-800/50'),
+				!['light', 'dark', 'white'].includes(theme || 'unstyled') &&
 					toColorVar('--thumb-background-color', `${theme}-300`),
-				!['light', 'dark', 'white'].includes(theme) &&
+				!['light', 'dark', 'white'].includes(theme || 'unstyled') &&
 					toColorVar('--track-accent-color', `${theme}-500`),
-				!['light', 'dark', 'white'].includes(theme) &&
+				!['light', 'dark', 'white'].includes(theme || 'unstyled') &&
 					toColorVar('--thumb-border-color', `${theme}-500`),
+
+				!theme && toColorVar('--thumb-background-color', `frame-100`),
+				!theme && toColorVar('--track-accent-color', `frame-500`),
+				!theme && toColorVar('--thumb-border-color', `frame-500`),
+
 				theme === 'light' && toColorVar('--thumb-background-color', `frame-100`),
-				theme === 'light' && toColorVar('--track-accent-color', `frame-400`),
-				theme === 'light' && toColorVar('--thumb-border-color', `frame-400`),
+				theme === 'light' && toColorVar('--track-accent-color', `frame-300`),
+				theme === 'light' && toColorVar('--thumb-border-color', `frame-300`),
+
 				theme === 'dark' && toColorVar('--thumb-background-color', `frame-400`),
 				theme === 'dark' && toColorVar('--track-accent-color', `frame-700`),
 				theme === 'dark' && toColorVar('--thumb-border-color', `frame-700`),

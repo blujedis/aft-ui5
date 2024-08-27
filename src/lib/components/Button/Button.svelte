@@ -34,8 +34,8 @@
 		focusType?: FocusType;
 		focusTheme?: ThemeColor;
 		full?: boolean;
+		role?: AriaRole;
 		rounded?: ConfigProps['rounded'];
-		selectable?: boolean;
 		selected?: boolean;
 		selectedTheme?: ThemeColor;
 		shadow?: ConfigProps['shadow'];
@@ -75,14 +75,17 @@
 	} from '$lib/theme/constants.js';
 	import { getContext } from 'svelte';
 	import { buildClass } from '$lib/theme/build.svelte.js';
+	import type { AriaRole } from 'svelte/elements';
+
+	const context = getContext('ButtonGroup') as any;
 
 	let {
 		as = 'button' as Tag,
 		focusType = 'visible',
 		focusTheme,
 		full,
+		role = context?.role,
 		rounded,
-		selectable,
 		selected = $bindable(),
 		selectedTheme,
 		shadow,
@@ -93,13 +96,9 @@
 		...rest
 	}: ButtonProps<Tag> & ElementProps<Tag> = $props();
 
-	const context = getContext('ButtonGroup') as any;
-
-	if (variant === 'soft') console.log(theme, variant);
-
 	const classes = $derived(
 		buildClass({
-			prepend: ['button button-${variant} button-${theme} '],
+			prepend: [`button button-${variant || 'default'} button-${theme} `],
 			classes: [
 				`inline-flex items-center justify-center cursor-pointer outline-none`,
 				variant !== 'text' ? ButtonPaddingX[size] : '',
@@ -112,24 +111,28 @@
 				{ 'font-medium': !rest.href },
 				{ 'hover:underline': variant === 'text' },
 				rest.disabled && options.disabled,
+				selected && 'button-selected',
 
 				theme && variant === 'filled' && BgColor[theme],
 				theme && variant === 'filled' && BgColorHover[theme],
 				theme && variant === 'filled' && ForeColorFilled[theme],
 				theme && variant === 'filled' && ForeColorFilledHover[theme],
 				theme && variant === 'filled' && SelectedTypes.checked[selectedTheme || theme],
-				!theme  &&
-					(!variant || variant === 'filled') &&
-					'bg-frame-200 dark:bg-frame-700 hover:bg-frame-300 dark:hover:bg-frame-800',
+				!theme &&
+					(!variant || variant === 'filled' || variant === 'soft') &&
+					'bg-frame-200 dark:bg-frame-600 hover:bg-frame-300 dark:hover:bg-frame-700',
+				!theme &&
+					(!variant || ['filled', 'soft'].includes(variant)) &&
+					'aria-checked:bg-frame-500 aria-checked:text-white dark:aria-checked:bg-frame-800 dark:aria-checked:text-white',
+				!theme &&
+					(!variant || variant === 'outlined') &&
+					'aria-checked:bg-frame-200 dark:aria-checked:bg-frame-800 dark:aria-checked:text-white',
 
 				theme && variant === 'soft' && BgColorSoft[theme],
 				theme && variant === 'soft' && BgColorSoftHover[theme],
 				theme && variant === 'soft' && ForeColorSoft[theme],
 				theme && variant === 'soft' && ForeColorSoftHover[theme],
 				theme && variant === 'soft' && SelectedSoftTypes.checked[selectedTheme || theme],
-				!theme &&
-					variant === 'soft' &&
-					'bg-frame-200 dark:bg-frame-700 hover:bg-frame-300 dark:hover:bg-frame-800',
 
 				theme && variant === 'outlined' && ForeColorOutline[theme],
 				theme && variant === 'outlined' && ForeColorOutlineHover[theme],
@@ -167,13 +170,6 @@
 	);
 </script>
 
-{#if !selectable}
-	<button {...rest} class={classes}>
-		{@render children()}
-	</button>
-{:else}
-	<!-- svelte-ignore a11y_role_supports_aria_props_implicit -->
-	<button {...rest} checked={selected} aria-checked={selected} class={classes}>
-		{@render children()}
-	</button>
-{/if}
+<button {role} {...rest} checked={selected} aria-checked={selected} class={classes}>
+	{@render children()}
+</button>

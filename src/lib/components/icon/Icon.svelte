@@ -55,7 +55,7 @@
 			theme && ['filled'].includes(variant) && hoverable && FillColorHover[theme],
 			theme && variant === 'soft' && hoverable && FillColorSoftHover[theme],
 			theme && variant === 'soft' && FillColorSoft[theme],
-			!theme && !context && '',
+			!theme && !context && 'text-frame-400 dark:text-frame-400',
 			IconSize[size],
 			rest.class
 		)

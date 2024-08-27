@@ -36,16 +36,17 @@
 		rounded,
 		shadow,
 		size = 'md',
-		theme = 'light',
+		theme,
 		...rest
 	}: RadioProps & Omit<ElementProps<'input'>, 'size'> = $props();
 
 	const classes = $derived(
 		buildClass({
 			classes: [
-				`radio radio-${theme} appearance-none rounded-full focus:ring-0 focus:ring-offset-0 bg-transparent border border-frame-400 dark:border-frame-700 [&:not(:checked)]:bg-frame-100 dark:[&:not(:checked)]:bg-frame-700 form-radio`,
+				`radio radio-${theme} appearance-none rounded-full focus:ring-0 focus:ring-offset-0 bg-transparent border border-frame-400 dark:border-frame-700 [&:not(:checked)]:bg-frame-100 dark:[&:not(:checked)]:bg-frame-800/50 form-radio`,
 				size && RadioSize[size],
 				theme && FillColor[theme],
+				!theme && 'text-frame-500 dark:text-frame-500',
 				rest.class
 			],
 			focusType,

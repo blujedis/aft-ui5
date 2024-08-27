@@ -6,6 +6,10 @@
 	let value = 25;
 </script>
 
+<div class="mb-8">
+	<Range bind:value />
+</div>
+
 <div class="grid grid-cols-3 gap-3">
 	{#each colors.filter((c) => c !== 'unstyled') as color}
 		<div class="text-center">

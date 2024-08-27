@@ -5,19 +5,21 @@
 	import Avatar, { avatarVariants as variants } from './Avatar.svelte';
 </script>
 
+<div class="mb-8">
+	<Avatar size="md">
+		<Icon icon="mdi:user" />
+	</Avatar>
+
+	<Avatar size="md" variant="soft">
+		<Icon icon="mdi:user" />
+	</Avatar>
+
+	<Avatar size="md" variant="outlined">
+		<Icon icon="mdi:user" />
+	</Avatar>
+</div>
+
 <VariantList component={Avatar} {variants} props={{ size: 'md' }} icon="mdi:user" />
-
-<Avatar size="md">
-	<Icon icon="mdi:user" />
-</Avatar>
-
-<Avatar size="md" variant="soft">
-	<Icon icon="mdi:user" />
-</Avatar>
-
-<Avatar size="md" variant="outlined">
-	<Icon icon="mdi:user" />
-</Avatar>
 
 <Avatar size="xs">
 	<Image

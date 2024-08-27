@@ -4,13 +4,12 @@
 	import {
 		BgColor,
 		BgColorSoft,
-		BadgeFontSize,
 		ForeColorFilled,
 		ForeColorSoft,
 		ForeColorSoftHover,
+		RingColor,
 		type Size,
-		type ThemeColor,
-		BadgePaddingX
+		type ThemeColor
 	} from '$lib/theme/types.js';
 
 	export type KbdProps = {
@@ -29,17 +28,18 @@
 
 <script lang="ts">
 	import { buildClass } from '$lib/theme/build.svelte.js';
-	import t from '$lib/theme/theme.svelte.js';
 	import type { Snippet } from 'svelte';
+	import { BadgeFontSize, BadgePaddingX } from '../badge/Badge.svelte';
+	import { RingOffset, RingWidth } from '$lib/theme/constants.js';
 
 	let {
 		full,
 		removable,
 		rounded,
-		shadow = 'md',
+		shadow,
 		size = 'md',
-		theme = 'light',
-		variant = 'filled',
+		theme,
+		variant,
 		children,
 		...rest
 	}: KbdProps = $props();
@@ -52,19 +52,25 @@
 				removable && 'badge-removable',
 				BadgeFontSize[size],
 				BadgePaddingX[size],
-				variant === 'filled' && BgColor[theme],
-				variant === 'soft' && BgColorSoft[theme],
-				variant === 'filled' && BgColor[theme],
-				variant === 'filled' && ForeColorFilled[theme],
-				variant === 'soft' && ForeColorSoft[theme],
-				variant === 'soft' && ForeColorSoftHover[theme],
+
+				theme && variant === 'filled' && BgColor[theme],
+				theme && variant === 'filled' && BgColor[theme],
+				theme && variant === 'filled' && ForeColorFilled[theme],
+				!theme && (!variant || variant === 'filled') && 'bg-frame-200 dark:bg-frame-600',
+
+				theme && variant === 'soft' && BgColorSoft[theme],
+				theme && variant === 'soft' && ForeColorSoft[theme],
+				theme && variant === 'soft' && ForeColorSoftHover[theme],
+				!theme && variant === 'soft' && 'bg-frame-200 dark:bg-frame-800',
+
+				variant === 'outlined' && RingWidth['sm'],
+				variant === 'outlined' && RingOffset['inset'],
+				theme && variant === 'outlined' && RingColor[theme || 'light'],
+				!theme && variant === 'outlined' && 'ring-frame-300 dark:ring-frame-600',
+
 				rest.class
 			],
 			fontSize: size,
-			ringWidth: variant === 'outlined' && 'sm',
-			ringOffset: variant === 'outlined' && 'inset',
-			ringColor: variant === 'outlined' && theme,
-			ringColorHover: variant === 'outlined' && theme,
 			rounded,
 			shadow,
 			full

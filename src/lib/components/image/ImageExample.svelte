@@ -1,7 +1,6 @@
 <script lang="ts">
 	import VariantList from '$components/VariantList.svelte';
-	import Image, { imageVariants as variants } from './Image.svelte';
-	import { ImageAspect, ImageSize } from '$lib/theme/types.js';
+	import Image, { ImageAspect, ImageSize, imageVariants as variants } from './Image.svelte';
 	const sizes = Object.keys(ImageSize).slice(0, 11);
 	const aspect = Object.keys(ImageAspect);
 </script>

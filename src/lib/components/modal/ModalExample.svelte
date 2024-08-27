@@ -24,5 +24,5 @@
 >
 
 <Modal bind:visible {...props}>
-	<div class="p-4">Just a modal</div>
+	<div class="p-4 text-dark">Just a modal</div>
 </Modal>

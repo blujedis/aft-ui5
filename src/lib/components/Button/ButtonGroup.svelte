@@ -7,7 +7,7 @@
 
 	export type ButtonGroupProps<Tag extends HTMLTag> = Omit<
 		ButtonProps<Tag>,
-		'selectable' | 'variant' | 'children' | 'selected'
+		'variant' | 'children' | 'selected'
 	> & {
 		class?: string | null;
 		multiple?: boolean;
@@ -28,10 +28,9 @@
 		clsxm(
 			'flex',
 			rest.variant !== 'outlined' && 'divide-x',
-			(rest.variant === 'soft' || rest.variant === 'filled') &&
+			(rest.variant === 'soft' || rest.variant === 'filled' || !rest.variant) &&
 				'divide-[color:rgb(var(--bg-light))] dark:divide-[color:rgb(var(--bg-dark))]',
 			rest.variant === 'text' && DivideColor[rest.theme || 'unstyled'],
-			// rest.variant === 'text' && 'divide-frame-300 dark:divide-frame-500',
 			rest.rounded && '[&>:not(:first-child):not(:last-child)]:rounded-none',
 			'focus:z-0'
 		)
@@ -57,10 +56,9 @@
 	}
 </script>
 
-<div use:setZindex class={classes}>
+<div role="radiogroup" use:setZindex class={classes}>
 	{@render children({
 		...rest,
-		selectable: true,
 		onclick: handleSelect
 	} as unknown as ButtonProps<Tag>)}
 </div>

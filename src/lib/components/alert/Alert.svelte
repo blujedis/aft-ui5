@@ -118,13 +118,16 @@
 				position === 'bottom-right' && 'right-6 bottom-6',
 				position === 'bottom-left' && 'left-6 bottom-6',
 				position === 'top-left' && 'left-6 top-6',
+
 				AlertPadding[size],
 				!context && variant === 'filled' && theme && theme !== 'default' && BgColor[theme],
 				!context && variant === 'filled' && theme && theme !== 'default' && ForeColorFilled[theme],
+
 				!context && variant === 'soft' && theme && theme !== 'default' && BgColorSoft[theme],
 				!context && variant === 'soft' && theme && theme !== 'default' && ForeColorSoft[theme],
+
 				context && theme && BorderColor[theme as ThemeColor],
-				(context || !theme) && 'bg-frame-600 dark:bg-frame-700 text-frame-100', // default contrast colors.
+				(context || !theme) && 'bg-frame-600 dark:bg-frame-700 text-light', // default contrast colors.
 				rest.class
 			],
 			fontSize: size,

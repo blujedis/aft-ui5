@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-	import { Shadow, type ThemeColor } from '$lib/theme/types.js';
+	import { type ThemeColor } from '$lib/theme/types.js';
 	import type { Snippet } from 'svelte';
 	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 	import { clsxm } from '$lib/utils/string.js';
@@ -62,6 +62,7 @@
 	import { focustrap } from '$lib/hooks/focustrap.js';
 	import type { ElementProps } from '$lib/types.js';
 	import { ensureArray } from '$lib/utils/array.js';
+	import { Shadow } from '$lib/theme/constants.js';
 
 	let {
 		abortable = true,
@@ -147,7 +148,6 @@
 	}
 
 	function handleClick(e: any) {
-		console.log('backdrop click', e.target);
 		if (!panel?.contains(e.target)) handleClose();
 	}
 </script>

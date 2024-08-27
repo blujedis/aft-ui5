@@ -1,5 +1,4 @@
 <script context="module" lang="ts">
-	import { Rounded, Shadow, type ThemeColor } from '$lib/theme/types.js';
 	import type { Snippet } from 'svelte';
 	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 	import {
@@ -47,6 +46,7 @@
 <script lang="ts">
 	import { focustrap } from '$lib/hooks/focustrap.js';
 	import t from '$lib/theme/theme.svelte.js';
+	import { Rounded, Shadow } from '$lib/theme/constants.js';
 
 	let {
 		abortable,

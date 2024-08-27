@@ -2,10 +2,11 @@
 	import { capitalize } from '$lib/utils/string.js';
 	import Button, { buttonVariants as variants } from './Button.svelte';
 	import { colors } from '$lib/theme/types.js';
+	let selected = true;
 </script>
 
 <div class="mb-4">
-	<Button>Default</Button>
+	<Button bind:selected>Default</Button>
 	<Button variant="soft">Default Soft</Button>
 	<Button variant="outlined">Default Outlined</Button>
 	<Button variant="ghost">Default Ghost</Button>

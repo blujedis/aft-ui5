@@ -41,14 +41,14 @@
 	};
 
 	export const BadgePaddingX = {
-  unstyled: '',
-  xs: 'px-1',
-  sm: 'px-1.5 ',
-  md: 'px-1.5',
-  lg: 'px-2',
-  xl: 'px-2 ',
-  xl2: 'px-2.5'
-};
+		unstyled: '',
+		xs: 'px-1',
+		sm: 'px-1.5 ',
+		md: 'px-1.5',
+		lg: 'px-2',
+		xl: 'px-2 ',
+		xl2: 'px-2.5'
+	};
 </script>
 
 <script lang="ts">
@@ -76,22 +76,23 @@
 				removable && 'badge-removable',
 				BadgeFontSize[size],
 				BadgePaddingX[size],
-				!theme && variant === 'filled' && 'bg-frame-100 dark:bg-frame-700',
 				theme && variant === 'filled' && BgColor[theme],
-				theme && variant === 'soft' && BgColorSoft[theme],
 				theme && variant === 'filled' && BgColor[theme],
 				theme && variant === 'filled' && ForeColorFilled[theme],
+				!theme && (!variant || variant === 'filled') && 'bg-frame-200 dark:bg-frame-600',
+
+				theme && variant === 'soft' && BgColorSoft[theme],
 				theme && variant === 'soft' && ForeColorSoft[theme],
 				theme && variant === 'soft' && ForeColorSoftHover[theme],
+				!theme && variant === 'soft' && 'bg-frame-200 dark:bg-frame-800',
+
 				variant === 'outlined' && RingWidth['sm'],
 				variant === 'outlined' && RingOffset['inset'],
-				variant === 'outlined' && RingColor[theme || 'light'],
+				theme && variant === 'outlined' && RingColor[theme || 'light'],
+				!theme && variant === 'outlined' && 'ring-frame-300 dark:ring-frame-600',
+
 				rest.class
 			],
-			// ringWidth: variant == 'outlined' && 'sm',
-			// ringOffset: variant == 'outlined' && 'inset',
-			// ringColor: variant == 'outlined' && theme,
-			// ringColorHover: variant == 'outlined' && theme,
 			full,
 			rounded,
 			shadow

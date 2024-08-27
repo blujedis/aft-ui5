@@ -1,11 +1,5 @@
 <script context="module" lang="ts">
-	import {
-		MozillaProgressBarBg,
-		Rounded,
-		Shadow,
-		WebkitProgressValue,
-		type ThemeColor
-	} from '$lib/theme/types.js';
+	import { MozillaProgressBarBg, WebkitProgressValue, type ThemeColor } from '$lib/theme/types.js';
 	import type { Snippet } from 'svelte';
 	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 	import { clsxm } from '$lib/utils/string.js';
@@ -70,6 +64,7 @@
 <script lang="ts">
 	import { tweened } from 'svelte/motion';
 	import { cubicOut } from 'svelte/easing';
+	import { Rounded, Shadow } from '$lib/theme/constants.js';
 
 	let {
 		animate = true,
@@ -81,7 +76,7 @@
 		rounded = 'md',
 		shadow,
 		size = 'md',
-		theme = 'light',
+		theme,
 		value = $bindable(),
 		children,
 		...rest
@@ -102,14 +97,16 @@
 
 	const classes = $derived(
 		clsxm(
-			`progress-bar progress-bar-${theme} appearance-none bg-frame-100 [&::-webkit-progress-bar]:bg-frame-100 dark:bg-frame-800 dark:[&::-webkit-progress-bar]:bg-frame-800`,
+			`progress-bar progress-bar-${theme} appearance-none bg-frame-100 [&::-webkit-progress-bar]:bg-frame-100 dark:bg-frame-800/50 dark:[&::-webkit-progress-bar]:bg-frame-800/50`,
 			theme && WebkitProgressValue[theme],
 			theme && MozillaProgressBarBg[theme],
-			size && ProgressBarSizes[size],
 			rounded && ProgressBarRoundedValue[rounded],
 			rounded && ProgressBarRoundedBar[rounded],
+			size && ProgressBarSizes[size],
 			shadow && Shadow[shadow],
 			rounded && Rounded[rounded],
+			!theme &&
+				'[&::-webkit-progress-value]:bg-frame-400 dark:[&::-webkit-progress-value]:bg-frame-400 [&::-moz-progress-bar]:bg-frame-400 dark:[&::-moz-progress-bar]:bg-frame-400',
 			rest.class
 		)
 	);

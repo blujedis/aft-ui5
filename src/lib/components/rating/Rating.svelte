@@ -4,7 +4,6 @@
 	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 	import { type RatingItemProps } from './RatingItem.svelte';
 	import { setContext } from 'svelte';
-	import { DropShadow } from '$lib/theme/types.js';
 
 	export type RatingStoreValue = {
 		active: number;
@@ -41,6 +40,7 @@
 <script lang="ts">
 	import RatingItem from './RatingItem.svelte';
 	import { clsxm } from '$lib/utils/string.js';
+	import { DropShadow } from '$lib/theme/constants.js';
 
 	let {
 		arrowable = true,

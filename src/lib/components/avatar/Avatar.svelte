@@ -34,15 +34,14 @@
 	] as AvatarProps['variant'][];
 
 	export const AvatarSize = {
-  unstyled: '',
-  xs: 'h-8 w-8',
-  sm: 'h-10 w-10',
-  md: 'h-12 w-12',
-  lg: 'h-16 w-16',
-  xl: 'h-20 w-20',
-  xl2: 'h-28 w-28'
-};
-
+		unstyled: '',
+		xs: 'h-8 w-8',
+		sm: 'h-10 w-10',
+		md: 'h-12 w-12',
+		lg: 'h-16 w-16',
+		xl: 'h-20 w-20',
+		xl2: 'h-28 w-28'
+	};
 </script>
 
 <script lang="ts">
@@ -71,6 +70,7 @@
 			justify-center outline-none relative`,
 				stacked && `ring-2 ring-[color:rgb(var(--bg-light))] dark:ring-[color:rgb(var(--bg-dark))]`,
 				AvatarSize[size],
+
 				theme && variant && ['filled', 'outlined'].includes(variant) && FillColor[theme],
 				theme && variant === 'soft' && FillColorSoft[theme],
 				theme &&
@@ -78,13 +78,15 @@
 					['filled', 'outlined'].includes(variant) &&
 					hoverable &&
 					FillColorHover[theme],
+
 				variant === 'soft' && hoverable && FillColorSoftHover[theme || 'light'],
 				variant === 'outlined' && RingWidth['sm'],
 				variant === 'outlined' && RingOffset['inset'],
-				variant === 'outlined' && RingColor[ theme || 'light'],
+				variant === 'outlined' && RingColor[theme || 'light'],
 				variant === 'outlined' && hoverable && RingColorHover[theme || 'light'],
-				!theme && 'text-frame-500 dark:text-frame-500',
-				!theme && hoverable && 'hover:text-frame-600 dark:hover:text-frame-600',
+
+				!theme && 'text-frame-400 dark:text-frame-500',
+				!theme && hoverable && 'hover:text-frame-500 dark:hover:text-frame-600',
 				rest.class
 			],
 			// fontSize: size,

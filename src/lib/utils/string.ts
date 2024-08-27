@@ -42,6 +42,7 @@ export function toColorVar(key: string, value: string) {
     } else {
       value = `rgb(var(--color-${cleaned}))`;
     }
+    console.log(value);
   }
   return `${key}: ${value};`;
 }
