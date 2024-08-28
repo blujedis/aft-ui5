@@ -154,11 +154,14 @@
 				theme && variant === 'ghost' && ForeColorGhost[theme],
 				theme && variant === 'ghost' && BgColorGhostHover[theme],
 				theme && variant === 'ghost' && ForeColorGhostHover[theme],
+				!theme && variant === 'ghost' && 'hover:bg-frame-200 dark:hover:bg-frame-600',
 
 				theme && variant === 'text' && FontColor[theme],
 				theme && variant === 'text' && FontColorHover[theme],
 				variant === 'text' && 'aria-checked:underline dark:aria-checked:underline',
-				!theme && variant === 'text' && 'text-frame-600 dark:text-frame-600'
+				!theme &&
+					variant === 'text' &&
+					'text-frame-600 dark:text-frame-600 aria-checked:bg-frame-200 dark:aria-checked:bg-frame-600'
 			],
 			append: [rest.class],
 			focusType: 'visible',

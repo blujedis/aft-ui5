@@ -6,7 +6,7 @@
 </script>
 
 <div class="mb-4">
-	<Button bind:selected>Default</Button>
+	<Button>Default</Button>
 	<Button variant="soft">Default Soft</Button>
 	<Button variant="outlined">Default Outlined</Button>
 	<Button variant="ghost">Default Ghost</Button>
