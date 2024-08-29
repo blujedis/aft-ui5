@@ -37,8 +37,8 @@
 
 	const classes = $derived(
 		buildClass({
+			prepend: [`label label-${theme || 'default'}`],
 			classes: [
-				`label label-${theme || 'default'}`,
 				size && FieldFontSize[size],
 				theme && FontColor[theme],
 				inline && 'flex flex-row items-center space-x-2',

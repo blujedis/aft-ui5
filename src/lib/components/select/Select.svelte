@@ -3,27 +3,25 @@
 	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 	import {
 		BgColorHint,
-		BgColorSoft,
 		FillColor,
-		FillColorSoft,
 		RingColor,
 		type FocusType,
 		type Size,
 		type ThemeColor
 	} from '$lib/theme/types.js';
 
-	export interface InputProps {
+	export interface SelectProps {
 		chars?: number;
 		disabled?: boolean;
 		focusType?: FocusType;
 		focusTheme?: ThemeColor;
 		full?: boolean;
-		group?: any;
 		rounded?: ConfigProps['rounded'];
 		shadow?: ConfigProps['shadow'];
 		size?: Size;
 		theme?: ThemeColor;
 		variant?: 'untyled' | 'filled' | 'soft' | 'outlined';
+		children: Snippet;
 	}
 </script>
 
@@ -31,6 +29,7 @@
 	import t from '$lib/theme/theme.svelte.js';
 	import { buildClass } from '$lib/theme/build.svelte.js';
 	import { FieldFontSize, FieldPaddingX, FieldPaddingY } from '$lib/theme/constants.js';
+	import type { Snippet } from 'svelte';
 
 	let {
 		disabled,
@@ -43,8 +42,9 @@
 		theme,
 		value = $bindable(),
 		variant,
+		children,
 		...rest
-	}: InputProps & Omit<ElementProps<'input'>, 'size'> = $props();
+	}: SelectProps & Omit<ElementProps<'select'>, 'size'> = $props();
 
 	const classes = $derived(
 		buildClass({
@@ -75,4 +75,7 @@
 	);
 </script>
 
-<input {...rest} bind:value class={classes} type="text" />
+<select {...rest} bind:value class={classes}>
+	{@render children()}
+</select>
+

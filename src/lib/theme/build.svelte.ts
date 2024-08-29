@@ -26,6 +26,7 @@ export type ConfigProps = {
   node?: HTMLElement;
   rounded?: keyof typeof Rounded | false;
   shadow?: keyof typeof Shadow | false;
+  transition?: boolean | string;
   prepend?: ClassValue | ClassArray[],
   classes?: ClassValue | ClassArray[],
   append?: ClassValue | ClassArray[],
@@ -38,7 +39,7 @@ export function buildClass(props: ConfigProps) {
     disabled,
     dropShadow,
     fontSize,
-    focusType = 'focus',
+    focusType,
     focusWidth = theme.settings.focusWidth,
     focusOffset = 'sm',
     focusTheme,
@@ -47,6 +48,7 @@ export function buildClass(props: ConfigProps) {
     justify,
     rounded,
     shadow,
+    transition = false,
     prepend,
     classes,
     append
@@ -58,7 +60,7 @@ export function buildClass(props: ConfigProps) {
     focusType && focusTheme && FocusTypes[focusType][focusTheme],
     focusWidth && focusType && OutlineWidth[focusWidth],
     focusOffset && focusType && OutlineOffset[focusOffset],
-    focusRingColor && RingColorFocus[focusRingColor],
+    focusType && focusRingColor && RingColorFocus[focusRingColor],
 
     fontSize && FontSize[fontSize],
     animate && Animate[animate],
@@ -69,10 +71,8 @@ export function buildClass(props: ConfigProps) {
     theme.settings.shadow && dropShadow && DropShadow[dropShadow],
     theme.settings.rounded && Rounded[rounded || 'unstyled'],
     theme.settings.shadow && Shadow[shadow || 'unstyled'],
-    theme.options.transition,
-
+    transition && theme.options.transition,
     classes,
-
     append
   );
 

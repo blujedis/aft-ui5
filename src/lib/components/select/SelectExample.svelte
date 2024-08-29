@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Input from './Input.svelte';
+	import Select from './Select.svelte';
 	import { colors } from '$lib/theme/types.js';
 	import Label from '../label/Label.svelte';
 	import { capitalize } from '$lib/utils/string.js';
@@ -8,7 +8,9 @@
 <div class="mb-8">
 	<Label>
 		<div>Default</div>
-		<Input />
+		<Select>
+			<option></option>
+		</Select>
 	</Label>
 </div>
 
@@ -17,7 +19,9 @@
 		<div>
 			<Label>
 				<div>{capitalize(color)}</div>
-				<Input theme={color} value={color + '1'} />
+				<Select theme={color} value={color + '1'}>
+					<option></option>
+				</Select>
 			</Label>
 		</div>
 	{/each}

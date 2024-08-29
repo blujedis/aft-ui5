@@ -180,14 +180,13 @@ export const RingOffset = {
   xl2: 'ring-offset-8'
 };
 
-
-
 export const options: GlobalOptions = {
   disabled: 'opacity-50',
   divide: 'divide-frame-200 dark:divide-frame-700',
   ring: 'ring-frame-200 dark:ring-frame-700',
   border: 'border-frame-200 dark:border-frame-700',
   card: 'body-bg-light dark:bg-frame-700',
+  input: 'bg-frame-50 dark:bg-frame-400/5 hover:bg-[rgb(var(--bg-light))] dark:hover:bg-[rgb(var(--bg-dark))]  focus:bg-[rgb(var(--bg-light))] dark:focus:bg-[rgb(var(--bg-dark))]',
   transition: 'transition motion-reduce:transition-none',
 };
 

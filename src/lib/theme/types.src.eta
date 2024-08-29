@@ -301,6 +301,20 @@ export const BgColor = {
   white: 'bg-{{=i.bg.white[0]}} dark:bg-{{=i.bg.white[1]}}',
 };
 
+export const BgColorHint = {
+  unstyled: '',
+  primary: 'bg-{{=i.bgHint.primary[0]}} dark:bg-{{=i.bgHint.primary[1]}}',
+  secondary: 'bg-{{=i.bgHint.secondary[0]}} dark:bg-{{=i.bgHint.secondary[1]}}',
+  tertiary: 'bg-{{=i.bgHint.tertiary[0]}} dark:bg-{{=i.bgHint.tertiary[1]}}',
+  danger: 'bg-{{=i.bgHint.danger[0]}} dark:bg-{{=i.bgHint.danger[1]}}',
+  warning: 'bg-{{=i.bgHint.warning[0]}} dark:bg-{{=i.bgHint.warning[1]}}',
+  success: 'bg-{{=i.bgHint.success[0]}} dark:bg-{{=i.bgHint.success[1]}}',
+  info: 'bg-{{=i.bgHint.info[0]}} dark:bg-{{=i.bgHint.info[1]}}',
+  light: 'bg-{{=i.bgHint.light[0]}} dark:bg-{{=i.bgHint.light[1]}}',
+  dark: 'bg-{{=i.bgHint.dark[0]}} dark:bg-{{=i.bgHint.dark[1]}} ',
+  white: 'bg-{{=i.bgHint.white[0]}} dark:bg-{{=i.bgHint.white[1]}}',
+};
+
 export const BgColorHover = {
   unstyled: '',
   primary: 'hover:bg-{{=i.bg.primaryH[0]}} dark:hover:bg-{{=i.bg.primaryH[1]}}',
@@ -754,6 +768,7 @@ export interface GlobalOptions {
   disabled: string;
   divide: string;
   ring: string;
+  input: string;
   transition: string;
 }
 

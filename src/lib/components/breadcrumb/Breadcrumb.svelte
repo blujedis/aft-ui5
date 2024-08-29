@@ -1,6 +1,5 @@
 <script context="module" lang="ts">
 	import type { Snippet } from 'svelte';
-	import { page } from '$app/stores';
 	import type { BreadcrumbItemProps } from './BreadcrumbItem.svelte';
 	import type { Size, ThemeColor } from '$lib/theme/types.js';
 	import { buildClass, type ConfigProps } from '$lib/theme/build.svelte.js';
@@ -16,11 +15,18 @@
 		children?: Snippet;
 	}
 
-	function generator(
-		route: { id: string | null },
-		{ size, theme }: { size?: Size; theme?: ThemeColor }
-	) {
-		const split = (route?.id || '')
+	const BreadcrumbSpacings = {
+		unstyled: '',
+		xs: 'space-x-1',
+		sm: 'space-x-2',
+		md: 'space-x-2',
+		lg: 'space-x-2',
+		xl: 'space-x-2',
+		xl2: 'space-x-2'
+	};
+
+	function generator(route: string, { size, theme }: { size?: Size; theme?: ThemeColor }) {
+		const split = route
 			.slice(1)
 			.split('/')
 			.filter((v) => v !== '');
@@ -34,41 +40,45 @@
 			return {
 				label,
 				href: href.startsWith('/') ? href : '/' + href,
-				icon: i === 0 ? 'mdi:home' : undefined,
 				selected: split.length - 1 === i,
-				index: i,
 				size,
 				sronly: i === 0 ? label : undefined,
 				theme
-			} as any; // BreadcrumbItemProps;
+			} as BreadcrumbItemProps;
 		});
-		return result;
+
+		return [{ icon: 'mdi:home', home: true, size, theme, sronly: 'Home', href: '/' }, ...result];
 	}
 </script>
 
 <script lang="ts">
-	let { full, generate, rounded, shadow, size, theme, children }: BreadcrumbProps = $props();
+	import { page } from '$app/stores';
+	let { full, generate, rounded, shadow, size = 'md', theme, children }: BreadcrumbProps = $props();
 
 	const navClasses = $derived(
 		buildClass({
-			classes: []
+			prepend: [`breadcrumb breadcrumb-${theme}`],
+			classes: ['flex items-center'],
+			full,
+			rounded,
+			shadow
 		})
 	);
 
 	const listClasses = $derived(
 		buildClass({
-			classes: []
+			classes: ['inline-flex items-center', size && BreadcrumbSpacings[size]]
 		})
 	);
 </script>
 
 <nav class={navClasses} aria-label="Breadcrumb">
-	<ol class={listClasses}>
-		{#if !children}
-			{#each generator($page.route, { size, theme }) as item}
+	<ol role="list" class={listClasses}>
+		{#if generate}
+			{#each generator($page.url.pathname, { size, theme }) as item}
 				<BreadcrumbItem {...item} />
 			{/each}
-		{:else}
+		{:else if children}
 			{@render children()}
 		{/if}
 	</ol>

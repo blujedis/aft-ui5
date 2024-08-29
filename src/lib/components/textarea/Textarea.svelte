@@ -3,28 +3,34 @@
 	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 	import {
 		BgColorHint,
-		BgColorSoft,
 		FillColor,
-		FillColorSoft,
 		RingColor,
 		type FocusType,
 		type Size,
 		type ThemeColor
 	} from '$lib/theme/types.js';
 
-	export interface InputProps {
-		chars?: number;
+	export interface TextareaProps {
+		chars?: number; // alias for size.
 		disabled?: boolean;
 		focusType?: FocusType;
 		focusTheme?: ThemeColor;
 		full?: boolean;
-		group?: any;
+		resize?: keyof typeof Resize;
 		rounded?: ConfigProps['rounded'];
 		shadow?: ConfigProps['shadow'];
 		size?: Size;
 		theme?: ThemeColor;
-		variant?: 'untyled' | 'filled' | 'soft' | 'outlined';
+		variant?: 'unstyled' | 'filled' | 'soft' | 'outlined';
 	}
+
+	export const Resize = {
+		unstyled: '',
+		none: 'resize-none',
+		x: 'resize-x',
+		y: 'resize-y',
+		both: 'resize'
+	};
 </script>
 
 <script lang="ts">
@@ -37,6 +43,7 @@
 		focusType = 'focus',
 		focusTheme,
 		full,
+		resize = 'both',
 		rounded,
 		shadow,
 		size = 'md',
@@ -44,12 +51,12 @@
 		value = $bindable(),
 		variant,
 		...rest
-	}: InputProps & Omit<ElementProps<'input'>, 'size'> = $props();
+	}: TextareaProps & Omit<ElementProps<'textarea'>, 'size'> = $props();
 
 	const classes = $derived(
 		buildClass({
 			classes: [
-				`input input-${variant} input-${theme}  inline-flex items-center justify-center border-none`,
+				`textarea textarea-${variant} textarea-${theme} inline-flex items-center justify-center border-none`,
 				t.options.input,
 				'ring-1 ring-inset focus:ring-offset-0 focus:ring-inset',
 				!theme &&
@@ -61,7 +68,8 @@
 				size && FieldPaddingY[size],
 				theme && FillColor[theme],
 				theme && BgColorHint[theme],
-				theme && RingColor[theme]
+				theme && RingColor[theme],
+				resize && Resize[resize]
 			],
 			disabled,
 			focusType,
@@ -75,4 +83,4 @@
 	);
 </script>
 
-<input {...rest} bind:value class={classes} type="text" />
+<textarea {...rest} bind:value class={classes}></textarea>

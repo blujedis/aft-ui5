@@ -4,7 +4,7 @@ export type ThemeColor = keyof typeof FontColor;
 export type ThemeShade = typeof shades[number];
 export type Size = 'unstyled' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xl2';
 
-export const build = ['alert', 'avatar', 'badge', 'button', 'card', 'checkbox', 'disclosure', 'divider', 'drawer', 'icon', 'image', 'indicator', 'input', 'kbd', 'label', 'modal', 'notifications', 'progress', 'radio', 'range', 'rating', 'stack'];
+export const build = ['alert', 'avatar', 'badge', 'breadcrumb', 'button', 'card', 'checkbox', 'disclosure', 'divider', 'drawer', 'icon', 'image', 'indicator', 'input', 'kbd', 'label', 'modal', 'notifications', 'progress', 'radio', 'range', 'rating', 'select', 'stack', 'textarea'];
 
 export const Placeholder = {
   unstyled: '',
@@ -299,6 +299,20 @@ export const BgColor = {
   light: 'bg-frame-100 dark:bg-frame-300',
   dark: 'bg-frame-700 dark:bg-frame-700 ',
   white: 'bg-white dark:bg-white',
+};
+
+export const BgColorHint = {
+  unstyled: '',
+  primary: 'bg-primary-50/60 dark:bg-primary-400/5',
+  secondary: 'bg-secondary-50/60 dark:bg-secondary-400/5',
+  tertiary: 'bg-tertiary-50/60 dark:bg-tertiary-400/5',
+  danger: 'bg-danger-50/60 dark:bg-danger-400/5',
+  warning: 'bg-warning-50/60 dark:bg-warning-400/5',
+  success: 'bg-success-50/60 dark:bg-success-400/5',
+  info: 'bg-info-50/60 dark:bg-info-400/5',
+  light: 'bg-frame-50 dark:bg-frame-400/5',
+  dark: 'bg-frame-50 dark:bg-frame-400/5 ',
+  white: 'bg-frame-50 dark:bg-white/5',
 };
 
 export const BgColorHover = {
@@ -620,75 +634,75 @@ export const DivideAfterColor = {
 
 export const OutlineColorFocus = {
   unstyled: '',
-  primary: 'focus:outline-primary-500/50 dark:focus:outline-primary-500/50',
-  secondary: 'focus:outline-secondary-500/50 dark:focus:outline-secondary-500/50',
-  tertiary: 'focus:outline-tertiary-500/50 dark:focus:outline-tertiary-500/50',
-  danger: 'focus:outline-danger-500/50 dark:focus:outline-danger-500/50',
-  warning: 'focus:outline-warning-500/50 dark:focus:outline-warning-500/50',
-  success: 'focus:outline-success-500/50 dark:focus:outline-success-500/50',
-  info: 'focus:outline-info-500/50 dark:focus:outline-info-500/50',
-  light: 'focus:outline-frame-500/50 dark:focus:outline-frame-500/50',
-  dark: 'focus:outline-frame-500/50 dark:focus:outline-frame-500/50 ',
-  white: 'focus:outline-white/50 dark:focus:outline-white/50',
+  primary: 'focus:outline-primary-500/30 dark:focus:outline-primary-500/30',
+  secondary: 'focus:outline-secondary-500/30 dark:focus:outline-secondary-500/30',
+  tertiary: 'focus:outline-tertiary-500/30 dark:focus:outline-tertiary-500/30',
+  danger: 'focus:outline-danger-500/30 dark:focus:outline-danger-500/30',
+  warning: 'focus:outline-warning-500/30 dark:focus:outline-warning-500/30',
+  success: 'focus:outline-success-500/30 dark:focus:outline-success-500/30',
+  info: 'focus:outline-info-500/30 dark:focus:outline-info-500/30',
+  light: 'focus:outline-frame-500/30 dark:focus:outline-frame-500/30',
+  dark: 'focus:outline-frame-500/30 dark:focus:outline-frame-500/30 ',
+  white: 'focus:outline-white/30 dark:focus:outline-white/30',
 };
 
 export const OutlineColorFocusVisible = {
   unstyled: '',
-  primary: 'focus-visible:outline-primary-500/50 dark:focus-visible:outline-primary-500/50',
-  secondary: 'focus-visible:outline-secondary-500/50 dark:focus-visible:outline-secondary-500/50',
-  tertiary: 'focus-visible:outline-tertiary-500/50 dark:focus-visible:outline-tertiary-500/50',
-  danger: 'focus-visible:outline-danger-500/50 dark:focus-visible:outline-danger-500/50',
-  warning: 'focus-visible:outline-warning-500/50 dark: focus - visible: outline- warning-500/50',
-  success: 'focus-visible:outline-success-500/50 dark: focus - visible: outline - success-500/50',
-  info: 'focus-visible:outline-info-500/50 dark:focus-visible:outline-info-500/50',
-  light: 'focus-visible:outline-frame-500/50 dark:focus-visible:outline-frame-500/50',
-  dark: 'focus-visible:outline-frame-500/50 dark:focus-visible:outline-frame-500/50 ',
-  white: 'focus-visible:outline-white/50 dark:focus-visible:outline-white/50',
+  primary: 'focus-visible:outline-primary-500/30 dark:focus-visible:outline-primary-500/30',
+  secondary: 'focus-visible:outline-secondary-500/30 dark:focus-visible:outline-secondary-500/30',
+  tertiary: 'focus-visible:outline-tertiary-500/30 dark:focus-visible:outline-tertiary-500/30',
+  danger: 'focus-visible:outline-danger-500/30 dark:focus-visible:outline-danger-500/30',
+  warning: 'focus-visible:outline-warning-500/30 dark: focus - visible: outline- warning-500/30',
+  success: 'focus-visible:outline-success-500/30 dark: focus - visible: outline - success-500/30',
+  info: 'focus-visible:outline-info-500/30 dark:focus-visible:outline-info-500/30',
+  light: 'focus-visible:outline-frame-500/30 dark:focus-visible:outline-frame-500/30',
+  dark: 'focus-visible:outline-frame-500/30 dark:focus-visible:outline-frame-500/30 ',
+  white: 'focus-visible:outline-white/30 dark:focus-visible:outline-white/30',
 };
 
 export const OutlineColorFocusGroup = {
   unstyled: '',
-  primary: 'group-focus:outline-primary-500/50 dark:group-focus:outline-primary-500/50',
-  secondary: 'group-focus:outline-secondary-500/50 dark:group-focus:outline-secondary-500/50',
-  tertiary: 'group-focus:outline-tertiary-500/50 dark:group-focus:outline-tertiary-500/50',
-  danger: 'group-focus:outline-danger-500/50 dark:group-focus:outline-danger-500/50',
-  warning: 'group-focus:outline-warning-500/50 dark:group-focus:outline-warning-500/50',
-  success: 'group-focus:outline-success-500/50 dark:group-focus:outline-success-500/50',
-  info: 'group-focus:outline-info-500/50 dark:group-focus:outline-info-500/50',
-  light: 'group-focus:outline-frame-500/50 dark:group-focus:outline-frame-500/50',
-  dark: 'group-focus:outline-frame-500/50 dark:group-focus:outline-frame-500/50 ',
-  white: 'group-focus:outline-white/50 dark:group-focus:outline-white/50',
+  primary: 'group-focus:outline-primary-500/30 dark:group-focus:outline-primary-500/30',
+  secondary: 'group-focus:outline-secondary-500/30 dark:group-focus:outline-secondary-500/30',
+  tertiary: 'group-focus:outline-tertiary-500/30 dark:group-focus:outline-tertiary-500/30',
+  danger: 'group-focus:outline-danger-500/30 dark:group-focus:outline-danger-500/30',
+  warning: 'group-focus:outline-warning-500/30 dark:group-focus:outline-warning-500/30',
+  success: 'group-focus:outline-success-500/30 dark:group-focus:outline-success-500/30',
+  info: 'group-focus:outline-info-500/30 dark:group-focus:outline-info-500/30',
+  light: 'group-focus:outline-frame-500/30 dark:group-focus:outline-frame-500/30',
+  dark: 'group-focus:outline-frame-500/30 dark:group-focus:outline-frame-500/30 ',
+  white: 'group-focus:outline-white/30 dark:group-focus:outline-white/30',
 };
 
 export const OutlineColorFocusWithin = {
   unstyled: '',
-  primary: 'focus-within:outline-primary-500/50 dark:focus-within:outline-primary-500/50',
-  secondary: 'focus-within:outline-secondary-500/50 dark: focus - within: outline- secondary-500/50',
-  tertiary: 'focus-within:outline-tertiary-500/50 dark: focus - within: outline - tertiary-500/50',
-  danger: 'focus-within:outline-danger-500/50 dark:focus-within:outline-danger-500/50',
-  warning: 'focus-within:outline-warning-500/50 dark:focus-within:outline-warning-500/50',
-  success: 'focus-within:outline-success-500/50 dark:focus-within:outline-success-500/50',
-  info: 'focus-within:outline-info-500/50 dark:focus-within:outline-info-500/50',
-  light: 'focus-within:outline-frame-500/50 dark:focus-within:outline-frame-500/50',
-  dark: 'focus-within:outline-frame-500/50 dark:focus-within:outline-frame-500/50 ',
-  white: 'focus-within:outline-white/50 dark:focus-within:outline-white/50',
+  primary: 'focus-within:outline-primary-500/30 dark:focus-within:outline-primary-500/30',
+  secondary: 'focus-within:outline-secondary-500/30 dark: focus - within: outline- secondary-500/30',
+  tertiary: 'focus-within:outline-tertiary-500/30 dark: focus - within: outline - tertiary-500/30',
+  danger: 'focus-within:outline-danger-500/30 dark:focus-within:outline-danger-500/30',
+  warning: 'focus-within:outline-warning-500/30 dark:focus-within:outline-warning-500/30',
+  success: 'focus-within:outline-success-500/30 dark:focus-within:outline-success-500/30',
+  info: 'focus-within:outline-info-500/30 dark:focus-within:outline-info-500/30',
+  light: 'focus-within:outline-frame-500/30 dark:focus-within:outline-frame-500/30',
+  dark: 'focus-within:outline-frame-500/30 dark:focus-within:outline-frame-500/30 ',
+  white: 'focus-within:outline-white/30 dark:focus-within:outline-white/30',
 };
 
 export const OutlineColorFocusPeer = {
   unstyled: '',
-  primary: 'peer-focus:outline-primary-500/50 dark:peer-focus:outline-primary-500/50',
-  secondary: 'peer-focus:outline-secondary-500/50 dark: peer - focus: outline- secondary-500/50',
-  tertiary: 'peer-focus:outline-tertiary-500/50 dark:peer-focus:outline-tertiary-500/50',
-  danger: 'peer-focus:outline-danger-500/50 dark:peer-focus:outline-danger-500/50',
-  warning: 'peer-focus:outline-warning-500/50 dark:peer-focus:outline-warning-500/50',
-  success: 'peer-focus:outline-success-500/50 dark:peer-focus:outline-success-500/50',
-  info: 'peer-focus:outline-info-500/50 dark:peer-focus:outline-info-500/50',
-  light: 'peer-focus:outline-frame-500/50 dark:peer-focus:outline-frame-500/50',
-  dark: 'peer-focus:outline-frame-500/50 dark:peer-focus:outline-frame-500/50 ',
-  white: 'peer-focus:outline-white/50 dark:peer-focus:outline-white/50',
+  primary: 'peer-focus:outline-primary-500/30 dark:peer-focus:outline-primary-500/30',
+  secondary: 'peer-focus:outline-secondary-500/30 dark: peer - focus: outline- secondary-500/30',
+  tertiary: 'peer-focus:outline-tertiary-500/30 dark:peer-focus:outline-tertiary-500/30',
+  danger: 'peer-focus:outline-danger-500/30 dark:peer-focus:outline-danger-500/30',
+  warning: 'peer-focus:outline-warning-500/30 dark:peer-focus:outline-warning-500/30',
+  success: 'peer-focus:outline-success-500/30 dark:peer-focus:outline-success-500/30',
+  info: 'peer-focus:outline-info-500/30 dark:peer-focus:outline-info-500/30',
+  light: 'peer-focus:outline-frame-500/30 dark:peer-focus:outline-frame-500/30',
+  dark: 'peer-focus:outline-frame-500/30 dark:peer-focus:outline-frame-500/30 ',
+  white: 'peer-focus:outline-white/30 dark:peer-focus:outline-white/30',
 };
 
-export const MozillaProgressBarBg ={
+export const MozillaProgressBarBg = {
   unstyled: '',
   primary: '[&::-moz-progress-bar]:bg-primary-500 dark:[&::-moz-progress-bar]:bg-primary-500',
   secondary: '[&::-moz-progress-bar]:bg-secondary-500 dark:[&::-moz-progress-bar]:bg-secondary-500',
@@ -698,11 +712,11 @@ export const MozillaProgressBarBg ={
   success: '[&::-moz-progress-bar]:bg-success-500 dark:[&::-moz-progress-bar]:bg-info-500',
   info: '[&::-moz-progress-bar]:bg-info-500 dark:[&::-moz-progress-bar]:bg-info-500',
   light: '[&::-moz-progress-bar]:bg-frame-400 dark:[&::-moz-progress-bar]:bg-frame-400',
-  dark:  '[&::-moz-progress-bar]:bg-frame-600 dark:[&::-moz-progress-bar]:bg-frame-700',
+  dark: '[&::-moz-progress-bar]:bg-frame-600 dark:[&::-moz-progress-bar]:bg-frame-700',
   white: '[&::-moz-progress-bar]:bg-white dark:[&::-moz-progress-bar]:bg-white'
 };
 
-export const WebkitProgressValue ={
+export const WebkitProgressValue = {
   unstyled: '',
   primary: '[&::-webkit-progress-value]:bg-primary-500 dark:[&::-webkit-progress-value]:bg-primary-500',
   secondary: '[&::-webkit-progress-value]:bg-secondary-500 dark:[&::-webkit-progress-value]:bg-secondary-500',
@@ -754,6 +768,7 @@ export interface GlobalOptions {
   disabled: string;
   divide: string;
   ring: string;
+  input: string;
   transition: string;
 }
 

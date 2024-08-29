@@ -2,11 +2,11 @@
 	import ColorMode from '$lib/components/colormode/ColorMode.svelte';
 </script>
 
-<ColorMode>
+<!-- <ColorMode>
 	{#snippet children(prop)}
 		{prop.isDark()}
 	{/snippet}
-</ColorMode>
+</ColorMode> -->
 
 <!-- <div>
 	<p class="mb-24">
