@@ -30,6 +30,7 @@
 	import { buildClass } from '$lib/theme/build.svelte.js';
 	import { FieldFontSize, FieldPaddingX, FieldPaddingY } from '$lib/theme/constants.js';
 	import type { Snippet } from 'svelte';
+	import { toColorVar } from '$lib/utils/string.js';
 
 	let {
 		disabled,
@@ -48,8 +49,9 @@
 
 	const classes = $derived(
 		buildClass({
+			prepend: [`select select-${variant} select-${theme}`],
 			classes: [
-				`input input-${variant} input-${theme}  inline-flex items-center justify-center border-none`,
+				`form-select inline-flex items-center justify-center border-none`,
 				t.options.input,
 				'ring-1 ring-inset focus:ring-offset-0 focus:ring-inset',
 				!theme &&
@@ -61,7 +63,8 @@
 				size && FieldPaddingY[size],
 				theme && FillColor[theme],
 				theme && BgColorHint[theme],
-				theme && RingColor[theme]
+				theme && RingColor[theme],
+				'pr-8'
 			],
 			disabled,
 			focusType,
@@ -75,7 +78,13 @@
 	);
 </script>
 
-<select {...rest} bind:value class={classes}>
+<select {...rest} bind:value class={classes} style={toColorVar('--caret-color', 'secondary-500')}>
 	{@render children()}
 </select>
 
+<style>
+	select {
+		--svg: url('data:image/svg+xml;utf8, <svg xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" viewBox="0 0 24 24" ><path style="fill:var(--caret-color);" d="M7.41 8.58L12 13.17l4.59-4.59L18 10l-6 6l-6-6z"></path></svg>');
+		background: var(--svg) no-repeat right 0.6em center;
+	}
+</style>

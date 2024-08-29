@@ -702,7 +702,7 @@ export const OutlineColorFocusPeer = {
   white: 'peer-focus:outline-white/30 dark:peer-focus:outline-white/30',
 };
 
-export const MozillaProgressBarBg = {
+export const MozillaProgressBarBg ={
   unstyled: '',
   primary: '[&::-moz-progress-bar]:bg-primary-500 dark:[&::-moz-progress-bar]:bg-primary-500',
   secondary: '[&::-moz-progress-bar]:bg-secondary-500 dark:[&::-moz-progress-bar]:bg-secondary-500',
@@ -712,11 +712,11 @@ export const MozillaProgressBarBg = {
   success: '[&::-moz-progress-bar]:bg-success-500 dark:[&::-moz-progress-bar]:bg-info-500',
   info: '[&::-moz-progress-bar]:bg-info-500 dark:[&::-moz-progress-bar]:bg-info-500',
   light: '[&::-moz-progress-bar]:bg-frame-400 dark:[&::-moz-progress-bar]:bg-frame-400',
-  dark: '[&::-moz-progress-bar]:bg-frame-600 dark:[&::-moz-progress-bar]:bg-frame-700',
+  dark:  '[&::-moz-progress-bar]:bg-frame-600 dark:[&::-moz-progress-bar]:bg-frame-700',
   white: '[&::-moz-progress-bar]:bg-white dark:[&::-moz-progress-bar]:bg-white'
 };
 
-export const WebkitProgressValue = {
+export const WebkitProgressValue ={
   unstyled: '',
   primary: '[&::-webkit-progress-value]:bg-primary-500 dark:[&::-webkit-progress-value]:bg-primary-500',
   secondary: '[&::-webkit-progress-value]:bg-secondary-500 dark:[&::-webkit-progress-value]:bg-secondary-500',

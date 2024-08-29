@@ -181,7 +181,7 @@ export const RingOffset = {
 };
 
 export const options: GlobalOptions = {
-  disabled: 'opacity-50',
+  disabled: 'opacity-50 pointer-events-none',
   divide: 'divide-frame-200 dark:divide-frame-700',
   ring: 'ring-frame-200 dark:ring-frame-700',
   border: 'border-frame-200 dark:border-frame-700',
