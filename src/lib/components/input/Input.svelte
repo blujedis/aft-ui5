@@ -3,9 +3,7 @@
 	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 	import {
 		BgColorHint,
-		BgColorSoft,
 		FillColor,
-		FillColorSoft,
 		RingColor,
 		type FocusType,
 		type Size,
@@ -17,6 +15,7 @@
 		disabled?: boolean;
 		focusType?: FocusType;
 		focusTheme?: ThemeColor;
+		focusOffset?: Size | 'none';
 		full?: boolean;
 		group?: any;
 		rounded?: ConfigProps['rounded'];
@@ -36,6 +35,7 @@
 		disabled,
 		focusType = 'focus',
 		focusTheme,
+		focusOffset = 'none',
 		full,
 		rounded,
 		shadow,
@@ -66,7 +66,7 @@
 			disabled,
 			focusType,
 			focusTheme: focusTheme || theme,
-			focusOffset: 'none',
+			focusOffset,
 			focusRingColor: theme,
 			full,
 			rounded,

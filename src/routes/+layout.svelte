@@ -23,7 +23,7 @@
 	>
 		<div class="w-full">
 			<div class="flex items-center justify-center h-12">Components</div>
-			<div class="p-4 overflow-y-auto h-full text-sm">
+			<div class="p-4 overflow-y-auto h-full text-sm pb-48">
 				{#each components as c}
 					<a
 						href={`/${c}`}

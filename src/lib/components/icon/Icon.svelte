@@ -35,12 +35,12 @@
 </script>
 
 <script lang="ts">
-	const context = getContext<{ theme: ThemeColor; size: Size; variant: string }>('Avatar');
+	const context = getContext<{ theme: ThemeColor; size: Size; variant: string }>('IconContainer');
 
 	let {
 		hoverable,
 		icon,
-		size = (context && 'full') || 'sm',
+		size = (context && context.size) || 'sm',
 		stroke,
 		theme,
 		variant = 'filled',
@@ -56,6 +56,7 @@
 			theme && variant === 'soft' && hoverable && FillColorSoftHover[theme],
 			theme && variant === 'soft' && FillColorSoft[theme],
 			!theme && !context && 'text-frame-400 dark:text-frame-400',
+			!theme && context && 'text-inherit',
 			IconSize[size],
 			rest.class
 		)

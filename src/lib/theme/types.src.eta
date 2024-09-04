@@ -343,6 +343,21 @@ export const BgColorGroupHover = {
   white: 'group-hover:bg-{{=i.bg.whiteH[0]}} dark:group-hover:bg-{{=i.bg.whiteH[1]}}',
 };
 
+export const BorderColorGroupHover = {
+  unstyled: '',
+  primary: 'group-hover:border-{{=i.bg.primaryH[0]}} dark:group-hover:border-{{=i.bg.primaryH[1]}}',
+  secondary: 'group-hover:border-{{=i.bg.secondaryH[0]}} dark:group-hover:border-{{=i.bg.secondaryH[1]}}',
+  tertiary: 'group-hover:border-{{=i.bg.tertiaryH[0]}} dark:group-hover:border-{{=i.bg.tertiaryH[1]}}',
+  danger: 'group-hover:border-{{=i.bg.dangerH[0]}} dark:group-hover:border-{{=i.bg.dangerH[1]}}',
+  warning: 'group-hover:border-{{=i.bg.warningH[0]}} dark:group-hover:border-{{=i.bg.warningH[1]}}',
+  success: 'group-hover:border-{{=i.bg.successH[0]}} dark:group-hover:border-{{=i.bg.successH[1]}}',
+  info: 'group-hover:border-{{=i.bg.infoH[0]}} dark:group-hover:border-{{=i.bg.infoH[1]}}',
+  light: 'group-hover:border-{{=i.bg.lightH[0]}} dark:group-hover:border-{{=i.bg.lightH[1]}}',
+  dark: 'group-hover:border-{{=i.bg.darkH[0]}} dark:group-hover:border-{{=i.bg.darkH[1]}} ',
+  white: 'group-hover:border-{{=i.bg.whiteH[0]}} dark:group-hover:border-{{=i.bg.whiteH[1]}}',
+};
+
+
 export const BgColorSoft = {
   unstyled: '',
   primary: 'bg-{{=i.bgSoft.primary[0]}} dark:bg-{{=i.bgSoft.primary[1]}}',
@@ -757,6 +772,7 @@ export const SelectedSoftTypes = {
 
 export interface GlobalSettings {
   focusWidth: Size | 'none';
+  focusOffset: Size | 'none';
   prose: boolean; // when true enable prose for content (requries typography plugin)
   rounded: boolean; // when true rounding are permitted.
   shadow: boolean; // when true shadows are permitted.

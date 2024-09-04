@@ -15,6 +15,7 @@
 		disabled?: boolean;
 		focusType?: FocusType;
 		focusTheme?: ThemeColor;
+		focusOffset?: Size | 'none';
 		full?: boolean;
 		rounded?: ConfigProps['rounded'];
 		shadow?: ConfigProps['shadow'];
@@ -36,6 +37,7 @@
 		disabled,
 		focusType = 'focus',
 		focusTheme,
+		focusOffset = 'none',
 		full,
 		rounded,
 		shadow,
@@ -69,7 +71,7 @@
 			disabled,
 			focusType,
 			focusTheme: focusTheme || theme,
-			focusOffset: 'none',
+			focusOffset,
 			focusRingColor: theme,
 			full,
 			rounded,
@@ -78,13 +80,15 @@
 	);
 </script>
 
-<select {...rest} bind:value class={classes} style={toColorVar('--caret-color', 'secondary-500')}>
-	{@render children()}
-</select>
+<span style={toColorVar('--caret-color', 'secondary-500')}>
+	<select {...rest} bind:value class={classes}>
+		{@render children()}
+	</select>
+</span>
 
 <style>
-	select {
+	/* select {
 		--svg: url('data:image/svg+xml;utf8, <svg xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" viewBox="0 0 24 24" ><path style="fill:var(--caret-color);" d="M7.41 8.58L12 13.17l4.59-4.59L18 10l-6 6l-6-6z"></path></svg>');
 		background: var(--svg) no-repeat right 0.6em center;
-	}
+	} */
 </style>

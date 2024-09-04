@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
 	import { type ElementProps, type HTMLTag } from '$lib/types.js';
 	import { type ConfigProps } from '$lib/theme/build.svelte.js';
-	import { type Snippet } from 'svelte';
+	import { setContext, type Snippet } from 'svelte';
 	import {
 		BgColor,
 		BgColorGhostHover,
@@ -95,6 +95,8 @@
 		children,
 		...rest
 	}: ButtonProps<Tag> & ElementProps<Tag> = $props();
+
+	setContext('IconContainer', { theme });
 
 	const classes = $derived(
 		buildClass({

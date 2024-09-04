@@ -15,6 +15,7 @@
 		disabled?: boolean;
 		focusType?: FocusType;
 		focusTheme?: ThemeColor;
+		focusOffset?: Size | 'none';
 		full?: boolean;
 		resize?: keyof typeof Resize;
 		rounded?: ConfigProps['rounded'];
@@ -42,6 +43,7 @@
 		disabled,
 		focusType = 'focus',
 		focusTheme,
+		focusOffset = 'none',
 		full,
 		resize = 'both',
 		rounded,
@@ -74,7 +76,7 @@
 			disabled,
 			focusType,
 			focusTheme: focusTheme || theme,
-			focusOffset: 'none',
+			focusOffset,
 			focusRingColor: theme,
 			full,
 			rounded,

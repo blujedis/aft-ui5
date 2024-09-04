@@ -17,7 +17,7 @@
 	import t from '$lib/theme/theme.svelte.js';
 	import { buildClass } from '$lib/theme/build.svelte.js';
 	import type { Size, ThemeColor } from '$lib/theme/types.js';
-	import { FieldFontSize, FieldPaddingX, FieldPaddingY } from '$lib/theme/constants.js';
+	import { FieldPaddingX, FieldPaddingY } from '$lib/theme/constants.js';
 	let {
 		disabled,
 		placeholder,

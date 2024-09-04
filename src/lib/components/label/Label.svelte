@@ -58,4 +58,6 @@
 	<label {...rest} class={classes}>
 		{@render children()}
 	</label>
+{:else}
+	{@render children()}
 {/if}

@@ -192,6 +192,7 @@ export const options: GlobalOptions = {
 
 export const settings: GlobalSettings = {
   focusWidth: 'lg',
+  focusOffset: 'md',
   prose: true,
   rounded: true,
   shadow: true,

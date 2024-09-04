@@ -13,17 +13,16 @@
 		animate?: boolean;
 		max?: number;
 		shadow?: ConfigProps['shadow'];
-		size?: Size | number;
+		size?: keyof typeof ProgressCircleSize | number;
 		text?: boolean | string;
-		textunit?: string;
+		textUnit?: string;
 		theme?: ThemeColor;
-		tracksize?: Size | number; // fallback to "size"
+		trackSize?: keyof typeof ProgressCircleSize | number; // fallback to "size"
 		value?: number;
 		children?: Snippet;
 	} & ProgressTweenedOptions;
 
-	export const ProgressCircleSizes = {
-		unstyled: 0,
+	const ProgressCircleSize = {
 		xs: 42,
 		sm: 75,
 		md: 100,
@@ -32,7 +31,7 @@
 		xl2: 175
 	};
 
-	export const ProgressCircleTextSizes = {
+	const ProgressCircleTextSize = {
 		unstyled: '',
 		xs: 'text-[10px]',
 		sm: 'text-sm',
@@ -43,8 +42,7 @@
 	};
 
 	// IMPORTANT: Use number or tailwind width only ONLY!!!
-	export const ProgressCircleTrackSizes = {
-		unstyled: 0,
+	const ProgressCircleTrackSize = {
 		xs: 4,
 		sm: 6,
 		md: 8,
@@ -65,10 +63,10 @@
 		shadow,
 		size = 'md',
 		text = true,
-		textunit = '%',
+		textUnit = '%',
 		theme,
 		value = $bindable(),
-		tracksize = 'md',
+		trackSize = 'md',
 		children,
 		...rest
 	}: ProgressCircleProps & ElementProps<'svg'> = $props();
@@ -86,10 +84,9 @@
 		return $store;
 	});
 
-	// const [diameter, trackwidth] = normalizeSize();
-	const diameter = typeof size === 'number' ? size : ProgressCircleSizes[size];
-	const trackwidth =
-		typeof tracksize === 'number' ? tracksize : ProgressCircleTrackSizes[tracksize || size];
+	trackSize = trackSize || size;
+	const diameter = typeof size === 'number' ? size : ProgressCircleSize[size];
+	const trackwidth = typeof trackSize === 'number' ? trackSize : ProgressCircleTrackSize[trackSize];
 	const center = diameter / 2; // cx & cy
 	const radius = center - trackwidth; // r
 	const strokeArray = $derived(2 * 3.14 * radius);
@@ -121,7 +118,7 @@
 
 	const progressCircleTextClasses = $derived(
 		clsxm(
-			size && typeof size === 'string' && ProgressCircleTextSizes[size],
+			size && typeof size === 'string' && ProgressCircleTextSize[size],
 			theme && !['light', 'dark'].includes(theme) && ProgressFillColor[theme],
 			theme && ['light', 'dark'].includes(theme) && 'fill-frame-600 dark:fill-frame-400',
 			!theme && 'fill-[color:rgb(var(--text-dark))] dark:fill-[color:rgb(var(--text-light))]'
@@ -137,7 +134,7 @@
 		dy=".1em"
 		text-anchor="middle"
 		alignment-baseline="middle"
-		transform="rotate(90)">{Math.round(tvalue)}{textunit}</text
+		transform="rotate(90)">{Math.round(tvalue)}{textUnit}</text
 	>
 {/snippet}
 

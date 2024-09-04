@@ -13,7 +13,7 @@ import { Animate, DropShadow, FontSize, JustifyContent, OutlineOffset, OutlineWi
 export type ConfigProps = {
   animate?: keyof typeof Animate;
   styles?: string | null | false | (string | null | false)[];
-  disabled?: boolean;
+  disabled?: boolean | null;
   dropShadow?: keyof typeof DropShadow | false;
   fontSize?: keyof typeof FontSize;
   focusType?: FocusType;
@@ -41,7 +41,7 @@ export function buildClass(props: ConfigProps) {
     fontSize,
     focusType,
     focusWidth = theme.settings.focusWidth,
-    focusOffset = 'sm',
+    focusOffset = theme.settings.focusOffset,
     focusTheme,
     focusRingColor,
     full,
