@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Input from './Input.svelte';
+	import Dropdown from './Dropdown.svelte';
 	import { colors } from '$lib/theme/types.js';
 	import Label from '../label/Label.svelte';
 	import { capitalize } from '$lib/utils/string.js';
@@ -8,7 +8,7 @@
 <div class="mb-8">
 	<Label>
 		<div>Default</div>
-		<Input value="default" />
+		<Dropdown value="default" />
 	</Label>
 </div>
 
@@ -17,7 +17,7 @@
 		<div>
 			<Label>
 				<div>{capitalize(color)}</div>
-				<Input theme={color} value={color + '1'} />
+				<Dropdown theme={color} value={color + '1'} />
 			</Label>
 		</div>
 	{/each}

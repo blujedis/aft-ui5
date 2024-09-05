@@ -55,18 +55,18 @@
 			classes: [
 				`form-select inline-flex items-center justify-center border-none`,
 				t.options.input,
-				'ring-1 ring-inset focus:ring-offset-0 focus:ring-inset',
-				!theme &&
-					'ring-frame-300 focus:ring-frame-300 dark:ring-frame-700 dark:focus:ring-frame-700 focus:outline-frame-500/50',
-				(!theme || theme === 'light') && 'focus:ring-frame-500 dark:focus:ring-frame-400',
-				theme === 'dark' && 'dark:focus:ring-frame-500',
+				'ring-1 ring-inset focus:ring-offset-0 focus:ring-inset pr-8',
 				size && FieldFontSize[size],
 				size && FieldPaddingX[size],
 				size && FieldPaddingY[size],
 				theme && FillColor[theme],
 				theme && BgColorHint[theme],
 				theme && RingColor[theme],
-				'pr-8'
+				!theme &&
+					'ring-frame-300 focus:ring-frame-300 dark:ring-frame-700 dark:focus:ring-frame-700 focus:outline-frame-500/50',
+				(!theme || theme === 'light') && 'focus:ring-frame-500 dark:focus:ring-frame-400',
+				theme === 'dark' && 'dark:focus:ring-frame-500',
+				theme && ['light', 'dark', 'white'].includes(theme) && 'text-dark dark:text-light'
 			],
 			disabled,
 			focusType,
@@ -85,10 +85,3 @@
 		{@render children()}
 	</select>
 </span>
-
-<style>
-	/* select {
-		--svg: url('data:image/svg+xml;utf8, <svg xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" viewBox="0 0 24 24" ><path style="fill:var(--caret-color);" d="M7.41 8.58L12 13.17l4.59-4.59L18 10l-6 6l-6-6z"></path></svg>');
-		background: var(--svg) no-repeat right 0.6em center;
-	} */
-</style>

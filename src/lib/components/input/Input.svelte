@@ -52,16 +52,17 @@
 				`input input-${variant} input-${theme}  inline-flex items-center justify-center border-none`,
 				t.options.input,
 				'ring-1 ring-inset focus:ring-offset-0 focus:ring-inset',
-				!theme &&
-					'ring-frame-300 focus:ring-frame-300 dark:ring-frame-700 dark:focus:ring-frame-700 focus:outline-frame-500/50',
-				(!theme || theme === 'light') && 'focus:ring-frame-500 dark:focus:ring-frame-400',
-				theme === 'dark' && 'dark:focus:ring-frame-500',
 				size && FieldFontSize[size],
 				size && FieldPaddingX[size],
 				size && FieldPaddingY[size],
 				theme && FillColor[theme],
 				theme && BgColorHint[theme],
-				theme && RingColor[theme]
+				theme && RingColor[theme],
+				!theme &&
+					'ring-frame-300 focus:ring-frame-300 dark:ring-frame-700 dark:focus:ring-frame-700 focus:outline-frame-500/50',
+				(!theme || theme === 'light') && 'focus:ring-frame-500 dark:focus:ring-frame-400',
+				theme === 'dark' && 'dark:focus:ring-frame-500',
+				theme && ['light', 'dark', 'white'].includes(theme) && 'text-dark dark:text-light'
 			],
 			disabled,
 			focusType,
