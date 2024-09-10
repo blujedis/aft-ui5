@@ -4,7 +4,7 @@ export type ThemeColor = keyof typeof FontColor;
 export type ThemeShade = typeof shades[number];
 export type Size = 'unstyled' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xl2';
 
-export const build = ['alert', 'avatar', 'badge', 'breadcrumb', 'button', 'card', 'checkbox', 'disclosure', 'divider', 'drawer', 'flushed', 'icon', 'image', 'indicator', 'input', 'kbd', 'label', 'modal', 'notifications', 'progress', 'radio', 'range', 'rating', 'select', 'spinner', 'stack', 'switch', 'textarea'];
+export const build = ['alert', 'avatar', 'badge', 'breadcrumb', 'button', 'card', 'checkbox', 'disclosure', 'divider', 'drawer', 'dropdown', 'flushed', 'icon', 'image', 'indicator', 'input', 'kbd', 'label', 'modal', 'notifications', 'popover', 'progress', 'radio', 'range', 'rating', 'select', 'spinner', 'stack', 'switch', 'textarea', 'tooltip'];
 
 export const Placeholder = {
   unstyled: '',
@@ -772,7 +772,7 @@ export const SelectedSoftTypes = {
 
 export interface GlobalSettings {
   focusWidth: Size | 'none';
-  focusOffset: Size | 'none';
+  focusOffset?: Size | 'none';
   prose: boolean; // when true enable prose for content (requries typography plugin)
   rounded: boolean; // when true rounding are permitted.
   shadow: boolean; // when true shadows are permitted.

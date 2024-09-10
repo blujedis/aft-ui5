@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
 	import { type ElementProps } from '$lib/types.js';
-	import { getContext, type Snippet } from 'svelte';
+	import { getContext, setContext, type Snippet } from 'svelte';
 	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 	import type { IconifyIcon } from '@iconify/svelte';
 	import { transitioner, type TransitionParams } from '$lib/utils/transitioner.js';
@@ -88,6 +88,8 @@
 		children,
 		...rest
 	}: AlertProps = $props();
+
+	setContext('IconContainer', { theme });
 
 	const [focustrapAction, focustrapHandler] = focustrap();
 

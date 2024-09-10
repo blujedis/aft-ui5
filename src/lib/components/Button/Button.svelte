@@ -163,7 +163,7 @@
 				variant === 'text' && 'aria-checked:underline dark:aria-checked:underline',
 				!theme &&
 					variant === 'text' &&
-					'text-frame-600 dark:text-frame-600 aria-checked:bg-frame-200 dark:aria-checked:bg-frame-600'
+					'text-frame-600 dark:text-frame-600 aria-checked:bg-frame-200 dark:aria-checked:bg-frame-600',
 			],
 			append: [rest.class],
 			focusType: 'visible',

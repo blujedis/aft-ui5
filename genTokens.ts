@@ -105,7 +105,7 @@ export function buildTokens() {
 	const conf = normalize(JSON.parse(confStr)) as Record<string, Record<string, ConfValueArg>> & {
 		$components: any
 	};
-	conf.$components = `[${getDirs('colormode', 'conditional').join(', ')}];\n`;
+	conf.$components = `[${getDirs('colormode', 'conditional', 'popper').join(', ')}];\n`;
 
 
 	const eta = new Eta({

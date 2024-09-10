@@ -772,7 +772,7 @@ export const SelectedSoftTypes = {
 
 export interface GlobalSettings {
   focusWidth: Size | 'none';
-  focusOffset: Size | 'none';
+  focusOffset?: Size | 'none';
   prose: boolean; // when true enable prose for content (requries typography plugin)
   rounded: boolean; // when true rounding are permitted.
   shadow: boolean; // when true shadows are permitted.

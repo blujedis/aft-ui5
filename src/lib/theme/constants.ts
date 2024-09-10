@@ -44,6 +44,17 @@ export const DropShadow = {
   xl2: 'drop-shadow-2xl'
 };
 
+export const Elevation = {
+  unstyled: '',
+  none: 'elevate-none',
+  xs: 'elevate-xs',
+  sm: 'elevate-sm',
+  md: 'elevate-md',
+  lg: 'elevate-lg',
+  xl: 'elevate-xl',
+  xl2: 'elevate-xl2',
+};
+
 export const JustifyContent = {
   unstyled: '',
   normal: 'justify-normal',
@@ -182,17 +193,16 @@ export const RingOffset = {
 
 export const options: GlobalOptions = {
   disabled: 'opacity-50 pointer-events-none',
-  divide: 'divide-frame-200 dark:divide-frame-700',
-  ring: 'ring-frame-200 dark:ring-frame-700',
-  border: 'border-frame-200 dark:border-frame-700',
-  card: 'body-bg-light dark:bg-frame-700',
+  divide: 'divide-frame-200 dark:divide-frame-600',
+  ring: 'ring-frame-200 dark:ring-frame-600',
+  border: 'border-frame-300 dark:border-frame-600',
+  card: 'body-light dark:bg-frame-700',
   input: 'bg-frame-50 dark:bg-frame-400/5 hover:bg-[rgb(var(--bg-light))] dark:hover:bg-[rgb(var(--bg-dark))]  focus:bg-[rgb(var(--bg-light))] dark:focus:bg-[rgb(var(--bg-dark))]',
   transition: 'transition motion-reduce:transition-none',
 };
-
 export const settings: GlobalSettings = {
   focusWidth: 'lg',
-  focusOffset: 'md',
+  focusOffset: 'none',
   prose: true,
   rounded: true,
   shadow: true,

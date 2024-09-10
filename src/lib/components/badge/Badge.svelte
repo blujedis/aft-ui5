@@ -88,7 +88,8 @@
 
 				variant === 'outlined' && RingWidth['sm'],
 				variant === 'outlined' && RingOffset['inset'],
-				theme && variant === 'outlined' && RingColor[theme || 'light'],
+				variant === 'outlined' && 'body-light dark:body-dark',
+				theme && variant === 'outlined' && RingColor[theme],
 				!theme && variant === 'outlined' && 'ring-frame-300 dark:ring-frame-600',
 
 				rest.class

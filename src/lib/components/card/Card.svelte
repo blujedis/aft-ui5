@@ -9,7 +9,7 @@
 		image?: string | Snippet<[{ classes: string }]>;
 		reverse?: boolean;
 		rounded?: ConfigProps['rounded'];
-		shadow?: ConfigProps['shadow'];
+		elevation?: ConfigProps['elevation'];
 		size?: keyof typeof CardSize;
 		spacing?: boolean; // adds x or y spaceing for block elements.
 		children: Snippet;
@@ -49,20 +49,14 @@
 		image,
 		reverse = false,
 		rounded = 'sm',
-		shadow = 'lg',
+		elevation = 'md',
 		size = 'xs',
 		spacing = true,
 		children,
 		...rest
 	}: CardProps & ElementProps<'div'> = $props();
 
-	const innerDiv = $derived(
-		clsxm(
-			size && CardPadding[size],
-			// image && spacing && !horizontal && 'space-y-4',
-			image && spacing && 'space-y-4'
-		)
-	);
+	const innerDiv = $derived(clsxm(size && CardPadding[size], image && spacing && 'space-y-4'));
 
 	const classes = $derived(
 		buildClass({
@@ -81,7 +75,7 @@
 				rest.class
 			],
 			rounded,
-			shadow
+			elevation
 		})
 	);
 

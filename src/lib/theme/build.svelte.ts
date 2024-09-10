@@ -5,16 +5,16 @@ import {
   type FocusType,
   type ThemeColor,
   RingColorFocus,
-  FocusTypes
+  FocusTypes,
 } from './types.js';
 import type { ClassArray, ClassValue } from 'clsx';
-import { Animate, DropShadow, FontSize, JustifyContent, OutlineOffset, OutlineWidth, Rounded, Shadow } from './constants.js';
+import { Animate, DropShadow, Elevation, FontSize, JustifyContent, OutlineOffset, OutlineWidth, Rounded, Shadow } from './constants.js';
 
 export type ConfigProps = {
   animate?: keyof typeof Animate;
-  styles?: string | null | false | (string | null | false)[];
   disabled?: boolean | null;
   dropShadow?: keyof typeof DropShadow | false;
+  elevation?: keyof typeof Elevation;
   fontSize?: keyof typeof FontSize;
   focusType?: FocusType;
   focusTheme?: ThemeColor | false;
@@ -27,10 +27,13 @@ export type ConfigProps = {
   rounded?: keyof typeof Rounded | false;
   shadow?: keyof typeof Shadow | false;
   transition?: boolean | string;
+  styles?: string | null | false | (string | null | false)[];
   prepend?: ClassValue | ClassArray[],
   classes?: ClassValue | ClassArray[],
   append?: ClassValue | ClassArray[],
 };
+
+
 
 export function buildClass(props: ConfigProps) {
 
@@ -38,6 +41,7 @@ export function buildClass(props: ConfigProps) {
     animate,
     disabled,
     dropShadow,
+    elevation,
     fontSize,
     focusType,
     focusWidth = theme.settings.focusWidth,
@@ -71,6 +75,7 @@ export function buildClass(props: ConfigProps) {
     theme.settings.shadow && dropShadow && DropShadow[dropShadow],
     theme.settings.rounded && Rounded[rounded || 'unstyled'],
     theme.settings.shadow && Shadow[shadow || 'unstyled'],
+    theme.settings.shadow && Elevation[elevation || 'unstyled'],
     transition && theme.options.transition,
     classes,
     append
