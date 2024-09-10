@@ -35,7 +35,7 @@
 	};
 </script>
 
-<script lang="ts">
+<script lang="ts"> 
 	let {
 		arrow = true,
 		elevation = 'md',
@@ -50,8 +50,9 @@
 
 	const classes = $derived(
 		buildClass({
-			prepend: [`tooltip tooltip-${variant} tooltip-${theme}`],
+			prepend: [`tooltip tooltip-${variant} tooltip-${theme || 'default'}`],
 			classes: [
+				'flex items-center',
 				size && TooltipSize[size],
 				size && FieldFontSize[size],
 
@@ -90,5 +91,7 @@
 	arrowClass={arrowClasses}
 	bind:visible
 >
-	{@render children()}
+	<div class="pb-0.5">
+		{@render children()}
+	</div>
 </Popper>

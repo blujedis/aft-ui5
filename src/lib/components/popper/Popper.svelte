@@ -299,8 +299,8 @@
 
 {#if targetEl && visible}
 	<div
-		{...rest}
 		{role}
+		{...rest}
 		use:initEl
 		use:clickOutside
 		onfocusin={optional(active && event === 'focus', handleOpen)}

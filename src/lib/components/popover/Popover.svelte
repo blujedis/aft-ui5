@@ -16,27 +16,6 @@
 		unpadded?: boolean;
 		children: Snippet<[{ close: (e?: Event) => any }]>;
 	};
-
-	// export const TooltipSize = {
-	// 	unstyled: '',
-	// 	xs: 'px-1.5 text-[10px]',
-	// 	sm: 'px-2 py-1',
-	// 	md: 'px-2.5 py-1.5',
-	// 	lg: 'px-3 py-2',
-	// 	xl: 'px-3.5 py-2.5',
-	// 	xl2: 'px-4 py-3'
-	// };
-
-	const PopoverPadding = {
-		unstyled: '',
-		xs: 'p-6',
-		sm: 'p-6',
-		md: 'p-6',
-		lg: 'p-6',
-		xl: 'p-6 sm:p-8',
-		xl2: 'p-6 sm:p-8',
-		full: 'p-6 sm:p-8'
-	};
 </script>
 
 <script lang="ts">
@@ -59,11 +38,11 @@
 		buildClass({
 			prepend: [`popover`],
 			classes: [
-				!unpadded && size && PopoverPadding[size],
+				!unpadded && 'p-4',
 				size && FieldFontSize[size],
 				t.options.card,
 				t.options.border,
-				'border z-40',
+				'border z-40 relative',
 				rest.class
 			],
 			rounded,
