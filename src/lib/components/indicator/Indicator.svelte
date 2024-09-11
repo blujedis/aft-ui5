@@ -48,7 +48,6 @@
 	diameter = typeof text === 'undefined' ? 0.6 : undefined;
 	text = typeof text !== 'undefined' ? text + '' : text;
 
-	console;
 	const offset = !diameter ? 0 : '-' + diameter * 0.25;
 	const style = !diameter
 		? ''
@@ -57,7 +56,7 @@
 	const classes = $derived(
 		buildClass({
 			classes: [
-				`indicator indicator-${variant} indicator-${theme} absolute rounded-full inline-flex items-center justify-center ring-2 z-10`,
+				`indicator indicator-${variant} indicator-${theme} absolute rounded-full inline-flex items-center justify-center flex-shrink-0 ring-2 z-10`,
 				rounded === 'full' && 'ring-frame-300 dark:ring-frame-600',
 				rounded !== 'full' &&
 					'ring-[color:rgb(var(--bg-light))] dark:ring-[color:rgb(var(--bg-dark))]',

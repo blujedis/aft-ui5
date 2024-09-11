@@ -25,7 +25,7 @@
 	let p: DropdownProps;
 
 	let {
-		elevation = 'xl',
+		elevation = 'lg',
 		event = 'focus',
 		focusType = 'visible',
 		focusTheme,

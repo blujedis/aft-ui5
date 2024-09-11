@@ -12,6 +12,7 @@
 	import { getContext, onMount, type Snippet } from 'svelte';
 
 	export interface DropdownItemProps {
+		disabled?: boolean;
 		focusType?: FocusType;
 		focusTheme?: ThemeColor;
 		href?: string;
@@ -19,11 +20,12 @@
 		selectedTheme?: ThemeColor;
 		size?: Size;
 		theme?: ThemeColor;
-		children: Snippet<[{ selected?: boolean; focus?: boolean }]>;
+		children: Snippet;
 	}
 </script>
 
 <script lang="ts">
+	import t from '$lib/theme/theme.svelte.js';
 	const context = getContext('Dropdown') as {
 		focusType: FocusType;
 		focusTheme: ThemeColor;
@@ -32,10 +34,11 @@
 	};
 
 	let {
+		disabled,
 		focusType = context.focusType,
 		focusTheme = context.focusTheme,
 		href,
-		selected,
+		selected = $bindable(),
 		selectedTheme,
 		size = context.size,
 		theme = context.theme,
@@ -51,14 +54,15 @@
 		buildClass({
 			prepend: [`dropdown-item dropdown-item-${theme || 'default'}`],
 			classes: [
-				`pointer-events-auto w-full text-left outline-none`,
+				`pointer-events-auto flex items-center w-full justify-between text-left outline-none`,
 				'hover:bg-frame-200 dark:hover:bg-frame-800',
 				href && 'block',
 				!href && 'flex items-center justify-between',
 				size && FieldPaddingX[size],
 				size && FieldPaddingY[size],
 				theme && BgColorDropSelected[selectedTheme || theme],
-				'aria-selected:text-light',
+				disabled && t.options.disabled,
+				'aria-selected:text-light aria-selected:pointer-events-none',
 				rest.class
 			],
 			focusType,
@@ -73,18 +77,23 @@
 
 	onMount(() => {
 		if (!href && isSafari) el?.addEventListener('click', clickFocus);
-		return () => !href && isSafari && el?.removeEventListener('click', clickFocus);
+		return () => {
+			if (!href && isSafari) !href && isSafari && el?.removeEventListener('click', clickFocus);
+		};
 	});
 </script>
 
 <li class="pointer-events-none outline-none">
 	<svelte:element
 		this={href ? 'a' : 'button'}
+		tabindex="-1"
 		{...rest}
 		bind:this={el}
 		class={classes}
 		aria-selected={selected}
+		{disabled}
+		aria-disabled={disabled}
 	>
-		{@render children({ selected, focus: false })}
+		{@render children()}
 	</svelte:element>
 </li>
