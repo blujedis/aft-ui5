@@ -416,16 +416,30 @@ export const BgColorSoftGroupHover = {
 
 export const BgColorSelected = {
   unstyled: '',
-  primary: 'aria-selected:bg-{{=i.bgSelect.primary[0]}} dark:aria-selected:bg-{{=i.bgSelect.primary[1]}}',
-  secondary: 'aria-selected:bg-{{=i.bgSelect.secondary[0]}} dark:aria-selected:bg-{{=i.bgSelect.secondary[1]}}',
-  tertiary: 'aria-selected:bg-{{=i.bgSelect.tertiary[0]}} dark:aria-selected:bg-{{=i.bgSelect.tertiary[1]}}',
-  danger: 'aria-selected:bg-{{=i.bgSelect.danger[0]}} dark:aria-selected:bg-{{=i.bgSelect.danger[1]}}',
-  warning: 'aria-selected:bg-{{=i.bgSelect.warning[0]}} dark:aria-selected:bg-{{=i.bgSelect.warning[1]}}',
-  success: 'aria-selected:bg-{{=i.bgSelect.success[0]}} dark:aria-selected:bg-{{=i.bgSelect.success[1]}}',
-  info: 'aria-selected:bg-{{=i.bgSelect.info[0]}} dark:aria-selected:bg-{{=i.bgSelect.info[1]}}',
-  light: 'aria-selected:bg-{{=i.bgSelect.light[0]}} dark:aria-selected:bg-{{=i.bgSelect.light[1]}}',
-  dark: 'aria-selected:bg-{{=i.bgSelect.dark[0]}} dark:aria-selected:bg-{{=i.bgSelect.dark[1]}} ',
-  white: 'aria-selected:bg-{{=i.bgSelect.white[0]}} dark:aria-selected:bg-{{=i.bgSelect.white[1]}}',
+  primary: 'aria-selected:bg-{{=i.bgDropSelect.primary[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.primary[1]}}',
+  secondary: 'aria-selected:bg-{{=i.bgDropSelect.secondary[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.secondary[1]}}',
+  tertiary: 'aria-selected:bg-{{=i.bgDropSelect.tertiary[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.tertiary[1]}}',
+  danger: 'aria-selected:bg-{{=i.bgDropSelect.danger[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.danger[1]}}',
+  warning: 'aria-selected:bg-{{=i.bgDropSelect.warning[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.warning[1]}}',
+  success: 'aria-selected:bg-{{=i.bgDropSelect.success[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.success[1]}}',
+  info: 'aria-selected:bg-{{=i.bgDropSelect.info[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.info[1]}}',
+  light: 'aria-selected:bg-{{=i.bgDropSelect.light[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.light[1]}}',
+  dark: 'aria-selected:bg-{{=i.bgDropSelect.dark[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.dark[1]}} ',
+  white: 'aria-selected:bg-{{=i.bgDropSelect.white[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.white[1]}}',
+};
+
+export const BgColorDropSelected = {
+  unstyled: '',
+  primary: 'aria-selected:bg-{{=i.bgDropSelect.primary[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.primary[1]}}',
+  secondary: 'aria-selected:bg-{{=i.bgDropSelect.secondary[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.secondary[1]}}',
+  tertiary: 'aria-selected:bg-{{=i.bgDropSelect.tertiary[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.tertiary[1]}}',
+  danger: 'aria-selected:bg-{{=i.bgDropSelect.danger[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.danger[1]}}',
+  warning: 'aria-selected:bg-{{=i.bgDropSelect.warning[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.warning[1]}}',
+  success: 'aria-selected:bg-{{=i.bgDropSelect.success[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.success[1]}}',
+  info: 'aria-selected:bg-{{=i.bgDropSelect.info[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.info[1]}}',
+  light: 'aria-selected:bg-{{=i.bgDropSelect.light[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.light[1]}}',
+  dark: 'aria-selected:bg-{{=i.bgDropSelect.dark[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.dark[1]}} ',
+  white: 'aria-selected:bg-{{=i.bgDropSelect.white[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.white[1]}}',
 };
 
 export const BgColorSoftSelected = {
@@ -444,18 +458,17 @@ export const BgColorSoftSelected = {
 
 export const BgColorExpanded = {
   unstyled: '',
-  primary: 'aria-expanded:bg-{{=i.bgSelect.primary[0]}} dark:aria-expanded:bg-{{=i.bgSelect.primary[1]}}',
-  secondary: 'aria-expanded:bg-{{=i.bgSelect.secondary[0]}} dark:aria-expanded:bg-{{=i.bgSelect.secondary[1]}}',
-  tertiary: 'aria-expanded:bg-{{=i.bgSelect.tertiary[0]}} dark:aria-expanded:bg-{{=i.bgSelect.tertiary[1]}}',
-  danger: 'aria-expanded:bg-{{=i.bgSelect.danger[0]}} dark:aria-expanded:bg-{{=i.bgSelect.danger[1]}}',
-  warning: 'aria-expanded:bg-{{=i.bgSelect.warning[0]}} dark:aria-expanded:bg-{{=i.bgSelect.warning[1]}}',
-  success: 'aria-expanded:bg-{{=i.bgSelect.success[0]}} dark:aria-expanded:bg-{{=i.bgSelect.success[1]}}',
-  info: 'aria-expanded:bg-{{=i.bgSelect.info[0]}} dark:aria-expanded:bg-{{=i.bgSelect.info[1]}}',
-  light: 'aria-expanded:bg-{{=i.bgSelect.light[0]}} dark:aria-expanded:bg-{{=i.bgSelect.light[1]}}',
-  dark: 'aria-expanded:bg-{{=i.bgSelect.dark[0]}} dark:aria-expanded:bg-{{=i.bgSelect.dark[1]}} ',
-  white: 'aria-expanded:bg-{{=i.bgSelect.white[0]}} dark:aria-expanded:bg-{{=i.bgSelect.white[1]}}',
+  primary: 'aria-expanded:bg-{{=i.bgDropSelect.primary[0]}} dark:aria-expanded:bg-{{=i.bgDropSelect.primary[1]}}',
+  secondary: 'aria-expanded:bg-{{=i.bgDropSelect.secondary[0]}} dark:aria-expanded:bg-{{=i.bgDropSelect.secondary[1]}}',
+  tertiary: 'aria-expanded:bg-{{=i.bgDropSelect.tertiary[0]}} dark:aria-expanded:bg-{{=i.bgDropSelect.tertiary[1]}}',
+  danger: 'aria-expanded:bg-{{=i.bgDropSelect.danger[0]}} dark:aria-expanded:bg-{{=i.bgDropSelect.danger[1]}}',
+  warning: 'aria-expanded:bg-{{=i.bgDropSelect.warning[0]}} dark:aria-expanded:bg-{{=i.bgDropSelect.warning[1]}}',
+  success: 'aria-expanded:bg-{{=i.bgDropSelect.success[0]}} dark:aria-expanded:bg-{{=i.bgDropSelect.success[1]}}',
+  info: 'aria-expanded:bg-{{=i.bgDropSelect.info[0]}} dark:aria-expanded:bg-{{=i.bgDropSelect.info[1]}}',
+  light: 'aria-expanded:bg-{{=i.bgDropSelect.light[0]}} dark:aria-expanded:bg-{{=i.bgDropSelect.light[1]}}',
+  dark: 'aria-expanded:bg-{{=i.bgDropSelect.dark[0]}} dark:aria-expanded:bg-{{=i.bgDropSelect.dark[1]}} ',
+  white: 'aria-expanded:bg-{{=i.bgDropSelect.white[0]}} dark:aria-expanded:bg-{{=i.bgDropSelect.white[1]}}',
 };
-
 
 export const BgColorSoftExpanded = {
   unstyled: '',
@@ -472,19 +485,18 @@ export const BgColorSoftExpanded = {
 };
 
 
-
 export const BgColorChecked = {
   unstyled: '',
-  primary: 'aria-checked:bg-{{=i.bgSelect.primary[0]}} dark:aria-checked:bg-{{=i.bgSelect.primary[1]}}',
-  secondary: 'aria-checked:bg-{{=i.bgSelect.secondary[0]}} dark:aria-checked:bg-{{=i.bgSelect.secondary[1]}}',
-  tertiary: 'aria-checked:bg-{{=i.bgSelect.tertiary[0]}} dark:aria-checked:bg-{{=i.bgSelect.tertiary[1]}}',
-  danger: 'aria-checked:bg-{{=i.bgSelect.danger[0]}} dark:aria-checked:bg-{{=i.bgSelect.danger[1]}}',
-  warning: 'aria-checked:bg-{{=i.bgSelect.warning[0]}} dark:aria-checked:bg-{{=i.bgSelect.warning[1]}}',
-  success: 'aria-checked:bg-{{=i.bgSelect.success[0]}} dark:aria-checked:bg-{{=i.bgSelect.success[1]}}',
-  info: 'aria-checked:bg-{{=i.bgSelect.info[0]}} dark:aria-checked:bg-{{=i.bgSelect.info[1]}}',
-  light: 'aria-checked:bg-{{=i.bgSelect.light[0]}} dark:aria-checked:bg-{{=i.bgSelect.light[1]}}',
-  dark: 'aria-checked:bg-{{=i.bgSelect.dark[0]}} dark:aria-checked:bg-{{=i.bgSelect.dark[1]}} ',
-  white: 'aria-checked:bg-{{=i.bgSelect.white[0]}} dark:aria-checked:bg-{{=i.bgSelect.white[1]}}',
+  primary: 'aria-checked:bg-{{=i.bgDropSelect.primary[0]}} dark:aria-checked:bg-{{=i.bgDropSelect.primary[1]}}',
+  secondary: 'aria-checked:bg-{{=i.bgDropSelect.secondary[0]}} dark:aria-checked:bg-{{=i.bgDropSelect.secondary[1]}}',
+  tertiary: 'aria-checked:bg-{{=i.bgDropSelect.tertiary[0]}} dark:aria-checked:bg-{{=i.bgDropSelect.tertiary[1]}}',
+  danger: 'aria-checked:bg-{{=i.bgDropSelect.danger[0]}} dark:aria-checked:bg-{{=i.bgDropSelect.danger[1]}}',
+  warning: 'aria-checked:bg-{{=i.bgDropSelect.warning[0]}} dark:aria-checked:bg-{{=i.bgDropSelect.warning[1]}}',
+  success: 'aria-checked:bg-{{=i.bgDropSelect.success[0]}} dark:aria-checked:bg-{{=i.bgDropSelect.success[1]}}',
+  info: 'aria-checked:bg-{{=i.bgDropSelect.info[0]}} dark:aria-checked:bg-{{=i.bgDropSelect.info[1]}}',
+  light: 'aria-checked:bg-{{=i.bgDropSelect.light[0]}} dark:aria-checked:bg-{{=i.bgDropSelect.light[1]}}',
+  dark: 'aria-checked:bg-{{=i.bgDropSelect.dark[0]}} dark:aria-checked:bg-{{=i.bgDropSelect.dark[1]}} ',
+  white: 'aria-checked:bg-{{=i.bgDropSelect.white[0]}} dark:aria-checked:bg-{{=i.bgDropSelect.white[1]}}',
 };
 
 export const BgColorSoftChecked = {
@@ -502,20 +514,18 @@ export const BgColorSoftChecked = {
 };
 
 
-
-
 export const BgColorCurrent = {
   unstyled: '',
-  primary: 'aria-[current="page"]:bg-{{=i.bgSelect.primary[0]}} dark:aria-[current="page"]:bg-{{=i.bgSelect.primary[1]}}',
-  secondary: 'aria-[current="page"]:bg-{{=i.bgSelect.secondary[0]}} dark: aria - [current = "page"]: bg- {{=i.bgSelect.secondary[1]}}',
-  tertiary: 'aria-[current="page"]:bg-{{=i.bgSelect.tertiary[0]}} dark: aria - [current = "page"]: bg - {{=i.bgSelect.tertiary[1] }}',
-  danger: 'aria-[current="page"]:bg-{{=i.bgSelect.danger[0]}} dark:aria-[current="page"]:bg-{{=i.bgSelect.danger[1]}}',
-  warning: 'aria-[current="page"]:bg-{{=i.bgSelect.warning[0]}} dark:aria-[current="page"]:bg-{{=i.bgSelect.warning[1]}}',
-  success: 'aria-[current="page"]:bg-{{=i.bgSelect.success[0]}} dark:aria-[current="page"]:bg-{{=i.bgSelect.success[1]}}',
-  info: 'aria-[current="page"]:bg-{{=i.bgSelect.info[0]}} dark:aria-[current="page"]:bg-{{=i.bgSelect.info[1]}}',
-  light: 'aria-[current="page"]:bg-{{=i.bgSelect.light[0]}} dark:aria-[current="page"]:bg-{{=i.bgSelect.light[1]}}',
-  dark: 'aria-[current="page"]:bg-{{=i.bgSelect.dark[0]}} dark:aria-[current="page"]:bg-{{=i.bgSelect.dark[1]}} ',
-  white: 'aria-[current="page"]:bg-{{=i.bgSelect.white[0]}} dark:aria-[current="page"]:bg-{{=i.bgSelect.white[1]}}',
+  primary: 'aria-[current="page"]:bg-{{=i.bgDropSelect.primary[0]}} dark:aria-[current="page"]:bg-{{=i.bgDropSelect.primary[1]}}',
+  secondary: 'aria-[current="page"]:bg-{{=i.bgDropSelect.secondary[0]}} dark: aria - [current = "page"]: bg- {{=i.bgDropSelect.secondary[1]}}',
+  tertiary: 'aria-[current="page"]:bg-{{=i.bgDropSelect.tertiary[0]}} dark: aria - [current = "page"]: bg - {{=i.bgDropSelect.tertiary[1] }}',
+  danger: 'aria-[current="page"]:bg-{{=i.bgDropSelect.danger[0]}} dark:aria-[current="page"]:bg-{{=i.bgDropSelect.danger[1]}}',
+  warning: 'aria-[current="page"]:bg-{{=i.bgDropSelect.warning[0]}} dark:aria-[current="page"]:bg-{{=i.bgDropSelect.warning[1]}}',
+  success: 'aria-[current="page"]:bg-{{=i.bgDropSelect.success[0]}} dark:aria-[current="page"]:bg-{{=i.bgDropSelect.success[1]}}',
+  info: 'aria-[current="page"]:bg-{{=i.bgDropSelect.info[0]}} dark:aria-[current="page"]:bg-{{=i.bgDropSelect.info[1]}}',
+  light: 'aria-[current="page"]:bg-{{=i.bgDropSelect.light[0]}} dark:aria-[current="page"]:bg-{{=i.bgDropSelect.light[1]}}',
+  dark: 'aria-[current="page"]:bg-{{=i.bgDropSelect.dark[0]}} dark:aria-[current="page"]:bg-{{=i.bgDropSelect.dark[1]}} ',
+  white: 'aria-[current="page"]:bg-{{=i.bgDropSelect.white[0]}} dark:aria-[current="page"]:bg-{{=i.bgDropSelect.white[1]}}',
 };
 
 export const BgColorSoftCurrent = {

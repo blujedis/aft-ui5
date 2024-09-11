@@ -9,11 +9,10 @@
 
 	export type PopoverProps = Omit<PopperProps, 'children'> & {
 		elevation?: ConfigProps['elevation'];
+		flush?: boolean;
 		rounded?: ConfigProps['rounded'];
 		size?: Size;
-		theme?: ThemeColor;
 		title?: string;
-		unpadded?: boolean;
 		children: Snippet<[{ close: (e?: Event) => any }]>;
 	};
 </script>
@@ -25,7 +24,7 @@
 		arrow = true,
 		elevation = 'lg',
 		event = 'click',
-		unpadded,
+		flush,
 		rounded,
 		size = 'md',
 		title,
@@ -38,11 +37,12 @@
 		buildClass({
 			prepend: [`popover`],
 			classes: [
-				!unpadded && 'p-4',
+				'border z-40 relative',
+				typeof children === 'string',
 				size && FieldFontSize[size],
 				t.options.card,
 				t.options.border,
-				'border z-40 relative',
+				!flush && 'p-4',
 				rest.class
 			],
 			rounded,

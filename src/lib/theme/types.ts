@@ -416,15 +416,29 @@ export const BgColorSoftGroupHover = {
 
 export const BgColorSelected = {
   unstyled: '',
-  primary: 'aria-selected:bg-primary-600 dark:aria-selected:bg-primary-600',
-  secondary: 'aria-selected:bg-secondary-600 dark:aria-selected:bg-secondary-600',
-  tertiary: 'aria-selected:bg-tertiary-600 dark:aria-selected:bg-tertiary-600',
-  danger: 'aria-selected:bg-danger-600 dark:aria-selected:bg-danger-600',
-  warning: 'aria-selected:bg-warning-600 dark:aria-selected:bg-warning-600',
-  success: 'aria-selected:bg-success-600 dark:aria-selected:bg-success-600',
-  info: 'aria-selected:bg-info-600 dark:aria-selected:bg-info-600',
+  primary: 'aria-selected:bg-primary-500 dark:aria-selected:bg-primary-500',
+  secondary: 'aria-selected:bg-secondary-500 dark:aria-selected:bg-secondary-500',
+  tertiary: 'aria-selected:bg-tertiary-500 dark:aria-selected:bg-tertiary-500',
+  danger: 'aria-selected:bg-danger-500 dark:aria-selected:bg-danger-500',
+  warning: 'aria-selected:bg-warning-500 dark:aria-selected:bg-warning-500',
+  success: 'aria-selected:bg-success-500 dark:aria-selected:bg-success-500',
+  info: 'aria-selected:bg-info-500 dark:aria-selected:bg-info-500',
   light: 'aria-selected:bg-frame-300 dark:aria-selected:bg-frame-400',
-  dark: 'aria-selected:bg-frame-950 dark:aria-selected:bg-frame-950 ',
+  dark: 'aria-selected:bg-frame-700 dark:aria-selected:bg-frame-700 ',
+  white: 'aria-selected:bg-frame-200 dark:aria-selected:bg-frame-200',
+};
+
+export const BgColorDropSelected = {
+  unstyled: '',
+  primary: 'aria-selected:bg-primary-500 dark:aria-selected:bg-primary-500',
+  secondary: 'aria-selected:bg-secondary-500 dark:aria-selected:bg-secondary-500',
+  tertiary: 'aria-selected:bg-tertiary-500 dark:aria-selected:bg-tertiary-500',
+  danger: 'aria-selected:bg-danger-500 dark:aria-selected:bg-danger-500',
+  warning: 'aria-selected:bg-warning-500 dark:aria-selected:bg-warning-500',
+  success: 'aria-selected:bg-success-500 dark:aria-selected:bg-success-500',
+  info: 'aria-selected:bg-info-500 dark:aria-selected:bg-info-500',
+  light: 'aria-selected:bg-frame-300 dark:aria-selected:bg-frame-400',
+  dark: 'aria-selected:bg-frame-700 dark:aria-selected:bg-frame-700 ',
   white: 'aria-selected:bg-frame-200 dark:aria-selected:bg-frame-200',
 };
 
@@ -444,18 +458,17 @@ export const BgColorSoftSelected = {
 
 export const BgColorExpanded = {
   unstyled: '',
-  primary: 'aria-expanded:bg-primary-600 dark:aria-expanded:bg-primary-600',
-  secondary: 'aria-expanded:bg-secondary-600 dark:aria-expanded:bg-secondary-600',
-  tertiary: 'aria-expanded:bg-tertiary-600 dark:aria-expanded:bg-tertiary-600',
-  danger: 'aria-expanded:bg-danger-600 dark:aria-expanded:bg-danger-600',
-  warning: 'aria-expanded:bg-warning-600 dark:aria-expanded:bg-warning-600',
-  success: 'aria-expanded:bg-success-600 dark:aria-expanded:bg-success-600',
-  info: 'aria-expanded:bg-info-600 dark:aria-expanded:bg-info-600',
+  primary: 'aria-expanded:bg-primary-500 dark:aria-expanded:bg-primary-500',
+  secondary: 'aria-expanded:bg-secondary-500 dark:aria-expanded:bg-secondary-500',
+  tertiary: 'aria-expanded:bg-tertiary-500 dark:aria-expanded:bg-tertiary-500',
+  danger: 'aria-expanded:bg-danger-500 dark:aria-expanded:bg-danger-500',
+  warning: 'aria-expanded:bg-warning-500 dark:aria-expanded:bg-warning-500',
+  success: 'aria-expanded:bg-success-500 dark:aria-expanded:bg-success-500',
+  info: 'aria-expanded:bg-info-500 dark:aria-expanded:bg-info-500',
   light: 'aria-expanded:bg-frame-300 dark:aria-expanded:bg-frame-400',
-  dark: 'aria-expanded:bg-frame-950 dark:aria-expanded:bg-frame-950 ',
+  dark: 'aria-expanded:bg-frame-700 dark:aria-expanded:bg-frame-700 ',
   white: 'aria-expanded:bg-frame-200 dark:aria-expanded:bg-frame-200',
 };
-
 
 export const BgColorSoftExpanded = {
   unstyled: '',
@@ -472,18 +485,17 @@ export const BgColorSoftExpanded = {
 };
 
 
-
 export const BgColorChecked = {
   unstyled: '',
-  primary: 'aria-checked:bg-primary-600 dark:aria-checked:bg-primary-600',
-  secondary: 'aria-checked:bg-secondary-600 dark:aria-checked:bg-secondary-600',
-  tertiary: 'aria-checked:bg-tertiary-600 dark:aria-checked:bg-tertiary-600',
-  danger: 'aria-checked:bg-danger-600 dark:aria-checked:bg-danger-600',
-  warning: 'aria-checked:bg-warning-600 dark:aria-checked:bg-warning-600',
-  success: 'aria-checked:bg-success-600 dark:aria-checked:bg-success-600',
-  info: 'aria-checked:bg-info-600 dark:aria-checked:bg-info-600',
+  primary: 'aria-checked:bg-primary-500 dark:aria-checked:bg-primary-500',
+  secondary: 'aria-checked:bg-secondary-500 dark:aria-checked:bg-secondary-500',
+  tertiary: 'aria-checked:bg-tertiary-500 dark:aria-checked:bg-tertiary-500',
+  danger: 'aria-checked:bg-danger-500 dark:aria-checked:bg-danger-500',
+  warning: 'aria-checked:bg-warning-500 dark:aria-checked:bg-warning-500',
+  success: 'aria-checked:bg-success-500 dark:aria-checked:bg-success-500',
+  info: 'aria-checked:bg-info-500 dark:aria-checked:bg-info-500',
   light: 'aria-checked:bg-frame-300 dark:aria-checked:bg-frame-400',
-  dark: 'aria-checked:bg-frame-950 dark:aria-checked:bg-frame-950 ',
+  dark: 'aria-checked:bg-frame-700 dark:aria-checked:bg-frame-700 ',
   white: 'aria-checked:bg-frame-200 dark:aria-checked:bg-frame-200',
 };
 
@@ -502,19 +514,17 @@ export const BgColorSoftChecked = {
 };
 
 
-
-
 export const BgColorCurrent = {
   unstyled: '',
-  primary: 'aria-[current="page"]:bg-primary-600 dark:aria-[current="page"]:bg-primary-600',
-  secondary: 'aria-[current="page"]:bg-secondary-600 dark: aria - [current = "page"]: bg- secondary-600',
-  tertiary: 'aria-[current="page"]:bg-tertiary-600 dark: aria - [current = "page"]: bg - tertiary-600',
-  danger: 'aria-[current="page"]:bg-danger-600 dark:aria-[current="page"]:bg-danger-600',
-  warning: 'aria-[current="page"]:bg-warning-600 dark:aria-[current="page"]:bg-warning-600',
-  success: 'aria-[current="page"]:bg-success-600 dark:aria-[current="page"]:bg-success-600',
-  info: 'aria-[current="page"]:bg-info-600 dark:aria-[current="page"]:bg-info-600',
+  primary: 'aria-[current="page"]:bg-primary-500 dark:aria-[current="page"]:bg-primary-500',
+  secondary: 'aria-[current="page"]:bg-secondary-500 dark: aria - [current = "page"]: bg- secondary-500',
+  tertiary: 'aria-[current="page"]:bg-tertiary-500 dark: aria - [current = "page"]: bg - tertiary-500',
+  danger: 'aria-[current="page"]:bg-danger-500 dark:aria-[current="page"]:bg-danger-500',
+  warning: 'aria-[current="page"]:bg-warning-500 dark:aria-[current="page"]:bg-warning-500',
+  success: 'aria-[current="page"]:bg-success-500 dark:aria-[current="page"]:bg-success-500',
+  info: 'aria-[current="page"]:bg-info-500 dark:aria-[current="page"]:bg-info-500',
   light: 'aria-[current="page"]:bg-frame-300 dark:aria-[current="page"]:bg-frame-400',
-  dark: 'aria-[current="page"]:bg-frame-950 dark:aria-[current="page"]:bg-frame-950 ',
+  dark: 'aria-[current="page"]:bg-frame-700 dark:aria-[current="page"]:bg-frame-700 ',
   white: 'aria-[current="page"]:bg-frame-200 dark:aria-[current="page"]:bg-frame-200',
 };
 

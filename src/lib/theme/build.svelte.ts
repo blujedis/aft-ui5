@@ -61,7 +61,7 @@ export function buildClass(props: ConfigProps) {
   return clsxm(
     prepend,
 
-    focusType && focusTheme && FocusTypes[focusType][focusTheme],
+    focusType && focusTheme && FocusTypes[focusType][focusTheme || 'primary'],
     focusWidth && focusType && OutlineWidth[focusWidth],
     focusOffset && focusType && OutlineOffset[focusOffset],
     focusType && focusRingColor && RingColorFocus[focusRingColor],

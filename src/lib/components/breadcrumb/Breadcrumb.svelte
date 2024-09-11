@@ -76,7 +76,7 @@
 	<ol role="list" class={listClasses}>
 		{#if generate}
 			{#each generator($page.url.pathname, { size, theme }) as item}
-				<BreadcrumbItem {...item} />
+				<BreadcrumbItem {...item} focusType="visible" focusTheme={theme || 'unstyled'} />
 			{/each}
 		{:else if children}
 			{@render children()}

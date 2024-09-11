@@ -6,16 +6,16 @@
 
 	export interface DividerProps {
 		vertical?: boolean;
-		position?: 'start' | 'end' | 'center';
+		content?: 'start' | 'end' | 'center' | 'none';
 		theme?: ThemeColor;
-		children: Snippet;
+		children?: Snippet;
 	}
 </script>
 
 <script lang="ts">
 	let {
 		vertical,
-		position = 'center',
+		content = 'none',
 		theme,
 		children,
 		...rest
@@ -29,14 +29,17 @@
 	const dividerClasses = $derived(
 		clsxm(
 			'flex items-center self-stretch whitespace-nowrap',
-			!vertical && `flex-row my-y h-4  [&:not(:empty)]:gap-4`,
-			vertical && `flex-col h-full mx-4 my-0 [&:not(:empty)]:gap-3`,
-			position.startsWith('c') && !vertical && beforeHClasses + ' ' + afterHClasses,
-			position.startsWith('c') && vertical && beforeVClasses + ' ' + afterVClasses,
-			position.startsWith('s') && !vertical && afterHClasses,
-			position.startsWith('e') && !vertical && beforeHClasses,
-			position.startsWith('s') && vertical && afterVClasses + ' [&:not(:empty)]:gap-0 after:mt-3',
-			position.startsWith('e') && vertical && beforeVClasses + ' [&:not(:empty)]:gap-0 before:mb-3',
+			!content.startsWith('n') && !vertical && `flex-row my-y h-4 [&:not(:empty)]:gap-4`,
+			!content.startsWith('n') && vertical && `flex-col h-full mx-4 my-0 [&:not(:empty)]:gap-3`,
+			content.startsWith('n') && !vertical && 'my-1 h-px',
+			content.startsWith('n') && vertical && 'flex-col h-full mx-4 my-0',
+			!vertical && beforeHClasses + ' ' + afterHClasses,
+			vertical && beforeVClasses + ' ' + afterVClasses,
+
+			content.startsWith('s') && !vertical && afterHClasses,
+			content.startsWith('e') && !vertical && beforeHClasses,
+			content.startsWith('s') && vertical && afterVClasses + ' [&:not(:empty)]:gap-0 after:mt-3',
+			content.startsWith('e') && vertical && beforeVClasses + ' [&:not(:empty)]:gap-0 before:mb-3',
 			DivideBeforeColor[theme || 'unstyled'],
 			DivideAfterColor[theme || 'unstyled'],
 			!theme &&
@@ -48,7 +51,9 @@
 </script>
 
 <div {...rest} class={dividerClasses}>
-	<div class="mb-1">
-		{@render children()}
-	</div>
+	{#if children && content !== 'none'}
+		<div class="mb-1">
+			{@render children()}
+		</div>
+	{/if}
 </div>

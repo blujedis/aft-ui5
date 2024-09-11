@@ -6,14 +6,20 @@
 		as: Tag;
 		children: Snippet;
 		condition: boolean | ((...args: any[]) => boolean);
-	} & ElementProps<Tag>;
+	};
 </script>
 
 <script lang="ts" generics="Tag extends HTMLTag">
-	let { as, condition, children, ...rest }: ConditionalElementProps<Tag> = $props();
+	let { as, condition, children, ...rest }: ConditionalElementProps<Tag> & ElementProps<Tag> =
+		$props();
+	const shouldRender = $derived.by(() => {
+		if (as === 'user') return false;
+		if (typeof condition === 'function') return condition();
+		return condition;
+	});
 </script>
 
-{#if typeof condition === 'function' ? condition() : condition}
+{#if shouldRender}
 	<svelte:element this={as} {...rest}>
 		{@render children()}
 	</svelte:element>

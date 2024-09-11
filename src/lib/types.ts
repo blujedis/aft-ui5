@@ -6,4 +6,4 @@ export type HTMLTag = keyof SvelteHTMLElements
 export type ElementProps<K extends HTMLTag> = Omit<SvelteHTMLElements[K], 'children' | 'size'>;
 export type TransitionFn = (node: HTMLElement, params: Record<string, unknown>) => TransitionConfig;
 export type UseFn = (node: HTMLElement, params: any) => any;
-
+export type TypeOrValue<Keys extends string | number | symbol> = Keys | (string & { value?: any });

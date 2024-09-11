@@ -197,7 +197,7 @@ export const options: GlobalOptions = {
   ring: 'ring-frame-200 dark:ring-frame-600',
   border: 'border-frame-300 dark:border-frame-600',
   card: 'body-light dark:bg-frame-700',
-  input: 'bg-frame-50 dark:bg-frame-400/5 hover:bg-[rgb(var(--bg-light))] dark:hover:bg-[rgb(var(--bg-dark))]  focus:bg-[rgb(var(--bg-light))] dark:focus:bg-[rgb(var(--bg-dark))]',
+  input: 'bg-frame-50 dark:bg-frame-400/5 hover:bg-[rgb(var(--bg-light))] dark:hover:bg-[rgb(var(--bg-dark))] focus:bg-[rgb(var(--bg-light))] dark:focus:bg-[rgb(var(--bg-dark))]',
   transition: 'transition motion-reduce:transition-none',
 };
 export const settings: GlobalSettings = {

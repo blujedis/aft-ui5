@@ -34,7 +34,7 @@
 		class="w-32 h-32"
 		placement="right"
 		title="Tyreek Hill"
-		unpadded
+		flush
 	>
 		<div class="flex shrink-0 max-h-24 overflow-hidden">
 			<Image src="/img/thill.png" class="rounded-b-lg" />

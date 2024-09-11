@@ -31,6 +31,7 @@
 
 	export type ButtonProps<Tag extends HTMLTag> = {
 		as?: Tag;
+
 		focusType?: FocusType;
 		focusTheme?: ThemeColor;
 		full?: boolean;
@@ -40,6 +41,7 @@
 		selectedTheme?: ThemeColor;
 		shadow?: ConfigProps['shadow'];
 		size?: Size;
+		textblock?: boolean; // when true preserves padding for text variant.
 		theme?: ThemeColor;
 		variant?: 'unstyled' | 'filled' | 'soft' | 'outlined' | 'ghost' | 'text';
 		children: Snippet;
@@ -90,6 +92,7 @@
 		selectedTheme,
 		shadow,
 		size = 'md',
+		textblock,
 		theme,
 		variant = 'filled',
 		children,
@@ -103,8 +106,8 @@
 			prepend: [`button button-${variant || 'default'} button-${theme} `],
 			classes: [
 				`inline-flex items-center justify-center cursor-pointer outline-none`,
-				variant !== 'text' ? ButtonPaddingX[size] : '',
-				variant !== 'text' ? FieldPaddingY[size] : '',
+				variant !== 'text' || textblock ? ButtonPaddingX[size] : '',
+				variant !== 'text' || textblock ? FieldPaddingY[size] : '',
 				context && 'relative focus:z-10 -ml-px first:ml-0',
 				context && variant === 'text' && 'px-3 first:pl-0 last:pr-0',
 				context && rounded && rounded !== 'unstyled' && 'first:rounded-r-none last:rounded-l-none',
@@ -166,7 +169,7 @@
 					'text-frame-600 dark:text-frame-600 aria-checked:bg-frame-200 dark:aria-checked:bg-frame-600',
 			],
 			append: [rest.class],
-			focusType: 'visible',
+			focusType,
 			focusTheme: focusTheme || theme,
 			rounded,
 			shadow,
