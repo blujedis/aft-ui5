@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Links from '$components/Links.svelte';
 	import Button from '../button/Button.svelte';
 	import Icon from '../icon/Icon.svelte';
 	import Dropdown from './Dropdown.svelte';
@@ -8,7 +9,10 @@
 	import DropdownItem from './DropdownItem.svelte';
 
 	let group = [] as string[];
+	const links = [['Dropdown Input', '/dropdown-input']] as [string, string][];
 </script>
+
+<Links items={links} />
 
 <div class="grid grid-cols-4 mb-8 gap-4">
 	<div>

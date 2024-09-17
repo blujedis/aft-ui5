@@ -89,7 +89,7 @@
 			prepend: [`dropdown dropdown-${theme || 'default'}`],
 			classes: [
 				size && FieldFontSize[size],
-				scrollable && 'overflow-y-scroll max-h-64',
+				scrollable && 'overflow-y-scroll max-h-64 scrollbar-sm',
 				t.options.card,
 				'z-40 relative min-w-28 outline-none',
 				rest.class

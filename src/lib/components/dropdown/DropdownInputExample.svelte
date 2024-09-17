@@ -4,6 +4,7 @@
 	import { products, type Product } from '../../../data/products.js';
 	import DropdownItem from './DropdownItem.svelte';
 	import Button from '../button/Button.svelte';
+	import Links from '$components/Links.svelte';
 
 	let value = $state([3, 8]); // [3, 8]
 	let query = $state('');
@@ -29,7 +30,11 @@
 		const data = [...formData.values()];
 		console.log(data);
 	}
+
+	const links = [['Dropdown', '/dropdown']] as [string, string][];
 </script>
+
+<Links items={links} />
 
 <div class="flex mb-8">
 	<form onsubmit={handleSubmit} class="w-full">
