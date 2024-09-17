@@ -8,7 +8,7 @@
 	export type RatingStoreValue = {
 		active: number;
 		readonly: boolean;
-		score: number;
+		value: number;
 		selected: number;
 	};
 
@@ -20,9 +20,9 @@
 
 	export interface RatingMethods {
 		index: number;
-		onMouseover: (index: number, e: MouseEvent) => any;
-		onMouseleave: (index: number, e: MouseEvent) => any;
-		onClick: (index: number, e: MouseEvent) => any;
+		onmouseover: (index: number, e: MouseEvent) => any;
+		onmouseleave: (index: number, e: MouseEvent) => any;
+		onclick: (index: number, e: MouseEvent) => any;
 	}
 
 	export type RatingProps = Omit<RatingItemProps, 'index'> & {
@@ -31,7 +31,7 @@
 		count?: number;
 		readonly?: boolean; // when true no events presentation only.
 		dropShadow?: ConfigProps['dropShadow'];
-		score?: number; // > 0 and <= count.
+		value?: number; // > 0 and <= count.
 		updatable?: boolean;
 		children?: Snippet<[RatingMethods]>;
 	};
@@ -49,7 +49,7 @@
 		fill,
 		hoverable = true,
 		readonly,
-		score = $bindable(0),
+		value = $bindable(0),
 		dropShadow,
 		size,
 		stroked,
@@ -61,7 +61,7 @@
 	let _state = $state({
 		active: -1,
 		readonly,
-		score,
+		value,
 		selected: -1
 	}) as RatingStoreValue;
 
@@ -95,7 +95,7 @@
 		e.stopPropagation();
 		(e.currentTarget as SVGElement).focus();
 		updateState({
-			score: updatable ? selected + 1 : _state.score,
+			value: updatable ? selected + 1 : _state.value,
 			selected
 		});
 	}
@@ -136,7 +136,7 @@
 		active = up ? currentIndex + 1 : currentIndex - 1;
 		if (active > count - 1) active = count - 1;
 		if (active < 0) active = 0;
-		items[_state.score && active === -1 ? _state.score - 1 : active].focus();
+		items[_state.value && active === -1 ? _state.value - 1 : active].focus();
 		updateState({
 			active
 		});
@@ -146,7 +146,7 @@
 		const selected = _state.active + 1;
 		updateState({
 			selected,
-			score: updatable ? selected : _state.score
+			value: updatable ? selected : _state.value
 		});
 	}
 
@@ -166,15 +166,18 @@
 		// 	// if our clean up element doesn't contain the current active
 		// 	// element then we can proceed with our cleanup.
 		// 	if (!currentTarget.contains(document.activeElement)) {
-		// 		store.update((s) => {
-		// 			return { ...s, active: -1 };
-		// 		});
+		// 			update the store.
 		// 	}
 		// });
 	}
 </script>
 
-{#snippet rateItem({ index, onMouseover, onMouseleave, onClick }: RatingMethods)}
+{#snippet rateItem({
+	index,
+	onmouseover: onMouseover,
+	onmouseleave: onMouseleave,
+	onclick: onClick
+}: RatingMethods)}
 	<RatingItem
 		{index}
 		onmouseover={(e) => onMouseover(index, e)}
@@ -194,9 +197,19 @@
 >
 	{#each Array(count) as r, index}
 		{#if children}
-			{@render children({ index, onMouseover, onMouseleave, onClick })}
+			{@render children({
+				index,
+				onmouseover: onMouseover,
+				onmouseleave: onMouseleave,
+				onclick: onClick
+			})}
 		{:else}
-			{@render rateItem({ index, onMouseover, onMouseleave, onClick })}
+			{@render rateItem({
+				index,
+				onmouseover: onMouseover,
+				onmouseleave: onMouseleave,
+				onclick: onClick
+			})}
 		{/if}
 	{/each}
 </div>

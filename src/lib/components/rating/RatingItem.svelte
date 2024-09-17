@@ -44,11 +44,11 @@
 	const strokeColor = stroked ? initFill : undefined;
 
 	const percentage = $derived(
-		index > context.state().score
+		index > context.state().value
 			? 0
-			: index < Math.trunc(context.state().score)
+			: index < Math.trunc(context.state().value)
 				? 1
-				: context.state().score % 1
+				: context.state().value % 1
 	);
 
 	const isActive = $derived(context.state().active > -1);

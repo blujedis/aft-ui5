@@ -28,6 +28,7 @@
 		arrowPlacement?: 'start' | 'end' | 'auto';
 		arrowOffset?: number;
 		border?: number;
+		element?: HTMLElement;
 		escapable?: boolean;
 		event?: PopperEvent;
 		middleware?: Middleware[];
@@ -39,6 +40,8 @@
 		trigger?: string;
 		visible?: boolean;
 		children: Snippet;
+		onBeforeOpen?: (e: Event) => boolean | Promise<boolean>;
+		onBeforeClose?: (e?: Event) => boolean | Promise<boolean>;
 	}
 
 	const ArrowPosition: Record<Side, Side> = {
@@ -55,6 +58,7 @@
 	import { clsxm } from '$lib/utils/string.js';
 	import type { ClassValue } from 'clsx';
 	import { getBrowser } from '$lib/utils/dom.js';
+	import { optevent } from '$lib/utils/helpers.js';
 
 	let {
 		abortable = true, // only applies to click event.
@@ -64,6 +68,7 @@
 		arrowPlacement = 'auto',
 		arrowOffset = 8,
 		border = 1,
+		element = $bindable(),
 		escapable,
 		event = 'hover',
 		middleware: initMiddleware = [flip(), shift()],
@@ -74,12 +79,14 @@
 		target,
 		trigger,
 		visible = $bindable(),
+		onBeforeOpen = () => true,
+		onBeforeClose = () => true,
 		children,
 		...rest
 	}: PopperProps & ElementProps<'div'> = $props();
 
 	let targetEl = $state() as Element;
-	let uiEl: HTMLElement;
+	// let element: HTMLElement;
 	let arrowEl = $state(null) as HTMLElement | null;
 	let contentEl = $state() as HTMLElement;
 	let triggerEls = $state([]) as HTMLElement[];
@@ -103,7 +110,11 @@
 
 	const pixels = (n: number | undefined) => (typeof n === 'number' ? `${n}px` : '');
 
-	const clickOutside = documentEvent('click', handleClickOutside, event === 'click' && abortable);
+	const clickOutside = documentEvent(
+		'click',
+		handleClickOutside,
+		() => event === 'click' && abortable
+	);
 
 	function getEvents() {
 		return [
@@ -112,11 +123,7 @@
 			['focusout', handleClose, event === 'focus'],
 			['mouseenter', handleOpen, event === 'hover'],
 			['mouseleave', handleClose, event === 'hover']
-		] as [string, (...args: any[]) => void, boolean][];
-	}
-
-	function optional(predicate: boolean, fn: (ev: Event) => void) {
-		return predicate ? fn : () => undefined;
+		] as [PopperEvent, (...args: any[]) => void, boolean][];
 	}
 
 	function handleClickOutside(e: Event & { target: HTMLElement }, node: HTMLElement) {
@@ -128,34 +135,36 @@
 
 	function handleEscape(e: KeyboardEvent) {
 		const shouldEscape =
-			['click', 'focus'].includes(event) &&
+			(['click', 'focus'] as PopperEvent[]).includes(event) &&
 			(escapable || typeof escapable === 'undefined') &&
 			visible;
-		if (!shouldEscape) return;
-		// if (!['click', 'focus'].includes(event) || !escapable || !visible) return;
-		if (e.key === 'Escape') {
-			e.preventDefault();
-			handleClose(e);
-		}
+		if (!shouldEscape || e.key !== 'Escape') return;
+		e.preventDefault();
+		handleClose(e);
 	}
 
 	function createDestroy(el: Element, name: string, fn: (...args: any[]) => void) {
 		destroys.push(() => el.removeEventListener(name, fn));
 	}
 
-	function handleClose(e?: Event) {
+	async function handleClose(e?: Event) {
+		const shouldClose = await Promise.resolve(onBeforeClose(e));
+		if (!shouldClose) return;
 		if (active && e) {
 			setTimeout(() => {
-				const elements = [targetEl, uiEl, ...triggerEls].filter(Boolean);
-				if (e.type === 'mouseleave' && elements.some((el) => el.matches(':hover'))) return;
-				if (e.type === 'focusout' && elements.some((el) => el.contains(document.activeElement)))
+				const elements = [targetEl, element, ...triggerEls].filter(Boolean);
+				if (e.type === 'mouseleave' && elements.some((el) => el?.matches(':hover'))) return;
+				if (e.type === 'focusout' && elements.some((el) => el?.contains(document.activeElement)))
 					return;
 				visible = false;
 			}, 100);
 		} else visible = false;
 	}
 
-	function handleOpen(e: Event) {
+	async function handleOpen(e: Event) {
+		const shouldOpen = await Promise.resolve(onBeforeOpen(e));
+		console.log(e.target, e.currentTarget);
+		if (!shouldOpen) return;
 		if (targetEl === undefined) console.error('trigger undefined');
 		if (!target && triggerEls.includes(e.target as HTMLElement) && targetEl !== e.target) {
 			targetEl = e.target as HTMLElement;
@@ -165,7 +174,7 @@
 
 	function bindEvents() {
 		triggerEls.forEach((el) => {
-			if (el.tabIndex < 0) el.tabIndex = 0; // must receive focus.
+			// if (el.tabIndex < 0) el.tabIndex = 0; // must receive focus.
 			for (const [name, handler, enabled] of getEvents()) {
 				if (enabled) {
 					el.addEventListener(name, handler);
@@ -181,10 +190,10 @@
 			triggerEls = contentEl.previousElementSibling
 				? [contentEl.previousElementSibling as HTMLElement]
 				: [];
-		if (!triggerEls.length)
-			console.error(
-				`Cannot init Popper unknown trigger. Did you forget to prepend the selector with "#" or "."?`
-			);
+		if (!triggerEls.length) console.error(`Cannot init Popper using unknown trigger(s).`);
+		triggerEls.forEach((t) => {
+			t.classList.add('popover-trigger');
+		});
 	}
 
 	function clickFocus(e: Event & { target?: EventTarget | null }) {
@@ -230,22 +239,24 @@
 	}
 
 	function updatePosition() {
-		computePosition(targetEl, uiEl, { placement, strategy, middleware }).then(
+		if (!element) return;
+		computePosition(targetEl, element, { placement, strategy, middleware }).then(
 			({ x, y, middlewareData, placement, strategy }: ComputePositionReturn) => {
-				uiEl.style.position = strategy;
-				uiEl.style.left = pixels(x);
-				uiEl.style.top = pixels(y);
+				if (!element) return;
+				element.style.position = strategy;
+				element.style.left = pixels(x);
+				element.style.top = pixels(y);
 				if (middlewareData.arrow && arrowEl instanceof HTMLDivElement) {
 					const { x: ax, y: ay } = middlewareData.arrow as Coords & { centerOffset: number };
 					const uiSide = placement.split('-')[0] as Side;
 					arrowSide = ArrowPosition[uiSide];
 					arrowEl.style.left =
 						uiSide !== 'left'
-							? getArrowPlacement(uiEl.clientWidth, arrowEl.clientWidth, ax)
+							? getArrowPlacement(element.clientWidth, arrowEl.clientWidth, ax)
 							: pixels(ax);
 					arrowEl.style.top =
 						uiSide !== 'top'
-							? getArrowPlacement(uiEl.clientHeight, arrowEl.clientHeight, ay)
+							? getArrowPlacement(element.clientHeight, arrowEl.clientHeight, ay)
 							: pixels(ay);
 					arrowEl.style[arrowSide] = pixels(-arrowEl.offsetWidth / 2 - (border ? 1 : 0));
 					arrowEl.style.borderTop = ['bottom', 'left'].includes(arrowSide) ? '0px' : '';
@@ -258,13 +269,14 @@
 	}
 
 	function initEl(node: HTMLElement) {
-		uiEl = node;
-		uiEl.tabIndex = active ? -1 : (undefined as any);
-		let cleanup = autoUpdate(targetEl, uiEl, updatePosition);
+		element = node;
+		element.tabIndex = active ? -1 : (undefined as any);
+		let cleanup = autoUpdate(targetEl, element, updatePosition);
+		if (event === 'hover') element.focus();
 		return {
 			update(targetEl: HTMLElement) {
 				cleanup();
-				cleanup = autoUpdate(targetEl, uiEl, updatePosition);
+				cleanup = autoUpdate(targetEl, element as HTMLElement, updatePosition);
 			},
 			destroy() {
 				cleanup();
@@ -280,6 +292,14 @@
 			}
 		};
 	}
+
+	$effect(() => {
+		if (visible) {
+			triggerEls.forEach((t) => t.setAttribute('aria-expanded', 'true'));
+		} else {
+			triggerEls.forEach((t) => t.setAttribute('aria-expanded', 'false'));
+		}
+	});
 
 	onMount(() => {
 		initTriggers();
@@ -303,10 +323,10 @@
 		{...rest}
 		use:initEl
 		use:clickOutside
-		onfocusin={optional(active && event === 'focus', handleOpen)}
-		onfocusout={optional(active && event === 'focus', handleClose)}
-		onmouseenter={optional(active && event === 'hover', handleOpen)}
-		onmouseleave={optional(active && event === 'hover', handleClose)}
+		onfocusin={optevent(active && event === 'focus', handleOpen)}
+		onfocusout={optevent(active && event === 'focus', handleClose)}
+		onmouseenter={optevent(active && event === 'hover', handleOpen)}
+		onmouseleave={optevent(active && event === 'hover', handleClose)}
 	>
 		{@render children()}
 		{#if arrow}<div use:initArrow class={arrowClasses}></div>{/if}

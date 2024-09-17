@@ -22,7 +22,7 @@
 		shadow?: ConfigProps['shadow'];
 		size?: Size;
 		theme?: ThemeColor;
-		variant?: 'untyled' | 'filled' | 'soft' | 'outlined';
+		variant?: 'unstyled' | 'outlined';
 	}
 </script>
 

@@ -61,6 +61,7 @@
 	}: AvatarProps = $props();
 
 	const stacked = getContext('Stack') as boolean;
+	
 	setContext('IconContainer', { size: 'full', theme, variant, hoverable });
 
 	const classes = $derived(

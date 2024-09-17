@@ -135,24 +135,23 @@ export const FieldPaddingX = {
 
 export const OutlineWidth = {
   unstyled: '',
-  none: 'focus:outline-0',
-  xs: 'focus:outline-1',
-  sm: 'focus:outline-1',
-  md: 'focus:outline-2',
-  lg: 'focus:outline-[3px]',
-  xl: 'focus:outline-4',
-  xl2: 'focus:outline-8'
+  none: 'focus:outline-0 focus-visible:outline-0 focus-within:outline-0',
+  xs: 'focus:outline-1 focus-visible:outline-1 focus-within:outline-1',
+  sm: 'focus:outline-1 focus-visible:outline-1 focus-within:outline-1',
+  md: 'focus:outline-2 focus-visible:outline-2 focus-within:outline-2',
+  lg: 'focus:outline-[3px] focus-visible:outline-[3px] focus-within:outline-[3px]',
+  xl: 'focus:outline-4 focus-visible:outline-4 focus-within:outline-4',
+  xl2: 'focus:outline-8 focus-visible:outline-8 focus-within:outline-8'
 };
-
 export const OutlineOffset = {
   unstyled: '',
-  none: 'focus:outline-offset-0',
-  xs: 'focus:outline-offset-1',
-  sm: 'focus:outline-offset-1',
-  md: 'focus:outline-offset-2',
-  lg: 'focus:outline-offset-[3px]',
-  xl: 'focus:outline-offset-4',
-  xl2: 'focus:outline-offset-8'
+  none: 'focus:outline-offset-0 focus-visible:outline-offset-0 focus-within:outline-offset-0 focus-visible:outline-offset-0 focus-within:outline-offset-0',
+  xs: 'focus:outline-offset-1 focus-visible:outline-offset-1 focus-within:outline-offset-1',
+  sm: 'focus:outline-offset-1 focus-visible:outline-offset-1 focus-within:outline-offset-1',
+  md: 'focus:outline-offset-2 focus-visible:outline-offset-2 focus-within:outline-offset-2',
+  lg: 'focus:outline-offset-[3px] focus-visible:outline-offset-[3px] focus-within:outline-offset-[3px]',
+  xl: 'focus:outline-offset-4 focus-visible:outline-offset-4 focus-within:outline-offset-4',
+  xl2: 'focus:outline-offset-8 focus-visible:outline-offset-8 focus-within:outline-offset-8'
 };
 
 export const Border = {
@@ -192,12 +191,13 @@ export const RingOffset = {
 };
 
 export const options: GlobalOptions = {
-  disabled: 'opacity-50 pointer-events-none',
-  divide: 'divide-frame-200 dark:divide-frame-600',
-  ring: 'ring-frame-200 dark:ring-frame-600',
   border: 'border-frame-300 dark:border-frame-600',
   card: 'body-light dark:bg-frame-700',
+  disabled: 'opacity-50 pointer-events-none',
+  divide: 'divide-frame-200 dark:divide-frame-600',
   input: 'bg-frame-50 dark:bg-frame-400/5 hover:bg-[rgb(var(--bg-light))] dark:hover:bg-[rgb(var(--bg-dark))] focus:bg-[rgb(var(--bg-light))] dark:focus:bg-[rgb(var(--bg-dark))]',
+  placeholder: 'text-frame-500 dark:text-frame-400',
+  ring: 'ring-frame-200 dark:ring-frame-600',
   transition: 'transition motion-reduce:transition-none',
 };
 export const settings: GlobalSettings = {

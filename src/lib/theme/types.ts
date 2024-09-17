@@ -287,6 +287,20 @@ export const ForeColorGhostHover = {
   white: 'hover:text-frame-700 dark:hover:text-frame-700',
 };
 
+export const ForeColorSelected = {
+  unstyled: '',
+  primary: 'aria-selected:text-primary-500 dark:aria-selected:text-primary-300',
+  secondary: 'aria-selected:text-secondary-500 dark:aria-selected:text-secondary-300',
+  tertiary: 'aria-selected:text-tertiary-500 dark:aria-selected:text-tertiary-300',
+  danger: 'aria-selected:text-danger-500 dark:aria-selected:text-danger-300',
+  warning: 'aria-selected:text-warning-500 dark:aria-selected:text-warning-300',
+  success: 'aria-selected:text-success-500 dark:aria-selected:text-success-300',
+  info: 'aria-selected:text-info-500 dark:aria-selected:text-info-300',
+  light: 'aria-selected:text-frame-600 dark:aria-selected:text-frame-200',
+  dark: 'aria-selected:text-frame-700 dark:aria-selected:text-frame-200 ',
+  white: 'aria-selected:text-white dark:aria-selected:text-white',
+};
+
 export const BgColor = {
   unstyled: '',
   primary: 'bg-primary-500 dark:bg-primary-500',
@@ -453,6 +467,20 @@ export const BgColorSoftSelected = {
   info: 'aria-selected:bg-info-200 dark:aria-selected:bg-info-800',
   light: 'aria-selected:bg-frame-200 dark:aria-selected:bg-frame-600',
   dark: 'aria-selected:bg-frame-600 dark:aria-selected:bg-frame-800 ',
+  white: 'aria-selected:bg-frame-200 dark:aria-selected:bg-frame-200',
+};
+
+export const BgColorSoftDropSelected = {
+  unstyled: '',
+  primary: 'aria-selected:bg-primary-100 dark:aria-selected:bg-primary-800',
+  secondary: 'aria-selected:bg-secondary-100 dark:aria-selected:bg-secondary-800',
+  tertiary: 'aria-selected:bg-tertiary-100 dark:aria-selected:bg-tertiary-800',
+  danger: 'aria-selected:bg-danger-100 dark:aria-selected:bg-danger-800',
+  warning: 'aria-selected:bg-warning-100 dark:aria-selected:bg-warning-800',
+  success: 'aria-selected:bg-success-100 dark:aria-selected:bg-success-800',
+  info: 'aria-selected:bg-info-100 dark:aria-selected:bg-info-800',
+  light: 'aria-selected:bg-frame-300 dark:aria-selected:bg-frame-400',
+  dark: 'aria-selected:bg-frame-700 dark:aria-selected:bg-frame-700 ',
   white: 'aria-selected:bg-frame-200 dark:aria-selected:bg-frame-200',
 };
 
@@ -713,6 +741,8 @@ export const OutlineColorFocusWithin = {
   white: 'focus-within:outline-white/40 dark:focus-within:outline-white/40',
 };
 
+
+
 export const OutlineColorFocusPeer = {
   unstyled: '',
   primary: 'peer-focus:outline-primary-500/40 dark:peer-focus:outline-primary-500/40',
@@ -793,6 +823,7 @@ export interface GlobalOptions {
   card: string;
   disabled: string;
   divide: string;
+  placeholder: string;
   ring: string;
   input: string;
   transition: string;

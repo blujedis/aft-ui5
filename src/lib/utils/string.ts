@@ -16,8 +16,13 @@ export function pageIsActive(
   page: Page<Record<string, string>, string | null>,
   match: string | RegExp
 ) {
-  if (typeof match === 'string') return page.url.pathname.includes(match);
-  return match.test(page.url.pathname);
+  let pathname = page.url.pathname.replace(/^\//, '');
+  if (typeof match === 'string') {
+    if (pathname.includes('-'))
+      pathname = pathname.split('-')[0];
+    return match.startsWith(pathname);
+  }
+  return match.test(pathname);
 }
 
 /**

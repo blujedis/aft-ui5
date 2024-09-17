@@ -8,7 +8,6 @@ export { default as Checkbox } from './checkbox/Checkbox.svelte';
 export { default as ColorMode } from './colormode/ColorMode.svelte';
 export { default as ColorModeInit } from './colormode/ColorModeInit.svelte';
 export { default as ConditionalElement } from './conditional/ConditionalElement.svelte';
-export { default as ConditionalRender } from './conditional/ConditionalRender.svelte';
 export { default as Disclosure } from './disclosure/Disclosure.svelte';
 export { default as DisclosureButton } from './disclosure/DisclosureButton.svelte';
 export { default as DisclosurePanel } from './disclosure/DisclosurePanel.svelte';

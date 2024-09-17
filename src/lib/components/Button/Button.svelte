@@ -31,7 +31,6 @@
 
 	export type ButtonProps<Tag extends HTMLTag> = {
 		as?: Tag;
-
 		focusType?: FocusType;
 		focusTheme?: ThemeColor;
 		full?: boolean;
@@ -113,8 +112,7 @@
 				context && rounded && rounded !== 'unstyled' && 'first:rounded-r-none last:rounded-l-none',
 				context && rounded && rounded !== 'unstyled' && 'first:focus:z-20', // without looks like no border on first item.
 				FieldFontSize[size],
-				{ 'font-medium': !rest.href },
-				{ 'hover:underline': variant === 'text' },
+				!rest.href && 'font-medium',
 				rest.disabled && options.disabled,
 				selected && 'button-selected',
 
@@ -164,9 +162,10 @@
 				theme && variant === 'text' && FontColor[theme],
 				theme && variant === 'text' && FontColorHover[theme],
 				variant === 'text' && 'aria-checked:underline dark:aria-checked:underline',
+				variant === 'text' && 'hover:underline underline-offset-4 decoration-2',
 				!theme &&
 					variant === 'text' &&
-					'text-frame-600 dark:text-frame-600 aria-checked:bg-frame-200 dark:aria-checked:bg-frame-600',
+					'text-frame-600 dark:text-frame-600 aria-checked:bg-frame-200 dark:aria-checked:bg-frame-600'
 			],
 			append: [rest.class],
 			focusType,

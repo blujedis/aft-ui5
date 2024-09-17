@@ -23,7 +23,7 @@
 	let {
 		arrow = true,
 		elevation = 'lg',
-		event = 'click',
+		event = 'focus',
 		flush,
 		rounded,
 		size = 'md',

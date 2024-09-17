@@ -41,7 +41,7 @@
 
 			content.startsWith('n') &&
 				!vertical &&
-				`my-1 flex-row h-[0.01em] bg-frame-200 dark:bg-frame-600`,
+				`my-0 flex-row h-[0.01em] bg-frame-200 dark:bg-frame-600`,
 
 			content.startsWith('n') &&
 				vertical &&

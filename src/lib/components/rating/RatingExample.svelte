@@ -1,12 +1,10 @@
 <script lang="ts">
 	import type { ThemeColor, Size } from '$lib/theme/types.js';
-	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 	import Rating from './Rating.svelte';
 
-	let count = 5;
+	let value = 2.5;
 	const props = {
 		fill: 'success-300' as ThemeColor,
-		// dropShadow: 'none' as ConfigProps['shadow'],
 		size: 'sm' as Size
 	};
 </script>
@@ -14,7 +12,7 @@
 <div class="grid grid-cols-4 gap-4">
 	<div>
 		<div class="text-sm mb-1">Default:</div>
-		<Rating score={2.5} {...props} dropShadow="sm" />
+		<Rating bind:value {...props} dropShadow="sm" />
 	</div>
 
 	<!-- <div>

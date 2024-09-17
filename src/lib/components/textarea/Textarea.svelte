@@ -22,7 +22,7 @@
 		shadow?: ConfigProps['shadow'];
 		size?: Size;
 		theme?: ThemeColor;
-		variant?: 'unstyled' | 'filled' | 'soft' | 'outlined';
+		variant?: 'unstyled' | 'outlined';
 	}
 
 	export const Resize = {
@@ -53,12 +53,12 @@
 		value = $bindable(),
 		variant,
 		...rest
-	}: TextareaProps & Omit<ElementProps<'textarea'>, 'size'> = $props();
+	}: TextareaProps & ElementProps<'textarea'> = $props();
 
 	const classes = $derived(
 		buildClass({
 			classes: [
-				`textarea textarea-${variant} textarea-${theme} inline-flex items-center justify-center border-none`,
+				`textarea textarea-${variant || 'default'} textarea-${theme || 'default'} inline-flex items-center justify-center border-none`,
 				t.options.input,
 				'ring-1 ring-inset focus:ring-offset-0 focus:ring-inset',
 				size && FieldFontSize[size],

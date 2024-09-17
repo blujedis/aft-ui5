@@ -35,8 +35,9 @@
 	};
 </script>
 
-<script lang="ts"> 
+<script lang="ts">
 	let {
+		active = false,
 		arrow = true,
 		elevation = 'md',
 		rounded,
@@ -86,6 +87,7 @@
 <Popper
 	border={variant === 'outlined' ? 1 : 0}
 	{...rest}
+	{active}
 	{arrow}
 	class={classes}
 	arrowClass={arrowClasses}

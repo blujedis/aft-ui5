@@ -287,6 +287,20 @@ export const ForeColorGhostHover = {
   white: 'hover:text-{{=i.foreGhost.whiteH[0]}} dark:hover:text-{{=i.foreGhost.whiteH[1]}}',
 };
 
+export const ForeColorSelected = {
+  unstyled: '',
+  primary: 'aria-selected:text-{{=i.foreOutline.primary[0]}} dark:aria-selected:text-{{=i.foreOutline.primary[1]}}',
+  secondary: 'aria-selected:text-{{=i.foreOutline.secondary[0]}} dark:aria-selected:text-{{=i.foreOutline.secondary[1]}}',
+  tertiary: 'aria-selected:text-{{=i.foreOutline.tertiary[0]}} dark:aria-selected:text-{{=i.foreOutline.tertiary[1]}}',
+  danger: 'aria-selected:text-{{=i.foreOutline.danger[0]}} dark:aria-selected:text-{{=i.foreOutline.danger[1]}}',
+  warning: 'aria-selected:text-{{=i.foreOutline.warning[0]}} dark:aria-selected:text-{{=i.foreOutline.warning[1]}}',
+  success: 'aria-selected:text-{{=i.foreOutline.success[0]}} dark:aria-selected:text-{{=i.foreOutline.success[1]}}',
+  info: 'aria-selected:text-{{=i.foreOutline.info[0]}} dark:aria-selected:text-{{=i.foreOutline.info[1]}}',
+  light: 'aria-selected:text-{{=i.foreOutline.light[0]}} dark:aria-selected:text-{{=i.foreOutline.light[1]}}',
+  dark: 'aria-selected:text-{{=i.foreOutline.dark[0]}} dark:aria-selected:text-{{=i.foreOutline.dark[1]}} ',
+  white: 'aria-selected:text-{{=i.foreOutline.white[0]}} dark:aria-selected:text-{{=i.foreOutline.white[1]}}',
+};
+
 export const BgColor = {
   unstyled: '',
   primary: 'bg-{{=i.bg.primary[0]}} dark:bg-{{=i.bg.primary[1]}}',
@@ -454,6 +468,20 @@ export const BgColorSoftSelected = {
   light: 'aria-selected:bg-{{=i.bgSoftSelect.light[0]}} dark:aria-selected:bg-{{=i.bgSoftSelect.light[1]}}',
   dark: 'aria-selected:bg-{{=i.bgSoftSelect.dark[0]}} dark:aria-selected:bg-{{=i.bgSoftSelect.dark[1]}} ',
   white: 'aria-selected:bg-{{=i.bgSoftSelect.white[0]}} dark:aria-selected:bg-{{=i.bgSoftSelect.white[1]}}',
+};
+
+export const BgColorSoftDropSelected = {
+  unstyled: '',
+  primary: 'aria-selected:bg-{{=i.bgSoftDropSelect.primary[0]}} dark:aria-selected:bg-{{=i.bgSoftDropSelect.primary[1]}}',
+  secondary: 'aria-selected:bg-{{=i.bgSoftDropSelect.secondary[0]}} dark:aria-selected:bg-{{=i.bgSoftDropSelect.secondary[1]}}',
+  tertiary: 'aria-selected:bg-{{=i.bgSoftDropSelect.tertiary[0]}} dark:aria-selected:bg-{{=i.bgSoftDropSelect.tertiary[1]}}',
+  danger: 'aria-selected:bg-{{=i.bgSoftDropSelect.danger[0]}} dark:aria-selected:bg-{{=i.bgSoftDropSelect.danger[1]}}',
+  warning: 'aria-selected:bg-{{=i.bgSoftDropSelect.warning[0]}} dark:aria-selected:bg-{{=i.bgSoftDropSelect.warning[1]}}',
+  success: 'aria-selected:bg-{{=i.bgSoftDropSelect.success[0]}} dark:aria-selected:bg-{{=i.bgSoftDropSelect.success[1]}}',
+  info: 'aria-selected:bg-{{=i.bgSoftDropSelect.info[0]}} dark:aria-selected:bg-{{=i.bgSoftDropSelect.info[1]}}',
+  light: 'aria-selected:bg-{{=i.bgSoftDropSelect.light[0]}} dark:aria-selected:bg-{{=i.bgSoftDropSelect.light[1]}}',
+  dark: 'aria-selected:bg-{{=i.bgSoftDropSelect.dark[0]}} dark:aria-selected:bg-{{=i.bgSoftDropSelect.dark[1]}} ',
+  white: 'aria-selected:bg-{{=i.bgSoftDropSelect.white[0]}} dark:aria-selected:bg-{{=i.bgSoftDropSelect.white[1]}}',
 };
 
 export const BgColorExpanded = {
@@ -713,6 +741,8 @@ export const OutlineColorFocusWithin = {
   white: 'focus-within:outline-{{=i.outlineFocus.white[0]}} dark:focus-within:outline-{{=i.outlineFocus.white[1]}}',
 };
 
+
+
 export const OutlineColorFocusPeer = {
   unstyled: '',
   primary: 'peer-focus:outline-{{=i.outlineFocus.primary[0]}} dark:peer-focus:outline-{{=i.outlineFocus.primary[1]}}',
@@ -793,6 +823,7 @@ export interface GlobalOptions {
   card: string;
   disabled: string;
   divide: string;
+  placeholder: string;
   ring: string;
   input: string;
   transition: string;

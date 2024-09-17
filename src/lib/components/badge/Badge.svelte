@@ -71,8 +71,7 @@
 	const classes = $derived(
 		buildClass({
 			classes: [
-				`badge badge-${variant} badge-${theme} inline-flex items-center 
-			justify-center outline-none`,
+				`badge badge-${variant || 'default'} badge-${theme || 'default'} inline-flex items-center justify-center outline-none`,
 				removable && 'badge-removable',
 				BadgeFontSize[size],
 				BadgePaddingX[size],
@@ -108,7 +107,7 @@
 	</div>
 	{#if removable}
 		<svg
-			class="w-2 h-2 ml-1"
+			class="w-2 h-2 ml-2 pointer-events-none"
 			aria-hidden="true"
 			xmlns="http://www.w3.org/2000/svg"
 			fill="none"
