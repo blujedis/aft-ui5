@@ -1,10 +1,6 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	import { buildClass } from '$lib/theme/build.svelte.js';
-	import {
-		BorderColor,
-		BorderColorGroupHover,
-		type ThemeColor
-	} from '$lib/theme/types.js';
+	import { BorderColor, BorderColorGroupHover, type ThemeColor } from '$lib/theme/types.js';
 	import type { Snippet } from 'svelte';
 
 	export interface FlushedProps {
@@ -20,17 +16,16 @@
 </script>
 
 <script lang="ts">
-	let { 
-		disabled, 
-		focusTheme, 
-		group, 
-		hoverable, 
-		peer, 
-		selected, 
+	let {
+		disabled,
+		focusTheme,
+		group,
+		hoverable,
+		peer,
+		selected,
 		theme = $bindable(),
-		children 
-	}: FlushedProps =
-		$props();
+		children
+	}: FlushedProps = $props();
 
 	const classes = $derived(
 		buildClass({

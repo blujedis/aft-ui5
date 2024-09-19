@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	import { StrokeColor, type ThemeColor } from '$lib/theme/types.js';
 	import { clsxm } from '$lib/utils/string.js';
 

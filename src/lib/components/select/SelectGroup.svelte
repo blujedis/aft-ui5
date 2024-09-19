@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	import type { ElementProps } from '$lib/types.js';
 	import type { Snippet } from 'svelte';
 
@@ -15,7 +15,7 @@
 
 	let { disabled, label, children, ...rest }: SelectGroupProps & ElementProps<'optgroup'> =
 		$props();
-		
+
 	const classes = $derived(
 		buildClass({
 			prepend: [`select-group`],

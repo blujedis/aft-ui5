@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	import { type ElementProps } from '$lib/types.js';
 	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 	import {

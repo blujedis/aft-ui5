@@ -35,27 +35,24 @@
 		"@iconify/svelte": "^4.0.2",
 		"dot-prop": "^9.0.0",
 		"md5": "^2.3.0",
-		"tailwind-merge": "^2.4.0"
-	},
-	"peerDependencies": {
-		"svelte": "^5.0.0-next.2"
+		"tailwind-merge": "^2.4.0",
+		"svelte": "^5.0.0-next.254"
 	},
 	"devDependencies": {
 		"@aft/config": "github:blujedis/aft-config#dev",
-		"@fontsource-variable/manrope": "^5.0.20",
-		"@playwright/test": "^1.28.1",
+		"@fontsource-variable/manrope": "^5.1.0",
+		"@playwright/test": "^1.47.1",
 		"@shikijs/rehype": "^1.12.1",
-		"@sveltejs/adapter-auto": "^3.0.0",
-		"@sveltejs/kit": "^2.5.18",
-		"@sveltejs/package": "^2.3.2",
-		"@sveltejs/vite-plugin-svelte": "^3.1.1",
+		"@sveltejs/adapter-auto": "^3.2.5",
+		"@sveltejs/kit": "^2.5.28",
+		"@sveltejs/package": "^2.3.5",
+		"@sveltejs/vite-plugin-svelte": "^3.1.2",
 		"@tailwindcss/forms": "^0.5.7",
 		"@tailwindcss/typography": "^0.5.13",
 		"@types/eslint": "^8.56.7",
 		"@types/node": "^20.14.12",
 		"autoprefixer": "^10.4.19",
 		"clsx": "^2.1.1",
-		"core": "link:@types/event-calendar/core",
 		"eslint": "^9.0.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.36.0",
@@ -72,14 +69,14 @@
 		"remark-rehype": "^11.1.0",
 		"remark-smartypants": "^3.0.2",
 		"shiki": "^1.12.1",
-		"svelte": "^5.0.0-next.200",
-		"svelte-check": "^3.8.4",
-		"tailwindcss": "^3.4.6",
-		"tslib": "^2.4.1",
-		"typescript": "^5.5.4",
+		"svelte": "^5.0.0-next.254",
+		"svelte-check": "^4.0.2",
+		"tailwindcss": "^3.4.12",
+		"tslib": "^2.7.0",
+		"typescript": "^5.6.2",
 		"typescript-eslint": "^8.0.0-alpha.20",
 		"unified": "^11.0.5",
-		"vite": "^5.0.11",
-		"vitest": "^1.2.0"
+		"vite": "^5.4.6",
+		"vitest": "^2.1.1"
 	}
 }

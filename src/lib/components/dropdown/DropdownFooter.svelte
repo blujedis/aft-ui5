@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	import { FieldPaddingX, FieldPaddingY } from '$lib/theme/constants.js';
 	import type { FocusType, Size, ThemeColor } from '$lib/theme/types.js';
 	import type { ElementProps } from '$lib/types.js';

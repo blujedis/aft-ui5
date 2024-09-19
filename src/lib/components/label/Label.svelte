@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	import type { DropShadowSize, RoundedSize, Size, ThemeColor } from '$lib/theme/types.js';
 	import type { Snippet } from 'svelte';
 

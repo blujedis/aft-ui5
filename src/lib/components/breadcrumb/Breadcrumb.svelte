@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	import type { Snippet } from 'svelte';
 	import type { BreadcrumbItemProps } from './BreadcrumbItem.svelte';
 	import type { Size, ThemeColor, RoundedSize, ShadowSize } from '$lib/theme/types.js';

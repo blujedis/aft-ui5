@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	import type { HTMLTag } from '$lib/types.js';
 	import type { TransitionParams } from '$lib/utils/transitioner.js';
 	import { setContext, type Snippet } from 'svelte';

@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	import { buildClass } from '$lib/theme/build.svelte.js';
 	import { FieldPaddingX, FieldPaddingY } from '$lib/theme/constants.js';
 	import {

@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	import { type Size } from '$lib/theme/types.js';
 	import { getContext } from 'svelte';
 	import type { RatingContext } from './Rating.svelte';

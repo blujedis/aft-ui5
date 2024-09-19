@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	import type { Snippet } from 'svelte';
 	import Popper, { type PopperProps } from '../popper/Popper.svelte';
 	import { buildClass, type ConfigProps } from '$lib/theme/build.svelte.js';

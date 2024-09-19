@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	import { getContext, setContext, type Snippet } from 'svelte';
 	import Popper, { type PopperApi, type PopperProps } from '../popper/Popper.svelte';
 	import { buildClass } from '$lib/theme/build.svelte.js';
@@ -159,32 +159,13 @@
 	}
 
 	function handleKeydown(e: KeyboardEvent) {
-		if (
-			!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' ', 'Enter'].includes(e.key) ||
-			!elements?.length ||
-			!list
-		)
+		if (!['ArrowUp', 'ArrowDown', ' ', 'Enter'].includes(e.key) || !elements?.length || !list)
 			return;
 
 		e.stopPropagation();
 		e.preventDefault();
 
-		// if (['ArrowLeft', 'ArrowRight'].includes(e.key)) {
-		// 	handleClose(e);
-		// 	setTimeout(() => {
-		// 		const activeId = contextGroup?.getActive(true);
-		// 		const config = contextGroup?.getConf(id as string) || ({} as DropdownGroupConfig);
-		// 		const container = document.querySelector(
-		// 			`#${activeId} > .dropdown-container`
-		// 		) as HTMLElement;
-		// 		// setting focus to previously focused element
-		// 		// will just trigger the dropdown/popover again.
-		// 		if (config.event === 'click' && config.last) config.last.focus();
-		// 		else container?.focus();
-		// 	});
-		// 	return;
-		// }
-
+		const max = elements.length - 1;
 		const activeNode = document.activeElement as HTMLElement | null;
 
 		//////////////////////////////////////////////
@@ -192,6 +173,7 @@
 		//////////////////////////////////////////////
 
 		if ((e.key === ' ' || e.key === 'Enter') && list.contains(activeNode)) {
+			console.log(activeNode);
 			onSelect(activeNode, e);
 		}
 
@@ -207,12 +189,21 @@
 				const currentIndex = elements.indexOf(activeNode);
 				const dir = e.key === 'ArrowDown' ? 1 : -1;
 				const nextIndex = e.key === 'ArrowDown' ? currentIndex + dir : currentIndex + dir;
-				// Nothing to do out of scope.
-				// if (nextIndex < 0 || nextIndex > elements.length - 1) return;
-				// Set the current node to the new index.
-				// currentNode = elements[nextIndex];
-				const [nextNode, nodeIndex] = getNextNode(nextIndex, dir);
-				if (!nextNode) return; // either at top, bottom or invalid index.
+
+				let [nextNode, nodeIndex] = getNextNode(nextIndex, dir);
+				if (!nextNode) return;
+
+				// At top redirect to bottom.
+				if (nodeIndex === 0 && e.key === 'ArrowUp') {
+					nextNode = elements[elements.length - 1];
+					nodeIndex = max;
+				}
+				// At bottom redirect to top.
+				else if (nodeIndex === max && e.key === 'ArrowDown') {
+					nextNode = elements[0];
+					nodeIndex = 0;
+				}
+
 				currentNode = nextNode;
 				onNavigate(currentNode, Math.max(0, nodeIndex - 1));
 			}

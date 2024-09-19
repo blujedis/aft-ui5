@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	import { type ElementProps } from '$lib/types.js';
 	import { IndicatorCounterFontSize, IndicatorCounterSize } from './options.js';
 	import { Animate } from '$lib/theme/constants.js';
@@ -62,7 +62,7 @@
 				rounded !== 'full' &&
 					'ring-[color:rgb(var(--bg-light))] dark:ring-[color:rgb(var(--bg-dark))]',
 				variant !== 'unstyled' && theme && BgColor[theme],
-				variant !== 'unstyled' && theme &&  ForeColorFilled[theme],
+				variant !== 'unstyled' && theme && ForeColorFilled[theme],
 				variant === 'soft' && theme && BgColorSoft[theme],
 				text && IndicatorCounterSize[size],
 				text && IndicatorCounterFontSize[size],

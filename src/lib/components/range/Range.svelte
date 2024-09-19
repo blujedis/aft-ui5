@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	import type { ThemeColor, Size, FocusType, RoundedSize, ShadowSize } from '$lib/theme/types.js';
 	import type { ElementProps } from '$lib/types.js';
 

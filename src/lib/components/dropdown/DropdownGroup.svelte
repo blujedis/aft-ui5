@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	import type { ElementProps } from '$lib/types.js';
 	import { setContext, type Snippet } from 'svelte';
 	import type { PopperEvent } from '../popper/Popper.svelte';

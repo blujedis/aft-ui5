@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	import { getContext, type Snippet } from 'svelte';
 	import { type DisclosureContext } from './Disclosure.svelte';
 

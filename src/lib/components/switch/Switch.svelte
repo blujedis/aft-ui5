@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	import type { Snippet } from 'svelte';
 
 	export interface SwitchProps {
@@ -47,7 +47,13 @@
 <script lang="ts">
 	import { buildClass, type ConfigProps } from '$lib/theme/build.svelte.js';
 	import type { ElementProps } from '$lib/types.js';
-	import { BgColorChecked, type FocusType, type ShadowSize, type Size, type ThemeColor } from '$lib/theme/types.js';
+	import {
+		BgColorChecked,
+		type FocusType,
+		type ShadowSize,
+		type Size,
+		type ThemeColor
+	} from '$lib/theme/types.js';
 	import { clsxm } from '$lib/utils/string.js';
 
 	let {

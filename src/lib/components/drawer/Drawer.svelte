@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	import { type ShadowSize } from '$lib/theme/types.js';
 	import type { Snippet } from 'svelte';
 	import { clsxm } from '$lib/utils/string.js';

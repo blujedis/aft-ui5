@@ -9,15 +9,9 @@
 
 	type Item = Product | DropdownInputItem;
 
-	let value = $state(3); // [3, 8]
+	let value = $state([3, 8]); // [3, 8]
 	let query = $state('');
-	let items = $state(products as Item[]);
-	// let filtered = $derived.by(() => {
-	// 	if (!query) return items;
-	// 	return items.filter((item) => {
-	// 		return item.title.toLowerCase().startsWith(query);
-	// 	});
-	// });
+	let filtered = $state([]) as Item[];
 
 	function isSelected(product: any) {
 		if (Array.isArray(value)) return value.some((v) => product.id == v);
@@ -48,19 +42,19 @@
 		<DropdownInput
 			bind:value
 			bind:query
-			bind:items
+			bind:filtered
+			items={products}
 			name="product"
 			labelKey="title"
 			theme="danger"
-			clearable
 			filterable
-			creatable
+			removable
 		>
 			<Dropdown event="none">
-				{#if !items.length}
+				{#if !filtered?.length}
 					<div class="px-4 py-2 text-frame-500">No items...</div>
 				{:else}
-					{#each items as product}
+					{#each filtered as product}
 						<DropdownItem value={product.id} selected={isSelected(product)}
 							>{product.title}</DropdownItem
 						>

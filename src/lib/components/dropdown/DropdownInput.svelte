@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	import { onMount, setContext, type Snippet } from 'svelte';
 	import {
 		BgColorHint,
@@ -41,16 +41,18 @@
 		disabled?: boolean;
 		escapable?: boolean;
 		filterable?: boolean;
+		filtered?: T[];
 		findByLabel?: (label: string | undefined, items: T[]) => T | null | undefined;
 		findByValue?: (value: any, items: T[]) => T | null | undefined;
 		focusType?: FocusType;
 		focusTheme?: ThemeColor;
 		focusOffset?: Size | 'none';
 		full?: boolean;
-		items?: T[];
+		items: T[];
 		labelKey?: keyof T;
 		placeholder?: string;
 		query?: string;
+		removable?: boolean;
 		rounded?: RoundedSize | false;
 		shadow?: ShadowSize | false;
 		size?: Size;
@@ -90,16 +92,18 @@
 		disabled,
 		escapable = true,
 		filterable,
+		filtered = $bindable(),
 		findByLabel,
 		findByValue,
 		focusType = 'within',
 		focusTheme,
 		focusOffset = 'none',
 		full,
-		items = $bindable([]),
+		items: initItems,
 		labelKey = 'label',
 		placeholder = 'Filter...',
 		query = $bindable(),
+		removable,
 		rounded,
 		shadow,
 		size = 'md',
@@ -111,23 +115,24 @@
 		caret,
 		tag,
 		onReset = () => true,
-		onRemove = () => false,
+		onRemove = () => true,
 		onCreate,
 		children,
 		...rest
 	}: DropdownInputProps<T> & ElementProps<'select'> = $props();
 
-	let input: HTMLInputElement | null = null;
+	let input = $state(null) as HTMLInputElement | null;
 	let chars = $state() as string;
 	let filtering = $state(false);
 	let visible = $state(false);
 	let dropdown = $state() as DropdownApi;
 
-	const source = $state([...items]);
+	let items = $state(initItems);
+
 	const defaultValue = Array.isArray(value) ? [...value] : value;
 	const multiple = Array.isArray(defaultValue);
-	const filtered = $derived.by(() => initValue(value));
-	const showPlaceholder = $derived(placeholder && !filtering && !filtered);
+	const selected = $derived.by(() => initSelected(value)) as T[];
+	const showPlaceholder = $derived(placeholder && !filtering && !selected);
 	const uid = uniqid().replace(/^#/, '');
 	const triggerId = 'dropdown-trigger-' + uid;
 	const targetId = 'dropdown-target-' + uid;
@@ -185,6 +190,7 @@
 			!multiple && 'grid overflow-hidden',
 			multiple && 'flex',
 			size && !multiple && FieldPaddingX[size],
+			size && !multiple && !(creatable || filterable) && FieldPaddingY[size],
 			size && !multiple && 'pr-0'
 			// multiple && 'pl-2'
 			// size && FieldPaddingY[size]
@@ -258,13 +264,13 @@
 
 	function findItemByValue(val: any) {
 		if (findByValue) return findByValue(val, items);
-		return source.find((item) => item[valueKey] == val);
+		return items.find((item) => item[valueKey] == val);
 	}
 
 	function findItemByLabel(label?: string) {
 		if (typeof label === 'undefined') return;
 		if (findByLabel) return findByLabel(label, items);
-		return source.find((item) => (item[labelKey] as string).toLowerCase() === label.toLowerCase());
+		return items.find((item) => (item[labelKey] as string).toLowerCase() === label.toLowerCase());
 	}
 
 	function getLabelByItem(item: T) {
@@ -272,8 +278,7 @@
 		return (item[labelKey] || '') as string;
 	}
 
-	function initValue(val: any) {
-		if (typeof val === 'undefined') return '';
+	function initSelected(val: any) {
 		if (Array.isArray(val)) {
 			return val.reduce((result, v) => {
 				const found = findItemByValue(v);
@@ -288,23 +293,31 @@
 	// pass in user defined filter function
 	// with more advanced fuzzy search if desired.
 	function filterItems(query = '') {
-		if (!query) return source;
-		return source.filter((item) => {
-			return getLabelByItem(item).toLowerCase().startsWith(query);
+		if (!query) return items;
+		return items.filter((item) => {
+			return getLabelByItem(item).toLowerCase().startsWith(query.toLowerCase());
 		});
+	}
+
+	async function resetValues() {
+		const shouldClear = await onReset();
+		if (!shouldClear) return;
+		filtering = false;
+		chars = '';
+		query = '';
+		if (input) input.value = '';
 	}
 
 	function setSelected(val: any) {
 		if (multiple) {
 			if (value.includes(val))
 				value = value.filter((v: any) => v !== val); // exists remove
-			else value = [...value, val]; // new add
+			else value.push(val); //= [...value, val]; // new add
 		} else {
-			if (value === val || typeof val === 'undefined')
+			if (value == val || typeof val === 'undefined')
 				value = ''; // clear single val.
 			else value = val; // set single value.
 		}
-		return value; // return the updated value.
 	}
 
 	function createItem(label?: string) {
@@ -313,25 +326,24 @@
 		const result = (onCreate || ((label) => ({ [labelKey]: label, [valueKey]: label }) as T))(
 			label as string
 		);
-		if (!result) return;
-		items = [...items, result];
-		setSelected(result[valueKey]);
+		if (typeof result === 'undefined' || result === false) return;
+		items.push(result);
+		return result;
 	}
 
 	function handleRemove(item: T) {
-		if (!multiple || !item) return;
+		if (!multiple || !item || !removable) return;
 		try {
 			const shouldRemove = onRemove(item);
-			if (shouldRemove && item) setSelected(item[valueKey]);
+			if (shouldRemove && item)
+				setTimeout(() => {
+					setSelected(item[valueKey]);
+				});
+			resetValues();
 		} catch (ex) {
 			console.error(ex);
 		}
 	}
-
-	// function handleCreate(label: string) {
-	// 	if (!label) return;
-	// 	return { [labelKey]: label, [valueKey]: label } as T;
-	// }
 
 	function handleReset(
 		e: MouseEvent & {
@@ -339,18 +351,7 @@
 		}
 	) {
 		e.preventDefault();
-		Promise.resolve(onReset())
-			.then((shouldClear) => {
-				if (!shouldClear) return;
-				if (input) input.value = '';
-				query = '';
-				if (multiple) {
-					value = [];
-				} else {
-					value = '';
-				}
-			})
-			.catch(console.error);
+		resetValues();
 	}
 
 	function handleInput(
@@ -369,14 +370,16 @@
 			currentTarget: EventTarget & HTMLInputElement;
 		}
 	) {
-		const el = e.target as HTMLInputElement;
+		e.preventDefault();
 		filtering = false;
 		const found = filterItems(query);
-		if (found?.length) setSelected(found[0][valueKey]);
-		else if (creatable) createItem(query);
-		chars = '';
-		query = '';
-		el.value = '';
+		if (found?.length) {
+			setSelected(found[0][valueKey]);
+		} else if (creatable) {
+			const item = createItem((e.currentTarget as HTMLInputElement).value);
+			if (item) setSelected(item[valueKey]);
+		}
+		resetValues();
 	}
 
 	function handleFocus(
@@ -386,7 +389,9 @@
 	) {
 		dropdown?.open(e);
 		setTimeout(() => {
-			if (filterable || creatable) input?.focus();
+			if (filterable || creatable) {
+				input?.focus();
+			}
 		});
 	}
 
@@ -394,17 +399,20 @@
 		if (
 			!dropdown ||
 			e.repeat ||
-			!['ArrowDown', 'ArrowUp', 'Backspace', 'Enter'].includes(e.key) ||
-			(e.key === 'Backspace' && !multiple)
+			!['ArrowDown', 'ArrowUp', 'Backspace', 'Tab', 'Enter', 'Backspace'].includes(e.key)
 		)
 			return;
-		if (e.key === 'Backspace') {
-			handleRemove(findItemByValue(value[value.length - 1]) as T);
+
+		if (e.key === 'Backspace' && multiple && !query?.length && removable) {
+			const item = findItemByValue(value[value.length - 1]) as T;
+			handleRemove(item);
+			setTimeout(() => input?.focus());
+			return;
 		}
 
-		if (e.key === 'Enter' && creatable) {
-			//	return createItem((e.currentTarget as HTMLInputElement).value);
-			return;
+		if (['Enter', 'Tab'].includes(e.key)) {
+			if (!creatable || (e.key === 'Tab' && !multiple)) return;
+			(e.currentTarget as HTMLInputElement).blur();
 		}
 
 		// Reach here we are navigating.
@@ -421,8 +429,9 @@
 			handleRemove(item);
 		};
 	}
+
 	$effect(() => {
-		items = filterItems(query);
+		filtered = filterItems(query);
 	});
 </script>
 
@@ -433,16 +442,16 @@
 				{#if showPlaceholder}
 					{placeholder}
 				{:else if !filtering && !multiple}
-					{#if !Array.isArray(filtered)}
-						{getLabelByItem(filtered as T)}
+					{#if !Array.isArray(selected)}
+						{getLabelByItem(selected as T)}
 					{/if}
 				{/if}
 				&nbsp;
 			</div>
 		{/if}
 
-		{#if Array.isArray(filtered)}
-			{#each filtered as item}
+		{#if Array.isArray(selected)}
+			{#each selected as item}
 				<ConditionalSnippet user={tag}>
 					<button type="button" onclick={createRemove(item)} class={tagClasses}>
 						<Badge variant="filled" removable {theme} class="pointer-events-none"
@@ -453,28 +462,30 @@
 			{/each}
 		{/if}
 
-		<div class={inputContainerClasses} data-value={chars}>
-			<!-- svelte-ignore a11y_role_has_required_aria_props -->
-			<input
-				bind:this={input}
-				tabindex="0"
-				inputmode={filterable ? 'search' : 'none'}
-				role="combobox"
-				type="text"
-				autocapitalize="none"
-				autocomplete="off"
-				autocorrect="off"
-				spellcheck="false"
-				aria-autocomplete="list"
-				aria-expanded="false"
-				aria-haspopup="true"
-				aria-readonly={!filterable ? true : false}
-				class={inputClasses}
-				oninput={handleInput}
-				onchange={handleChange}
-				onkeydown={handleKeydown}
-			/>
-		</div>
+		{#if creatable || filterable}
+			<div class={inputContainerClasses} data-value={chars}>
+				<!-- svelte-ignore a11y_role_has_required_aria_props -->
+				<input
+					bind:this={input}
+					tabindex="-1"
+					inputmode={filterable ? 'search' : 'none'}
+					role="combobox"
+					type="text"
+					autocapitalize="none"
+					autocomplete="off"
+					autocorrect="off"
+					spellcheck="false"
+					aria-autocomplete="list"
+					aria-expanded="false"
+					aria-haspopup="true"
+					aria-readonly={!filterable ? true : false}
+					class={inputClasses}
+					oninput={handleInput}
+					onchange={handleChange}
+					onkeydown={handleKeydown}
+				/>
+			</div>
+		{/if}
 	</div>
 	<div class={iconContainerClasses}>
 		{#if clearable}
