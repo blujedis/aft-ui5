@@ -1,4 +1,5 @@
-import { type GlobalOptions, type GlobalSettings } from './types.js';
+// import { type GlobalOptions, type GlobalSettings } from './types.js';
+
 
 export const Animate = {
   unstyled: '',
@@ -133,6 +134,16 @@ export const FieldPaddingX = {
   xl2: 'px-6'
 };
 
+export const IconButtonPaddingX = {
+  unstyled: '',
+  xs: 'px-0.5',
+  sm: 'px-1',
+  md: 'px-1.5',
+  lg: 'px-2',
+  xl: 'px-2.5',
+  xl2: 'px-3'
+};
+
 export const OutlineWidth = {
   unstyled: '',
   none: 'focus:outline-0 focus-visible:outline-0 focus-within:outline-0',
@@ -188,23 +199,5 @@ export const RingOffset = {
   lg: 'ring-offset-[3px]',
   xl: 'ring-offset-4',
   xl2: 'ring-offset-8'
-};
-
-export const options: GlobalOptions = {
-  border: 'border-frame-300 dark:border-frame-600',
-  card: 'body-light dark:bg-frame-700',
-  disabled: 'opacity-50 pointer-events-none',
-  divide: 'divide-frame-200 dark:divide-frame-600',
-  input: 'bg-frame-50 dark:bg-frame-400/5 hover:bg-[rgb(var(--bg-light))] dark:hover:bg-[rgb(var(--bg-dark))] focus:bg-[rgb(var(--bg-light))] dark:focus:bg-[rgb(var(--bg-dark))]',
-  placeholder: 'text-frame-500 dark:text-frame-400',
-  ring: 'ring-frame-200 dark:ring-frame-600',
-  transition: 'transition motion-reduce:transition-none',
-};
-export const settings: GlobalSettings = {
-  focusWidth: 'lg',
-  focusOffset: 'none',
-  prose: true,
-  rounded: true,
-  shadow: true,
 };
 

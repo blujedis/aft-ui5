@@ -21,7 +21,7 @@
 	let {
 		vertical,
 		content = 'none',
-		theme,
+		theme = $bindable(),
 		children,
 		...rest
 	}: DividerProps & ElementProps<'div'> = $props();

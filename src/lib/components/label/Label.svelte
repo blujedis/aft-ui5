@@ -1,12 +1,11 @@
 <script context="module" lang="ts">
-	import type { Size, ThemeColor } from '$lib/theme/types.js';
+	import type { DropShadowSize, RoundedSize, Size, ThemeColor } from '$lib/theme/types.js';
 	import type { Snippet } from 'svelte';
-	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 
 	export interface LabelProps {
 		inline?: boolean;
-		rounded?: ConfigProps['rounded'];
-		dropShadow?: ConfigProps['dropShadow'];
+		rounded?: RoundedSize | false;
+		dropShadow?: DropShadowSize | false;
 		justify?: Exclude<keyof typeof JustifyContent, 'stretch'>;
 		reverse?: boolean;
 		size?: Size;
@@ -29,7 +28,7 @@
 		reverse,
 		rounded,
 		size = 'md',
-		theme,
+		theme = $bindable(),
 		visible = true,
 		children,
 		...rest

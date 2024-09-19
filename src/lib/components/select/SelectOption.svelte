@@ -18,12 +18,13 @@
 	import { buildClass } from '$lib/theme/build.svelte.js';
 	import type { Size, ThemeColor } from '$lib/theme/types.js';
 	import { FieldPaddingX, FieldPaddingY } from '$lib/theme/constants.js';
+
 	let {
 		disabled,
 		placeholder,
 		selected,
 		size,
-		theme,
+		theme = $bindable(),
 		value,
 		children,
 		...rest

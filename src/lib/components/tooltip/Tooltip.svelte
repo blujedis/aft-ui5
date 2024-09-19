@@ -9,6 +9,7 @@
 		BorderColor,
 		ForeColorFilled,
 		ForeColorSoft,
+		type RoundedSize,
 		type Size,
 		type ThemeColor
 	} from '$lib/theme/types.js';
@@ -17,7 +18,7 @@
 
 	export type TooltipProps = PopperProps & {
 		elevation?: ConfigProps['elevation'];
-		rounded?: ConfigProps['rounded'];
+		rounded?: RoundedSize | false;
 		size?: Size;
 		theme?: ThemeColor;
 		variant?: 'untyled' | 'filled' | 'soft' | 'outlined';
@@ -42,7 +43,7 @@
 		elevation = 'md',
 		rounded,
 		size = 'sm',
-		theme,
+		theme = $bindable(),
 		variant,
 		visible = $bindable(),
 		children,

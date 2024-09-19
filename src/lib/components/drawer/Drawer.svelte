@@ -1,7 +1,6 @@
 <script context="module" lang="ts">
-	import { type ThemeColor } from '$lib/theme/types.js';
+	import { type ShadowSize } from '$lib/theme/types.js';
 	import type { Snippet } from 'svelte';
-	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 	import { clsxm } from '$lib/utils/string.js';
 	import { fade, fly, type FlyParams } from 'svelte/transition';
 
@@ -11,7 +10,7 @@
 		escapable?: boolean;
 		flyParams?: FlyParams | [FlyParams, FlyParams];
 		position?: 'left' | 'right';
-		shadow?: ConfigProps['shadow'];
+		shadow?: ShadowSize | false;
 		size?: keyof typeof DrawerSizeMap;
 		speed?: keyof typeof DrawerSpeedMap;
 		visible?: boolean | number;
@@ -104,7 +103,7 @@
 		return {
 			destroy: () => {
 				destroyFocustrap.destroy();
-				destroyOutsideClick.destroy();
+				if (typeof destroyOutsideClick.destroy === 'function') destroyOutsideClick.destroy();
 			}
 		};
 	}

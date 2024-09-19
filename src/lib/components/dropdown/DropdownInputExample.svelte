@@ -5,17 +5,21 @@
 	import DropdownItem from './DropdownItem.svelte';
 	import Button from '../button/Button.svelte';
 	import Links from '$components/Links.svelte';
+	import type { DropdownInputItem } from './DropdownInput.svelte';
 
-	let value = $state([3, 8]); // [3, 8]
+	type Item = Product | DropdownInputItem;
+
+	let value = $state(3); // [3, 8]
 	let query = $state('');
-	let filtered = $derived.by(() => {
-		if (!query) return products;
-		return products.filter((item) => {
-			return item.title.toLowerCase().startsWith(query);
-		});
-	});
+	let items = $state(products as Item[]);
+	// let filtered = $derived.by(() => {
+	// 	if (!query) return items;
+	// 	return items.filter((item) => {
+	// 		return item.title.toLowerCase().startsWith(query);
+	// 	});
+	// });
 
-	function isSelected(product: Product) {
+	function isSelected(product: any) {
 		if (Array.isArray(value)) return value.some((v) => product.id == v);
 		return value == product.id;
 	}
@@ -44,17 +48,19 @@
 		<DropdownInput
 			bind:value
 			bind:query
+			bind:items
 			name="product"
-			items={products}
 			labelKey="title"
+			theme="danger"
 			clearable
 			filterable
+			creatable
 		>
-			<Dropdown event="click">
-				{#if !filtered.length}
+			<Dropdown event="none">
+				{#if !items.length}
 					<div class="px-4 py-2 text-frame-500">No items...</div>
 				{:else}
-					{#each filtered as product}
+					{#each items as product}
 						<DropdownItem value={product.id} selected={isSelected(product)}
 							>{product.title}</DropdownItem
 						>

@@ -1,6 +1,5 @@
 <script context="module" lang="ts">
 	import { type ElementProps, type HTMLTag } from '$lib/types.js';
-	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 	import { setContext, type Snippet } from 'svelte';
 	import {
 		BgColor,
@@ -24,7 +23,9 @@
 		FontColor,
 		FontColorHover,
 		RingColor,
-		RingColorHover
+		RingColorHover,
+		type RoundedSize,
+		type ShadowSize
 	} from '$lib/theme/types.js';
 
 	type ExtendedProps<Tag extends HTMLTag> = Tag extends 'a' ? { href: string | null } : {};
@@ -35,10 +36,10 @@
 		focusTheme?: ThemeColor;
 		full?: boolean;
 		role?: AriaRole;
-		rounded?: ConfigProps['rounded'];
+		rounded?: RoundedSize | false;
 		selected?: boolean;
 		selectedTheme?: ThemeColor;
-		shadow?: ConfigProps['shadow'];
+		shadow?: ShadowSize | false;
 		size?: Size;
 		textblock?: boolean; // when true preserves padding for text variant.
 		theme?: ThemeColor;
@@ -67,13 +68,8 @@
 </script>
 
 <script lang="ts" generics="Tag extends HTMLTag = 'button'">
-	import {
-		FieldFontSize,
-		FieldPaddingY,
-		options,
-		RingOffset,
-		RingWidth
-	} from '$lib/theme/constants.js';
+	import { FieldFontSize, FieldPaddingY, RingOffset, RingWidth } from '$lib/theme/constants.js';
+	import t from '$lib/theme/theme.svelte.js';
 	import { getContext } from 'svelte';
 	import { buildClass } from '$lib/theme/build.svelte.js';
 	import type { AriaRole } from 'svelte/elements';
@@ -92,7 +88,7 @@
 		shadow,
 		size = 'md',
 		textblock,
-		theme,
+		theme = $bindable(),
 		variant = 'filled',
 		children,
 		...rest
@@ -113,7 +109,7 @@
 				context && rounded && rounded !== 'unstyled' && 'first:focus:z-20', // without looks like no border on first item.
 				FieldFontSize[size],
 				!rest.href && 'font-medium',
-				rest.disabled && options.disabled,
+				rest.disabled && t.options.disabled,
 				selected && 'button-selected',
 
 				theme && variant === 'filled' && BgColor[theme],
@@ -165,7 +161,8 @@
 				variant === 'text' && 'hover:underline underline-offset-4 decoration-2',
 				!theme &&
 					variant === 'text' &&
-					'text-frame-600 dark:text-frame-600 aria-checked:bg-frame-200 dark:aria-checked:bg-frame-600'
+					'text-frame-600 dark:text-frame-600 aria-checked:bg-frame-200 dark:aria-checked:bg-frame-600',
+				!theme && 'focus-visible:outline-frame-500/50'
 			],
 			append: [rest.class],
 			focusType,

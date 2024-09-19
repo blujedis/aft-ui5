@@ -6,7 +6,7 @@
 		focusType?: FocusType;
 		focusTheme?: ThemeColor;
 		focusOffset?: Size | 'none';
-		shadow?: ConfigProps['shadow'];
+		shadow?: ShadowSize | false;
 		size?: Size;
 		sronly?: string;
 		theme?: ThemeColor;
@@ -47,7 +47,7 @@
 <script lang="ts">
 	import { buildClass, type ConfigProps } from '$lib/theme/build.svelte.js';
 	import type { ElementProps } from '$lib/types.js';
-	import { BgColorChecked, type FocusType, type Size, type ThemeColor } from '$lib/theme/types.js';
+	import { BgColorChecked, type FocusType, type ShadowSize, type Size, type ThemeColor } from '$lib/theme/types.js';
 	import { clsxm } from '$lib/utils/string.js';
 
 	let {
@@ -59,7 +59,7 @@
 		shadow,
 		size = 'sm',
 		sronly = 'switch',
-		theme,
+		theme = $bindable(),
 		children,
 		...rest
 	}: SwitchProps & Omit<ElementProps<'input'>, 'class'> = $props();

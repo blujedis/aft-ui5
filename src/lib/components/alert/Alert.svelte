@@ -1,7 +1,6 @@
 <script context="module" lang="ts">
 	import { type ElementProps } from '$lib/types.js';
 	import { getContext, setContext, type Snippet } from 'svelte';
-	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 	import type { IconifyIcon } from '@iconify/svelte';
 	import { transitioner, type TransitionParams } from '$lib/utils/transitioner.js';
 	import {
@@ -15,7 +14,9 @@
 		ForeColorSoft,
 		BgColor,
 		ForeColorFilled,
-		BorderColor
+		BorderColor,
+		type RoundedSize,
+		type ShadowSize
 	} from '$lib/theme/types.js';
 
 	export type AlertProps = {
@@ -24,8 +25,8 @@
 		icon?: boolean | string | IconifyIcon;
 		position?: NotificationPosition | 'left' | 'right';
 		removable?: boolean; // when true can escape or click background to abort.
-		rounded?: ConfigProps['rounded'];
-		shadow?: ConfigProps['shadow'];
+		rounded?: RoundedSize | false;
+		shadow?: ShadowSize | false;
 		theme?: ThemeColor | 'default'; // default are optimal them for alert/notifications.
 		transition?: TransitionParams;
 		size?: Size;
@@ -81,7 +82,7 @@
 		rounded,
 		shadow,
 		size = 'md',
-		theme,
+		theme = $bindable(),
 		transition,
 		variant = !context ? 'soft' : undefined,
 		visible = $bindable(),

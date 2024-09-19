@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Range from './Range.svelte';
-	import { colors } from '$lib/theme/types.js';
+	import { colors } from '$lib/theme/globals.js';
 	import Button from '../button/Button.svelte';
 	import { capitalize } from '$lib/utils/string.js';
 	let value = 25;

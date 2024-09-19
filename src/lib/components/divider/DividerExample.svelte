@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { colors } from '$lib/theme/types.js';
+	import { colors } from '$lib/theme/globals.js';
 	import Divider from './Divider.svelte';
 </script>
 

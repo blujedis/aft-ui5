@@ -57,7 +57,7 @@
 		rotate = $bindable(),
 		size = (context && context.size) || 'sm',
 		stroke,
-		theme,
+		theme = $bindable(),
 		variant = 'filled',
 		...rest
 	}: IconProps = $props();

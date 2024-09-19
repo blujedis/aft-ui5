@@ -18,9 +18,17 @@
 	import type { AriaRole } from 'svelte/elements';
 	import type { ElementProps } from '$lib/types.js';
 
-	export type PopperEvent = 'hover' | 'click' | 'focus';
+	export type PopperEvent = 'hover' | 'click' | 'focus' | 'none';
+
+	export interface PopperApi {
+		triggers: HTMLElement[];
+		panel: HTMLElement;
+		open: (e?: Event) => void;
+		close: (e?: Event) => void;
+	}
 
 	export interface PopperProps {
+		api?: PopperApi;
 		abortable?: boolean;
 		active?: boolean;
 		arrow?: boolean;
@@ -28,7 +36,6 @@
 		arrowPlacement?: 'start' | 'end' | 'auto';
 		arrowOffset?: number;
 		border?: number;
-		element?: HTMLElement;
 		escapable?: boolean;
 		event?: PopperEvent;
 		middleware?: Middleware[];
@@ -40,8 +47,6 @@
 		trigger?: string;
 		visible?: boolean;
 		children: Snippet;
-		onBeforeOpen?: (e: Event) => boolean | Promise<boolean>;
-		onBeforeClose?: (e?: Event) => boolean | Promise<boolean>;
 	}
 
 	const ArrowPosition: Record<Side, Side> = {
@@ -61,6 +66,7 @@
 	import { optevent } from '$lib/utils/helpers.js';
 
 	let {
+		api = $bindable(),
 		abortable = true, // only applies to click event.
 		active = true,
 		arrow,
@@ -68,7 +74,6 @@
 		arrowPlacement = 'auto',
 		arrowOffset = 8,
 		border = 1,
-		element = $bindable(),
 		escapable,
 		event = 'hover',
 		middleware: initMiddleware = [flip(), shift()],
@@ -79,14 +84,12 @@
 		target,
 		trigger,
 		visible = $bindable(),
-		onBeforeOpen = () => true,
-		onBeforeClose = () => true,
 		children,
 		...rest
 	}: PopperProps & ElementProps<'div'> = $props();
 
 	let targetEl = $state() as Element;
-	// let element: HTMLElement;
+	let element: HTMLElement;
 	let arrowEl = $state(null) as HTMLElement | null;
 	let contentEl = $state() as HTMLElement;
 	let triggerEls = $state([]) as HTMLElement[];
@@ -118,6 +121,7 @@
 
 	function getEvents() {
 		return [
+			['none', () => {}, event === 'none'],
 			['click', handleOpen, event === 'click'],
 			['focusin', handleOpen, event === 'focus'],
 			['focusout', handleClose, event === 'focus'],
@@ -147,9 +151,7 @@
 		destroys.push(() => el.removeEventListener(name, fn));
 	}
 
-	async function handleClose(e?: Event) {
-		const shouldClose = await Promise.resolve(onBeforeClose(e));
-		if (!shouldClose) return;
+	function handleClose(e?: Event) {
 		if (active && e) {
 			setTimeout(() => {
 				const elements = [targetEl, element, ...triggerEls].filter(Boolean);
@@ -161,12 +163,9 @@
 		} else visible = false;
 	}
 
-	async function handleOpen(e: Event) {
-		const shouldOpen = await Promise.resolve(onBeforeOpen(e));
-		console.log(e.target, e.currentTarget);
-		if (!shouldOpen) return;
+	function handleOpen(e?: Event) {
 		if (targetEl === undefined) console.error('trigger undefined');
-		if (!target && triggerEls.includes(e.target as HTMLElement) && targetEl !== e.target) {
+		if (!target && e && triggerEls.includes(e.target as HTMLElement) && targetEl !== e.target) {
 			targetEl = e.target as HTMLElement;
 		}
 		visible = true;
@@ -176,7 +175,7 @@
 		triggerEls.forEach((el) => {
 			// if (el.tabIndex < 0) el.tabIndex = 0; // must receive focus.
 			for (const [name, handler, enabled] of getEvents()) {
-				if (enabled) {
+				if (enabled && name !== 'none') {
 					el.addEventListener(name, handler);
 					createDestroy(el, name, handler);
 				}
@@ -197,8 +196,7 @@
 	}
 
 	function clickFocus(e: Event & { target?: EventTarget | null }) {
-		const target = e.target as HTMLElement;
-		target?.focus();
+		(e.target as HTMLElement)?.focus();
 	}
 
 	function initTarget() {
@@ -305,6 +303,13 @@
 		initTriggers();
 		bindEvents();
 		initTarget();
+		api = {
+			// update Api for parent.
+			triggers: triggerEls,
+			panel: element,
+			open: handleOpen,
+			close: handleClose
+		};
 		return () => {
 			destroys.forEach((d) => d());
 		};

@@ -1,8 +1,13 @@
 <script context="module" lang="ts">
 	import type { Snippet } from 'svelte';
 	import type { ProgressTweenedOptions } from './ProgressBar.svelte';
-	import { type ConfigProps } from '$lib/theme/build.svelte.js';
-	import { type ThemeColor, type Size, StrokeColor, ProgressFillColor } from '$lib/theme/types.js';
+	import {
+		type ThemeColor,
+		type Size,
+		StrokeColor,
+		ProgressFillColor,
+		type ShadowSize
+	} from '$lib/theme/types.js';
 	import { tweened } from 'svelte/motion';
 	import type { ElementProps } from '$lib/types.js';
 	import { clsxm } from '$lib/utils/string.js';
@@ -12,7 +17,7 @@
 	export type ProgressCircleProps = {
 		animate?: boolean;
 		max?: number;
-		shadow?: ConfigProps['shadow'];
+		shadow?: ShadowSize | false;
 		size?: keyof typeof ProgressCircleSize | number;
 		text?: boolean | string;
 		textUnit?: string;
@@ -64,7 +69,7 @@
 		size = 'md',
 		text = true,
 		textUnit = '%',
-		theme,
+		theme = $bindable(),
 		value = $bindable(),
 		trackSize = 'md',
 		children,

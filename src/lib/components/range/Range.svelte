@@ -1,14 +1,13 @@
 <script context="module" lang="ts">
-	import { type ConfigProps } from '$lib/theme/build.svelte.js';
-	import type { ThemeColor, Size, FocusType } from '$lib/theme/types.js';
+	import type { ThemeColor, Size, FocusType, RoundedSize, ShadowSize } from '$lib/theme/types.js';
 	import type { ElementProps } from '$lib/types.js';
 
 	export type RangeProps = {
 		animate?: boolean;
 		focusType?: FocusType;
 		focusTheme?: ThemeColor;
-		rounded?: ConfigProps['rounded'];
-		shadow?: ConfigProps['shadow'];
+		rounded?: RoundedSize | false;
+		shadow?: ShadowSize | false;
 		size?: Size;
 		theme?: ThemeColor;
 	} & ProgressTweenedOptions;
@@ -63,7 +62,7 @@
 		rounded,
 		shadow,
 		size = 'md',
-		theme,
+		theme = $bindable(),
 		value = $bindable(),
 		...rest
 	}: RangeProps & Omit<ElementProps<'input'>, 'size'> = $props();

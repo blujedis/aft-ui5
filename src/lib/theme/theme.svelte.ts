@@ -1,5 +1,5 @@
 import { browser } from '$app/environment';
-import { options, settings } from './constants.js';
+import { options, settings } from './globals.js';
 import { type Theme } from './types.js';
 
 const currentTheme = $state({

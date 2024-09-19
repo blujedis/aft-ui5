@@ -1,6 +1,5 @@
 <script context="module" lang="ts">
 	import { type ElementProps } from '$lib/types.js';
-	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 	import {
 		BgColor,
 		BgColorSoft,
@@ -8,6 +7,8 @@
 		ForeColorSoft,
 		ForeColorSoftHover,
 		RingColor,
+		type RoundedSize,
+		type ShadowSize,
 		type Size,
 		type ThemeColor
 	} from '$lib/theme/types.js';
@@ -15,8 +16,8 @@
 	export type KbdProps = {
 		full?: boolean;
 		removable?: boolean;
-		rounded?: ConfigProps['rounded'];
-		shadow?: ConfigProps['shadow'];
+		rounded?: RoundedSize | false;
+		shadow?: ShadowSize | false;
 		size?: Size;
 		theme?: ThemeColor;
 		variant?: 'unstyled' | 'filled' | 'soft' | 'outlined';
@@ -38,7 +39,7 @@
 		rounded,
 		shadow,
 		size = 'md',
-		theme,
+		theme = $bindable(),
 		variant,
 		children,
 		...rest

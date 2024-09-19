@@ -33,7 +33,7 @@
 	let {
 		size = 'md',
 		speed = 'medium',
-		theme,
+		theme = $bindable(),
 		trackSize = 'sm',
 		distance = 33
 	}: LoaderProps = $props();

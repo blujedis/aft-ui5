@@ -20,7 +20,16 @@
 </script>
 
 <script lang="ts">
-	let { disabled, focusTheme, group, hoverable, peer, selected, theme, children }: FlushedProps =
+	let { 
+		disabled, 
+		focusTheme, 
+		group, 
+		hoverable, 
+		peer, 
+		selected, 
+		theme = $bindable(),
+		children 
+	}: FlushedProps =
 		$props();
 
 	const classes = $derived(

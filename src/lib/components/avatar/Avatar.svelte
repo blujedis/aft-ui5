@@ -1,7 +1,6 @@
 <script context="module" lang="ts">
 	import { type ElementProps } from '$lib/types.js';
 	import { getContext, setContext, type Snippet } from 'svelte';
-	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 	import {
 		type Size,
 		type ThemeColor,
@@ -10,20 +9,22 @@
 		FillColorHover,
 		FillColorSoftHover,
 		RingColor,
-		RingColorHover
+		RingColorHover,
+		type RoundedSize,
+		type ShadowSize
 	} from '$lib/theme/types.js';
 
 	export type AvatarProps = {
 		hoverable?: boolean;
 		mode?: 'icon' | 'image';
 		removable?: boolean;
-		rounded?: ConfigProps['rounded'];
-		shadow?: ConfigProps['shadow'];
+		rounded?: RoundedSize | false;
+		shadow?: ShadowSize | false;
 		size?: Size;
 		stacked?: boolean;
 		theme?: ThemeColor;
 		variant?: 'unstyled' | 'filled' | 'soft' | 'outlined';
-		children: Snippet<[{ rounded: ConfigProps['rounded']; size: Size }]>;
+		children: Snippet<[{ rounded?: RoundedSize | false; size?: Size }]>;
 	} & Omit<ElementProps<'span'>, 'children'>;
 
 	export const avatarVariants = [
@@ -54,14 +55,14 @@
 		rounded,
 		shadow,
 		size = 'md',
-		theme,
+		theme = $bindable(),
 		variant,
 		children,
 		...rest
 	}: AvatarProps = $props();
 
 	const stacked = getContext('Stack') as boolean;
-	
+
 	setContext('IconContainer', { size: 'full', theme, variant, hoverable });
 
 	const classes = $derived(

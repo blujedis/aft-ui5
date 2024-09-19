@@ -1,6 +1,5 @@
 <script context="module" lang="ts">
 	import type { Snippet } from 'svelte';
-	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 	import {
 		transitioner,
 		TransitionOptions,
@@ -27,8 +26,8 @@
 		escapable?: boolean;
 		labelby?: string;
 		position?: ModalPosition;
-		rounded?: ConfigProps['rounded'];
-		shadow?: ConfigProps['shadow'];
+		rounded?: RoundedSize | false;
+		shadow?: ShadowSize | false;
 		transition?: TransitionParams;
 		visible?: boolean | number;
 		onClose?: () => void;
@@ -47,6 +46,7 @@
 	import { focustrap } from '$lib/hooks/focustrap.js';
 	import t from '$lib/theme/theme.svelte.js';
 	import { Rounded, Shadow } from '$lib/theme/constants.js';
+	import type { RoundedSize, ShadowSize } from '$lib/theme/types.js';
 
 	let {
 		abortable,

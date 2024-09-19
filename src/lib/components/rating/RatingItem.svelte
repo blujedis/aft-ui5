@@ -30,7 +30,7 @@
 
 	let {
 		background,
-		fill = '#FFA41C',
+		fill = $bindable('#FFA41C'),
 		index,
 		size = 'sm',
 		stroked = true,

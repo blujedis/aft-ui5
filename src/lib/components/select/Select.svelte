@@ -1,11 +1,12 @@
 <script context="module" lang="ts">
 	import type { ElementProps } from '$lib/types.js';
-	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 	import {
 		BgColorHint,
 		FillColor,
 		RingColor,
 		type FocusType,
+		type RoundedSize,
+		type ShadowSize,
 		type Size,
 		type ThemeColor
 	} from '$lib/theme/types.js';
@@ -17,8 +18,8 @@
 		focusTheme?: ThemeColor;
 		focusOffset?: Size | 'none';
 		full?: boolean;
-		rounded?: ConfigProps['rounded'];
-		shadow?: ConfigProps['shadow'];
+		rounded?: RoundedSize | false;
+		shadow?: ShadowSize | false;
 		size?: Size;
 		theme?: ThemeColor;
 		variant?: 'unstyled' | 'outlined';
@@ -42,7 +43,7 @@
 		rounded,
 		shadow,
 		size = 'md',
-		theme,
+		theme = $bindable(),
 		value = $bindable(),
 		variant,
 		children,

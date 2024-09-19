@@ -11,22 +11,22 @@ html, body {
 
 @layer base {
   /* width */
-  ::-webkit-scrollbar {
+  /* ::-webkit-scrollbar {
     @apply w-1.5
-  }
+  } */
   
   /* Track */
-  ::-webkit-scrollbar-track {
+  /* ::-webkit-scrollbar-track {
     @apply bg-inherit
-  }
+  } */
   
   /* Handle */
-  ::-webkit-scrollbar-thumb {
+  /* ::-webkit-scrollbar-thumb {
     @apply bg-primary-400 dark:bg-primary-500 rounded-md
-  }
+  } */
   
   /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
+  /* ::-webkit-scrollbar-thumb:hover {
     @apply bg-primary-500 dark:bg-primary-400
-  }
+  } */
 }

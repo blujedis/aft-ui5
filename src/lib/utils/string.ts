@@ -3,7 +3,8 @@ import type { ClassValue } from 'clsx';
 import clsx from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { ensureArray } from './array.js';
-import { colors, shades, type ThemeColor, type ThemeShade } from '$lib/theme/types.js';
+import { type ThemeColor, type ThemeShade } from '$lib/theme/types.js';
+import { colors, shades } from '$lib/theme/globals.js';
 
 export function capitalize(value: string) {
   return value.charAt(0).toUpperCase() + value.slice(1);

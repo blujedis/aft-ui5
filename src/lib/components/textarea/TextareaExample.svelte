@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Textarea from './Textarea.svelte';
-	import { colors } from '$lib/theme/types.js';
+	import { colors } from '$lib/theme/globals.js';
 	import Label from '../label/Label.svelte';
 	import { capitalize } from '$lib/utils/string.js';
 </script>

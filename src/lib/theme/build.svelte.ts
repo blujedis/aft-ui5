@@ -6,34 +6,41 @@ import {
   type ThemeColor,
   RingColorFocus,
   FocusTypes,
+  type FocusWidth,
+  type DropShadowSize,
+  type ElevationSize,
+  type AnimateType,
+  type RoundedSize,
+  type ShadowSize,
+  type JustifyContentType,
+  type FontSizes,
+  type FocusOffset,
 } from './types.js';
 import type { ClassArray, ClassValue } from 'clsx';
 import { Animate, DropShadow, Elevation, FontSize, JustifyContent, OutlineOffset, OutlineWidth, Rounded, Shadow } from './constants.js';
 
 export type ConfigProps = {
-  animate?: keyof typeof Animate;
+  animate?: AnimateType;
   disabled?: boolean | null;
-  dropShadow?: keyof typeof DropShadow | false;
-  elevation?: keyof typeof Elevation;
-  fontSize?: keyof typeof FontSize;
+  dropShadow?: DropShadowSize | false;
+  elevation?: ElevationSize;
+  fontSize?: FontSizes;
   focusType?: FocusType;
   focusTheme?: ThemeColor | false;
-  focusWidth?: keyof typeof OutlineWidth | false;
-  focusOffset?: keyof typeof OutlineOffset | false;
+  focusWidth?: FocusWidth | false;
+  focusOffset?: FocusOffset | false;
   focusRingColor?: ThemeColor | false;
   full?: boolean;
-  justify?: keyof typeof JustifyContent;
+  justify?: JustifyContentType;
   node?: HTMLElement;
-  rounded?: keyof typeof Rounded | false;
-  shadow?: keyof typeof Shadow | false;
+  rounded?: RoundedSize | false;
+  shadow?: ShadowSize | false;
   transition?: boolean | string;
   styles?: string | null | false | (string | null | false)[];
   prepend?: ClassValue | ClassArray[],
   classes?: ClassValue | ClassArray[],
   append?: ClassValue | ClassArray[],
 };
-
-
 
 export function buildClass(props: ConfigProps) {
 

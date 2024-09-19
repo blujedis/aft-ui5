@@ -1,8 +1,19 @@
+import type { Animate, DropShadow, Elevation, FontSize, JustifyContent, OutlineOffset, OutlineWidth, Rounded, Shadow } from './constants.js';
+
 export type FocusType = keyof typeof FocusTypes;
+export type FocusWidth = keyof typeof OutlineWidth;
+export type FocusOffset = keyof typeof OutlineOffset;
 export type SelectedType = keyof typeof SelectedTypes;
 export type ThemeColor = keyof typeof FontColor;
-export type ThemeShade = typeof shades[number];
+export type ThemeShade = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950;
+export type ElevationSize = keyof typeof Elevation;
+export type FontSizes = keyof typeof FontSize;
+export type DropShadowSize = keyof typeof DropShadow;
+export type AnimateType = keyof typeof Animate;
 export type Size = 'unstyled' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xl2';
+export type JustifyContentType = keyof typeof JustifyContent;
+export type RoundedSize = keyof typeof Rounded;
+export type ShadowSize = keyof typeof Shadow;
 
 export const build = ['alert', 'avatar', 'badge', 'breadcrumb', 'button', 'card', 'checkbox', 'disclosure', 'divider', 'drawer', 'dropdown', 'flushed', 'icon', 'image', 'indicator', 'input', 'kbd', 'label', 'modal', 'notifications', 'popover', 'progress', 'radio', 'range', 'rating', 'select', 'spinner', 'stack', 'switch', 'textarea', 'tooltip'];
 
@@ -741,8 +752,6 @@ export const OutlineColorFocusWithin = {
   white: 'focus-within:outline-white/40 dark:focus-within:outline-white/40',
 };
 
-
-
 export const OutlineColorFocusPeer = {
   unstyled: '',
   primary: 'peer-focus:outline-primary-500/40 dark:peer-focus:outline-primary-500/40',
@@ -837,5 +846,4 @@ export interface Theme {
 
 export type ThemeInternal = Theme & { dark: boolean };
 
-export const colors = Object.keys(BgColor) as ThemeColor[];
-export const shades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950] as const;
+

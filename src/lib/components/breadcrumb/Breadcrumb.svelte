@@ -1,15 +1,14 @@
 <script context="module" lang="ts">
 	import type { Snippet } from 'svelte';
 	import type { BreadcrumbItemProps } from './BreadcrumbItem.svelte';
-	import type { Size, ThemeColor } from '$lib/theme/types.js';
-	import { buildClass, type ConfigProps } from '$lib/theme/build.svelte.js';
+	import type { Size, ThemeColor, RoundedSize, ShadowSize } from '$lib/theme/types.js';
 	import BreadcrumbItem from './BreadcrumbItem.svelte';
 
 	export interface BreadcrumbProps {
 		full?: boolean;
 		generate?: boolean;
-		rounded?: ConfigProps['rounded'];
-		shadow?: ConfigProps['shadow'];
+		rounded?: RoundedSize | false;
+		shadow?: ShadowSize | false;
 		size?: Size;
 		theme?: ThemeColor;
 		children?: Snippet;
@@ -53,7 +52,17 @@
 
 <script lang="ts">
 	import { page } from '$app/stores';
-	let { full, generate, rounded, shadow, size = 'md', theme, children }: BreadcrumbProps = $props();
+	import { buildClass } from '$lib/theme/build.svelte.js';
+
+	let {
+		full,
+		generate,
+		rounded,
+		shadow,
+		size = 'md',
+		theme = $bindable(),
+		children
+	}: BreadcrumbProps = $props();
 
 	const navClasses = $derived(
 		buildClass({

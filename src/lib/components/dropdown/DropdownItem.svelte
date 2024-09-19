@@ -3,11 +3,7 @@
 	import { FieldPaddingX, FieldPaddingY } from '$lib/theme/constants.js';
 	import {
 		BgColorDropSelected,
-		BgColorSelected,
 		BgColorSoftDropSelected,
-		BgColorSoftSelected,
-		FontColor,
-		ForeColorSelected,
 		type Size,
 		type ThemeColor
 	} from '$lib/theme/types.js';
@@ -39,7 +35,7 @@
 		href,
 		selected = $bindable(),
 		size = context?.size,
-		theme = context?.theme,
+		theme = $bindable(context?.theme),
 		value,
 		variant = context?.variant,
 		children,
@@ -66,7 +62,9 @@
 				!href && 'flex items-center justify-between',
 				size && FieldPaddingX[size],
 				size && FieldPaddingY[size],
-				variant === 'filled' && theme && BgColorDropSelected[theme],
+				(variant === 'filled' || typeof variant === 'undefined') &&
+					theme &&
+					BgColorDropSelected[theme],
 				variant === 'soft' && theme && BgColorSoftDropSelected[theme],
 				!variant && !theme && 'aria-selected:bg-frame-300 dark:aria-selected:bg-frame-800',
 				variant !== 'soft' &&
@@ -89,7 +87,7 @@
 	function handleClick(e: Event) {
 		if (context?.selectable) {
 			context?.setSelected(value);
-		} 
+		}
 	}
 
 	onMount(() => {

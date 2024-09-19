@@ -3,14 +3,14 @@
 	import Popper, { type PopperProps } from '../popper/Popper.svelte';
 	import { buildClass, type ConfigProps } from '$lib/theme/build.svelte.js';
 	import { Border, FieldFontSize } from '$lib/theme/constants.js';
-	import { type Size, type ThemeColor } from '$lib/theme/types.js';
+	import { type RoundedSize, type Size } from '$lib/theme/types.js';
 	import type { ElementProps } from '$lib/types.js';
 	import { clsxm } from '$lib/utils/string.js';
 
 	export type PopoverProps = Omit<PopperProps, 'children'> & {
 		elevation?: ConfigProps['elevation'];
 		flush?: boolean;
-		rounded?: ConfigProps['rounded'];
+		rounded?: RoundedSize | false;
 		size?: Size;
 		title?: string;
 		children: Snippet<[{ close: (e?: Event) => any }]>;

@@ -1,7 +1,12 @@
 <script context="module" lang="ts">
-	import { MozillaProgressBarBg, WebkitProgressValue, type ThemeColor } from '$lib/theme/types.js';
+	import {
+		MozillaProgressBarBg,
+		WebkitProgressValue,
+		type RoundedSize,
+		type ShadowSize,
+		type ThemeColor
+	} from '$lib/theme/types.js';
 	import type { Snippet } from 'svelte';
-	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 	import { clsxm } from '$lib/utils/string.js';
 	import type { ElementProps } from '$lib/types.js';
 
@@ -15,8 +20,8 @@
 	export type ProgressBarProps<T extends number = any> = ProgressTweenedOptions<T> & {
 		animate?: boolean;
 		max?: number;
-		rounded?: ConfigProps['rounded'];
-		shadow?: ConfigProps['shadow'];
+		rounded?: RoundedSize | false;
+		shadow?: ShadowSize | false;
 		size?: keyof typeof ProgressBarSizes;
 		theme?: ThemeColor;
 		value?: T;
@@ -76,7 +81,7 @@
 		rounded = 'md',
 		shadow,
 		size = 'md',
-		theme,
+		theme = $bindable(),
 		value = $bindable(),
 		children,
 		...rest

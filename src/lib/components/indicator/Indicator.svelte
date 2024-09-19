@@ -1,6 +1,5 @@
 <script context="module" lang="ts">
 	import { type ElementProps } from '$lib/types.js';
-	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 	import { IndicatorCounterFontSize, IndicatorCounterSize } from './options.js';
 	import { Animate } from '$lib/theme/constants.js';
 	import {
@@ -8,14 +7,16 @@
 		type ThemeColor,
 		BgColor,
 		ForeColorFilled,
-		BgColorSoft
+		BgColorSoft,
+		type RoundedSize,
+		type ShadowSize
 	} from '$lib/theme/types.js';
 
 	export type IndicatorProps = {
 		animate?: keyof typeof Animate;
 		diameter?: number | undefined; // em size indicator will be sized with component.
-		rounded?: ConfigProps['rounded'];
-		shadow?: ConfigProps['shadow'];
+		rounded?: RoundedSize | false;
+		shadow?: ShadowSize | false;
 		size?: Size;
 		theme?: ThemeColor;
 		text?: string | number;
@@ -39,7 +40,7 @@
 		rounded,
 		shadow,
 		size = 'md',
-		theme = 'primary',
+		theme = $bindable(),
 		text,
 		variant = 'filled',
 		...rest
@@ -60,9 +61,9 @@
 				rounded === 'full' && 'ring-frame-300 dark:ring-frame-600',
 				rounded !== 'full' &&
 					'ring-[color:rgb(var(--bg-light))] dark:ring-[color:rgb(var(--bg-dark))]',
-				variant !== 'unstyled' && BgColor[theme],
-				variant !== 'unstyled' && ForeColorFilled[theme],
-				variant === 'soft' && BgColorSoft[theme],
+				variant !== 'unstyled' && theme && BgColor[theme],
+				variant !== 'unstyled' && theme &&  ForeColorFilled[theme],
+				variant === 'soft' && theme && BgColorSoft[theme],
 				text && IndicatorCounterSize[size],
 				text && IndicatorCounterFontSize[size],
 				text && 'font-medium -top-2 -right-1',

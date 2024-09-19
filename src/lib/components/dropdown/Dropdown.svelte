@@ -1,25 +1,26 @@
 <script context="module" lang="ts">
 	import { getContext, setContext, type Snippet } from 'svelte';
-	import Popper, { type PopperProps } from '../popper/Popper.svelte';
-	import { buildClass, type ConfigProps } from '$lib/theme/build.svelte.js';
+	import Popper, { type PopperApi, type PopperProps } from '../popper/Popper.svelte';
+	import { buildClass } from '$lib/theme/build.svelte.js';
 	import { FieldFontSize } from '$lib/theme/constants.js';
-	import { type Size, type ThemeColor } from '$lib/theme/types.js';
+	import {
+		type ElevationSize,
+		type RoundedSize,
+		type Size,
+		type ThemeColor
+	} from '$lib/theme/types.js';
 	import type { ElementProps } from '$lib/types.js';
 	import type { DropdownInputContext } from './DropdownInput.svelte';
-	import type { DropdownGroupConfig, DropdownGroupContext } from './DropdownGroup.svelte';
+	import type { DropdownGroupContext } from './DropdownGroup.svelte';
 
-	export interface DropdownApi {
-		list: HTMLElement | undefined;
-		popper: HTMLElement | undefined;
-		close: () => void;
-		open: () => void;
+	export type DropdownApi = PopperApi & {
 		handleKeydown: (e: KeyboardEvent) => void;
-	}
+	};
 
 	export type DropdownActiveItem = { el?: HTMLElement | null; index?: number };
 
 	export type DropdownContext = {
-		rounded: ConfigProps['rounded'];
+		rounded: RoundedSize | false;
 		size: Size;
 		theme: ThemeColor;
 		variant: DropdownProps['variant'];
@@ -29,8 +30,8 @@
 	};
 
 	export type DropdownProps = Omit<PopperProps, 'children' | 'arrow' | 'arrowClass'> & {
-		elevation?: ConfigProps['elevation'];
-		rounded?: ConfigProps['rounded'];
+		elevation?: ElevationSize;
+		rounded?: RoundedSize | false;
 		scrollable?: boolean;
 		size?: Size;
 		theme?: ThemeColor;
@@ -50,6 +51,7 @@
 
 	let {
 		elevation = 'lg',
+		escapable = contextInput?.escapable,
 		event = 'focus',
 		id = uniqid(),
 		offset = 4,
@@ -57,7 +59,9 @@
 		placement = 'bottom-start',
 		rounded,
 		size = 'md',
-		theme,
+		target,
+		theme = $bindable(contextInput?.theme),
+		trigger,
 		variant,
 		visible = $bindable(),
 		header,
@@ -69,7 +73,7 @@
 	let list = $state() as HTMLDivElement | undefined;
 	let elements = $state() as HTMLElement[];
 	let activeItem = $state() as DropdownActiveItem;
-	let popper = $state() as HTMLElement | undefined;
+	let popper = $state() as PopperApi | undefined;
 
 	setContext('Dropdown', {
 		rounded,
@@ -132,7 +136,7 @@
 		const el = node as HTMLElement & { value?: any };
 		const value = typeof el.value !== 'undefined' ? el.value : el.dataset.value;
 		contextInput?.setSelected(value);
-		if (!contextInput?.multiple) handleClose();
+		if (!contextInput?.multiple) handleClose(e);
 	}
 
 	function onFind(items: HTMLElement[], key: KeyboardEvent['key']) {
@@ -166,7 +170,7 @@
 		e.preventDefault();
 
 		// if (['ArrowLeft', 'ArrowRight'].includes(e.key)) {
-		// 	handleClose();
+		// 	handleClose(e);
 		// 	setTimeout(() => {
 		// 		const activeId = contextGroup?.getActive(true);
 		// 		const config = contextGroup?.getConf(id as string) || ({} as DropdownGroupConfig);
@@ -236,22 +240,16 @@
 		};
 	}
 
-	function handleClose() {
-		visible = false;
-	}
-
-	function handleOpen() {
-		visible = true;
+	function handleClose(e?: Event) {
+		// visible = false;
+		popper?.close(e);
 	}
 
 	function getApi() {
 		return {
-			list,
-			popper,
-			open: handleOpen,
-			close: handleClose,
+			...popper,
 			handleKeydown
-		};
+		} as DropdownApi;
 	}
 
 	$effect(() => {
@@ -262,14 +260,16 @@
 
 <Popper
 	{...rest}
+	bind:api={popper}
 	bind:visible
-	bind:element={popper}
 	{id}
-	{event}
-	{placement}
+	{escapable}
 	{offset}
+	{placement}
 	class={classes}
-	onBeforeOpen={contextInput?.onBeforeOpen}
+	event={contextInput?.event || event}
+	target={contextInput?.target || target}
+	trigger={contextInput?.trigger || trigger}
 >
 	{#if header}
 		{@render header({ close: handleClose })}

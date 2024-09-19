@@ -9,17 +9,12 @@
 	}
 
 	export interface DropdownGroupContext {
-		// multiple: () => boolean;
-		// selectable: () => boolean;
 		getActive: (active?: boolean) => string[];
 		setActive: (id: string) => any;
 		hasActive: (id: string) => boolean;
 		delActive: (id: string) => any;
 		setConf: (id: string, conf: Partial<DropdownGroupConfig>) => any;
 		getConf: (id: string) => DropdownGroupConfig;
-		// getSelected: () => any[];
-		// setSelected: (value: any) => any;
-		// clearSelected: () => any;
 	}
 
 	export interface DropdownGroupProps {
@@ -36,12 +31,8 @@
 	}: DropdownGroupProps & ElementProps<'div'> = $props();
 
 	let configs = $state({} as Record<string, DropdownGroupConfig>);
-	let selected = $state() as any;
 
 	setContext('DropdownGroup', {
-		// multiple: () => Array.isArray(selected),
-		// selectable: () => typeof selected !== 'undefined',
-
 		getActive: (active?: boolean) => (active ? group[group.length - 1] : group),
 		setActive: (id: string) => {
 			if (group.includes(id)) return;
@@ -53,23 +44,6 @@
 		setConf: (id: string, conf: Partial<DropdownGroupConfig>) => {
 			configs[id] = { ...configs[id], ...conf };
 		}
-
-		// getSelected: () => selected,
-		// setSelected: (value: any) => {
-		// 	if (typeof value === 'undefined') return;
-		// 	if (Array.isArray(selected)) {
-		// 		if (selected.includes(value)) selected = selected.filter((v) => v !== value);
-		// 		else selected = [...selected, value];
-		// 	} else if (typeof selected !== 'undefined') {
-		// 		if (value === selected) value = '';
-		// 		else selected = value;
-		// 	}
-		// 	return selected;
-		// },
-		// clearSelected: () => {
-		// 	if (Array.isArray(selected)) selected = [];
-		// 	else selected = '';
-		// }
 	} as DropdownGroupContext);
 </script>
 

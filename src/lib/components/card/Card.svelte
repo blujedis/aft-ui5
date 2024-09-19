@@ -1,6 +1,7 @@
 <script context="module" lang="ts">
 	import type { ElementProps } from '$lib/types.js';
 	import type { Snippet } from 'svelte';
+	import type { RoundedSize } from '$lib/theme/types.js';
 	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 
 	export interface CardProps {
@@ -8,7 +9,7 @@
 		href?: string;
 		image?: string | Snippet<[{ classes: string }]>;
 		reverse?: boolean;
-		rounded?: ConfigProps['rounded'];
+		rounded?: RoundedSize | false;
 		elevation?: ConfigProps['elevation'];
 		size?: keyof typeof CardSize;
 		spacing?: boolean; // adds x or y spaceing for block elements.

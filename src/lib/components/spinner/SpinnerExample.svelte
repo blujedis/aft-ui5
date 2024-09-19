@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { colors } from '$lib/theme/types.js';
+	import { colors } from '$lib/theme/globals.js';
 	import { capitalize } from '$lib/utils/string.js';
 	import Label from '../label/Label.svelte';
 	import Spinner from './Spinner.svelte';

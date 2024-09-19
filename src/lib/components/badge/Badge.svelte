@@ -9,14 +9,16 @@
 		ForeColorSoftHover,
 		type Size,
 		type ThemeColor,
-		RingColor
+		RingColor,
+		type RoundedSize,
+		type ShadowSize
 	} from '$lib/theme/types.js';
 
 	export type BadgeProps = {
 		full?: boolean;
 		removable?: boolean;
-		rounded?: ConfigProps['rounded'];
-		shadow?: ConfigProps['shadow'];
+		rounded?: RoundedSize | false;
+		shadow?: ShadowSize | false;
 		size?: Size;
 		theme?: ThemeColor;
 		variant?: 'unstyled' | 'filled' | 'soft' | 'outlined';
@@ -62,7 +64,7 @@
 		rounded,
 		shadow,
 		size = 'md',
-		theme,
+		theme = $bindable(),
 		variant = 'filled',
 		children,
 		...rest

@@ -5,17 +5,14 @@
 
 	export type StackProps = {
 		size?: Size;
-		variant?: 'default';
 		vertical?: boolean;
 		children: Snippet<[]>;
 	} & ElementProps<'div'>;
-
-	export const stackVariants = ['default'] as StackProps['variant'][];
 </script>
 
 <script lang="ts">
 	import { buildClass } from '$lib/theme/build.svelte.js';
-	let { size = 'md', variant = 'default', vertical, children, ...rest }: StackProps = $props();
+	let { size = 'md', vertical, children, ...rest }: StackProps = $props();
 
 	setContext('Stack', true);
 
@@ -23,7 +20,7 @@
 		buildClass({
 			// padding should match ring size in Avatar component when stacked is enabled.
 			classes: [
-				`stack stack-${variant} flex overflow-hidden isolate p-2`,
+				`stack flex overflow-hidden isolate p-2`,
 				!vertical && 'flex -space-x-2',
 				vertical && 'flex-col -space-y-2',
 				rest.class

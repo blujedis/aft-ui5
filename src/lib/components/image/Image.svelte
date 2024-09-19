@@ -1,16 +1,12 @@
 <script context="module" lang="ts">
 	import { type ElementProps } from '$lib/types.js';
-	import { type ConfigProps } from '$lib/theme/build.svelte.js';
 
 	export type StackProps = {
 		aspect?: keyof typeof ImageAspect;
 		lazy?: boolean;
-		rounded?: ConfigProps['rounded'];
+		rounded?: RoundedSize | false;
 		size?: keyof typeof ImageSize;
-		variant?: 'default';
 	} & ElementProps<'img'>;
-
-	export const imageVariants = ['default'] as StackProps['variant'][];
 
 	export const ImageSize = {
 		unstyled: '',
@@ -46,20 +42,14 @@
 
 <script lang="ts">
 	import { buildClass } from '$lib/theme/build.svelte.js';
+	import type { RoundedSize } from '$lib/theme/types.js';
 
-	let {
-		aspect = 'unstyled',
-		lazy,
-		rounded,
-		size = 'unstyled',
-		variant = 'default',
-		...rest
-	}: StackProps = $props();
+	let { aspect = 'unstyled', lazy, rounded, size = 'unstyled', ...rest }: StackProps = $props();
 
 	const classes = $derived(
 		buildClass({
 			classes: [
-				`image image-${variant} object-cover`,
+				`image object-cover`,
 				ImageSize[size],
 				ImageAspect[aspect],
 				aspect === 'video' ? 'h-auto' : '',

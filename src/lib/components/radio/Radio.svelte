@@ -1,15 +1,21 @@
 <script context="module" lang="ts">
 	import type { ElementProps } from '$lib/types.js';
-	import { type ConfigProps } from '$lib/theme/build.svelte.js';
-	import { FillColor, type FocusType, type Size, type ThemeColor } from '$lib/theme/types.js';
+	import {
+		FillColor,
+		type FocusType,
+		type RoundedSize,
+		type ShadowSize,
+		type Size,
+		type ThemeColor
+	} from '$lib/theme/types.js';
 
 	export interface RadioProps {
 		disabled?: boolean;
 		focusType?: FocusType;
 		focusTheme?: ThemeColor;
 		group?: any;
-		rounded?: ConfigProps['rounded'];
-		shadow?: ConfigProps['shadow'];
+		rounded?: RoundedSize | false;
+		shadow?: ShadowSize | false;
 		size?: Size;
 		theme?: ThemeColor;
 	}
@@ -36,7 +42,7 @@
 		rounded,
 		shadow,
 		size = 'md',
-		theme,
+		theme = $bindable(),
 		...rest
 	}: RadioProps & Omit<ElementProps<'input'>, 'size'> = $props();
 
