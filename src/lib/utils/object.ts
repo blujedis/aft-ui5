@@ -97,3 +97,4 @@ export function serializeError(err: Error & Record<string, any> | Record<string,
     args = [...args, null, 2]
   return JSON.stringify(result, ...args);
 }
+

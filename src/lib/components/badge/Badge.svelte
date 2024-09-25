@@ -11,11 +11,14 @@
 		type ThemeColor,
 		RingColor,
 		type RoundedSize,
-		type ShadowSize
+		type ShadowSize,
+		BgColorHover,
+		BgColorSoftHover
 	} from '$lib/theme/types.js';
 
 	export type BadgeProps = {
 		full?: boolean;
+		hoverable?: boolean;
 		removable?: boolean;
 		rounded?: RoundedSize | false;
 		shadow?: ShadowSize | false;
@@ -60,6 +63,7 @@
 
 	let {
 		full,
+		hoverable,
 		removable,
 		rounded,
 		shadow,
@@ -80,18 +84,27 @@
 				theme && variant === 'filled' && BgColor[theme],
 				theme && variant === 'filled' && BgColor[theme],
 				theme && variant === 'filled' && ForeColorFilled[theme],
-				!theme && (!variant || variant === 'filled') && 'bg-frame-200 dark:bg-frame-600',
+				theme && variant === 'filled' && hoverable && BgColorHover[theme],
+				!theme &&
+					(!variant || variant === 'filled') &&
+					'bg-frame-200 dark:bg-frame-600 hover:bg-frame-300 dark:hover:bg-frame-700',
 
 				theme && variant === 'soft' && BgColorSoft[theme],
 				theme && variant === 'soft' && ForeColorSoft[theme],
 				theme && variant === 'soft' && ForeColorSoftHover[theme],
 				!theme && variant === 'soft' && 'bg-frame-200 dark:bg-frame-800',
+				theme && variant === 'soft' && hoverable && BgColorSoftHover[theme],
+				!theme && variant === 'soft' && hoverable && 'hover:bg-frame-200 dark:hover:bg-frame-700',
 
 				variant === 'outlined' && RingWidth['sm'],
 				variant === 'outlined' && RingOffset['inset'],
 				variant === 'outlined' && 'body-light dark:body-dark',
 				theme && variant === 'outlined' && RingColor[theme],
-				!theme && variant === 'outlined' && 'ring-frame-300 dark:ring-frame-600',
+				!theme && variant === 'outlined' && 'ring-frame-400 dark:ring-frame-500',
+				!theme &&
+					variant === 'outlined' &&
+					hoverable &&
+					'hover:ring-frame-500 dark:hover:ring-frame-600',
 
 				rest.class
 			],

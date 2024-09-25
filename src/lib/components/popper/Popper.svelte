@@ -46,6 +46,7 @@
 		target?: string | HTMLElement;
 		trigger?: string;
 		visible?: boolean;
+		onClosed?: () => any;
 		children: Snippet;
 	}
 
@@ -84,6 +85,7 @@
 		target,
 		trigger,
 		visible = $bindable(),
+		onClosed,
 		children,
 		...rest
 	}: PopperProps & ElementProps<'div'> = $props();
@@ -161,6 +163,7 @@
 				visible = false;
 			}, 100);
 		} else visible = false;
+		if (onClosed) onClosed();
 	}
 
 	function handleOpen(e?: Event) {

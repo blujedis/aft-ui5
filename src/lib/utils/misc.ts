@@ -6,10 +6,10 @@
  * @param value the boolean, null or undefined value to be inspected.
  * @param def the default value to be returned if value is true.
  */
-export function truthyOrDefault(value: any, def?: any) {
-  if (value) return value;
-  return def;
-}
+// export function truthyOrDefault(value: any, def?: any) {
+//   if (value) return value;
+//   return def;
+// }
 
 /**
  * Generates a cheap unique ID.

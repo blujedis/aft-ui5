@@ -10,8 +10,7 @@
 	type Item = Product | DropdownInputItem;
 
 	let value = $state([3, 8]); // [3, 8]
-	let query = $state('');
-	let filtered = $state([]) as Item[];
+	let filtered = $state() as Item[];
 
 	function isSelected(product: any) {
 		if (Array.isArray(value)) return value.some((v) => product.id == v);
@@ -34,23 +33,23 @@
 
 <Links items={links} />
 
-<div class="flex mb-8">
+<div class="flex mb-8 max-w-sm">
 	<form onsubmit={handleSubmit} class="w-full">
 		<div class="mb-8">
 			<input type="text" class="form-input" />
 		</div>
 		<DropdownInput
 			bind:value
-			bind:query
 			bind:filtered
 			items={products}
 			name="product"
 			labelKey="title"
-			theme="danger"
+			theme="primary"
+			rounded="md"
 			filterable
 			removable
 		>
-			<Dropdown event="none">
+			<Dropdown event="none" theme="unstyled">
 				{#if !filtered?.length}
 					<div class="px-4 py-2 text-frame-500">No items...</div>
 				{:else}

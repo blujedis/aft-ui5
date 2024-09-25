@@ -87,6 +87,7 @@
 	function handleClick(e: Event) {
 		if (context?.selectable) {
 			context?.setSelected(value);
+			context?.setFocus();
 		}
 	}
 
@@ -115,8 +116,6 @@
 	{...rest}
 	type={!href ? 'button' : undefined}
 	bind:this={el}
-	data-value={value}
-	{value}
 	class={classes}
 	aria-selected={selected}
 	{disabled}

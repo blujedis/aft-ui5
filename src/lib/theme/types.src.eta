@@ -312,6 +312,20 @@ export const ForeColorSelected = {
   white: 'aria-selected:text-{{=i.foreOutline.white[0]}} dark:aria-selected:text-{{=i.foreOutline.white[1]}}',
 };
 
+export const ForeColorCurrent = {
+  unstyled: '',
+  primary: 'aria-[current="page"]:text-{{=i.foreOutline.primary[0]}} dark:aria-[current="page"]:text-{{=i.foreOutline.primary[1]}}',
+  secondary: 'aria-[current="page"]:text-{{=i.foreOutline.secondary[0]}} dark:aria-[current="page"]:text-{{=i.foreOutline.secondary[1]}}',
+  tertiary: 'aria-[current="page"]:text-{{=i.foreOutline.tertiary[0]}} dark:aria-[current="page"]:text-{{=i.foreOutline.tertiary[1]}}',
+  danger: 'aria-[current="page"]:text-{{=i.foreOutline.danger[0]}} dark:aria-[current="page"]:text-{{=i.foreOutline.danger[1]}}',
+  warning: 'aria-[current="page"]:text-{{=i.foreOutline.warning[0]}} dark:aria-[current="page"]:text-{{=i.foreOutline.warning[1]}}',
+  success: 'aria-[current="page"]:text-{{=i.foreOutline.success[0]}} dark:aria-[current="page"]:text-{{=i.foreOutline.success[1]}}',
+  info: 'aria-[current="page"]:text-{{=i.foreOutline.info[0]}} dark:aria-[current="page"]:text-{{=i.foreOutline.info[1]}}',
+  light: 'aria-[current="page"]:text-{{=i.foreOutline.light[0]}} dark:aria-[current="page"]:text-{{=i.foreOutline.light[1]}}',
+  dark: 'aria-[current="page"]:text-{{=i.foreOutline.dark[0]}} dark:aria-[current="page"]:text-{{=i.foreOutline.dark[1]}} ',
+  white: 'aria-[current="page"]:text-{{=i.foreOutline.white[0]}} dark:aria-[current="page"]:text-{{=i.foreOutline.white[1]}}',
+};
+
 export const BgColor = {
   unstyled: '',
   primary: 'bg-{{=i.bg.primary[0]}} dark:bg-{{=i.bg.primary[1]}}',

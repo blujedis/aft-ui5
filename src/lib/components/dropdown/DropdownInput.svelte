@@ -13,17 +13,22 @@
 	import type { ElementProps } from '$lib/types.js';
 	import type { DropdownApi } from './Dropdown.svelte';
 
-	export interface DropdownInputContext {
+	export interface DropdownInputContext<T extends DropdownInputItem> {
 		event: PopperEvent;
 		escapable: boolean;
+		labelKey: keyof T;
 		multiple: boolean;
+		rounded: RoundedSize;
 		target: string;
 		theme: ThemeColor;
 		trigger: string;
+		valueKey: keyof T;
 		setVisibility: (value: boolean) => any;
 		setPopper: (api: DropdownApi) => any;
-		getSelected: () => any[];
+		getSelected: () => T[];
+		getSelectedByIndex: (index: number) => T | null;
 		setSelected: (value: any) => any;
+		setFocus: () => any;
 	}
 
 	export interface DropdownInputApi {
@@ -32,7 +37,7 @@
 	}
 
 	export type DropdownInputItem = {
-		static?: boolean; // item cannot be removed.
+		persist?: boolean; // item cannot be removed.
 	} & Record<string, any>;
 
 	export interface DropdownInputProps<T extends DropdownInputItem> {
@@ -68,6 +73,19 @@
 		onCreate?: (label: string) => T | undefined | false;
 		children: Snippet;
 	}
+
+	const BadgeRoundedMap = {
+		unstyled: '',
+		false: '',
+		none: 'none',
+		full: 'full',
+		xs: 'xs',
+		sm: 'sm',
+		md: 'sm',
+		lg: 'md',
+		xl: 'md',
+		xl2: 'lg'
+	} as any;
 </script>
 
 <script lang="ts" generics="T extends DropdownInputItem">
@@ -99,9 +117,9 @@
 		focusTheme,
 		focusOffset = 'none',
 		full,
-		items: initItems,
+		items: initItems = [],
 		labelKey = 'label',
-		placeholder = 'Filter...',
+		placeholder = 'Select...',
 		query = $bindable(),
 		removable,
 		rounded,
@@ -126,13 +144,12 @@
 	let filtering = $state(false);
 	let visible = $state(false);
 	let dropdown = $state() as DropdownApi;
-
 	let items = $state(initItems);
 
 	const defaultValue = Array.isArray(value) ? [...value] : value;
 	const multiple = Array.isArray(defaultValue);
-	const selected = $derived.by(() => initSelected(value)) as T[];
-	const showPlaceholder = $derived(placeholder && !filtering && !selected);
+	const selected = $derived.by(() => initSelected(value)) as T | T[];
+	const showPlaceholder = $derived(!!placeholder && !filtering && !selected?.length);
 	const uid = uniqid().replace(/^#/, '');
 	const triggerId = 'dropdown-trigger-' + uid;
 	const targetId = 'dropdown-target-' + uid;
@@ -140,15 +157,23 @@
 	setContext('DropdownInput', {
 		event: 'focus',
 		escapable,
+		labelKey,
 		multiple,
+		rounded,
 		theme,
 		target: '.' + targetId,
 		trigger: '.' + triggerId,
+		valueKey,
 		setVisibility: (val: boolean) => (visible = val),
 		setPopper: (val: DropdownApi) => (dropdown = val),
 		getSelected: () => value,
-		setSelected
-	} as DropdownInputContext);
+		getSelectedByIndex: (index: number) => {
+			if (filtered) return filtered[index];
+			return null;
+		},
+		setSelected,
+		setFocus: handleFocus
+	} as DropdownInputContext<T>);
 
 	// CSS Classes
 
@@ -186,14 +211,12 @@
 
 	const valueContainerClasses = $derived(
 		clsxm(
-			'items-center flex-1 relative overflow-hidden flex-wrap',
+			'items-center relative flex-1 overflow-hidden flex-wrap',
 			!multiple && 'grid overflow-hidden',
-			multiple && 'flex',
-			size && !multiple && FieldPaddingX[size],
+			multiple && 'flex pb-1.5',
+			// size && !multiple && FieldPaddingX[size],
 			size && !multiple && !(creatable || filterable) && FieldPaddingY[size],
 			size && !multiple && 'pr-0'
-			// multiple && 'pl-2'
-			// size && FieldPaddingY[size]
 		)
 	);
 
@@ -210,7 +233,7 @@
 
 	const tagClasses = $derived(
 		buildClass({
-			classes: ['flex min-w-0 m-1.5 mr-0', !theme && 'focus:outline-frame-500/50'],
+			classes: ['flex min-w-0', !theme && 'focus:outline-frame-500/50', 'ml-2 mt-1.5'],
 			focusType: 'visible',
 			focusTheme: focusTheme || theme,
 			focusOffset: 'none',
@@ -220,9 +243,9 @@
 
 	const inputContainerClasses = $derived(
 		clsxm(
-			'inline-grid grid-cols-[0px_min-content] visible flex-auto input-container',
-			!multiple && 'grid-area',
-			multiple && 'flex-auto'
+			'inline-grid grid-cols-[0px_min-content] visible input-container',
+			multiple && 'grid-area',
+			!multiple && 'flex-auto'
 		)
 	);
 
@@ -233,7 +256,8 @@
 			border-none focus:ring-0 m-0 p-0 cursor-default`,
 			multiple && 'ml-2',
 			size && FieldFontSize[size],
-			size && FieldPaddingY[size]
+			!selected?.length && size && 'mt-1.5',
+			selected?.length && 'mt-1.5'
 			// size && FieldPaddingX[size],
 		)
 	);
@@ -259,6 +283,8 @@
 			focusOffset: 'none'
 		})
 	);
+
+	const placeholderMulti = $derived(clsxm('flex items-center ml-2 mt-1.5'));
 
 	// Helper Functions
 
@@ -293,7 +319,7 @@
 	// pass in user defined filter function
 	// with more advanced fuzzy search if desired.
 	function filterItems(query = '') {
-		if (!query) return items;
+		if (!query) return [...items];
 		return items.filter((item) => {
 			return getLabelByItem(item).toLowerCase().startsWith(query.toLowerCase());
 		});
@@ -314,7 +340,7 @@
 				value = value.filter((v: any) => v !== val); // exists remove
 			else value.push(val); //= [...value, val]; // new add
 		} else {
-			if (value == val || typeof val === 'undefined')
+			if (value === val || typeof val === 'undefined')
 				value = ''; // clear single val.
 			else value = val; // set single value.
 		}
@@ -332,13 +358,10 @@
 	}
 
 	function handleRemove(item: T) {
-		if (!multiple || !item || !removable) return;
+		if (!multiple || !item || !removable || item.persist) return;
 		try {
 			const shouldRemove = onRemove(item);
-			if (shouldRemove && item)
-				setTimeout(() => {
-					setSelected(item[valueKey]);
-				});
+			if (shouldRemove && item) setSelected(item[valueKey]);
 			resetValues();
 		} catch (ex) {
 			console.error(ex);
@@ -383,11 +406,11 @@
 	}
 
 	function handleFocus(
-		e: FocusEvent & {
+		e?: FocusEvent & {
 			currentTarget: EventTarget & HTMLElement;
 		}
 	) {
-		dropdown?.open(e);
+		if (!visible && e) dropdown?.open(e);
 		setTimeout(() => {
 			if (filterable || creatable) {
 				input?.focus();
@@ -404,9 +427,9 @@
 			return;
 
 		if (e.key === 'Backspace' && multiple && !query?.length && removable) {
-			const item = findItemByValue(value[value.length - 1]) as T;
-			handleRemove(item);
-			setTimeout(() => input?.focus());
+			filtering = false;
+			const sel = $state.snapshot(selected) as T[];
+			if (sel.length) setSelected(sel[sel.length - 1][valueKey]);
 			return;
 		}
 
@@ -449,13 +472,16 @@
 				&nbsp;
 			</div>
 		{/if}
-
 		{#if Array.isArray(selected)}
 			{#each selected as item}
 				<ConditionalSnippet user={tag}>
 					<button type="button" onclick={createRemove(item)} class={tagClasses}>
-						<Badge variant="filled" removable {theme} class="pointer-events-none"
-							>{getLabelByItem(item)}</Badge
+						<Badge
+							variant="soft"
+							removable
+							hoverable
+							rounded={!rounded ? '' : BadgeRoundedMap[rounded]}
+							{theme}>{getLabelByItem(item)}</Badge
 						>
 					</button>
 				</ConditionalSnippet>
@@ -484,6 +510,9 @@
 					onchange={handleChange}
 					onkeydown={handleKeydown}
 				/>
+				{#if multiple && showPlaceholder && !selected?.length}
+					<div class={placeholderMulti}>{placeholder}</div>
+				{/if}
 			</div>
 		{/if}
 	</div>
@@ -522,7 +551,29 @@
 
 {@render children()}
 
-<select {...rest} class="sr-only" bind:value></select>
+{#if multiple}
+	<select {...rest} class="sr-only" bind:value multiple>
+		<option value="" selected disabled>Select...</option>
+		{#if filtered?.length}
+			{#each filtered as item}
+				<option value={item[valueKey]}>
+					{item[labelKey]}
+				</option>
+			{/each}
+		{/if}
+	</select>
+{:else}
+	<select {...rest} class="sr-only" bind:value>
+		<option value="" selected disabled>Select...</option>
+		{#if filtered?.length}
+			{#each filtered as item}
+				<option value={item[valueKey]} selected={selected === item[valueKey]}>
+					{item[labelKey]}
+				</option>
+			{/each}
+		{/if}
+	</select>
+{/if}
 
 <style>
 	.grid-area {

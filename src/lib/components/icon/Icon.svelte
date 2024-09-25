@@ -36,7 +36,7 @@
 		full: 'w-full h-full'
 	};
 
-	const IconRotate = {
+	const IconRotation = {
 		unstyled: '',
 		'0': '',
 		'45': 'rotate-45',
@@ -73,7 +73,7 @@
 			!theme && 'text-inherit',
 			// !theme && !context && 'text-frame-400 dark:text-frame-400',
 			// !theme && context && 'text-inherit',
-			rotate && IconRotate[rotate as IconRotate],
+			rotate && IconRotation[rotate as IconRotate],
 			IconSize[size],
 			rest.class
 		)

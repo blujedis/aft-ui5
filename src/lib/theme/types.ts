@@ -15,7 +15,7 @@ export type JustifyContentType = keyof typeof JustifyContent;
 export type RoundedSize = keyof typeof Rounded;
 export type ShadowSize = keyof typeof Shadow;
 
-export const build = ['alert', 'avatar', 'badge', 'breadcrumb', 'button', 'card', 'checkbox', 'disclosure', 'divider', 'drawer', 'dropdown', 'flushed', 'icon', 'image', 'indicator', 'input', 'kbd', 'label', 'modal', 'notifications', 'popover', 'progress', 'radio', 'range', 'rating', 'select', 'spinner', 'stack', 'switch', 'textarea', 'tooltip'];
+export const build = ['alert', 'avatar', 'badge', 'breadcrumb', 'button', 'card', 'checkbox', 'disclosure', 'divider', 'drawer', 'dropdown', 'flushed', 'icon', 'image', 'indicator', 'input', 'kbd', 'label', 'modal', 'notifications', 'pager', 'popover', 'progress', 'radio', 'range', 'rating', 'select', 'spinner', 'stack', 'switch', 'textarea', 'tooltip'];
 
 export const Placeholder = {
   unstyled: '',
@@ -310,6 +310,20 @@ export const ForeColorSelected = {
   light: 'aria-selected:text-frame-600 dark:aria-selected:text-frame-200',
   dark: 'aria-selected:text-frame-700 dark:aria-selected:text-frame-200 ',
   white: 'aria-selected:text-white dark:aria-selected:text-white',
+};
+
+export const ForeColorCurrent = {
+  unstyled: '',
+  primary: 'aria-[current="page"]:text-primary-500 dark:aria-[current="page"]:text-primary-300',
+  secondary: 'aria-[current="page"]:text-secondary-500 dark:aria-[current="page"]:text-secondary-300',
+  tertiary: 'aria-[current="page"]:text-tertiary-500 dark:aria-[current="page"]:text-tertiary-300',
+  danger: 'aria-[current="page"]:text-danger-500 dark:aria-[current="page"]:text-danger-300',
+  warning: 'aria-[current="page"]:text-warning-500 dark:aria-[current="page"]:text-warning-300',
+  success: 'aria-[current="page"]:text-success-500 dark:aria-[current="page"]:text-success-300',
+  info: 'aria-[current="page"]:text-info-500 dark:aria-[current="page"]:text-info-300',
+  light: 'aria-[current="page"]:text-frame-600 dark:aria-[current="page"]:text-frame-200',
+  dark: 'aria-[current="page"]:text-frame-700 dark:aria-[current="page"]:text-frame-200 ',
+  white: 'aria-[current="page"]:text-white dark:aria-[current="page"]:text-white',
 };
 
 export const BgColor = {

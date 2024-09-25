@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Icon from '$lib/components/icon/Icon.svelte';
 	import Image from '$lib/components/image/Image.svelte';
-	import { colors } from '$lib/theme/types.js';
+	import { colors } from '$lib/theme/globals.js';
 	import { capitalize } from '$lib/utils/string.js';
 	import type { Component } from 'svelte';
 

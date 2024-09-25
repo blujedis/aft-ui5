@@ -2,7 +2,7 @@
 	import { getContext, setContext, type Snippet } from 'svelte';
 	import Popper, { type PopperApi, type PopperProps } from '../popper/Popper.svelte';
 	import { buildClass } from '$lib/theme/build.svelte.js';
-	import { FieldFontSize } from '$lib/theme/constants.js';
+	import { Elevation, FieldFontSize } from '$lib/theme/constants.js';
 	import {
 		type ElevationSize,
 		type RoundedSize,
@@ -10,7 +10,7 @@
 		type ThemeColor
 	} from '$lib/theme/types.js';
 	import type { ElementProps } from '$lib/types.js';
-	import type { DropdownInputContext } from './DropdownInput.svelte';
+	import type { DropdownInputContext, DropdownInputItem } from './DropdownInput.svelte';
 	import type { DropdownGroupContext } from './DropdownGroup.svelte';
 
 	export type DropdownApi = PopperApi & {
@@ -26,7 +26,8 @@
 		variant: DropdownProps['variant'];
 		multiple: boolean;
 		selectable: boolean;
-		setSelected: (value: any) => void;
+		setSelected: (value: any) => any;
+		setFocus: () => any;
 	};
 
 	export type DropdownProps = Omit<PopperProps, 'children' | 'arrow' | 'arrowClass'> & {
@@ -42,12 +43,12 @@
 	};
 </script>
 
-<script lang="ts">
+<script lang="ts" generics="T extends DropdownInputItem">
 	import t from '$lib/theme/theme.svelte.js';
 	import { uniqid } from '$lib/utils/misc.js';
 
 	const contextGroup = getContext('DropdownController') as DropdownGroupContext;
-	const contextInput = getContext('DropdownInput') as DropdownInputContext;
+	const contextInput = getContext('DropdownInput') as DropdownInputContext<T>;
 
 	let {
 		elevation = 'lg',
@@ -57,7 +58,7 @@
 		offset = 4,
 		scrollable = typeof contextInput !== 'undefined',
 		placement = 'bottom-start',
-		rounded,
+		rounded = contextInput?.rounded,
 		size = 'md',
 		target,
 		theme = $bindable(contextInput?.theme),
@@ -85,7 +86,8 @@
 		setSelected: (value: any) => {
 			contextInput?.setSelected(value);
 			if (!contextInput?.multiple) handleClose();
-		}
+		},
+		setFocus: contextInput?.setFocus
 	} as DropdownContext);
 
 	const classes = $derived(
@@ -96,6 +98,7 @@
 				scrollable && 'overflow-y-scroll max-h-64 scrollbar-sm',
 				t.options.card,
 				'z-40 relative min-w-28 outline-none',
+				size && Elevation[size],
 				rest.class
 			],
 			elevation,
@@ -131,16 +134,19 @@
 		contextGroup?.setConf(id as string, { last: el });
 	}
 
-	function onSelect(node: HTMLElement | null, e: KeyboardEvent) {
+	function onSelect(index: number, node: HTMLElement | null, e: KeyboardEvent) {
 		if (!node) return;
-		const el = node as HTMLElement & { value?: any };
-		const value = typeof el.value !== 'undefined' ? el.value : el.dataset.value;
-		contextInput?.setSelected(value);
+		// const el = node as HTMLElement & { value?: any };
+		const item = contextInput?.getSelectedByIndex(index);
+		const val = !item ? null : item[contextInput?.valueKey];
+		if (item && val !== null) contextInput?.setSelected(val);
 		if (!contextInput?.multiple) handleClose(e);
+		else contextInput?.setFocus();
 	}
 
 	function onFind(items: HTMLElement[], key: KeyboardEvent['key']) {
 		let found = items.find((el) => el.classList.contains('dropdown-item-selected'));
+		// start at top or bottom of list depending on key pressed.
 		if (!found) {
 			if (key === 'ArrowDown') found = items.find((el) => el.classList.contains('dropdown-item'));
 			else found = items[items.length - 1];
@@ -173,8 +179,10 @@
 		//////////////////////////////////////////////
 
 		if ((e.key === ' ' || e.key === 'Enter') && list.contains(activeNode)) {
-			console.log(activeNode);
-			onSelect(activeNode, e);
+			if (activeNode && list.contains(activeNode)) {
+				const index = elements.indexOf(activeNode);
+				onSelect(index, activeNode, e);
+			}
 		}
 
 		//////////////////////////////////////////////
@@ -183,26 +191,28 @@
 		else if (activeNode) {
 			let currentNode: HTMLElement | undefined;
 
+			const currentIndex = elements.indexOf(activeNode);
+			const dir = e.key === 'ArrowDown' ? 1 : -1;
+
+			// At bottom of list set to first.
+			if (currentIndex === max && dir === 1) {
+				currentNode = elements[0];
+				onNavigate(currentNode, -1);
+			}
+			// At top of list set to last.
+			else if (currentIndex === 0 && dir === -1) {
+				currentNode = elements[elements.length - 1];
+				onNavigate(currentNode, max);
+			}
+
 			// Active node is within the container.
-			if (list.contains(activeNode)) {
+			else if (list.contains(activeNode)) {
 				// already navigating child nodes.
-				const currentIndex = elements.indexOf(activeNode);
-				const dir = e.key === 'ArrowDown' ? 1 : -1;
+
 				const nextIndex = e.key === 'ArrowDown' ? currentIndex + dir : currentIndex + dir;
 
 				let [nextNode, nodeIndex] = getNextNode(nextIndex, dir);
 				if (!nextNode) return;
-
-				// At top redirect to bottom.
-				if (nodeIndex === 0 && e.key === 'ArrowUp') {
-					nextNode = elements[elements.length - 1];
-					nodeIndex = max;
-				}
-				// At bottom redirect to top.
-				else if (nodeIndex === max && e.key === 'ArrowDown') {
-					nextNode = elements[0];
-					nodeIndex = 0;
-				}
 
 				currentNode = nextNode;
 				onNavigate(currentNode, Math.max(0, nodeIndex - 1));
@@ -232,7 +242,6 @@
 	}
 
 	function handleClose(e?: Event) {
-		// visible = false;
 		popper?.close(e);
 	}
 

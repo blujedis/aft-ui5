@@ -98,7 +98,10 @@
 
 	const classes = $derived(
 		buildClass({
-			prepend: [`button button-${variant || 'default'} button-${theme} `],
+			prepend: [
+				`button button-${variant || 'default'} button-${theme}`,
+				as === 'a' && 'button-link'
+			],
 			classes: [
 				`inline-flex items-center justify-center cursor-pointer outline-none`,
 				variant !== 'text' || textblock ? ButtonPaddingX[size] : '',
@@ -132,14 +135,15 @@
 				theme && variant === 'soft' && ForeColorSoft[theme],
 				theme && variant === 'soft' && ForeColorSoftHover[theme],
 				theme && variant === 'soft' && SelectedSoftTypes.checked[selectedTheme || theme],
+				!theme && variant === 'soft' && 'hover:bg-frame-200 dark:hover:bg-frame-700',
 
 				theme && variant === 'outlined' && ForeColorOutline[theme],
 				theme && variant === 'outlined' && ForeColorOutlineHover[theme],
 				theme && variant === 'outlined' && SelectedSoftTypes.checked[selectedTheme || theme],
 				variant === 'outlined' && RingWidth['sm'],
 				variant === 'outlined' && RingOffset['inset'],
-				variant === 'outlined' && RingColor[theme || 'unstyled'],
-				variant === 'outlined' && RingColorHover[theme || 'unstyled'],
+				theme && variant === 'outlined' && RingColor[theme],
+				theme && variant === 'outlined' && RingColorHover[theme],
 				variant === 'outlined' &&
 					theme === 'dark' &&
 					'aria-checked:text-frame-50 aria-checked:hover:text-frame-200',
@@ -174,6 +178,13 @@
 	);
 </script>
 
-<button {role} {...rest} checked={selected} aria-checked={selected} class={classes}>
+<svelte:element
+	this={as}
+	{role}
+	{...rest}
+	checked={selected}
+	aria-checked={selected}
+	class={classes}
+>
 	{@render children()}
-</button>
+</svelte:element>
