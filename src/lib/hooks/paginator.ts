@@ -1,51 +1,66 @@
+
 export interface PaginatorOptions {
+	param?: string; // the name of the query parameter which stores the current page number.
 	items?: number; // the number of items in the collection or a collection itself.
-	current?: string | number | null; // the current selected page that is selected.
-	count?: number; // the number of items per page ex: 10, 25, 50.
+	current?: number; // the current selected page that is selected.
+	size?: number; // the number of items per page ex: 10, 25, 50.
 	buttons?: number; // number of pages shown, your button count.
-	ellipsis?: boolean; // when true include ellipsis in active pages collection.
+	ellipsis?: string | boolean; // when true include ellipsis in active pages collection.
 }
 
 export interface Paginator extends PaginatorOptions {
-	total: number;
+	totalPages: number;
 	firstPage: number;
 	lastPage: number;
 	firstIndex: number;
 	lastIndex: number;
-	displayed: (string | number)[];
-	next: number;
-	previous: number;
+	pages: (string | number)[];
+	nextPage: number;
+	prevPage: number;
+}
+
+export function getParam(params: URLSearchParams, param = 'page', def = 1) {
+	const value = params.get(param);
+	if (value === null) return def;
+	return Number(value);
+}
+
+export function getUrl(url = '', page = 1 as string | number, param = 'page') {
+	const [href, query] = url.split('?');
+	const params = new URLSearchParams(query);
+	params.set(param, String(page));
+	return [href, params.toString()].join('?');
 }
 
 export function paginator(options = {} as PaginatorOptions) {
+
+
 	// eslint-disable-next-line prefer-const
-	let { items, current, count, buttons, ellipsis } = {
+	let { items, current, size, buttons, ellipsis } = {
 		items: 0,
 		current: 1,
-		count: 10,
+		size: 10,
 		buttons: 10,
-		ellipsis: false,
+		ellipsis: '',
 		param: 'page',
 		...options
 	} as Required<PaginatorOptions>;
 
-	current = Number(current);
-
 	// Total number of pages based on the
 	// size or number of items to display.
-	const total = Math.ceil(items / count);
+	const totalPages = Math.ceil(items / size);
 
 	// ensure current page isn't out of range
 	if (current < 1) current = 1;
-	else if (current > total) current = total;
+	else if (current > totalPages) current = totalPages;
 
 	let firstPage: number;
 	let lastPage: number;
 
 	// Total is less than shown so show all pages.
-	if (total <= buttons) {
+	if (totalPages <= buttons) {
 		firstPage = 1;
-		lastPage = total;
+		lastPage = totalPages;
 	} else {
 		// Caclulate before/after current page.
 		const pagesBeforeCurrent = Math.floor(buttons / 2);
@@ -58,9 +73,9 @@ export function paginator(options = {} as PaginatorOptions) {
 		}
 
 		// Calcutate end
-		else if (current + pagesAfterCurrent >= total) {
-			firstPage = total - buttons + 1;
-			lastPage = total;
+		else if (current + pagesAfterCurrent >= totalPages) {
+			firstPage = totalPages - buttons + 1;
+			lastPage = totalPages;
 		}
 
 		// Calcluate middle of range.
@@ -71,53 +86,48 @@ export function paginator(options = {} as PaginatorOptions) {
 	}
 
 	// Get start record for range.
-	const firstIndex = (current - 1) * count;
+	const firstIndex = (current - 1) * size;
 
 	// Get end record for range.
-	const lastIndex = Math.min(firstIndex + count - 1, items - 1);
+	const lastIndex = Math.min(firstIndex + size - 1, items - 1);
 
 	// Array of pages.
-	let displayed = Array.from(Array(lastPage + 1 - firstPage).keys()).map((i) => firstPage + i) as (
+	let pages = Array.from(Array(lastPage + 1 - firstPage).keys()).map((i) => firstPage + i) as (
 		| string
 		| number
 	)[];
 
 	if (ellipsis) {
+		const _ellipsis = typeof ellipsis === 'string' ? ellipsis : '...';
 		const prefix = [] as (string | number)[];
 		const suffix = [] as (string | number)[];
 
-		if (!displayed.includes(1)) {
+		if (!pages.includes(1)) {
 			prefix.push(1);
-			if ((displayed[0] as number) > 2) prefix.push('...');
+			if ((pages[0] as number) > 2) prefix.push(_ellipsis);
 		}
 
-		if (!displayed.includes(total - 1)) suffix.push('...');
-		if (!displayed.includes(total)) suffix.push(total);
+		if (!pages.includes(totalPages - 1)) suffix.push(_ellipsis);
+		if (!pages.includes(totalPages)) suffix.push(totalPages);
 
-		displayed = [...prefix, ...displayed, ...suffix];
+		pages = [...prefix, ...pages, ...suffix];
 
 	}
 
-	const next = Math.min(lastPage, (current || 1) + 1);
-	const previous = Math.max(1, (current || 1) - 1);
+	const nextPage = Math.min(lastPage, (current || 1) + 1);
+	const prevPage = Math.max(1, (current || 1) - 1);
 
+	return {
 
-	const api: Paginator = {
-		items, // collection length of items
 		current, // the current page.
-		count, // the items size/count shown per page.
-		buttons: buttons, // the number of page buttons to display.
-		ellipsis, // when true ellipsis are included as needed.
-
-		total, // total pages based on size/count of items displayed.
+		totalPages, // total pages based on size/count of items displayed.
 		firstPage, // the start page in the pages array.
 		lastPage, // the end page in the pages array.
 		firstIndex, // the starting index in the range.
 		lastIndex, // the ending index in the range.
-		displayed, // the array of pages number for current config.
-		next, // the next page.
-		previous, // the previous page.
-	};
+		pages, // the array of pages number for current config.
+		nextPage, // the next page.
+		prevPage, // the previous page.
 
-	return api;
+	} as Paginator;
 }

@@ -20,7 +20,19 @@ export const Rounded = {
   xl: 'rounded-xl',
   xl2: 'rounded-2xl',
   full: 'rounded-full',
-}
+};
+
+export const RoundedFirstLast = {
+  unstyled: '',
+  none: 'rounded-none',
+  xs: 'first:rounded-xs last:rounded-xs',
+  sm: 'first:rounded-sm last:rounded-sm',
+  md: 'first:rounded-md last:rounded-md',
+  lg: 'first:rounded-lg last:rounded-lg',
+  xl: 'first:rounded-xl last:rounded-xl',
+  xl2: 'first:rounded-2xl last:rounded-2xl',
+  full: 'first:rounded-full last:rounded-full',
+};
 
 export const Shadow = {
   unstyled: '',

@@ -1,6 +1,5 @@
 <script module lang="ts">
 	import { setContext, type Snippet } from 'svelte';
-	import { paginator, type Paginator } from '$lib/hooks/paginator.js';
 	import type { ElementProps } from '$lib/types.js';
 	import { clsxm } from '$lib/utils/string.js';
 	import {
@@ -16,80 +15,85 @@
 	export type PagerVariant = 'unstyled' | 'filled' | 'soft' | 'flushed';
 
 	export interface PagerContext {
-		pager: Paginator;
 		rounded: RoundedSize;
 		size: Size;
 		theme: ThemeColor;
 		variant: PagerVariant;
-		getUrl: (value: string | number) => string;
-		setCurrent: (value: string | number) => any;
-		getCurrent: () => number;
-		getNext: () => number;
-		getPrevious: () => number;
-		isCurrent: (value?: string | number) => boolean;
-		isLast: () => boolean;
-		isFirst: () => boolean;
 	}
 
 	export type PagerProps = {
-		items?: number;
-		current?: string | number | null;
-		buttons?: number;
-		count?: number;
-		pager?: Paginator;
+		// items?: number;
+		// buttons?: number;
+		// ellipsis?: boolean;
+		// displayed?: number;
+		// baseref?: string;
+		// current?: number; // string | number | null;
+		// pages?: (string | number)[];
+		// param?: string;
+		// nextPage?: number;
+		// prevPage?: number;
+		// totalPages?: number;
+
+		pager?: {
+			baseref?: string;
+			param?: string;
+			current?: number;
+			items?: number;
+			buttons?: number;
+			displayed?: number;
+		};
+		
 		rounded?: RoundedSize;
 		shadow?: ShadowSize;
 		size?: Size;
 		theme?: ThemeColor;
 		variant?: PagerVariant;
-		children: Snippet;
+		previous?: boolean | Snippet;
+		children?: Snippet;
+		next?: boolean | Snippet;
 	};
 </script>
 
 <script lang="ts">
 	import t from '$lib/theme/theme.svelte.js';
-	import { page } from '$app/stores';
-	import { goto } from '$app/navigation';
+	import { page, page as pageStore } from '$app/stores';
+	import PagerPage from './PagerPage.svelte';
+	import { getParam, getUrl } from './utils.js';
+	import { paginator } from '$lib/hooks/paginator.js';
 
 	let {
-		items = $bindable(0),
-		current = $bindable(),
-		buttons = $bindable(5),
-		count = $bindable(10),
-		pager = $bindable(),
+		pager = $bindable({
+			baseref:  $page.url.href,
+			current: getParam($page.url.searchParams, 'page'),
+			items: 10,
+			buttons: 5,
+			displayed: 10,
+			ellipsis: true
+		}),
 		rounded,
 		shadow,
 		size = 'md',
 		theme,
 		variant,
+		previous,
 		children,
+		next,
 		...rest
 	}: PagerProps & ElementProps<'nav'> = $props();
 
+	const current = $derived.by(() => getParam($pageStore.url.searchParams, pager?.param));
+	
+	const { pages, firstPage, lastPage, totalPages, nextPage, prevPage } = $derived.by(() => paginator({
+		current: getParam($page.url.searchParams, pager?.param || 'page'),
+		...pager
+	}));
+
 	setContext('Pager', {
-		pager,
 		rounded,
 		size,
 		theme,
-		variant,
-		getUrl: (value) => getUrl(value),
-		getCurrent: () => Number(pager?.current),
-		getNext: () => pager?.next,
-		getPrevious: () => pager?.previous,
-		setCurrent: (value) => {
-			current = value;
-			goto(getUrl(value));
-		},
-		isCurrent: (value) => Number(pager?.current) == value,
-		isFirst: () => Number(pager?.current) === 1,
-		isLast: () => pager?.lastPage === Number(pager?.current)
+		variant 
 	} as PagerContext);
-
-	function getUrl(value: string | number) {
-		const params = $page.url.searchParams;
-		params.set('page', value + '');
-		return `?${params.toString()}`;
-	}
 
 	const classes = $derived(
 		clsxm(
@@ -111,19 +115,35 @@
 			rest.class
 		)
 	);
-
-	$effect(() => {
-		const pg = $page.url.searchParams.get('page');
-		pager = paginator({
-			items, // can be count or array
-			current: Number(pg || 1),
-			buttons,
-			count,
-			ellipsis: true
-		});
-	});
 </script>
 
 <nav aria-label="pagination" {...rest} class={classes}>
-	{@render children()}
+	<!-- {#if children}
+		{@render children({ displayed: [], next: 1, previous: 1 })}
+	{/if} -->
+	{#if typeof previous === 'boolean'}
+		<PagerPage href={getUrl($pageStore.url.href, prevPage, pager?.param)} disabled={current === 1}
+			>Previous</PagerPage
+		>
+	{:else if typeof previous === 'function'}
+		{@render previous()}
+	{/if}
+
+	{#if children}
+		{@render children()}
+	{:else}
+		{#each pages as page}
+			<PagerPage current={current === page} href={getUrl($pageStore.url.href, page, pager?.param)}>
+				{page}
+			</PagerPage>
+		{/each}
+	{/if}
+
+	{#if typeof next === 'boolean'}
+		<PagerPage href={getUrl($pageStore.url.href, nextPage, pager?.param)} disabled={totalPages === current}
+			>Next</PagerPage
+		>
+	{:else if typeof next === 'function'}
+		{@render next()}
+	{/if}
 </nav>

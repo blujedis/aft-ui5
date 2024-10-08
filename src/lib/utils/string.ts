@@ -18,6 +18,7 @@ export function pageIsActive(
   match: string | RegExp
 ) {
   let pathname = page.url.pathname.replace(/^\//, '');
+  if (!pathname) return false;
   if (typeof match === 'string') {
     if (pathname.includes('-'))
       pathname = pathname.split('-')[0];
