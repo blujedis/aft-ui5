@@ -42,7 +42,7 @@
 			buttons?: number;
 			displayed?: number;
 		};
-		
+
 		rounded?: RoundedSize;
 		shadow?: ShadowSize;
 		size?: Size;
@@ -63,7 +63,7 @@
 
 	let {
 		pager = $bindable({
-			baseref:  $page.url.href,
+			baseref: $page.url.href,
 			current: getParam($page.url.searchParams, 'page'),
 			items: 10,
 			buttons: 5,
@@ -82,17 +82,19 @@
 	}: PagerProps & ElementProps<'nav'> = $props();
 
 	const current = $derived.by(() => getParam($pageStore.url.searchParams, pager?.param));
-	
-	const { pages, firstPage, lastPage, totalPages, nextPage, prevPage } = $derived.by(() => paginator({
-		current: getParam($page.url.searchParams, pager?.param || 'page'),
-		...pager
-	}));
+
+	const { pages, firstPage, lastPage, totalPages, nextPage, prevPage } = $derived.by(() =>
+		paginator({
+			current: getParam($page.url.searchParams, pager?.param || 'page'),
+			...pager
+		})
+	);
 
 	setContext('Pager', {
 		rounded,
 		size,
 		theme,
-		variant 
+		variant
 	} as PagerContext);
 
 	const classes = $derived(
@@ -133,15 +135,20 @@
 		{@render children()}
 	{:else}
 		{#each pages as page}
-			<PagerPage current={current === page} href={getUrl($pageStore.url.href, page, pager?.param)}>
+			<PagerPage
+				current={current === page}
+				pointerless={page === '...'}
+				href={getUrl($pageStore.url.href, page, pager?.param)}
+			>
 				{page}
 			</PagerPage>
 		{/each}
 	{/if}
 
 	{#if typeof next === 'boolean'}
-		<PagerPage href={getUrl($pageStore.url.href, nextPage, pager?.param)} disabled={totalPages === current}
-			>Next</PagerPage
+		<PagerPage
+			href={getUrl($pageStore.url.href, nextPage, pager?.param)}
+			disabled={totalPages === current}>Next</PagerPage
 		>
 	{:else if typeof next === 'function'}
 		{@render next()}
