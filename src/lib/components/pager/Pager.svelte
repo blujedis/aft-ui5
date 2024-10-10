@@ -118,9 +118,6 @@
 </script>
 
 <nav aria-label="pagination" {...rest} class={classes}>
-	<!-- {#if children}
-		{@render children({ displayed: [], next: 1, previous: 1 })}
-	{/if} -->
 	{#if typeof previous === 'boolean'}
 		<PagerPage href={getUrl($pageStore.url.href, prevPage, pager?.param)} disabled={current === 1}
 			>Previous</PagerPage
