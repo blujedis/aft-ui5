@@ -1,13 +1,12 @@
 <script lang="ts">
 	import VariantList from '$components/VariantList.svelte';
-	import Image, { ImageAspect, ImageSize, imageVariants as variants } from './Image.svelte';
+	import Image, { ImageAspect, ImageSize } from './Image.svelte';
 	const sizes = Object.keys(ImageSize).slice(0, 11);
 	const aspect = Object.keys(ImageAspect);
 </script>
 
 <VariantList
 	component={Image}
-	{variants}
 	key="aspect"
 	modifiers={aspect}
 	props={{
@@ -19,7 +18,6 @@
 
 <VariantList
 	component={Image}
-	{variants}
 	key="size"
 	modifiers={sizes}
 	props={{
