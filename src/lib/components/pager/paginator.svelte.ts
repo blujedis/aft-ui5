@@ -1,22 +1,26 @@
 
 export interface PaginatorOptions {
-	param?: string; // the name of the query parameter which stores the current page number.
-	items?: number; // the number of items in the collection or a collection itself.
+	rows?: number; // the number of total rows in the collection or a collection itself.
 	current?: number; // the current selected page that is selected.
-	size?: number; // the number of items per page ex: 10, 25, 50.
+	displayed?: number; // the number of items displayed per page ex: 10, 25, 50.
 	buttons?: number; // number of pages shown, your button count.
-	ellipsis?: string | boolean; // when true include ellipsis in active pages collection.
+	ellipsis?: boolean; // when true include ellipsis in active pages collection.
 }
 
 export interface Paginator extends PaginatorOptions {
+	rows: number;
 	totalPages: number;
 	firstPage: number;
 	lastPage: number;
 	firstIndex: number;
 	lastIndex: number;
+	firstRecord: number;
+	lastRecord: number;
 	pages: (string | number)[];
+	pagesRaw: number[];
 	nextPage: number;
 	prevPage: number;
+	range: string;
 }
 
 export function getParam(params: URLSearchParams, param = 'page', def = 1) {
@@ -26,6 +30,8 @@ export function getParam(params: URLSearchParams, param = 'page', def = 1) {
 }
 
 export function getUrl(url = '', page = 1 as string | number, param = 'page') {
+	if (!page || page === '...')
+		return '';
 	const [href, query] = url.split('?');
 	const params = new URLSearchParams(query);
 	params.set(param, String(page));
@@ -34,21 +40,19 @@ export function getUrl(url = '', page = 1 as string | number, param = 'page') {
 
 export function paginator(options = {} as PaginatorOptions) {
 
-
 	// eslint-disable-next-line prefer-const
-	let { items, current, size, buttons, ellipsis } = {
-		items: 0,
+	let { rows, current, displayed, buttons, ellipsis } = {
+		rows: 0,
 		current: 1,
-		size: 10,
+		displayed: 10,
 		buttons: 10,
 		ellipsis: '',
-		param: 'page',
 		...options
 	} as Required<PaginatorOptions>;
 
 	// Total number of pages based on the
 	// size or number of items to display.
-	const totalPages = Math.ceil(items / size);
+	const totalPages = Math.ceil(rows / displayed);
 
 	// ensure current page isn't out of range
 	if (current < 1) current = 1;
@@ -86,28 +90,30 @@ export function paginator(options = {} as PaginatorOptions) {
 	}
 
 	// Get start record for range.
-	const firstIndex = (current - 1) * size;
+	const firstIndex = (current - 1) * displayed;
 
 	// Get end record for range.
-	const lastIndex = Math.min(firstIndex + size - 1, items - 1);
+	const lastIndex = Math.min(firstIndex + displayed - 1, rows - 1);
 
 	// Array of pages.
+	const pagesRaw = Array.from(Array(totalPages).keys()).map(i => i + 1);
+
 	let pages = Array.from(Array(lastPage + 1 - firstPage).keys()).map((i) => firstPage + i) as (
 		| string
 		| number
 	)[];
 
 	if (ellipsis) {
-		const _ellipsis = typeof ellipsis === 'string' ? ellipsis : '...';
+
 		const prefix = [] as (string | number)[];
 		const suffix = [] as (string | number)[];
 
 		if (!pages.includes(1)) {
 			prefix.push(1);
-			if ((pages[0] as number) > 2) prefix.push(_ellipsis);
+			if ((pages[0] as number) > 2) prefix.push('...');
 		}
 
-		if (!pages.includes(totalPages - 1)) suffix.push(_ellipsis);
+		if (!pages.includes(totalPages - 1)) suffix.push('...');
 		if (!pages.includes(totalPages)) suffix.push(totalPages);
 
 		pages = [...prefix, ...pages, ...suffix];
@@ -119,15 +125,21 @@ export function paginator(options = {} as PaginatorOptions) {
 
 	return {
 
+		rows, // total number of rows
 		current, // the current page.
 		totalPages, // total pages based on size/count of items displayed.
 		firstPage, // the start page in the pages array.
 		lastPage, // the end page in the pages array.
 		firstIndex, // the starting index in the range.
 		lastIndex, // the ending index in the range.
+		firstRecord: firstIndex + 1,
+		lastRecord: lastIndex + 1,
 		pages, // the array of pages number for current config.
+		pagesRaw,
 		nextPage, // the next page.
 		prevPage, // the previous page.
+		range: (firstIndex + 1) + '-' + (lastIndex + 1) + ' of ' + rows
+
 
 	} as Paginator;
 }

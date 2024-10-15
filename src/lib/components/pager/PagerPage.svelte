@@ -23,7 +23,6 @@
 		focusType?: FocusType;
 		focusTheme?: ThemeColor;
 		focusOffset?: Size | 'none';
-		pointerless?: boolean;
 		rounded?: RoundedSize;
 		size?: Size;
 		theme?: ThemeColor;
@@ -65,7 +64,6 @@
 		focusTheme,
 		focusOffset,
 		href,
-		pointerless,
 		rounded = context?.rounded,
 		size = context?.size,
 		theme = context?.theme,
@@ -114,7 +112,7 @@
 				rounded && RoundedFirstLast[size],
 				'first:rounded-r-none last:rounded-l-none',
 
-				pointerless && 'pointer-events-none',
+				!href && 'pointer-events-none',
 
 				t.options.transition,
 

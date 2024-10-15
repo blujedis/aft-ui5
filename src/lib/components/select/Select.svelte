@@ -56,7 +56,7 @@
 			classes: [
 				`form-select inline-flex items-center justify-center border-none`,
 				t.options.input,
-				'ring-1 ring-inset focus:ring-offset-0 focus:ring-inset pr-8',
+				'ring-1 ring-inset focus:ring-offset-0 focus:ring-inset pr-8 min-w-14',
 				size && FieldFontSize[size],
 				size && FieldPaddingX[size],
 				size && FieldPaddingY[size],

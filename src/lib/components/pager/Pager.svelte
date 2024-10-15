@@ -11,6 +11,7 @@
 		type ThemeColor
 	} from '$lib/theme/types.js';
 	import { Rounded, Shadow } from '$lib/theme/constants.js';
+	// import { type Paginator } from './paginator.svelte.js';
 
 	export type PagerVariant = 'unstyled' | 'filled' | 'soft' | 'flushed';
 
@@ -22,27 +23,9 @@
 	}
 
 	export type PagerProps = {
-		// items?: number;
-		// buttons?: number;
-		// ellipsis?: boolean;
-		// displayed?: number;
+		// pager?: Paginator;
 		// baseref?: string;
-		// current?: number; // string | number | null;
-		// pages?: (string | number)[];
 		// param?: string;
-		// nextPage?: number;
-		// prevPage?: number;
-		// totalPages?: number;
-
-		pager?: {
-			baseref?: string;
-			param?: string;
-			current?: number;
-			items?: number;
-			buttons?: number;
-			displayed?: number;
-		};
-
 		rounded?: RoundedSize;
 		shadow?: ShadowSize;
 		size?: Size;
@@ -56,20 +39,15 @@
 
 <script lang="ts">
 	import t from '$lib/theme/theme.svelte.js';
-	import { page, page as pageStore } from '$app/stores';
-	import PagerPage from './PagerPage.svelte';
-	import { getParam, getUrl } from './utils.js';
-	import { paginator } from '$lib/hooks/paginator.js';
+	// import { page } from '$app/stores';
+	// import PagerPage from './PagerPage.svelte';
+	// import { getParam, getUrl } from './utils.js';
+	// import { paginator } from './paginator.svelte.js';
 
 	let {
-		pager = $bindable({
-			baseref: $page.url.href,
-			current: getParam($page.url.searchParams, 'page'),
-			items: 10,
-			buttons: 5,
-			displayed: 10,
-			ellipsis: true
-		}),
+		// pager = $bindable(),
+		// baseref = $page.url.href,
+		// param = 'page',
 		rounded,
 		shadow,
 		size = 'md',
@@ -81,14 +59,17 @@
 		...rest
 	}: PagerProps & ElementProps<'nav'> = $props();
 
-	const current = $derived.by(() => getParam($pageStore.url.searchParams, pager?.param));
-
-	const { pages, firstPage, lastPage, totalPages, nextPage, prevPage } = $derived.by(() =>
-		paginator({
-			current: getParam($page.url.searchParams, pager?.param || 'page'),
-			...pager
-		})
-	);
+	// const url = $derived.by(() => new URL(baseref || $page.url.href));
+	// const current = $derived.by(() => getParam(url.searchParams, param));
+	// const { pages, firstPage, lastPage, totalPages, nextPage, prevPage } = $derived.by(() =>
+	// 	paginator({
+	// 		rows: 10,
+	// 		displayed: 5,
+	// 		buttons: 10,
+	// 		ellipsis: true,
+	// 		current
+	// 	})
+	// );
 
 	setContext('Pager', {
 		rounded,
@@ -120,12 +101,12 @@
 </script>
 
 <nav aria-label="pagination" {...rest} class={classes}>
-	<!-- {#if children}
-		{@render children({ displayed: [], next: 1, previous: 1 })}
-	{/if} -->
-	{#if typeof previous === 'boolean'}
-		<PagerPage href={getUrl($pageStore.url.href, prevPage, pager?.param)} disabled={current === 1}
-			>Previous</PagerPage
+	{#if children}
+		{@render children()}
+	{/if}
+
+	<!-- {#if typeof previous === 'boolean'}
+		<PagerPage href={getUrl(url.href, prevPage, param)} disabled={current === 1}>Previous</PagerPage
 		>
 	{:else if typeof previous === 'function'}
 		{@render previous()}
@@ -134,23 +115,22 @@
 	{#if children}
 		{@render children()}
 	{:else}
-		{#each pages as page}
+		{#each pages as pg}
 			<PagerPage
-				current={current === page}
-				pointerless={page === '...'}
-				href={getUrl($pageStore.url.href, page, pager?.param)}
+				current={current === pg}
+				pointerless={pg === '...'}
+				href={getUrl(url.href, pg, param)}
 			>
-				{page}
+				{pg}
 			</PagerPage>
 		{/each}
 	{/if}
 
 	{#if typeof next === 'boolean'}
-		<PagerPage
-			href={getUrl($pageStore.url.href, nextPage, pager?.param)}
-			disabled={totalPages === current}>Next</PagerPage
+		<PagerPage href={getUrl(url.href, nextPage, param)} disabled={totalPages === current}
+			>Next</PagerPage
 		>
 	{:else if typeof next === 'function'}
 		{@render next()}
-	{/if}
+	{/if} -->
 </nav>
