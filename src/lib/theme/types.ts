@@ -15,7 +15,7 @@ export type JustifyContentType = keyof typeof JustifyContent;
 export type RoundedSize = keyof typeof Rounded;
 export type ShadowSize = keyof typeof Shadow;
 
-export const build = ['alert', 'avatar', 'badge', 'breadcrumb', 'button', 'card', 'checkbox', 'disclosure', 'divider', 'drawer', 'dropdown', 'flushed', 'gallery', 'icon', 'image', 'indicator', 'input', 'kbd', 'label', 'modal', 'notifications', 'pager', 'popover', 'progress', 'radio', 'range', 'rating', 'select', 'spinner', 'stack', 'switch', 'textarea', 'tooltip'];
+export const build = ['alert', 'avatar', 'badge', 'breadcrumb', 'button', 'card', 'checkbox', 'disclosure', 'divider', 'drawer', 'dropdown', 'flushed', 'gallery', 'icon', 'image', 'indicator', 'input', 'kbd', 'label', 'modal', 'notifications', 'pager', 'picker', 'popover', 'progress', 'radio', 'range', 'rating', 'select', 'spinner', 'stack', 'switch', 'tabs', 'textarea', 'tooltip'];
 
 export const Placeholder = {
   unstyled: '',

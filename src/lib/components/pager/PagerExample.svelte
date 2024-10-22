@@ -65,7 +65,7 @@
 	</div>
 
 	<div class="mb-8 flex justify-end">
-		<Pager>
+		<Pager variant="text" theme="primary">
 			<PagerPage href={getUrl($page.url.href, prevPage)} disabled={current === 1}
 				>Previous</PagerPage
 			>

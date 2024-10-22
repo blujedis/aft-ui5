@@ -12,7 +12,7 @@
 	} from '$lib/theme/types.js';
 	import { Rounded, Shadow } from '$lib/theme/constants.js';
 
-	export type PagerVariant = 'unstyled' | 'filled' | 'soft' | 'flushed';
+	export type PagerVariant = 'unstyled' | 'filled' | 'soft' | 'text';
 
 	export interface PagerContext {
 		rounded: RoundedSize;
@@ -58,15 +58,13 @@
 	const classes = $derived(
 		clsxm(
 			`pager pager-variant-${variant || 'default'} pager-theme-${theme || 'default'}`,
-			variant !== 'flushed' && 'inline-flex items-center isolate -space-x-px',
+			variant !== 'text' && 'inline-flex items-center isolate -space-x-px',
 
 			(['filled', 'soft'].includes(variant || '') || !variant) && theme && RingColor[theme],
 			(['filled', 'soft'].includes(variant || '') || !variant) && t.options.divide,
 
-			variant === 'flushed' && 'border-t isolate inline-flex',
-			variant === 'flushed' && theme && BorderColor[theme],
-			variant === 'flushed' && theme && BorderColor[theme],
-			variant === 'flushed' && !theme && 'border-frame-300',
+			variant === 'text' && 'border-t isolate inline-flex',
+			variant === 'text' && t.options.border,
 
 			size && rounded && Rounded[size],
 			size && shadow && Shadow[size],

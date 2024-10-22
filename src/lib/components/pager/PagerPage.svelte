@@ -4,18 +4,20 @@
 	import {
 		BgColorCurrent,
 		BgColorSoftCurrent,
+		BorderColor,
+		BorderColorHover,
 		ForeColorCurrent,
 		ForeColorFilled,
 		ForeColorFilledHover,
 		ForeColorSoft,
 		ForeColorSoftHover,
+		SelectedTypes,
 		type FocusType,
 		type RoundedSize,
 		type Size,
 		type ThemeColor
 	} from '$lib/theme/types.js';
 	import { FieldFontSize, RoundedFirstLast } from '$lib/theme/constants.js';
-	import type { HTMLAnchorAttributes, HTMLBaseAttributes } from 'svelte/elements';
 
 	export interface PagerPageProps {
 		current?: boolean;
@@ -54,6 +56,7 @@
 <script lang="ts">
 	import t from '$lib/theme/theme.svelte.js';
 	import { buildClass } from '$lib/theme/build.svelte.js';
+	import type { ElementProps } from '$lib/types.js';
 
 	const context = getContext('Pager') as PagerContext;
 
@@ -70,22 +73,22 @@
 		variant = context?.variant,
 		children,
 		...rest
-	}: PagerPageProps & HTMLAnchorAttributes & HTMLBaseAttributes = $props();
+	}: PagerPageProps & ElementProps<'button' | 'a'> = $props();
 
 	const classes = $derived(
 		buildClass({
 			prepend: [`pager pager-${variant || 'default'} pager-${theme || 'default'}`],
 
 			classes: [
-				variant !== 'flushed' &&
+				variant !== 'text' &&
 					'relative inline-flex items-center justify-center font-semibold focus:z-20 ring-1 ring-inset ring-frame-200 dark:ring-frame-600',
-				variant !== 'flushed' && current && 'z-10',
+				variant !== 'text' && current && 'z-10',
 
-				variant === 'flushed' &&
+				variant === 'text' &&
 					'inline-flex items-center border-t-2 border-transparent font-medium border-x-0 border-b-0',
 
-				variant !== 'flushed' && size && PagerGroupedPadding[size],
-				variant === 'flushed' && size && PagerFlushedPadding[size],
+				variant !== 'text' && size && PagerGroupedPadding[size],
+				variant === 'text' && size && PagerFlushedPadding[size],
 
 				size && FieldFontSize[size],
 
@@ -104,18 +107,16 @@
 				variant === 'soft' && theme && ForeColorSoft[theme],
 				variant === 'soft' && theme && ForeColorSoftHover[theme],
 
-				variant === 'flushed' && theme && ForeColorCurrent[theme],
-				variant === 'flushed' && !current && 'hover:border-frame-300 dark:hover:border-frame-600',
+				variant === 'text' && theme && ForeColorCurrent[theme],
+				variant === 'text' && theme && BorderColorHover[theme],
+				variant === 'text' && theme && current && BorderColor[theme],
+				variant === 'text' && !theme && 'hover:border-frame-300 dark:hover:border-frame-600',
 
 				current && 'pointer-events-none',
-
+				!href && 'pointer-events-none',
 				rounded && RoundedFirstLast[size],
 				'first:rounded-r-none last:rounded-l-none',
-
-				!href && 'pointer-events-none',
-
 				t.options.transition,
-
 				rest.class
 			],
 			disabled,
@@ -126,12 +127,23 @@
 	);
 </script>
 
-<a
-	{...rest}
-	{href}
-	aria-current={current ? 'page' : undefined}
-	aria-disabled={disabled}
-	class={classes}
->
-	{@render children()}
-</a>
+{#if href}
+	<a
+		{...rest}
+		{href}
+		aria-current={current ? 'page' : undefined}
+		aria-disabled={disabled}
+		class={classes}
+	>
+		{@render children()}
+	</a>
+{:else}
+	<button
+		{...rest}
+		aria-current={current ? 'page' : undefined}
+		aria-disabled={disabled}
+		class={classes}
+	>
+		{@render children()}
+	</button>
+{/if}
