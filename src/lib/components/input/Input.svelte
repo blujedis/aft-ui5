@@ -24,6 +24,7 @@
 		size?: Size;
 		theme?: ThemeColor;
 		variant?: 'unstyled' | 'outlined';
+		use?: (node: HTMLInputElement) => any;
 	}
 </script>
 
@@ -44,6 +45,7 @@
 		theme = $bindable(),
 		value = $bindable(),
 		variant,
+		use = (node) => {},
 		...rest
 	}: InputProps & Omit<ElementProps<'input'>, 'size'> = $props();
 
@@ -77,4 +79,4 @@
 	);
 </script>
 
-<input {...rest} bind:value class={classes} type="text" />
+<input {...rest} use:use bind:value class={classes} type="text" />

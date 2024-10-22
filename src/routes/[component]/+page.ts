@@ -3,7 +3,8 @@ import { error } from '@sveltejs/kit';
 // cheeesy override for some paths.
 // should improve at some point.
 const map = {
-  Selectlist: 'SelectList'
+  Selectlist: 'SelectList',
+  PickerDate: 'DatePicker'
 };
 
 export async function load({ params: { component } }) {

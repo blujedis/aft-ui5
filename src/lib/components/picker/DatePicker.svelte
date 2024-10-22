@@ -1,13 +1,18 @@
 <script module lang="ts">
-	import type { ThemeColor } from '$lib/theme/types.js';
+	import type { FocusType, ThemeColor } from '$lib/theme/types.js';
 	import type { ElementProps } from '$lib/types.js';
-	import type { Snippet } from 'svelte';
 
 	export interface DatePickerProps {
+		abortable?: boolean;
 		autohide?: boolean;
 		defaultDate?: Date | null;
 		dateFormat: Intl.DateTimeFormatOptions;
+		disabled?: boolean;
+		escapable?: boolean;
 		firstDayOfWeek?: number; // 0 = Mon, 6 = Sun.
+		focusType?: FocusType;
+		focusTheme?: ThemeColor;
+		full?: boolean;
 		inline?: boolean;
 		locale?: string;
 		range?: boolean;
@@ -16,20 +21,27 @@
 		showActionButtons?: boolean;
 		theme?: ThemeColor;
 		title?: string;
-		children?: Snippet;
+		onChanged?: (value: any) => any;
 	}
 </script>
 
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import Button from '../button/Button.svelte';
+	import { focustrap } from '$lib/hooks/focustrap.js';
+	import { documentEvent } from '$lib/utils/events.js';
+	import Input from '../input/Input.svelte';
+	import { clsxm } from '$lib/utils/string.js';
 
 	let {
-		autohide,
+		abortable = true,
+		autohide = true,
 		dateFormat = { year: 'numeric', month: 'long', day: 'numeric' },
 		defaultDate,
-		disabled,
+		disabled = false,
+		escapable = true,
 		firstDayOfWeek = 0,
+		full = true,
 		inline = false,
 		locale = 'default',
 		placeholder,
@@ -37,26 +49,30 @@
 		rangeFrom = null,
 		rangeTo = null,
 		required,
-		showActionButtons,
-		theme,
+		showActionButtons = false,
+		theme = 'danger',
 		title,
 		value,
-		children
-	}: DatePickerProps & ElementProps<'input'> = $props();
+		...rest
+	}: ElementProps<'input'> & DatePickerProps = $props();
 
-	let dispatch: any;
-
+	let dispatch = (arg: any) => {};
 	let input: HTMLInputElement;
-	let calendarRef: HTMLDivElement;
 
-	let visible: boolean = inline;
-	let currentMonth: Date = value || defaultDate || new Date();
-	let focusedDate: Date;
-
-	currentMonth.setDate(1); // Set to first day of the month
-
-	let daysInMonth = $derived(getDaysInMonth(currentMonth));
+	let picker = $state() as HTMLDivElement;
+	let visible = $state(inline);
+	let currentMonth = $state(value || defaultDate || new Date()) as Date;
+	let focusedDate = $state() as Date;
+	let daysInMonth = $derived.by(() => {
+		currentMonth.setDate(1); // Set to first day of the month
+		return getDaysInMonth(currentMonth);
+	});
 	let weekdays = $derived(getWeekdays());
+
+	const classesWrapper = $derived(clsxm('relative inline-flex', full && 'w-full'));
+
+	const clickOutside = documentEvent('click', handleClickOutside, () => !!abortable);
+	const [focustrapAction, focustrapHandler] = focustrap();
 
 	function getDaysInMonth(date: Date): Date[] {
 		const year = date.getFullYear();
@@ -112,10 +128,10 @@
 			} else {
 				rangeTo = day;
 			}
-			dispatch('select', { from: rangeFrom, to: rangeTo });
+			// dispatch('select', { from: rangeFrom, to: rangeTo });
 		} else {
 			value = day;
-			dispatch('select', value);
+			// dispatch('select', value);
 			if (autohide && !inline) visible = false;
 		}
 	}
@@ -124,12 +140,6 @@
 		const date = new Date(input.value);
 		if (!isNaN(date.getTime())) {
 			handleDaySelect(date);
-		}
-	}
-
-	function handleClickOutside(event: MouseEvent) {
-		if (visible && !input.contains(event.target as Node)) {
-			visible = false;
 		}
 	}
 
@@ -212,7 +222,7 @@
 
 		// Focus the button for the focused date
 		setTimeout(() => {
-			const focusedButton = calendarRef.querySelector(
+			const focusedButton = picker.querySelector(
 				`button[aria-label="${focusedDate!.toLocaleDateString(locale, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}"]`
 			) as HTMLButtonElement | null;
 			focusedButton?.focus();
@@ -242,33 +252,53 @@
 		if (!inline) visible = false;
 	}
 
-	function getFocusRingClass(c: any) {
-		return '';
+	function handleClickOutside(e: Event & { target: HTMLElement }, node: HTMLElement) {
+		const shouldClose =
+			(node && !node.contains(e.target) && !e.defaultPrevented && visible) || false;
+		if (!shouldClose) return;
+		handleClose(e);
 	}
-	function getRangeBackgroundClass(c: any) {
-		return '';
+
+	function handleEscape(e: KeyboardEvent) {
+		const shouldEscape = (escapable || typeof escapable === 'undefined') && visible;
+		if (!shouldEscape || e.key !== 'Escape') return;
+		e.preventDefault();
+		handleClose(e);
 	}
-	let color = '';
-	let inputClass = '';
+
+	function handleClose(e?: Event) {
+		visible = false;
+	}
+
+	function getDayStyle(day: Date) {
+		const base = 'w-full h-8 font-normal aria-selected:pointer-events-none ';
+		const curr = day.getMonth() === currentMonth.getMonth();
+		if (!curr) return base + 'text-frame-400 dark:text-frame-400';
+		if (isToday(day) && !isSelected(day))
+			return base + 'font-medium bg-frame-300 dark:bg-frame-600';
+		if (isInRange(day)) return base;
+		return base;
+	}
 </script>
 
-<div class="relative">
+<svelte:window onkeydown={handleEscape} />
+
+<div class={classesWrapper} use:clickOutside>
 	{#if !inline}
-		<div class="relative">
-			<input
-				bind:this={input}
+		<div class="relative w-full">
+			<Input
+				{...rest}
+				use={(node) => (input = node)}
 				type="text"
-				class="w-full px-4 py-2 text-sm border rounded-md focus:outline-none dark:bg-gray-700 dark:text-white dark:border-gray-600 {getFocusRingClass(
-					color
-				)} {inputClass}"
-				{placeholder}
+				aria-haspopup="dialog"
 				value={range ? `${formatDate(rangeFrom)} - ${formatDate(rangeTo)}` : formatDate(value)}
+				{disabled}
+				{required}
+				{theme}
+				full
 				onfocus={() => (visible = true)}
 				oninput={handleInputChange}
 				onkeydown={handleInputKeydown}
-				{disabled}
-				{required}
-				aria-haspopup="dialog"
 			/>
 
 			<button
@@ -295,11 +325,11 @@
 
 	{#if visible || inline}
 		<div
-			bind:this={calendarRef}
+			bind:this={picker}
 			id="datepicker-dropdown"
 			class="
     {inline ? '' : 'absolute z-10 mt-1'}
-    bg-white dark:bg-gray-800 rounded-md shadow-lg"
+    bg-white dark:bg-frame-700 rounded-md shadow-lg"
 			transition:fade={{ duration: 100 }}
 			role="dialog"
 			aria-label="Calendar"
@@ -308,8 +338,9 @@
 				{#if title}
 					<h2 class="text-lg font-semibold mb-4 dark:text-white">{title}</h2>
 				{/if}
+
 				<div class="flex items-center justify-between mb-4">
-					<Button onclick={() => changeMonth(-1)} {color} size="sm" aria-label="Previous month">
+					<Button onclick={() => changeMonth(-1)} {theme} size="sm" aria-label="Previous month">
 						<svg
 							class="w-3 h-3 rtl:rotate-180 text-white dark:text-white"
 							aria-hidden="true"
@@ -325,10 +356,12 @@
 							></path></svg
 						>
 					</Button>
+
 					<h3 class="text-lg font-semibold dark:text-white" aria-live="polite">
 						{currentMonth.toLocaleString(locale, { month: 'long', year: 'numeric' })}
 					</h3>
-					<Button onclick={() => changeMonth(1)} {color} size="sm" aria-label="Next month">
+
+					<Button onclick={() => changeMonth(1)} {theme} size="sm" aria-label="Next month">
 						<svg
 							class="w-3 h-3 rtl:rotate-180 text-white dark:text-white"
 							aria-hidden="true"
@@ -341,13 +374,12 @@
 								stroke-linejoin="round"
 								stroke-width="2"
 								d="M1 5h12m0 0L9 1m4 4L9 9"
-							></path></svg
-						>
+							></path>
+						</svg>
 					</Button>
 				</div>
 
 				<div class="grid grid-cols-7 gap-1" role="grid">
-          
 					{#each weekdays as day}
 						<div
 							class="text-center text-sm font-medium text-gray-500 dark:text-gray-400"
@@ -357,18 +389,13 @@
 						</div>
 					{/each}
 
-
 					{#each daysInMonth as day}
 						<Button
-							color={isSelected(day) ? color : 'alternative'}
+							role="gridcell"
+							variant={isSelected(day) ? 'filled' : 'unstyled'}
+							theme={isSelected(day) ? theme : undefined}
 							size="sm"
-							class="w-full h-8 {day.getMonth() !== currentMonth.getMonth()
-								? 'text-gray-300 dark:text-gray-600'
-								: ''} {isToday(day) ? 'font-bold' : ''} {isInRange(day)
-								? getRangeBackgroundClass(color)
-								: ''}"
-							onclick={() => handleDaySelect(day)}
-							onkeydown={handleCalendarKeydown}
+							class={getDayStyle(day)}
 							aria-label={day.toLocaleDateString(locale, {
 								weekday: 'long',
 								year: 'numeric',
@@ -376,19 +403,19 @@
 								day: 'numeric'
 							})}
 							aria-selected={isSelected(day)}
-							role="gridcell"
+							onclick={() => handleDaySelect(day)}
+							onkeydown={handleCalendarKeydown}
 						>
 							{day.getDate()}
 						</Button>
 					{/each}
 				</div>
 
-
 				{#if showActionButtons}
 					<div class="mt-4 flex justify-between">
-						<Button onclick={handleToday} {color} size="sm">Today</Button>
-						<Button onclick={handleClear} color="red" size="sm">Clear</Button>
-						<Button onclick={handleApply} {color} size="sm">Apply</Button>
+						<Button onclick={handleToday} {theme} size="sm">Today</Button>
+						<Button onclick={handleClear} theme="danger" size="sm">Clear</Button>
+						<Button onclick={handleApply} {theme} size="sm">Apply</Button>
 					</div>
 				{/if}
 			</div>

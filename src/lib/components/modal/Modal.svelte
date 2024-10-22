@@ -5,8 +5,6 @@
 		TransitionOptions,
 		type TransitionParams
 	} from '$lib/utils/transitioner.js';
-	import { fade } from 'svelte/transition';
-	import { clsxm } from '$lib/utils/string.js';
 
 	export type ModalPosition =
 		| 'top'
@@ -47,6 +45,8 @@
 	import t from '$lib/theme/theme.svelte.js';
 	import { Rounded, Shadow } from '$lib/theme/constants.js';
 	import type { RoundedSize, ShadowSize } from '$lib/theme/types.js';
+	import { fade } from 'svelte/transition';
+	import { clsxm } from '$lib/utils/string.js';
 
 	let {
 		abortable,
