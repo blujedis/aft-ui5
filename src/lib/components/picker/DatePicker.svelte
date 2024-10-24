@@ -6,7 +6,7 @@
 		abortable?: boolean;
 		autohide?: boolean;
 		defaultDate?: Date | null;
-		dateFormat: Intl.DateTimeFormatOptions;
+		dateFormat?: Intl.DateTimeFormatOptions;
 		disabled?: boolean;
 		escapable?: boolean;
 		firstDayOfWeek?: number; // 0 = Mon, 6 = Sun.
@@ -20,6 +20,8 @@
 		rangeTo?: Date | null;
 		showActionButtons?: boolean;
 		theme?: ThemeColor;
+		inputTheme?: ThemeColor;
+		calendarTheme?: ThemeColor;
 		title?: string;
 		onChanged?: (value: any) => any;
 	}
@@ -248,7 +250,7 @@
 	}
 
 	function handleApply() {
-		dispatch('apply', range ? { from: rangeFrom, to: rangeTo } : value);
+		// dispatch('apply', range ? { from: rangeFrom, to: rangeTo } : value);
 		if (!inline) visible = false;
 	}
 
