@@ -19,10 +19,12 @@
 		rangeFrom?: Date | null;
 		rangeTo?: Date | null;
 		showActionButtons?: boolean;
+		title?: string;
+
 		theme?: ThemeColor;
 		inputTheme?: ThemeColor;
 		calendarTheme?: ThemeColor;
-		title?: string;
+		visible?: boolean;
 		onChanged?: (value: any) => any;
 	}
 </script>
@@ -43,7 +45,7 @@
 		disabled = false,
 		escapable = true,
 		firstDayOfWeek = 0,
-		full = true,
+		full,
 		inline = false,
 		locale = 'default',
 		placeholder,
@@ -54,7 +56,8 @@
 		showActionButtons = false,
 		theme = 'danger',
 		title,
-		value,
+		value = $bindable(),
+		visible = $bindable(false),
 		...rest
 	}: ElementProps<'input'> & DatePickerProps = $props();
 
@@ -62,12 +65,11 @@
 	let input: HTMLInputElement;
 
 	let picker = $state() as HTMLDivElement;
-	let visible = $state(inline);
 	let currentMonth = $state(value || defaultDate || new Date()) as Date;
 	let focusedDate = $state() as Date;
 	let daysInMonth = $derived.by(() => {
 		currentMonth.setDate(1); // Set to first day of the month
-		return getDaysInMonth(currentMonth);
+		return getMonthDays(currentMonth);
 	});
 	let weekdays = $derived(getWeekdays());
 
@@ -76,38 +78,39 @@
 	const clickOutside = documentEvent('click', handleClickOutside, () => !!abortable);
 	const [focustrapAction, focustrapHandler] = focustrap();
 
-	function getDaysInMonth(date: Date): Date[] {
+	function getMonthDays(date: Date) {
 		const year = date.getFullYear();
 		const month = date.getMonth();
 		const firstDay = new Date(year, month, 0);
 		const lastDay = new Date(year, month + 1, 0);
-		const daysArray: Date[] = [];
+		const days: Date[] = [];
 
-		// Add days from previous month to fill the first week
+		// Prepend prev month days.
 		let start = firstDay.getDay() - firstDayOfWeek;
+
 		if (start < 0) start += 7;
 		for (let i = 0; i < start; i++) {
-			daysArray.push(new Date(year, month, -i));
+			days.push(new Date(year, month, -i));
 		}
 
-		// Add days of the current month
+		// Current month days.
 		for (let i = 1; i <= lastDay.getDate(); i++) {
-			daysArray.push(new Date(year, month, i));
+			days.push(new Date(year, month, i));
 		}
 
-		// Add days from next month to fill the last week
-		const remainingDays = 7 - (daysArray.length % 7);
+		// Append next month days
+		const remainingDays = 7 - (days.length % 7);
 		if (remainingDays < 7) {
 			for (let i = 1; i <= remainingDays; i++) {
-				daysArray.push(new Date(year, month + 1, i));
+				days.push(new Date(year, month + 1, i));
 			}
 		}
 
-		return daysArray;
+		return days;
 	}
 
-	function getWeekdays(): string[] {
-		const weekdays = [];
+	function getWeekdays() {
+		const weekdays = [] as string[];
 		for (let i = 0; i < 7; i++) {
 			const day = new Date(2021, 5, i + firstDayOfWeek);
 			weekdays.push(day.toLocaleString(locale, { weekday: 'short' }));
@@ -119,7 +122,7 @@
 		currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + increment, 1);
 	}
 
-	function handleDaySelect(day: Date) {
+	function handleSelectDay(day: Date) {
 		if (range) {
 			if (!rangeFrom || (rangeFrom && rangeTo)) {
 				rangeFrom = day;
@@ -141,7 +144,7 @@
 	function handleInputChange() {
 		const date = new Date(input.value);
 		if (!isNaN(date.getTime())) {
-			handleDaySelect(date);
+			handleSelectDay(date);
 		}
 	}
 
@@ -160,7 +163,7 @@
 		return !!(value && day.toDateString() === value.toDateString());
 	}
 
-	function isInRange(day: Date): boolean {
+	function inRange(day: Date): boolean {
 		if (!range || !rangeFrom || !rangeTo) return false;
 		return day > rangeFrom && day < rangeTo;
 	}
@@ -207,7 +210,7 @@
 				);
 				break;
 			case 'Enter':
-				handleDaySelect(focusedDate);
+				handleSelectDay(focusedDate);
 				break;
 			case 'Escape':
 				visible = false;
@@ -239,7 +242,7 @@
 	}
 
 	function handleToday() {
-		handleDaySelect(new Date());
+		handleSelectDay(new Date());
 	}
 
 	function handleClear() {
@@ -273,13 +276,17 @@
 	}
 
 	function getDayStyle(day: Date) {
-		const base = 'w-full h-8 font-normal aria-selected:pointer-events-none ';
+		const base = 'w-full h-8 font-normal aria-selected:pointer-events-none';
 		const curr = day.getMonth() === currentMonth.getMonth();
 		if (!curr) return base + 'text-frame-400 dark:text-frame-400';
 		if (isToday(day) && !isSelected(day))
 			return base + 'font-medium bg-frame-300 dark:bg-frame-600';
-		if (isInRange(day)) return base;
+		if (inRange(day)) return base;
 		return base;
+	}
+
+	function init(node: HTMLInputElement) {
+		input = node;
 	}
 </script>
 
@@ -290,7 +297,7 @@
 		<div class="relative w-full">
 			<Input
 				{...rest}
-				use={(node) => (input = node)}
+				use={init}
 				type="text"
 				aria-haspopup="dialog"
 				value={range ? `${formatDate(rangeFrom)} - ${formatDate(rangeTo)}` : formatDate(value)}
@@ -336,7 +343,7 @@
 			role="dialog"
 			aria-label="Calendar"
 		>
-			<div class="p-4" role="application">
+			<div class="p-4 min-w-72" role="application">
 				{#if title}
 					<h2 class="text-lg font-semibold mb-4 dark:text-white">{title}</h2>
 				{/if}
@@ -405,7 +412,7 @@
 								day: 'numeric'
 							})}
 							aria-selected={isSelected(day)}
-							onclick={() => handleDaySelect(day)}
+							onclick={() => handleSelectDay(day)}
 							onkeydown={handleCalendarKeydown}
 						>
 							{day.getDate()}
@@ -422,5 +429,15 @@
 				{/if}
 			</div>
 		</div>
+		{#if inline}
+			<input
+				{...rest}
+				use:init
+				type="text"
+				value={range ? `${formatDate(rangeFrom)} - ${formatDate(rangeTo)}` : formatDate(value)}
+				{disabled}
+				{required}
+			/>
+		{/if}
 	{/if}
 </div>

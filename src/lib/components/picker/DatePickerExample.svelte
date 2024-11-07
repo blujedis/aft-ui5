@@ -2,4 +2,4 @@
 	import DatePicker from './DatePicker.svelte';
 </script>
 
-<DatePicker />
+<DatePicker inline={false} />
