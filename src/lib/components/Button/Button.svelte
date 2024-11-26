@@ -89,7 +89,7 @@
 		size = 'md',
 		textblock,
 		theme = $bindable(),
-		variant = 'filled',
+		variant = $bindable('filled'),
 		children,
 		...rest
 	}: ButtonProps<Tag> & ElementProps<Tag> = $props();
@@ -99,7 +99,7 @@
 	const classes = $derived(
 		buildClass({
 			prepend: [
-				`button button-${variant || 'default'} button-${theme}`,
+				`button button-${variant || 'default'} button-${theme || 'unthemed'}`,
 				as === 'a' && 'button-link'
 			],
 			classes: [

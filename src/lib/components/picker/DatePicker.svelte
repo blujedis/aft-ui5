@@ -1,11 +1,11 @@
 <script module lang="ts">
-	import type { FocusType, ThemeColor } from '$lib/theme/types.js';
+	import type { FocusType, RoundedSize, ThemeColor } from '$lib/theme/types.js';
 	import type { ElementProps } from '$lib/types.js';
 
 	export interface DatePickerProps {
 		abortable?: boolean;
 		autohide?: boolean;
-		defaultDate?: Date | null;
+		defaultValue?: Date | null;
 		dateFormat?: Intl.DateTimeFormatOptions;
 		disabled?: boolean;
 		escapable?: boolean;
@@ -18,14 +18,14 @@
 		range?: boolean;
 		rangeFrom?: Date | null;
 		rangeTo?: Date | null;
+		rounded?: boolean | RoundedSize;
 		showActionButtons?: boolean;
 		title?: string;
 
 		theme?: ThemeColor;
 		inputTheme?: ThemeColor;
-		calendarTheme?: ThemeColor;
+		buttonTheme?: ThemeColor;
 		visible?: boolean;
-		onChanged?: (value: any) => any;
 	}
 </script>
 
@@ -36,12 +36,13 @@
 	import { documentEvent } from '$lib/utils/events.js';
 	import Input from '../input/Input.svelte';
 	import { clsxm } from '$lib/utils/string.js';
+	import { Rounded } from '$lib/theme/constants.js';
 
 	let {
 		abortable = true,
 		autohide = true,
 		dateFormat = { year: 'numeric', month: 'long', day: 'numeric' },
-		defaultDate,
+		defaultValue,
 		disabled = false,
 		escapable = true,
 		firstDayOfWeek = 0,
@@ -53,10 +54,13 @@
 		rangeFrom = null,
 		rangeTo = null,
 		required,
-		showActionButtons = false,
-		theme = 'danger',
+		rounded,
+		showActionButtons = true,
 		title,
 		value = $bindable(),
+		theme,
+		inputTheme,
+		buttonTheme,
 		visible = $bindable(false),
 		...rest
 	}: ElementProps<'input'> & DatePickerProps = $props();
@@ -65,7 +69,7 @@
 	let input: HTMLInputElement;
 
 	let picker = $state() as HTMLDivElement;
-	let currentMonth = $state(value || defaultDate || new Date()) as Date;
+	let currentMonth = $state(value || defaultValue || new Date()) as Date;
 	let focusedDate = $state() as Date;
 	let daysInMonth = $derived.by(() => {
 		currentMonth.setDate(1); // Set to first day of the month
@@ -73,7 +77,18 @@
 	});
 	let weekdays = $derived(getWeekdays());
 
-	const classesWrapper = $derived(clsxm('relative inline-flex', full && 'w-full'));
+	const wrapperClasses = $derived(
+		clsxm('datepicker-wrapper relative inline-flex', full && 'w-full')
+	);
+
+	const containerClasses = $derived(
+		clsxm(
+			'datepicker-container bg-white dark:bg-frame-700 shadow-lg',
+			'ring-1 ring-frame-100 dark:ring-frame-800',
+			!inline && 'absolute z-10 mt-1',
+			rounded && Rounded[rounded === true ? 'md' : rounded]
+		)
+	);
 
 	const clickOutside = documentEvent('click', handleClickOutside, () => !!abortable);
 	const [focustrapAction, focustrapHandler] = focustrap();
@@ -122,6 +137,41 @@
 		currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + increment, 1);
 	}
 
+	function formatDate(date: Date | null): string {
+		if (!date) return '';
+		return date.toLocaleDateString(locale, dateFormat);
+	}
+
+	function isSelected(day: Date): boolean {
+		if (range) {
+			return (
+				!!(rangeFrom && day.toDateString() === rangeFrom.toDateString()) ||
+				!!(rangeTo && day.toDateString() === rangeTo.toDateString())
+			);
+		}
+		return !!(value && day.toDateString() === value.toDateString());
+	}
+
+	function inRange(day: Date): boolean {
+		if (!range || !rangeFrom || !rangeTo) return false;
+		return day > rangeFrom && day < rangeTo;
+	}
+
+	function isToday(day: Date): boolean {
+		const today = new Date();
+		return day.toDateString() === today.toDateString();
+	}
+
+	function getDayStyle(day: Date) {
+		const base =
+			'w-full h-8 font-normal aria-selected:pointer-events-none aria-selected:font-medium ';
+		const curr = day.getMonth() === currentMonth.getMonth();
+		if (!curr) return base + 'text-frame-400 dark:text-frame-400';
+		if (isToday(day) && !isSelected(day)) return base + 'bg-frame-100 dark:bg-white/5';
+		if (inRange(day)) return base;
+		return base;
+	}
+
 	function handleSelectDay(day: Date) {
 		if (range) {
 			if (!rangeFrom || (rangeFrom && rangeTo)) {
@@ -148,29 +198,20 @@
 		}
 	}
 
-	function formatDate(date: Date | null): string {
-		if (!date) return '';
-		return date.toLocaleDateString(locale, dateFormat);
+	function handleToday() {
+		handleSelectDay(new Date());
 	}
 
-	function isSelected(day: Date): boolean {
-		if (range) {
-			return (
-				!!(rangeFrom && day.toDateString() === rangeFrom.toDateString()) ||
-				!!(rangeTo && day.toDateString() === rangeTo.toDateString())
-			);
-		}
-		return !!(value && day.toDateString() === value.toDateString());
+	function handleClear() {
+		value = null;
+		rangeFrom = null;
+		rangeTo = null;
+		dispatch('clear');
 	}
 
-	function inRange(day: Date): boolean {
-		if (!range || !rangeFrom || !rangeTo) return false;
-		return day > rangeFrom && day < rangeTo;
-	}
-
-	function isToday(day: Date): boolean {
-		const today = new Date();
-		return day.toDateString() === today.toDateString();
+	function handleApply() {
+		// dispatch('apply', range ? { from: rangeFrom, to: rangeTo } : value);
+		if (!inline) visible = false;
 	}
 
 	function handleCalendarKeydown(event: KeyboardEvent) {
@@ -241,22 +282,6 @@
 		}
 	}
 
-	function handleToday() {
-		handleSelectDay(new Date());
-	}
-
-	function handleClear() {
-		value = null;
-		rangeFrom = null;
-		rangeTo = null;
-		dispatch('clear');
-	}
-
-	function handleApply() {
-		// dispatch('apply', range ? { from: rangeFrom, to: rangeTo } : value);
-		if (!inline) visible = false;
-	}
-
 	function handleClickOutside(e: Event & { target: HTMLElement }, node: HTMLElement) {
 		const shouldClose =
 			(node && !node.contains(e.target) && !e.defaultPrevented && visible) || false;
@@ -275,16 +300,6 @@
 		visible = false;
 	}
 
-	function getDayStyle(day: Date) {
-		const base = 'w-full h-8 font-normal aria-selected:pointer-events-none';
-		const curr = day.getMonth() === currentMonth.getMonth();
-		if (!curr) return base + 'text-frame-400 dark:text-frame-400';
-		if (isToday(day) && !isSelected(day))
-			return base + 'font-medium bg-frame-300 dark:bg-frame-600';
-		if (inRange(day)) return base;
-		return base;
-	}
-
 	function init(node: HTMLInputElement) {
 		input = node;
 	}
@@ -292,7 +307,7 @@
 
 <svelte:window onkeydown={handleEscape} />
 
-<div class={classesWrapper} use:clickOutside>
+<div class={wrapperClasses} use:clickOutside>
 	{#if !inline}
 		<div class="relative w-full">
 			<Input
@@ -303,7 +318,7 @@
 				value={range ? `${formatDate(rangeFrom)} - ${formatDate(rangeTo)}` : formatDate(value)}
 				{disabled}
 				{required}
-				{theme}
+				theme={inputTheme || theme}
 				full
 				onfocus={() => (visible = true)}
 				oninput={handleInputChange}
@@ -336,22 +351,26 @@
 		<div
 			bind:this={picker}
 			id="datepicker-dropdown"
-			class="
-    {inline ? '' : 'absolute z-10 mt-1'}
-    bg-white dark:bg-frame-700 rounded-md shadow-lg"
+			class={containerClasses}
 			transition:fade={{ duration: 100 }}
 			role="dialog"
 			aria-label="Calendar"
 		>
 			<div class="p-4 min-w-72" role="application">
 				{#if title}
-					<h2 class="text-lg font-semibold mb-4 dark:text-white">{title}</h2>
+					<h2 class="datepicker-title text-lg font-semibold mb-4 dark:text-white">{title}</h2>
 				{/if}
 
 				<div class="flex items-center justify-between mb-4">
-					<Button onclick={() => changeMonth(-1)} {theme} size="sm" aria-label="Previous month">
+					<Button
+						onclick={() => changeMonth(-1)}
+						theme={buttonTheme || theme}
+						size="sm"
+						aria-label="Previous month"
+						class="datepicker-previous"
+					>
 						<svg
-							class="w-3 h-3 rtl:rotate-180 text-white dark:text-white"
+							class="w-3 h-3 rtl:rotate-180"
 							aria-hidden="true"
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
@@ -366,13 +385,19 @@
 						>
 					</Button>
 
-					<h3 class="text-lg font-semibold dark:text-white" aria-live="polite">
+					<h3 class="datepicker-month text-md font-semibold" aria-live="polite">
 						{currentMonth.toLocaleString(locale, { month: 'long', year: 'numeric' })}
 					</h3>
 
-					<Button onclick={() => changeMonth(1)} {theme} size="sm" aria-label="Next month">
+					<Button
+						onclick={() => changeMonth(1)}
+						theme={buttonTheme || theme}
+						size="sm"
+						aria-label="Next month"
+						class="datepicker-next"
+					>
 						<svg
-							class="w-3 h-3 rtl:rotate-180 text-white dark:text-white"
+							class="w-3 h-3 rtl:rotate-180"
 							aria-hidden="true"
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
@@ -401,8 +426,8 @@
 					{#each daysInMonth as day}
 						<Button
 							role="gridcell"
-							variant={isSelected(day) ? 'filled' : 'unstyled'}
-							theme={isSelected(day) ? theme : undefined}
+							variant={isSelected(day) ? 'filled' : 'ghost'}
+							theme={isSelected(day) ? buttonTheme || theme : undefined}
 							size="sm"
 							class={getDayStyle(day)}
 							aria-label={day.toLocaleDateString(locale, {
@@ -421,10 +446,27 @@
 				</div>
 
 				{#if showActionButtons}
-					<div class="mt-4 flex justify-between">
-						<Button onclick={handleToday} {theme} size="sm">Today</Button>
-						<Button onclick={handleClear} theme="danger" size="sm">Clear</Button>
-						<Button onclick={handleApply} {theme} size="sm">Apply</Button>
+					<div class="mt-4 flex">
+						<div class="flex-1">
+							<Button onclick={handleClear} theme="danger" size="sm" class="datepicker-clear"
+								>Clear</Button
+							>
+						</div>
+						<div>
+							<Button
+								onclick={handleToday}
+								theme={buttonTheme || theme}
+								size="sm"
+								class="datepicker-today">Today</Button
+							>
+
+							<Button
+								onclick={handleApply}
+								theme={buttonTheme || theme}
+								size="sm"
+								class="datepicker-apply">Apply</Button
+							>
+						</div>
 					</div>
 				{/if}
 			</div>
