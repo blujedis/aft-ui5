@@ -1,5 +1,5 @@
 {
-	"name": "ui5",
+	"name": "@aft/ui5",
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "vite dev --host",
