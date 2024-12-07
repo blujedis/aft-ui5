@@ -3,7 +3,6 @@
 	import type { ElementProps } from '$lib/types.js';
 	import { clsxm } from '$lib/utils/string.js';
 	import {
-		BorderColor,
 		RingColor,
 		type RoundedSize,
 		type ShadowSize,

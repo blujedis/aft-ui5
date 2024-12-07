@@ -1,7 +1,9 @@
 <script lang="ts">
 	import VariantList from '$components/VariantList.svelte';
 	import Label from '../label/Label.svelte';
-	import Badge, { badgeVariants as variants } from './Badge.svelte';
+	import Badge from './Badge.svelte';
+
+	const variants = ['unstyled', 'filled', 'soft', 'outlined'];
 </script>
 
 <div class="grid grid-cols-3 grid-4 mb-8">

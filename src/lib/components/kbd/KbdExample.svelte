@@ -1,6 +1,8 @@
 <script lang="ts">
 	import VariantList from '$components/VariantList.svelte';
-	import Kbd, { badgeVariants as variants } from './Kbd.svelte';
+	import Kbd from './Kbd.svelte';
+
+	const variants = ['unstyled', 'filled', 'soft', 'outlined'];
 </script>
 
 <div class="mb-8 grid grid-cols-3 gap-4">

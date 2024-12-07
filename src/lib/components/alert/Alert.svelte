@@ -6,7 +6,7 @@
 	import {
 		type NotificationApi,
 		type NotificationPosition
-	} from '$lib/hooks/notifications.svelte.js';
+	} from '$lib/components/notifications/notifications.svelte.js';
 	import {
 		type Size,
 		type ThemeColor,
@@ -37,7 +37,7 @@
 
 	export const alertVariants = ['unstyled', 'filled', 'soft'] as AlertProps['variant'][];
 
-	export const AlertIconSize = {
+	const AlertIconSize = {
 		unstyled: '',
 		xs: 'h-4 w-4',
 		sm: 'h-4.5 w-4.5',
@@ -47,7 +47,7 @@
 		xl2: 'h-8 w-8'
 	};
 
-	export const AlertPadding = {
+	const AlertPadding = {
 		unstyled: '',
 		xs: 'p-2.5',
 		sm: 'p-3',
@@ -57,7 +57,7 @@
 		xl2: 'p-7'
 	};
 
-	export const AlertIcons = {
+	const AlertIcons = {
 		danger: 'mdi:dangerous',
 		warning: 'mdi:alert-outline',
 		info: 'mdi:information-outline',

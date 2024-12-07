@@ -1,8 +1,16 @@
 <script lang="ts">
 	import { capitalize } from '$lib/utils/string.js';
-	import Button, { buttonVariants as variants } from './Button.svelte';
+	import Button, { type ButtonProps } from './Button.svelte';
 	import { colors } from '$lib/theme/globals.js';
 	let selected = true;
+	const variants = [
+		'unstyled',
+		'filled',
+		'soft',
+		'outlined',
+		'ghost',
+		'text'
+	] as ButtonProps<any>['variant'][];
 </script>
 
 <div class="mb-4">

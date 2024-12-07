@@ -20,7 +20,7 @@
 		theme?: ThemeColor;
 	}
 
-	export const CheckboxSize = {
+	const CheckboxSize = {
 		unstyled: '',
 		xs: 'h-2.5 w-2.5',
 		sm: 'h-3 w-3',

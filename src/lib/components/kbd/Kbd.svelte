@@ -24,13 +24,30 @@
 		children: Snippet<[]>;
 	} & ElementProps<'span'>;
 
-	export const badgeVariants = ['unstyled', 'filled', 'soft', 'outlined'] as KbdProps['variant'][];
+	const BadgeFontSize = {
+		unstyled: '',
+		xs: 'text-[10px]', // leading-3
+		sm: 'text-xs',
+		md: 'text-sm',
+		lg: 'text-md',
+		xl: 'text-lg',
+		xl2: 'text-xl'
+	};
+
+	const BadgePaddingX = {
+		unstyled: '',
+		xs: 'px-1',
+		sm: 'px-1.5 ',
+		md: 'px-1.5',
+		lg: 'px-2',
+		xl: 'px-2 ',
+		xl2: 'px-2.5'
+	};
 </script>
 
 <script lang="ts">
 	import { buildClass } from '$lib/theme/build.svelte.js';
 	import type { Snippet } from 'svelte';
-	import { BadgeFontSize, BadgePaddingX } from '../badge/Badge.svelte';
 	import { RingOffset, RingWidth } from '$lib/theme/constants.js';
 
 	let {

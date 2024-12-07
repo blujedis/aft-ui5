@@ -23,12 +23,6 @@
 		variant?: 'unstyled' | 'filled' | 'soft';
 	} & ElementProps<'span'>;
 
-	export const IndicatorVariants = [
-		'unstyled',
-		'filled',
-		'soft',
-		'outlined'
-	] as IndicatorProps['variant'][];
 
 	const IndicatorSize = {
 		unstyled: '',

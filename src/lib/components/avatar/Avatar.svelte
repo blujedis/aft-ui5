@@ -27,14 +27,9 @@
 		children: Snippet<[{ rounded?: RoundedSize | false; size?: Size }]>;
 	} & Omit<ElementProps<'span'>, 'children'>;
 
-	export const avatarVariants = [
-		'unstyled',
-		'filled',
-		'soft',
-		'outlined'
-	] as AvatarProps['variant'][];
 
-	export const AvatarSize = {
+
+	const AvatarSize = {
 		unstyled: '',
 		xs: 'h-8 w-8',
 		sm: 'h-10 w-10',

@@ -2,7 +2,9 @@
 	import VariantList from '$components/VariantList.svelte';
 	import Icon from '../icon/Icon.svelte';
 	import Image from '../image/Image.svelte';
-	import Avatar, { avatarVariants as variants } from './Avatar.svelte';
+	import Avatar from './Avatar.svelte';
+
+	const variants = ['unstyled', 'filled', 'soft', 'outlined'];
 </script>
 
 <div class="mb-8">

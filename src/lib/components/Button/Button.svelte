@@ -47,16 +47,7 @@
 		children: Snippet;
 	} & ExtendedProps<Tag>;
 
-	export const buttonVariants = [
-		'unstyled',
-		'filled',
-		'soft',
-		'outlined',
-		'ghost',
-		'text'
-	] as ButtonProps<any>['variant'][];
-
-	export const ButtonPaddingX = {
+const ButtonPaddingX = {
 		unstyled: '',
 		xs: 'px-3',
 		sm: 'px-3.5',

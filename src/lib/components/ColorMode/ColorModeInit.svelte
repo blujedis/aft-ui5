@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { init, isDark, set, toggle, type ColorModeProps } from '$lib/hooks/colormode.svelte.js';
+	import { init, isDark, set, toggle, type ColorModeProps } from './colormode.svelte.js';
 	let { mode = 'auto', children }: ColorModeProps = $props();
 	init(mode);
 </script>

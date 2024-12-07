@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Notifications from './Notifications.svelte';
-	import { getNotifier } from '$lib/hooks/notifications.svelte.js';
+	import { getNotifier } from '$lib/components/notifications/notifications.svelte.js';
 	import Button from '../button/Button.svelte';
 
 	const notifier = getNotifier();

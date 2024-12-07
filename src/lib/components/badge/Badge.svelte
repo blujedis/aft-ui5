@@ -28,14 +28,7 @@
 		children: Snippet<[]>;
 	} & ElementProps<'span'>;
 
-	export const badgeVariants = [
-		'unstyled',
-		'filled',
-		'soft',
-		'outlined'
-	] as BadgeProps['variant'][];
-
-	export const BadgeFontSize = {
+const BadgeFontSize = {
 		unstyled: '',
 		xs: 'text-[10px]', // leading-3
 		sm: 'text-xs',
@@ -45,7 +38,7 @@
 		xl2: 'text-xl'
 	};
 
-	export const BadgePaddingX = {
+const BadgePaddingX = {
 		unstyled: '',
 		xs: 'px-1',
 		sm: 'px-1.5 ',

@@ -5,7 +5,7 @@
 		NotificationInternalProps,
 		NotificationOptions,
 		NotificationPosition
-	} from '$lib/hooks/notifications.svelte.js';
+	} from './notifications.svelte.js';
 	import { clsxm } from '$lib/utils/string.js';
 	import { flip } from 'svelte/animate';
 	import { fly, scale } from 'svelte/transition';
@@ -16,7 +16,7 @@
 		children?: Snippet<[NotificationInternalProps, NotificationApi]>;
 	} & Omit<NotificationOptions, 'group'>;
 
-	export const notificationsPosition = {
+	const notificationsPosition = {
 		'bottom-right': { x: 400, y: 0 },
 		'top-right': { x: 400, y: 0 },
 		'bottom-left': { x: -400, y: 0 },
@@ -27,7 +27,7 @@
 </script>
 
 <script lang="ts">
-	import { initNotifier } from '$lib/hooks/notifications.svelte.js';
+	import { initNotifier } from './notifications.svelte.js';
 	import Alert from '../alert/Alert.svelte';
 
 	let {

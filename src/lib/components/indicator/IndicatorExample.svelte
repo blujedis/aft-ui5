@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Avatar from '../avatar/Avatar.svelte';
 	import Image from '../image/Image.svelte';
-	import Indicator, { IndicatorVariants as variants } from './Indicator.svelte';
+	import Indicator from './Indicator.svelte';
 </script>
 
 <Avatar rounded="md" size="md">

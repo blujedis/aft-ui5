@@ -1,10 +1,12 @@
 <script lang="ts">
 	import { colors } from '$lib/theme/globals.js';
 	import { capitalize } from '$lib/utils/string.js';
-	import Button, { buttonVariants as variants } from './Button.svelte';
+	import Button from './Button.svelte';
 	import ButtonGroup from './ButtonGroup.svelte';
 
 	let _selected = ['svelte'];
+
+	const variants = ['unstyled', 'filled', 'soft', 'outlined', 'ghost', 'text'];
 </script>
 
 <div class="mb-4">

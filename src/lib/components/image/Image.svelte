@@ -1,7 +1,7 @@
 <script module lang="ts">
 	import { type ElementProps } from '$lib/types.js';
 
-	export type StackProps = {
+	export type ImageStackProps = {
 		aspect?: keyof typeof ImageAspect;
 		lazy?: boolean;
 		rounded?: RoundedSize | false;
@@ -44,7 +44,13 @@
 	import { buildClass } from '$lib/theme/build.svelte.js';
 	import type { RoundedSize } from '$lib/theme/types.js';
 
-	let { aspect = 'unstyled', lazy, rounded, size = 'unstyled', ...rest }: StackProps = $props();
+	let {
+		aspect = 'unstyled',
+		lazy,
+		rounded,
+		size = 'unstyled',
+		...rest
+	}: ImageStackProps = $props();
 
 	const classes = $derived(
 		buildClass({

@@ -28,7 +28,7 @@
 		children?: Snippet;
 	};
 
-	export const ProgressBarSizes = {
+	const ProgressBarSizes = {
 		unstyled: '',
 		xs: 'h-0.5',
 		sm: 'h-1',
@@ -40,7 +40,7 @@
 
 	// Firefox requires default rounding without pseudo selector.
 	// merge it with webkit pseudos.
-	export const ProgressBarRoundedBar = {
+	const ProgressBarRoundedBar = {
 		unstyled: '',
 		none: 'rounded-none',
 		xs: '[&::-webkit-progress-bar]:rounded-small',
@@ -53,7 +53,7 @@
 	};
 
 	// webkit requires pseudo selector to round values.
-	export const ProgressBarRoundedValue = {
+	const ProgressBarRoundedValue = {
 		unstyled: '',
 		none: 'rounded-none',
 		xs: '[&::-webkit-progress-value]:rounded-small',

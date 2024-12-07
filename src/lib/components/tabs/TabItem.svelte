@@ -25,13 +25,21 @@
 		trigger?: Snippet;
 		children: Snippet;
 	}
+	const ButtonPaddingX = {
+		unstyled: '',
+		xs: 'px-3',
+		sm: 'px-3.5',
+		md: 'px-5',
+		lg: 'px-6',
+		xl: 'px-7',
+		xl2: 'px-8'
+	};
 </script>
 
 <script lang="ts">
 	import { getContext } from 'svelte';
 	import { buildClass } from '$lib/theme/build.svelte.js';
 	import { FieldFontSize, FieldPaddingY, Rounded } from '$lib/theme/constants.js';
-	import { ButtonPaddingX } from '../button/Button.svelte';
 	import type { ElementProps } from '$lib/types.js';
 	import { clsxm } from '$lib/utils/string.js';
 

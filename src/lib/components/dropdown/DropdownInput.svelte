@@ -1,5 +1,5 @@
 <script module lang="ts">
-	import { onMount, setContext, type Snippet } from 'svelte';
+	import {  setContext, type Snippet } from 'svelte';
 	import {
 		BgColorHint,
 		FillColor,
