@@ -1,7 +1,15 @@
 <script lang="ts">
-	import { init, isDark, set, toggle, type ColorModeProps } from './colormode.svelte.js';
-	let { mode = 'auto', children }: ColorModeProps = $props();
-	init(mode);
+	import {
+		init,
+		isDark,
+		set,
+		toggle,
+		type ColorModeChildProps,
+		type ColorModeProps
+	} from './hook.svelte.js';
+	let { initial = 'auto', children }: ColorModeProps = $props();
+	let childProps: ColorModeChildProps = { isDark, set, toggle };
+	init(initial);
 </script>
 
 <svelte:head>
@@ -23,5 +31,5 @@
 </svelte:head>
 
 {#if children}
-	{@render children({ isDark, set, toggle })}
+	{@render children(childProps)}
 {/if}

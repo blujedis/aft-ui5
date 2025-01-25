@@ -17,6 +17,10 @@
 		handleKeydown: (e: KeyboardEvent) => void;
 	};
 
+	export type DropdownChildProps = {
+		close: (e?: Event) => any;
+	};
+
 	export type DropdownActiveItem = { el?: HTMLElement | null; index?: number };
 
 	export type DropdownContext = {
@@ -37,9 +41,9 @@
 		size?: Size;
 		theme?: ThemeColor;
 		variant?: 'unstyled' | 'filled' | 'soft';
-		header?: Snippet<[{ close: (e?: Event) => any }]>;
-		children: Snippet<[{ close: (e?: Event) => any }]>;
-		footer?: Snippet<[{ close: (e?: Event) => any }]>;
+		header?: Snippet<[DropdownChildProps]>;
+		children: Snippet<[DropdownChildProps]>;
+		footer?: Snippet<[DropdownChildProps]>;
 	};
 </script>
 
@@ -256,6 +260,10 @@
 		contextInput?.setVisibility(visible as boolean);
 		contextInput?.setPopper(getApi());
 	});
+
+	let childProps: DropdownChildProps = {
+		close: handleClose
+	};
 </script>
 
 <Popper
@@ -272,7 +280,7 @@
 	trigger={contextInput?.trigger || trigger}
 >
 	{#if header}
-		{@render header({ close: handleClose })}
+		{@render header(childProps)}
 	{/if}
 
 	<div
@@ -282,10 +290,10 @@
 		onkeydown={handleKeydown}
 		class="dropdown-container py-1 outline-none overflow-hidden transition-transform"
 	>
-		{@render children({ close: handleClose })}
+		{@render children(childProps)}
 	</div>
 
 	{#if footer}
-		{@render footer({ close: handleClose })}
+		{@render footer(childProps)}
 	{/if}
 </Popper>
