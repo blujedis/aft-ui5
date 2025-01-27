@@ -18,7 +18,7 @@
 	import type { AriaRole } from 'svelte/elements';
 	import type { ElementProps } from '$lib/types.js';
 
-	export type PopperEvent = 'hover' | 'click' | 'focus' | 'none';
+	export type PopperEvent = 'hover' | 'click' | 'focus' | 'touch' | 'none';
 
 	export interface PopperApi {
 		triggers: HTMLElement[];
@@ -121,12 +121,20 @@
 		() => event === 'click' && abortable
 	);
 
+	const touchOutside = documentEvent(
+		'touchstart',
+		handleClickOutside,
+		() => event === 'touch' && abortable
+	);
+
 	function getEvents() {
 		return [
 			['none', () => {}, event === 'none'],
 			['click', handleOpen, event === 'click'],
 			['focusin', handleOpen, event === 'focus'],
 			['focusout', handleClose, event === 'focus'],
+			['touchstart', handleOpen, event === 'touch'],
+			['focusout', handleClose, event === 'touch'],
 			['mouseenter', handleOpen, event === 'hover'],
 			['mouseleave', handleClose, event === 'hover']
 		] as [PopperEvent, (...args: any[]) => void, boolean][];
@@ -331,6 +339,7 @@
 		{...rest}
 		use:initEl
 		use:clickOutside
+		use:touchOutside
 		onfocusin={optevent(active && event === 'focus', handleOpen)}
 		onfocusout={optevent(active && event === 'focus', handleClose)}
 		onmouseenter={optevent(active && event === 'hover', handleOpen)}

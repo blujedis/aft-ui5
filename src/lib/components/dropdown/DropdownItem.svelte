@@ -53,13 +53,13 @@
 				selected && 'dropdown-item-selected'
 			],
 			classes: [
-				`flex items-center w-full justify-between text-left outline-none pointer-events-auto 
+				`flex items-center w-full space-x-3 text-left outline-none
 				focus:[&:not(.dropdown-item-selected)]:bg-frame-200 
 				dark:focus:[&:not(.dropdown-item-selected)]:bg-frame-800
 				hover:bg-frame-200 dark:hover:bg-frame-800
 				`,
-				href && 'block',
-				!href && 'flex items-center justify-between',
+				// href && 'block',
+				// !href && 'flex items-center space-x-3',
 				size && FieldPaddingX[size],
 				size && FieldPaddingY[size],
 				(variant === 'filled' || typeof variant === 'undefined') &&
@@ -116,6 +116,7 @@
 	{...rest}
 	type={!href ? 'button' : undefined}
 	bind:this={el}
+	{href}
 	class={classes}
 	aria-selected={selected}
 	{disabled}
