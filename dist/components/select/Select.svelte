@@ -1,0 +1,88 @@
+<script module lang="ts">
+	import type { ElementProps } from '../../types.js';
+	import {
+		BgColorHint,
+		FillColor,
+		RingColor,
+		type FocusType,
+		type RoundedSize,
+		type ShadowSize,
+		type Size,
+		type ThemeColor
+	} from '../../theme/types.js';
+
+	export interface SelectProps {
+		chars?: number;
+		disabled?: boolean;
+		focusType?: FocusType;
+		focusTheme?: ThemeColor;
+		focusOffset?: Size | 'none';
+		full?: boolean;
+		rounded?: RoundedSize | false;
+		shadow?: ShadowSize | false;
+		size?: Size;
+		theme?: ThemeColor;
+		variant?: 'unstyled' | 'outlined';
+		children: Snippet;
+	}
+</script>
+
+<script lang="ts">
+	import t from '../../theme/theme.svelte.js';
+	import { buildClass } from '../../theme/build.svelte.js';
+	import { FieldFontSize, FieldPaddingX, FieldPaddingY } from '../../theme/constants.js';
+	import type { Snippet } from 'svelte';
+	import { toColorVar } from '../../utils/string.js';
+
+	let {
+		disabled,
+		focusType = 'focus',
+		focusTheme,
+		focusOffset = 'none',
+		full,
+		rounded,
+		shadow,
+		size = 'md',
+		theme = $bindable(),
+		value = $bindable(),
+		variant,
+		children,
+		...rest
+	}: SelectProps & Omit<ElementProps<'select'>, 'size'> = $props();
+
+	const classes = $derived(
+		buildClass({
+			prepend: [`select select-${variant} select-${theme}`],
+			classes: [
+				`form-select inline-flex items-center justify-center border-none`,
+				t.options.input,
+				'ring-1 ring-inset focus:ring-offset-0 focus:ring-inset pr-8 min-w-14',
+				size && FieldFontSize[size],
+				size && FieldPaddingX[size],
+				size && FieldPaddingY[size],
+				theme && FillColor[theme],
+				theme && BgColorHint[theme],
+				theme && RingColor[theme],
+				!theme &&
+					'ring-frame-300 focus:ring-frame-300 dark:ring-frame-700 dark:focus:ring-frame-700 focus:outline-frame-500/50',
+				(!theme || theme === 'light') && 'focus:ring-frame-500 dark:focus:ring-frame-400',
+				theme === 'dark' && 'dark:focus:ring-frame-500',
+				theme && ['light', 'dark', 'white'].includes(theme) && 'text-dark dark:text-light'
+			],
+			disabled,
+			focusType,
+			focusTheme: focusTheme || theme,
+			focusOffset,
+			focusRingColor: theme,
+			full,
+			rounded,
+			shadow
+		})
+	);
+</script>
+
+<span style={toColorVar('--caret-color', 'secondary-500')}>
+	<select {...rest} bind:value class={classes}>
+		{@render children()}
+	</select>
+</span>

@@ -1,0 +1,26 @@
+import { type FocusType, type ThemeColor, type FocusWidth, type DropShadowSize, type ElevationSize, type AnimateType, type RoundedSize, type ShadowSize, type JustifyContentType, type FontSizes, type FocusOffset } from './types.js';
+import type { ClassArray, ClassValue } from 'clsx';
+export type ConfigProps = {
+    animate?: AnimateType;
+    disabled?: boolean | null;
+    dropShadow?: DropShadowSize | false;
+    elevation?: ElevationSize;
+    fontSize?: FontSizes;
+    focusType?: FocusType;
+    focusTheme?: ThemeColor | false;
+    focusWidth?: FocusWidth | false;
+    focusOffset?: FocusOffset | false;
+    focusRingColor?: ThemeColor | false;
+    full?: boolean;
+    justify?: JustifyContentType;
+    node?: HTMLElement;
+    rounded?: RoundedSize | false;
+    shadow?: ShadowSize | false;
+    transition?: boolean | string;
+    styles?: string | null | false | (string | null | false)[];
+    prepend?: ClassValue | ClassArray[];
+    classes?: ClassValue | ClassArray[];
+    append?: ClassValue | ClassArray[];
+};
+export declare function buildClass(props: ConfigProps): string;
+export declare function buildStyle(styles: string | null | false | (string | null | false)[], append: string): string;
