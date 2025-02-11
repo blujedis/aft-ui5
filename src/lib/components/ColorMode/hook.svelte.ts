@@ -3,9 +3,15 @@ import type { Snippet } from 'svelte';
 import theme from '$lib/theme/theme.svelte.js';
 import { type ThemeInternal } from '$lib/theme/types.js';
 
+export type ColorModeChildProps = {
+  isDark: () => boolean;
+  set: (dark: boolean) => void;
+  toggle: () => boolean
+};
+
 export type ColorModeProps = {
-  mode?: 'light' | 'dark' | 'auto';
-  children?: Snippet<[{ isDark: () => boolean; set: (dark: boolean) => void; toggle: () => boolean }]>;
+  initial?: 'light' | 'dark' | 'auto';
+  children?: Snippet<[ColorModeChildProps]>;
 };
 
 const key = 'darkmode';
@@ -33,10 +39,10 @@ function applyMode(value: boolean) {
   setStorageValue(value);
 }
 
-function set(useDark = false) {
+function set(isLight = true) {
   const root = getRoot();
   if (!root) return;
-  (theme as ThemeInternal).dark = useDark;
+  (theme as ThemeInternal).dark = !isLight;
   applyMode(theme.dark);
 }
 

@@ -21,14 +21,12 @@
 	"types": "./dist/index.d.ts",
 	"exports": {
 		".": {
-			"types": "./dist/index.d.ts",
+			"types": "./dist/index.d.ts",/*
 			"svelte": "./dist/index.js"
 		}
 	},
 	"files": [
-		"dist",
-		"!dist/**/*.test.*",
-		"!dist/**/*.spec.*"
+		"dist"
 	],
 	"dependencies": {
 		"@floating-ui/dom": "^1.6.10",

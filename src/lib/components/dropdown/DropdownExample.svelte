@@ -27,6 +27,17 @@
 	</div>
 
 	<div>
+		<Button theme="primary">Default Touch</Button>
+		<Dropdown event="touch" theme="primary">
+			<DropdownItem>Angular</DropdownItem>
+			<DropdownItem disabled>React</DropdownItem>
+			<DropdownItem>SolidJS</DropdownItem>
+			<DropdownItem>Svelte</DropdownItem>
+			<DropdownItem>Vue</DropdownItem>
+		</Dropdown>
+	</div>
+
+	<div>
 		<Button theme="primary">Header Footer</Button>
 		<Dropdown event="focus" theme="primary">
 			{#snippet header()}

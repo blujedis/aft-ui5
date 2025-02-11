@@ -7,7 +7,7 @@
 			<!-- Contact Image -->
 			<img
 				class="!mx-auto !h-32 !w-32 !flex-shrink-0 !rounded-full"
-				src="https://resorter.ghost.io/content/images/2024/10/sy-1.jpg"
+				src="https://www.theresorter.com/content/images/2024/10/sy-1.jpg"
 				alt=""
 			/>
 
@@ -81,7 +81,7 @@
 			<!-- Contact Image -->
 			<img
 				class="!mx-auto !h-32 !w-32 !flex-shrink-0 !rounded-full"
-				src="https://resorter.ghost.io/content/images/2024/10/DSCF0025.JPG"
+				src="https://www.theresorter.com/content/images/2025/01/359A388C-D00B-461E-8311-FEA05FC28C58_1_105_c.jpeg"
 				alt=""
 			/>
 
@@ -155,7 +155,7 @@
 			<!-- Contact Image -->
 			<img
 				class="!mx-auto !h-32 !w-32 !flex-shrink-0 !rounded-full"
-				src="https://resorter.ghost.io/content/images/2024/09/man-empty-avatar-photo-placeholder-for-social-networks-resumes-forums-and-dating-sites-male-and-female-no-photo-images-for-unfilled-user-profile-free-vector.jpg"
+				src="https://www.theresorter.com/content/images/2025/01/Renee.JPG"
 				alt=""
 			/>
 
@@ -229,7 +229,7 @@
 			<!-- Contact Image -->
 			<img
 				class="!mx-auto !h-32 !w-32 !flex-shrink-0 !rounded-full"
-				src="https://resorter.ghost.io/content/images/2024/10/DSCF0019.JPG"
+				src="https://www.theresorter.com/content/images/2025/01/DSCF0019.jpeg"
 				alt=""
 			/>
 
@@ -303,7 +303,7 @@
 			<!-- Contact Image -->
 			<img
 				class="!mx-auto !h-32 !w-32 !flex-shrink-0 !rounded-full"
-				src="https://resorter.ghost.io/content/images/2024/10/DSCF0017.JPG"
+				src="https://www.theresorter.com/content/images/2024/10/DSCF0017.JPG"
 				alt=""
 			/>
 
@@ -377,7 +377,7 @@
 			<!-- Contact Image -->
 			<img
 				class="!mx-auto !h-32 !w-32 !flex-shrink-0 !rounded-full"
-				src="https://resorter.ghost.io/content/images/2024/10/Marse-Munoz---Image-2.jpg"
+				src="https://www.theresorter.com/content/images/2024/10/Marse-Munoz---Image-2.jpg"
 				alt=""
 			/>
 
@@ -451,7 +451,7 @@
 			<!-- Contact Image -->
 			<img
 				class="!mx-auto !h-32 !w-32 !flex-shrink-0 !rounded-full"
-				src="https://resorter.ghost.io/content/images/2024/10/DSCF0012.JPG"
+				src="https://www.theresorter.com/content/images/2024/10/DSCF0012.JPG"
 				alt=""
 			/>
 
@@ -525,7 +525,7 @@
 			<!-- Contact Image -->
 			<img
 				class="!mx-auto !h-32 !w-32 !flex-shrink-0 !rounded-full"
-				src="https://resorter.ghost.io/content/images/2024/10/DSCF0015.JPG"
+				src="https://www.theresorter.com/content/images/2024/10/DSCF0015.JPG"
 				alt=""
 			/>
 
@@ -599,7 +599,7 @@
 			<!-- Contact Image -->
 			<img
 				class="!mx-auto !h-32 !w-32 !flex-shrink-0 !rounded-full"
-				src="https://resorter.ghost.io/content/images/2024/10/DSCF0016.JPG"
+				src="https://www.theresorter.com/content/images/2024/10/DSCF0016.JPG"
 				alt=""
 			/>
 
@@ -673,7 +673,7 @@
 			<!-- Contact Image -->
 			<img
 				class="!mx-auto !h-32 !w-32 !flex-shrink-0 !rounded-full"
-				src="https://resorter.ghost.io/content/images/2024/10/DSCF0013.JPG"
+				src="https://www.theresorter.com/content/images/2024/10/DSCF0013.JPG"
 				alt=""
 			/>
 
@@ -747,7 +747,156 @@
 			<!-- Contact Image -->
 			<img
 				class="!mx-auto !h-32 !w-32 !flex-shrink-0 !rounded-full"
-				src="https://resorter.ghost.io/content/images/2024/10/DSCF0014.JPG"
+				src="https://www.theresorter.com/content/images/2025/01/pablo.jpg"
+				alt=""
+			/>
+
+			<!-- Contact Name -->
+			<h3 class="!mt-6 !mb-0 !text-lg !font-bold text-inherit text-center">Pablo Mendoza</h3>
+
+			<!-- Contact Details -->
+			<dl class="mt-1 flex flex-grow flex-col justify-between !mb-0 !pl-0">
+				<dt class="sr-only">Title</dt>
+				<dd class="text-sm text-gray-500 text-center">Assistant Golf Pro</dd>
+				<!-- <dt class="sr-only">Role</dt> -->
+				<!-- <dd class="mt-3">
+          <span class="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Admin</span>
+        </dd> -->
+			</dl>
+		</div>
+
+		<!-- Contact Link Wrapper -->
+		<div>
+			<div class="-mt-px flex divide-x divider">
+				<!-- Email -->
+				<div class="flex w-0 flex-1">
+					<a
+						href="mailto:pmendoza@theresorter.com"
+						class="!relative -mr-px !inline-flex w-0 !flex-1 items-center justify-center gap-x-3 rounded-bl-lg border !border-transparent py-4 text-sm font-semibold text-gray-900"
+					>
+						<svg
+							class="h-5 w-5 text-gray-400 pointer-events-none"
+							viewBox="0 0 20 20"
+							fill="currentColor"
+							aria-hidden="true"
+						>
+							<path
+								d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"
+							/>
+							<path
+								d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"
+							/>
+						</svg>
+						Email
+					</a>
+				</div>
+				<!-- Phone -->
+				<div class="-ml-px flex w-0 flex-1">
+					<a
+						href="tel:+1-760-345-2791"
+						class="!relative !inline-flex w-0 !flex-1 items-center justify-center gap-x-3 rounded-br-lg border !border-transparent py-4 text-sm font-semibold text-gray-900"
+					>
+						<svg
+							class="h-5 w-5 text-gray-400 pointer-events-none"
+							viewBox="0 0 20 20"
+							fill="currentColor"
+							aria-hidden="true"
+						>
+							<path
+								fill-rule="evenodd"
+								d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z"
+								clip-rule="evenodd"
+							/>
+						</svg>
+						Call
+					</a>
+				</div>
+			</div>
+		</div>
+	</li>
+
+	<li class="col-span-1 flex flex-col divide-y divider rounded-lg text-center shadow-lg panel">
+		<!-- Sy Dreher -->
+		<div class="flex flex-1 flex-col p-8">
+			<!-- Contact Image -->
+			<img
+				class="!mx-auto !h-32 !w-32 !flex-shrink-0 !rounded-full"
+				src="https://www.theresorter.com/content/images/2025/01/debbie-franchio.PNG"
+				alt=""
+			/>
+
+			<!-- Contact Name -->
+			<h3 class="!mt-6 !mb-0 !text-lg !font-bold text-inherit text-center">Debbie Franchio</h3>
+
+			<!-- Contact Details -->
+			<dl class="mt-1 flex flex-grow flex-col justify-between !mb-0 !pl-0">
+				<dt class="sr-only">Title</dt>
+				<dd class="text-sm text-gray-500 text-center">Golf Pro</dd>
+				<!-- <dt class="sr-only">Role</dt> -->
+				<!-- <dd class="mt-3">
+          <span class="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Admin</span>
+        </dd> -->
+			</dl>
+		</div>
+
+		<!-- Contact Link Wrapper -->
+		<div>
+			<div class="-mt-px flex divide-x divider">
+				<!-- Email -->
+				<div class="flex w-0 flex-1">
+					<a
+						href="mailto:dfranchio@theresorter.com"
+						class="!relative -mr-px !inline-flex w-0 !flex-1 items-center justify-center gap-x-3 rounded-bl-lg border !border-transparent py-4 text-sm font-semibold text-gray-900"
+					>
+						<svg
+							class="h-5 w-5 text-gray-400 pointer-events-none"
+							viewBox="0 0 20 20"
+							fill="currentColor"
+							aria-hidden="true"
+						>
+							<path
+								d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"
+							/>
+							<path
+								d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"
+							/>
+						</svg>
+						Email
+					</a>
+				</div>
+				<!-- Phone -->
+				<div class="-ml-px flex w-0 flex-1">
+					<a
+						href="tel:+1-760-345-2791"
+						class="!relative !inline-flex w-0 !flex-1 items-center justify-center gap-x-3 rounded-br-lg border !border-transparent py-4 text-sm font-semibold text-gray-900"
+					>
+						<svg
+							class="h-5 w-5 text-gray-400 pointer-events-none"
+							viewBox="0 0 20 20"
+							fill="currentColor"
+							aria-hidden="true"
+						>
+							<path
+								fill-rule="evenodd"
+								d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z"
+								clip-rule="evenodd"
+							/>
+						</svg>
+						Call
+					</a>
+				</div>
+			</div>
+		</div>
+	</li>
+
+
+	<li class="col-span-1 flex flex-col divide-y divider rounded-lg text-center shadow-lg panel">
+		<!-- Sy Dreher -->
+		<div class="flex flex-1 flex-col p-8">
+			<!-- Contact Image -->
+			<img
+				class="!mx-auto !h-32 !w-32 !flex-shrink-0 !rounded-full"
+				src="https://www.theresorter.com/content/images/2024/10/DSCF0014.JPG"
 				alt=""
 			/>
 
@@ -821,7 +970,7 @@
 			<!-- Contact Image -->
 			<img
 				class="!mx-auto !h-32 !w-32 !flex-shrink-0 !rounded-full"
-				src="https://resorter.ghost.io/content/images/2024/10/DSCF0023.JPG"
+				src="https://www.theresorter.com/content/images/2024/10/DSCF0023.JPG"
 				alt=""
 			/>
 
@@ -899,7 +1048,7 @@
 			<!-- Contact Image -->
 			<img
 				class="!mx-auto !h-32 !w-32 !flex-shrink-0 !rounded-full"
-				src="https://resorter.ghost.io/content/images/2024/09/man-empty-avatar-photo-placeholder-for-social-networks-resumes-forums-and-dating-sites-male-and-female-no-photo-images-for-unfilled-user-profile-free-vector.jpg"
+				src="https://www.theresorter.com/content/images/2025/01/Deane.jpg"
 				alt=""
 			/>
 
@@ -909,7 +1058,7 @@
 			<!-- Contact Details -->
 			<dl class="mt-1 flex flex-grow flex-col justify-between !mb-0 !pl-0">
 				<dt class="sr-only">President</dt>
-				<dd class="text-sm text-gray-500 text-center">HOA Manager</dd>
+				<dd class="text-sm text-gray-500 text-center">Club President</dd>
 				<!-- <dt class="sr-only">Role</dt> -->
 				<!-- <dd class="mt-3">
         <span class="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Admin</span>
@@ -973,7 +1122,7 @@
 			<!-- Contact Image -->
 			<img
 				class="!mx-auto !h-32 !w-32 !flex-shrink-0 !rounded-full"
-				src="https://resorter.ghost.io/content/images/2024/10/Chris--002--1.JPG"
+				src="https://www.theresorter.com/content/images/2024/10/Chris--002--1.JPG"
 				alt=""
 			/>
 
@@ -1047,7 +1196,7 @@
 			<!-- Contact Image -->
 			<img
 				class="!mx-auto !h-32 !w-32 !flex-shrink-0 !rounded-full"
-				src="https://resorter.ghost.io/content/images/2024/10/stuart-gallagher.JPG"
+				src="https://www.theresorter.com/content/images/2024/10/stuart-gallagher.JPG"
 				alt=""
 			/>
 
@@ -1057,7 +1206,7 @@
 			<!-- Contact Details -->
 			<dl class="mt-1 flex flex-grow flex-col justify-between !mb-0 !pl-0">
 				<dt class="sr-only">Title</dt>
-				<dd class="text-sm text-gray-500 text-center">HOA Manager</dd>
+				<dd class="text-sm text-gray-500 text-center">Board Member</dd>
 				<!-- <dt class="sr-only">Role</dt> -->
 				<!-- <dd class="mt-3">
         <span class="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Admin</span>
@@ -1121,7 +1270,7 @@
 			<!-- Contact Image -->
 			<img
 				class="!mx-auto !h-32 !w-32 !flex-shrink-0 !rounded-full"
-				src="https://resorter.ghost.io/content/images/2024/10/DSCF0027.JPG"
+				src="https://www.theresorter.com/content/images/2024/10/DSCF0027.JPG"
 				alt=""
 			/>
 
@@ -1131,7 +1280,7 @@
 			<!-- Contact Details -->
 			<dl class="mt-1 flex flex-grow flex-col justify-between !mb-0 !pl-0">
 				<dt class="sr-only">Title</dt>
-				<dd class="text-sm text-gray-500 text-center">HOA Manager</dd>
+				<dd class="text-sm text-gray-500 text-center">Vice President</dd>
 				<!-- <dt class="sr-only">Role</dt> -->
 				<!-- <dd class="mt-3">
         <span class="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Admin</span>
@@ -1195,7 +1344,7 @@
 			<!-- Contact Image -->
 			<img
 				class="!mx-auto !h-32 !w-32 !flex-shrink-0 !rounded-full"
-				src="https://resorter.ghost.io/content/images/2024/10/DSCF0028.JPG"
+				src="https://www.theresorter.com/content/images/2024/10/DSCF0028.JPG"
 				alt=""
 			/>
 
@@ -1205,7 +1354,7 @@
 			<!-- Contact Details -->
 			<dl class="mt-1 flex flex-grow flex-col justify-between !mb-0 !pl-0">
 				<dt class="sr-only">Title</dt>
-				<dd class="text-sm text-gray-500 text-center">HOA Manager</dd>
+				<dd class="text-sm text-gray-500 text-center">Treasurer</dd>
 				<!-- <dt class="sr-only">Role</dt> -->
 				<!-- <dd class="mt-3">
         <span class="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Admin</span>

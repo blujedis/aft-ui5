@@ -5,6 +5,7 @@
 		aspect?: keyof typeof ImageAspect;
 		lazy?: boolean;
 		rounded?: RoundedSize | false;
+		grow?: 'horizontal' | 'veritical' | 'h' | 'v';
 		size?: keyof typeof ImageSize;
 	} & ElementProps<'img'>;
 
@@ -48,6 +49,7 @@
 		aspect = 'unstyled',
 		lazy,
 		rounded,
+		grow = 'v',
 		size = 'unstyled',
 		...rest
 	}: ImageStackProps = $props();
@@ -55,11 +57,13 @@
 	const classes = $derived(
 		buildClass({
 			classes: [
-				`image object-cover`,
+				`image`,
 				ImageSize[size],
 				ImageAspect[aspect],
 				aspect === 'video' ? 'h-auto' : '',
 				rounded === 'full' && 'overflow-hidden',
+				grow.startsWith('v') && 'w-auto max-h-full',
+				grow.startsWith('h') && 'h-auto max-w-full',
 				rest.class
 			],
 			rounded

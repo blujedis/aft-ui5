@@ -1,14 +1,14 @@
 <script lang="ts">
 	import { type Snippet } from 'svelte';
 	import { page } from '$app/stores';
-	import ColorMode from '$lib/components/colormode/ColorModeInit.svelte';
+	import ColorModeInit from '$lib/components/colormode/ColorModeInit.svelte';
 	import { capitalize, pageIsActive } from '$lib/utils/string.js';
 	import { build } from '$lib/theme/types.js';
+	import '../app.css';
 
 	let expanded = $state(true);
 	let { children }: { children: Snippet } = $props();
 
-	import '../app.css';
 	const components = build;
 
 	function isPageActive(path: string) {
@@ -41,7 +41,7 @@
 		>
 			<div class="flex-1 items-center px-8">Aft UI</div>
 			<div class="flex items-center px-8 space-x-4">
-				<ColorMode mode="light">
+				<ColorModeInit initial="light">
 					{#snippet children(prop)}
 						<button class="text-sm block" onclick={prop.toggle}>
 							{#if prop.isDark()}
@@ -61,7 +61,7 @@
 							{/if}
 						</button>
 					{/snippet}
-				</ColorMode>
+				</ColorModeInit>
 				<button onclick={() => (expanded = !expanded)}>
 					{#if !expanded}
 						<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24"

@@ -1,0 +1,863 @@
+import type { Animate, DropShadow, Elevation, FontSize, JustifyContent, OutlineOffset, OutlineWidth, Rounded, Shadow } from './constants.js';
+
+export type FocusType = keyof typeof FocusTypes;
+export type FocusWidth = keyof typeof OutlineWidth;
+export type FocusOffset = keyof typeof OutlineOffset;
+export type SelectedType = keyof typeof SelectedTypes;
+export type ThemeColor = keyof typeof FontColor;
+export type ThemeShade = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950;
+export type ElevationSize = keyof typeof Elevation;
+export type FontSizes = keyof typeof FontSize;
+export type DropShadowSize = keyof typeof DropShadow;
+export type AnimateType = keyof typeof Animate;
+export type Size = 'unstyled' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xl2';
+export type JustifyContentType = keyof typeof JustifyContent;
+export type RoundedSize = keyof typeof Rounded;
+export type ShadowSize = keyof typeof Shadow;
+
+export const build = {{~i.$components}}
+
+export const Placeholder = {
+  unstyled: '',
+  primary: '',
+  secondary: '',
+  tertiary: '',
+  danger: '',
+  warning: '',
+  success: '',
+  info: '',
+  light: '',
+  dark: '',
+  white: '',
+};
+
+export const FillColor = {
+  unstyled: '',
+  primary: 'text-{{=i.icon.primary[0]}} dark:text-{{=i.icon.primary[1]}}',
+  secondary: 'text-{{=i.icon.secondary[0]}} dark:text-{{=i.icon.secondary[1]}}',
+  tertiary: 'text-{{=i.icon.tertiary[0]}} dark:text-{{=i.icon.tertiary[1]}}',
+  danger: 'text-{{=i.icon.danger[0]}} dark:text-{{=i.icon.danger[1]}}',
+  warning: 'text-{{=i.icon.warning[0]}} dark:text-{{=i.icon.warning[1]}}',
+  success: 'text-{{=i.icon.success[0]}} dark:text-{{=i.icon.success[1]}}',
+  info: 'text-{{=i.icon.info[0]}} dark:text-{{=i.icon.info[1]}}',
+  light: 'text-{{=i.icon.light[0]}} dark:text-{{=i.icon.light[1]}}',
+  dark: 'text-{{=i.icon.dark[0]}} dark:text-{{=i.icon.dark[1]}} ',
+  white: 'text-{{=i.icon.white[0]}} dark:text-{{=i.icon.white[1]}}',
+};
+
+export const FillColorHover = {
+  unstyled: '',
+  primary: 'hover:text-{{=i.icon.primaryH[0]}} dark:hover:text-{{=i.icon.primaryH[1]}}',
+  secondary: 'hover:text-{{=i.icon.secondaryH[0]}} dark:hover:text-{{=i.icon.secondaryH[1]}}',
+  tertiary: 'hover:text-{{=i.icon.tertiaryH[0]}} dark:hover:text-{{=i.icon.tertiaryH[1]}}',
+  danger: 'hover:text-{{=i.icon.dangerH[0]}} dark:hover:text-{{=i.icon.dangerH[1]}}',
+  warning: 'hover:text-{{=i.icon.warningH[0]}} dark:hover:text-{{=i.icon.warningH[1]}}',
+  success: 'hover:text-{{=i.icon.successH[0]}} dark:hover:text-{{=i.icon.successH[1]}}',
+  info: 'hover:text-{{=i.icon.infoH[0]}} dark:hover:text-{{=i.icon.infoH[1]}}',
+  light: 'hover:text-{{=i.icon.lightH[0]}} dark:hover:text-{{=i.icon.lightH[1]}}',
+  dark: 'hover:text-{{=i.icon.darkH[0]}} dark:hover:text-{{=i.icon.darkH[1]}} ',
+  white: 'hover:text-{{=i.icon.whiteH[0]}} dark:hover:text-{{=i.icon.whiteH[1]}}',
+};
+
+export const FillColorSoft = {
+  unstyled: '',
+  primary: 'text-{{=i.iconSoft.primary[0]}} dark:text-{{=i.iconSoft.primary[1]}}',
+  secondary: 'text-{{=i.iconSoft.secondary[0]}} dark:text-{{=i.iconSoft.secondary[1]}}',
+  tertiary: 'text-{{=i.iconSoft.tertiary[0]}} dark:text-{{=i.iconSoft.tertiary[1]}}',
+  danger: 'text-{{=i.iconSoft.danger[0]}} dark:text-{{=i.iconSoft.danger[1]}}',
+  warning: 'text-{{=i.iconSoft.warning[0]}} dark:text-{{=i.iconSoft.warning[1]}}',
+  success: 'text-{{=i.iconSoft.success[0]}} dark:text-{{=i.iconSoft.success[1]}}',
+  info: 'text-{{=i.iconSoft.info[0]}} dark:text-{{=i.iconSoft.info[1]}}',
+  light: 'text-{{=i.iconSoft.light[0]}} dark:text-{{=i.iconSoft.light[1]}}',
+  dark: 'text-{{=i.iconSoft.dark[0]}} dark:text-{{=i.iconSoft.dark[1]}} ',
+  white: 'text-{{=i.iconSoft.white[0]}} dark:text-{{=i.iconSoft.white[1]}}',
+};
+
+export const FillColorSoftHover = {
+  unstyled: '',
+  primary: 'hover:text-{{=i.iconSoft.primaryH[0]}} dark:hover:text-{{=i.iconSoft.primaryH[1]}}',
+  secondary: 'hover:text-{{=i.iconSoft.secondaryH[0]}} dark:hover:text-{{=i.iconSoft.secondaryH[1]}}',
+  tertiary: 'hover:text-{{=i.iconSoft.tertiaryH[0]}} dark:hover:text-{{=i.iconSoft.tertiaryH[1]}}',
+  danger: 'hover:text-{{=i.iconSoft.dangerH[0]}} dark:hover:text-{{=i.iconSoft.dangerH[1]}}',
+  warning: 'hover:text-{{=i.iconSoft.warningH[0]}} dark:hover:text-{{=i.iconSoft.warningH[1]}}',
+  success: 'hover:text-{{=i.iconSoft.successH[0]}} dark:hover:text-{{=i.iconSoft.successH[1]}}',
+  info: 'hover:text-{{=i.iconSoft.infoH[0]}} dark:hover:text-{{=i.iconSoft.infoH[1]}}',
+  light: 'hover:text-{{=i.iconSoft.lightH[0]}} dark:hover:text-{{=i.iconSoft.lightH[1]}}',
+  dark: 'hover:text-{{=i.iconSoft.darkH[0]}} dark:hover:text-{{=i.iconSoft.darkH[1]}} ',
+  white: 'hover:text-{{=i.iconSoft.whiteH[0]}} dark:hover:text-{{=i.iconSoft.whiteH[1]}}',
+};
+
+export const ProgressFillColor = {
+  unstyled: '',
+  primary: 'fill-{{=i.icon.primary[0]}} dark:fill-{{=i.icon.primary[1]}}',
+  secondary: 'fill-{{=i.icon.secondary[0]}} dark:fill-{{=i.icon.secondary[1]}}',
+  tertiary: 'fill-{{=i.icon.tertiary[0]}} dark:fill-{{=i.icon.tertiary[1]}}',
+  danger: 'fill-{{=i.icon.danger[0]}} dark:fill-{{=i.icon.danger[1]}}',
+  warning: 'fill-{{=i.icon.warning[0]}} dark:fill-{{=i.icon.warning[1]}}',
+  success: 'fill-{{=i.icon.success[0]}} dark:fill-{{=i.icon.success[1]}}',
+  info: 'fill-{{=i.icon.info[0]}} dark:fill-{{=i.icon.info[1]}}',
+  light: 'fill-{{=i.icon.light[0]}} dark:fill-{{=i.icon.light[1]}}',
+  dark: 'fill-{{=i.icon.dark[0]}} dark:fill-{{=i.icon.dark[1]}} ',
+  white: 'fill-{{=i.icon.white[0]}} dark:fill-{{=i.icon.white[1]}}',
+};
+
+export const StrokeColor = {
+  unstyled: '',
+  primary: 'stroke-{{=i.icon.primary[0]}} dark:stroke-{{=i.icon.primary[1]}}',
+  secondary: 'stroke-{{=i.icon.secondary[0]}} dark:stroke-{{=i.icon.secondary[1]}}',
+  tertiary: 'stroke-{{=i.icon.tertiary[0]}} dark:stroke-{{=i.icon.tertiary[1]}}',
+  danger: 'stroke-{{=i.icon.danger[0]}} dark:stroke-{{=i.icon.danger[1]}}',
+  warning: 'stroke-{{=i.icon.warning[0]}} dark:stroke-{{=i.icon.warning[1]}}',
+  success: 'stroke-{{=i.icon.success[0]}} dark:stroke-{{=i.icon.success[1]}}',
+  info: 'stroke-{{=i.icon.info[0]}} dark:stroke-{{=i.icon.info[1]}}',
+  light: 'stroke-{{=i.icon.light[0]}} dark:stroke-{{=i.icon.light[1]}}',
+  dark: 'stroke-{{=i.icon.dark[0]}} dark:stroke-{{=i.icon.dark[1]}} ',
+  white: 'stroke-{{=i.icon.white[0]}} dark:stroke-{{=i.icon.white[1]}}',
+};
+
+export const StrokeColorHover = {
+  unstyled: '',
+  primary: 'hover:stroke-{{=i.icon.primaryH[0]}} dark:hover:stroke-{{=i.icon.primaryH[1]}}',
+  secondary: 'hover:stroke-{{=i.icon.secondaryH[0]}} dark:hover:stroke-{{=i.icon.secondaryH[1]}}',
+  tertiary: 'hover:stroke-{{=i.icon.tertiaryH[0]}} dark:hover:stroke-{{=i.icon.tertiaryH[1]}}',
+  danger: 'hover:stroke-{{=i.icon.dangerH[0]}} dark:hover:stroke-{{=i.icon.dangerH[1]}}',
+  warning: 'hover:stroke-{{=i.icon.warningH[0]}} dark:hover:stroke-{{=i.icon.warningH[1]}}',
+  success: 'hover:stroke-{{=i.icon.successH[0]}} dark:hover:stroke-{{=i.icon.successH[1]}}',
+  info: 'hover:stroke-{{=i.icon.infoH[0]}} dark:hover:stroke-{{=i.icon.infoH[1]}}',
+  light: 'hover:stroke-{{=i.icon.lightH[0]}} dark:hover:stroke-{{=i.icon.lightH[1]}}',
+  dark: 'hover:stroke-{{=i.icon.darkH[0]}} dark:hover:stroke-{{=i.icon.darkH[1]}} ',
+  white: 'hover:stroke-{{=i.icon.whiteH[0]}} dark:hover:stroke-{{=i.icon.whiteH[1]}}',
+};
+
+export const StrokeColorSoft = {
+  unstyled: '',
+  primary: 'stroke-{{=i.iconSoft.primary[0]}} dark:stroke-{{=i.iconSoft.primary[1]}}',
+  secondary: 'stroke-{{=i.iconSoft.secondary[0]}} dark:stroke-{{=i.iconSoft.secondary[1]}}',
+  tertiary: 'stroke-{{=i.iconSoft.tertiary[0]}} dark:stroke-{{=i.iconSoft.tertiary[1]}}',
+  danger: 'stroke-{{=i.iconSoft.danger[0]}} dark:stroke-{{=i.iconSoft.danger[1]}}',
+  warning: 'stroke-{{=i.iconSoft.warning[0]}} dark:stroke-{{=i.iconSoft.warning[1]}}',
+  success: 'stroke-{{=i.iconSoft.success[0]}} dark:stroke-{{=i.iconSoft.success[1]}}',
+  info: 'stroke-{{=i.iconSoft.info[0]}} dark:stroke-{{=i.iconSoft.info[1]}}',
+  light: 'stroke-{{=i.iconSoft.light[0]}} dark:stroke-{{=i.iconSoft.light[1]}}',
+  dark: 'stroke-{{=i.iconSoft.dark[0]}} dark:stroke-{{=i.iconSoft.dark[1]}} ',
+  white: 'stroke-{{=i.iconSoft.white[0]}} dark:stroke-{{=i.iconSoft.white[1]}}',
+};
+
+export const StrokeColorSoftHover = {
+  unstyled: '',
+  primary: 'hover:stroke-{{=i.iconSoft.primaryH[0]}} dark:hover:stroke-{{=i.iconSoft.primaryH[1]}}',
+  secondary: 'hover:stroke-{{=i.iconSoft.secondaryH[0]}} dark:hover:stroke-{{=i.iconSoft.secondaryH[1]}}',
+  tertiary: 'hover:stroke-{{=i.iconSoft.tertiaryH[0]}} dark:hover:stroke-{{=i.iconSoft.tertiaryH[1]}}',
+  danger: 'hover:stroke-{{=i.iconSoft.dangerH[0]}} dark:hover:stroke-{{=i.iconSoft.dangerH[1]}}',
+  warning: 'hover:stroke-{{=i.iconSoft.warningH[0]}} dark:hover:stroke-{{=i.iconSoft.warningH[1]}}',
+  success: 'hover:stroke-{{=i.iconSoft.successH[0]}} dark:hover:stroke-{{=i.iconSoft.successH[1]}}',
+  info: 'hover:stroke-{{=i.iconSoft.infoH[0]}} dark:hover:stroke-{{=i.iconSoft.infoH[1]}}',
+  light: 'hover:stroke-{{=i.iconSoft.lightH[0]}} dark:hover:stroke-{{=i.iconSoft.lightH[1]}}',
+  dark: 'hover:stroke-{{=i.iconSoft.darkH[0]}} dark:hover:stroke-{{=i.iconSoft.darkH[1]}} ',
+  white: 'hover:stroke-{{=i.iconSoft.whiteH[0]}} dark:hover:stroke-{{=i.iconSoft.whiteH[1]}}',
+};
+
+
+export const FontColor = {
+  unstyled: '',
+  primary: 'text-{{=i.font.primary[0]}} dark:text-{{=i.font.primary[1]}}',
+  secondary: 'text-{{=i.font.secondary[0]}} dark:text-{{=i.font.secondary[1]}}',
+  tertiary: 'text-{{=i.font.tertiary[0]}} dark:text-{{=i.font.tertiary[1]}}',
+  danger: 'text-{{=i.font.danger[0]}} dark:text-{{=i.font.danger[1]}}',
+  warning: 'text-{{=i.font.warning[0]}} dark:text-{{=i.font.warning[1]}}',
+  success: 'text-{{=i.font.success[0]}} dark:text-{{=i.font.success[1]}}',
+  info: 'text-{{=i.font.info[0]}} dark:text-{{=i.font.info[1]}}',
+  light: 'text-{{=i.font.light[0]}} dark:text-{{=i.font.light[1]}}',
+  dark: 'text-{{=i.font.dark[0]}} dark:text-{{=i.font.dark[1]}} ',
+  white: 'text-{{=i.font.white[0]}} dark:text-{{=i.font.white[1]}}',
+};
+
+export const FontColorHover = {
+  unstyled: '',
+  primary: 'hover:text-{{=i.font.primaryH[0]}} dark:hover:text-{{=i.font.primaryH[1]}}',
+  secondary: 'hover:text-{{=i.font.secondaryH[0]}} dark:hover:text-{{=i.font.secondaryH[1]}}',
+  tertiary: 'hover:text-{{=i.font.tertiaryH[0]}} dark:hover:text-{{=i.font.tertiaryH[1]}}',
+  danger: 'hover:text-{{=i.font.dangerH[0]}} dark:hover:text-{{=i.font.dangerH[1]}}',
+  warning: 'hover:text-{{=i.font.warningH[0]}} dark:hover:text-{{=i.font.warningH[1]}}',
+  success: 'hover:text-{{=i.font.successH[0]}} dark:hover:text-{{=i.font.successH[1]}}',
+  info: 'hover:text-{{=i.font.infoH[0]}} dark:hover:text-{{=i.font.infoH[1]}}',
+  light: 'hover:text-{{=i.font.lightH[0]}} dark:hover:text-{{=i.font.lightH[1]}}',
+  dark: 'hover:text-{{=i.font.darkH[0]}} dark:hover:text-{{=i.font.darkH[1]}} ',
+  white: 'hover:text-{{=i.font.whiteH[0]}} dark:hover:text-{{=i.font.whiteH[1]}}',
+};
+
+export const ForeColorOutline = {
+  unstyled: '',
+  primary: 'text-{{=i.foreOutline.primary[0]}} dark:text-{{=i.foreOutline.primary[1]}}',
+  secondary: 'text-{{=i.foreOutline.secondary[0]}} dark:text-{{=i.foreOutline.secondary[1]}}',
+  tertiary: 'text-{{=i.foreOutline.tertiary[0]}} dark:text-{{=i.foreOutline.tertiary[1]}}',
+  danger: 'text-{{=i.foreOutline.danger[0]}} dark:text-{{=i.foreOutline.danger[1]}}',
+  warning: 'text-{{=i.foreOutline.warning[0]}} dark:text-{{=i.foreOutline.warning[1]}}',
+  success: 'text-{{=i.foreOutline.success[0]}} dark:text-{{=i.foreOutline.success[1]}}',
+  info: 'text-{{=i.foreOutline.info[0]}} dark:text-{{=i.foreOutline.info[1]}}',
+  light: 'text-{{=i.foreOutline.light[0]}} dark:text-{{=i.foreOutline.light[1]}}',
+  dark: 'text-{{=i.foreOutline.dark[0]}} dark:text-{{=i.foreOutline.dark[1]}} ',
+  white: 'text-{{=i.foreOutline.white[0]}} dark:text-{{=i.foreOutline.white[1]}}',
+};
+
+export const ForeColorOutlineHover = {
+  unstyled: '',
+  primary: 'hover:text-{{=i.foreOutline.primaryH[0]}} dark:hover:text-{{=i.foreOutline.primaryH[1]}}',
+  secondary: 'hover:text-{{=i.foreOutline.secondaryH[0]}} dark:hover:text-{{=i.foreOutline.secondaryH[1]}}',
+  tertiary: 'hover:text-{{=i.foreOutline.tertiaryH[0]}} dark:hover:text-{{=i.foreOutline.tertiaryH[1]}}',
+  danger: 'hover:text-{{=i.foreOutline.dangerH[0]}} dark:hover:text-{{=i.foreOutline.dangerH[1]}}',
+  warning: 'hover:text-{{=i.foreOutline.warningH[0]}} dark:hover:text-{{=i.foreOutline.warningH[1]}}',
+  success: 'hover:text-{{=i.foreOutline.successH[0]}} dark:hover:text-{{=i.foreOutline.successH[1]}}',
+  info: 'hover:text-{{=i.foreOutline.infoH[0]}} dark:hover:text-{{=i.foreOutline.infoH[1]}}',
+  light: 'hover:text-{{=i.foreOutline.lightH[0]}} dark:hover:text-{{=i.foreOutline.lightH[1]}}',
+  dark: 'hover:text-{{=i.foreOutline.darkH[0]}} dark:hover:text-{{=i.foreOutline.darkH[1]}} ',
+  white: 'hover:text-{{=i.foreOutline.whiteH[0]}} dark:hover:text-{{=i.foreOutline.whiteH[1]}}',
+};
+
+export const ForeColorFilled = {
+  unstyled: '',
+  primary: 'text-{{=i.foreFill.primary[0]}} dark:text-{{=i.foreFill.primary[1]}}',
+  secondary: 'text-{{=i.foreFill.secondary[0]}} dark:text-{{=i.foreFill.secondary[1]}}',
+  tertiary: 'text-{{=i.foreFill.tertiary[0]}} dark:text-{{=i.foreFill.tertiary[1]}}',
+  danger: 'text-{{=i.foreFill.danger[0]}} dark:text-{{=i.foreFill.danger[1]}}',
+  warning: 'text-{{=i.foreFill.warning[0]}} dark:text-{{=i.foreFill.warning[1]}}',
+  success: 'text-{{=i.foreFill.success[0]}} dark:text-{{=i.foreFill.success[1]}}',
+  info: 'text-{{=i.foreFill.info[0]}} dark:text-{{=i.foreFill.info[1]}}',
+  light: 'text-{{=i.foreFill.light[0]}} dark:text-{{=i.foreFill.light[1]}}',
+  dark: 'text-{{=i.foreFill.dark[0]}} dark:text-{{=i.foreFill.dark[1]}} ',
+  white: 'text-{{=i.foreFill.white[0]}} dark:text-{{=i.foreFill.white[1]}}',
+};
+
+export const ForeColorFilledHover = {
+  unstyled: '',
+  primary: 'hover:text-{{=i.foreFill.primaryH[0]}} dark:hover:text-{{=i.foreFill.primaryH[1]}}',
+  secondary: 'hover:text-{{=i.foreFill.secondaryH[0]}} dark:hover:text-{{=i.foreFill.secondaryH[1]}}',
+  tertiary: 'hover:text-{{=i.foreFill.tertiaryH[0]}} dark:hover:text-{{=i.foreFill.tertiaryH[1]}}',
+  danger: 'hover:text-{{=i.foreFill.dangerH[0]}} dark:hover:text-{{=i.foreFill.dangerH[1]}}',
+  warning: 'hover:text-{{=i.foreFill.warningH[0]}} dark:hover:text-{{=i.foreFill.warningH[1]}}',
+  success: 'hover:text-{{=i.foreFill.successH[0]}} dark:hover:text-{{=i.foreFill.successH[1]}}',
+  info: 'hover:text-{{=i.foreFill.infoH[0]}} dark:hover:text-{{=i.foreFill.infoH[1]}}',
+  light: 'hover:text-{{=i.foreFill.lightH[0]}} dark:hover:text-{{=i.foreFill.lightH[1]}}',
+  dark: 'hover:text-{{=i.foreFill.darkH[0]}} dark:hover:text-{{=i.foreFill.darkH[1]}} ',
+  white: 'hover:text-{{=i.foreFill.whiteH[0]}} dark:hover:text-{{=i.foreFill.whiteH[1]}}',
+};
+
+export const ForeColorSoft = {
+  unstyled: '',
+  primary: 'text-{{=i.foreSoft.primary[0]}} dark:text-{{=i.foreSoft.primary[1]}}',
+  secondary: 'text-{{=i.foreSoft.secondary[0]}} dark:text-{{=i.foreSoft.secondary[1]}}',
+  tertiary: 'text-{{=i.foreSoft.tertiary[0]}} dark:text-{{=i.foreSoft.tertiary[1]}}',
+  danger: 'text-{{=i.foreSoft.danger[0]}} dark:text-{{=i.foreSoft.danger[1]}}',
+  warning: 'text-{{=i.foreSoft.warning[0]}} dark:text-{{=i.foreSoft.warning[1]}}',
+  success: 'text-{{=i.foreSoft.success[0]}} dark:text-{{=i.foreSoft.success[1]}}',
+  info: 'text-{{=i.foreSoft.info[0]}} dark:text-{{=i.foreSoft.info[1]}}',
+  light: 'text-{{=i.foreSoft.light[0]}} dark:text-{{=i.foreSoft.light[1]}}',
+  dark: 'text-{{=i.foreSoft.dark[0]}} dark:text-{{=i.foreSoft.dark[1]}} ',
+  white: 'text-{{=i.foreSoft.white[0]}} dark:text-{{=i.foreSoft.white[1]}}',
+};
+
+export const ForeColorSoftHover = {
+  unstyled: '',
+  primary: 'hover:text-{{=i.foreSoft.primaryH[0]}} dark:hover:text-{{=i.foreSoft.primaryH[1]}}',
+  secondary: 'hover:text-{{=i.foreSoft.secondaryH[0]}} dark:hover:text-{{=i.foreSoft.secondaryH[1]}}',
+  tertiary: 'hover:text-{{=i.foreSoft.tertiaryH[0]}} dark:hover:text-{{=i.foreSoft.tertiaryH[1]}}',
+  danger: 'hover:text-{{=i.foreSoft.dangerH[0]}} dark:hover:text-{{=i.foreSoft.dangerH[1]}}',
+  warning: 'hover:text-{{=i.foreSoft.warningH[0]}} dark:hover:text-{{=i.foreSoft.warningH[1]}}',
+  success: 'hover:text-{{=i.foreSoft.successH[0]}} dark:hover:text-{{=i.foreSoft.successH[1]}}',
+  info: 'hover:text-{{=i.foreSoft.infoH[0]}} dark:hover:text-{{=i.foreSoft.infoH[1]}}',
+  light: 'hover:text-{{=i.foreSoft.lightH[0]}} dark:hover:text-{{=i.foreSoft.lightH[1]}}',
+  dark: 'hover:text-{{=i.foreSoft.darkH[0]}} dark:hover:text-{{=i.foreSoft.darkH[1]}} ',
+  white: 'hover:text-{{=i.foreSoft.whiteH[0]}} dark:hover:text-{{=i.foreSoft.whiteH[1]}}',
+};
+
+export const ForeColorGhost = {
+  unstyled: '',
+  primary: 'text-{{=i.foreGhost.primary[0]}} dark:text-{{=i.foreGhost.primary[1]}}',
+  secondary: 'text-{{=i.foreGhost.secondary[0]}} dark:text-{{=i.foreGhost.secondary[1]}}',
+  tertiary: 'text-{{=i.foreGhost.tertiary[0]}} dark:text-{{=i.foreGhost.tertiary[1]}}',
+  danger: 'text-{{=i.foreGhost.danger[0]}} dark:text-{{=i.foreGhost.danger[1]}}',
+  warning: 'text-{{=i.foreGhost.warning[0]}} dark:text-{{=i.foreGhost.warning[1]}}',
+  success: 'text-{{=i.foreGhost.success[0]}} dark:text-{{=i.foreGhost.success[1]}}',
+  info: 'text-{{=i.foreGhost.info[0]}} dark:text-{{=i.foreGhost.info[1]}}',
+  light: 'text-{{=i.foreGhost.light[0]}} dark:text-{{=i.foreGhost.light[1]}}',
+  dark: 'text-{{=i.foreGhost.dark[0]}} dark:text-{{=i.foreGhost.dark[1]}} ',
+  white: 'text-{{=i.foreGhost.white[0]}} dark:text-{{=i.foreGhost.white[1]}}',
+};
+
+export const ForeColorGhostHover = {
+  unstyled: '',
+  primary: 'hover:text-{{=i.foreGhost.primaryH[0]}} dark:hover:text-{{=i.foreGhost.primaryH[1]}}',
+  secondary: 'hover:text-{{=i.foreGhost.secondaryH[0]}} dark:hover:text-{{=i.foreGhost.secondaryH[1]}}',
+  tertiary: 'hover:text-{{=i.foreGhost.tertiaryH[0]}} dark:hover:text-{{=i.foreGhost.tertiaryH[1]}}',
+  danger: 'hover:text-{{=i.foreGhost.dangerH[0]}} dark:hover:text-{{=i.foreGhost.dangerH[1]}}',
+  warning: 'hover:text-{{=i.foreGhost.warningH[0]}} dark:hover:text-{{=i.foreGhost.warningH[1]}}',
+  success: 'hover:text-{{=i.foreGhost.successH[0]}} dark:hover:text-{{=i.foreGhost.successH[1]}}',
+  info: 'hover:text-{{=i.foreGhost.infoH[0]}} dark:hover:text-{{=i.foreGhost.infoH[1]}}',
+  light: 'hover:text-{{=i.foreGhost.lightH[0]}} dark:hover:text-{{=i.foreGhost.lightH[1]}}',
+  dark: 'hover:text-{{=i.foreGhost.darkH[0]}} dark:hover:text-{{=i.foreGhost.darkH[1]}} ',
+  white: 'hover:text-{{=i.foreGhost.whiteH[0]}} dark:hover:text-{{=i.foreGhost.whiteH[1]}}',
+};
+
+export const ForeColorSelected = {
+  unstyled: '',
+  primary: 'aria-selected:text-{{=i.foreOutline.primary[0]}} dark:aria-selected:text-{{=i.foreOutline.primary[1]}}',
+  secondary: 'aria-selected:text-{{=i.foreOutline.secondary[0]}} dark:aria-selected:text-{{=i.foreOutline.secondary[1]}}',
+  tertiary: 'aria-selected:text-{{=i.foreOutline.tertiary[0]}} dark:aria-selected:text-{{=i.foreOutline.tertiary[1]}}',
+  danger: 'aria-selected:text-{{=i.foreOutline.danger[0]}} dark:aria-selected:text-{{=i.foreOutline.danger[1]}}',
+  warning: 'aria-selected:text-{{=i.foreOutline.warning[0]}} dark:aria-selected:text-{{=i.foreOutline.warning[1]}}',
+  success: 'aria-selected:text-{{=i.foreOutline.success[0]}} dark:aria-selected:text-{{=i.foreOutline.success[1]}}',
+  info: 'aria-selected:text-{{=i.foreOutline.info[0]}} dark:aria-selected:text-{{=i.foreOutline.info[1]}}',
+  light: 'aria-selected:text-{{=i.foreOutline.light[0]}} dark:aria-selected:text-{{=i.foreOutline.light[1]}}',
+  dark: 'aria-selected:text-{{=i.foreOutline.dark[0]}} dark:aria-selected:text-{{=i.foreOutline.dark[1]}} ',
+  white: 'aria-selected:text-{{=i.foreOutline.white[0]}} dark:aria-selected:text-{{=i.foreOutline.white[1]}}',
+};
+
+export const ForeColorCurrent = {
+  unstyled: '',
+  primary: 'aria-[current="page"]:text-{{=i.foreOutline.primary[0]}} dark:aria-[current="page"]:text-{{=i.foreOutline.primary[1]}}',
+  secondary: 'aria-[current="page"]:text-{{=i.foreOutline.secondary[0]}} dark:aria-[current="page"]:text-{{=i.foreOutline.secondary[1]}}',
+  tertiary: 'aria-[current="page"]:text-{{=i.foreOutline.tertiary[0]}} dark:aria-[current="page"]:text-{{=i.foreOutline.tertiary[1]}}',
+  danger: 'aria-[current="page"]:text-{{=i.foreOutline.danger[0]}} dark:aria-[current="page"]:text-{{=i.foreOutline.danger[1]}}',
+  warning: 'aria-[current="page"]:text-{{=i.foreOutline.warning[0]}} dark:aria-[current="page"]:text-{{=i.foreOutline.warning[1]}}',
+  success: 'aria-[current="page"]:text-{{=i.foreOutline.success[0]}} dark:aria-[current="page"]:text-{{=i.foreOutline.success[1]}}',
+  info: 'aria-[current="page"]:text-{{=i.foreOutline.info[0]}} dark:aria-[current="page"]:text-{{=i.foreOutline.info[1]}}',
+  light: 'aria-[current="page"]:text-{{=i.foreOutline.light[0]}} dark:aria-[current="page"]:text-{{=i.foreOutline.light[1]}}',
+  dark: 'aria-[current="page"]:text-{{=i.foreOutline.dark[0]}} dark:aria-[current="page"]:text-{{=i.foreOutline.dark[1]}} ',
+  white: 'aria-[current="page"]:text-{{=i.foreOutline.white[0]}} dark:aria-[current="page"]:text-{{=i.foreOutline.white[1]}}',
+};
+
+export const BgColor = {
+  unstyled: '',
+  primary: 'bg-{{=i.bg.primary[0]}} dark:bg-{{=i.bg.primary[1]}}',
+  secondary: 'bg-{{=i.bg.secondary[0]}} dark:bg-{{=i.bg.secondary[1]}}',
+  tertiary: 'bg-{{=i.bg.tertiary[0]}} dark:bg-{{=i.bg.tertiary[1]}}',
+  danger: 'bg-{{=i.bg.danger[0]}} dark:bg-{{=i.bg.danger[1]}}',
+  warning: 'bg-{{=i.bg.warning[0]}} dark:bg-{{=i.bg.warning[1]}}',
+  success: 'bg-{{=i.bg.success[0]}} dark:bg-{{=i.bg.success[1]}}',
+  info: 'bg-{{=i.bg.info[0]}} dark:bg-{{=i.bg.info[1]}}',
+  light: 'bg-{{=i.bg.light[0]}} dark:bg-{{=i.bg.light[1]}}',
+  dark: 'bg-{{=i.bg.dark[0]}} dark:bg-{{=i.bg.dark[1]}} ',
+  white: 'bg-{{=i.bg.white[0]}} dark:bg-{{=i.bg.white[1]}}',
+};
+
+export const BgColorHint = {
+  unstyled: '',
+  primary: 'bg-{{=i.bgHint.primary[0]}} dark:bg-{{=i.bgHint.primary[1]}}',
+  secondary: 'bg-{{=i.bgHint.secondary[0]}} dark:bg-{{=i.bgHint.secondary[1]}}',
+  tertiary: 'bg-{{=i.bgHint.tertiary[0]}} dark:bg-{{=i.bgHint.tertiary[1]}}',
+  danger: 'bg-{{=i.bgHint.danger[0]}} dark:bg-{{=i.bgHint.danger[1]}}',
+  warning: 'bg-{{=i.bgHint.warning[0]}} dark:bg-{{=i.bgHint.warning[1]}}',
+  success: 'bg-{{=i.bgHint.success[0]}} dark:bg-{{=i.bgHint.success[1]}}',
+  info: 'bg-{{=i.bgHint.info[0]}} dark:bg-{{=i.bgHint.info[1]}}',
+  light: 'bg-{{=i.bgHint.light[0]}} dark:bg-{{=i.bgHint.light[1]}}',
+  dark: 'bg-{{=i.bgHint.dark[0]}} dark:bg-{{=i.bgHint.dark[1]}} ',
+  white: 'bg-{{=i.bgHint.white[0]}} dark:bg-{{=i.bgHint.white[1]}}',
+};
+
+export const BgColorHover = {
+  unstyled: '',
+  primary: 'hover:bg-{{=i.bg.primaryH[0]}} dark:hover:bg-{{=i.bg.primaryH[1]}}',
+  secondary: 'hover:bg-{{=i.bg.secondaryH[0]}} dark:hover:bg-{{=i.bg.secondaryH[1]}}',
+  tertiary: 'hover:bg-{{=i.bg.tertiaryH[0]}} dark:hover:bg-{{=i.bg.tertiaryH[1]}}',
+  danger: 'hover:bg-{{=i.bg.dangerH[0]}} dark:hover:bg-{{=i.bg.dangerH[1]}}',
+  warning: 'hover:bg-{{=i.bg.warningH[0]}} dark:hover:bg-{{=i.bg.warningH[1]}}',
+  success: 'hover:bg-{{=i.bg.successH[0]}} dark:hover:bg-{{=i.bg.successH[1]}}',
+  info: 'hover:bg-{{=i.bg.infoH[0]}} dark:hover:bg-{{=i.bg.infoH[1]}}',
+  light: 'hover:bg-{{=i.bg.lightH[0]}} dark:hover:bg-{{=i.bg.lightH[1]}}',
+  dark: 'hover:bg-{{=i.bg.darkH[0]}} dark:hover:bg-{{=i.bg.darkH[1]}} ',
+  white: 'hover:bg-{{=i.bg.whiteH[0]}} dark:hover:bg-{{=i.bg.whiteH[1]}}',
+};
+
+export const BgColorGroupHover = {
+  unstyled: '',
+  primary: 'group-hover:bg-{{=i.bg.primaryH[0]}} dark:group-hover:bg-{{=i.bg.primaryH[1]}}',
+  secondary: 'group-hover:bg-{{=i.bg.secondaryH[0]}} dark:group-hover:bg-{{=i.bg.secondaryH[1]}}',
+  tertiary: 'group-hover:bg-{{=i.bg.tertiaryH[0]}} dark:group-hover:bg-{{=i.bg.tertiaryH[1]}}',
+  danger: 'group-hover:bg-{{=i.bg.dangerH[0]}} dark:group-hover:bg-{{=i.bg.dangerH[1]}}',
+  warning: 'group-hover:bg-{{=i.bg.warningH[0]}} dark:group-hover:bg-{{=i.bg.warningH[1]}}',
+  success: 'group-hover:bg-{{=i.bg.successH[0]}} dark:group-hover:bg-{{=i.bg.successH[1]}}',
+  info: 'group-hover:bg-{{=i.bg.infoH[0]}} dark:group-hover:bg-{{=i.bg.infoH[1]}}',
+  light: 'group-hover:bg-{{=i.bg.lightH[0]}} dark:group-hover:bg-{{=i.bg.lightH[1]}}',
+  dark: 'group-hover:bg-{{=i.bg.darkH[0]}} dark:group-hover:bg-{{=i.bg.darkH[1]}} ',
+  white: 'group-hover:bg-{{=i.bg.whiteH[0]}} dark:group-hover:bg-{{=i.bg.whiteH[1]}}',
+};
+
+export const BorderColorGroupHover = {
+  unstyled: '',
+  primary: 'group-hover:border-{{=i.bg.primaryH[0]}} dark:group-hover:border-{{=i.bg.primaryH[1]}}',
+  secondary: 'group-hover:border-{{=i.bg.secondaryH[0]}} dark:group-hover:border-{{=i.bg.secondaryH[1]}}',
+  tertiary: 'group-hover:border-{{=i.bg.tertiaryH[0]}} dark:group-hover:border-{{=i.bg.tertiaryH[1]}}',
+  danger: 'group-hover:border-{{=i.bg.dangerH[0]}} dark:group-hover:border-{{=i.bg.dangerH[1]}}',
+  warning: 'group-hover:border-{{=i.bg.warningH[0]}} dark:group-hover:border-{{=i.bg.warningH[1]}}',
+  success: 'group-hover:border-{{=i.bg.successH[0]}} dark:group-hover:border-{{=i.bg.successH[1]}}',
+  info: 'group-hover:border-{{=i.bg.infoH[0]}} dark:group-hover:border-{{=i.bg.infoH[1]}}',
+  light: 'group-hover:border-{{=i.bg.lightH[0]}} dark:group-hover:border-{{=i.bg.lightH[1]}}',
+  dark: 'group-hover:border-{{=i.bg.darkH[0]}} dark:group-hover:border-{{=i.bg.darkH[1]}} ',
+  white: 'group-hover:border-{{=i.bg.whiteH[0]}} dark:group-hover:border-{{=i.bg.whiteH[1]}}',
+};
+
+
+export const BgColorSoft = {
+  unstyled: '',
+  primary: 'bg-{{=i.bgSoft.primary[0]}} dark:bg-{{=i.bgSoft.primary[1]}}',
+  secondary: 'bg-{{=i.bgSoft.secondary[0]}} dark:bg-{{=i.bgSoft.secondary[1]}}',
+  tertiary: 'bg-{{=i.bgSoft.tertiary[0]}} dark:bg-{{=i.bgSoft.tertiary[1]}}',
+  danger: 'bg-{{=i.bgSoft.danger[0]}} dark:bg-{{=i.bgSoft.danger[1]}}',
+  warning: 'bg-{{=i.bgSoft.warning[0]}} dark:bg-{{=i.bgSoft.warning[1]}}',
+  success: 'bg-{{=i.bgSoft.success[0]}} dark:bg-{{=i.bgSoft.success[1]}}',
+  info: 'bg-{{=i.bgSoft.info[0]}} dark:bg-{{=i.bgSoft.info[1]}}',
+  light: 'bg-{{=i.bgSoft.light[0]}} dark:bg-{{=i.bgSoft.light[1]}}',
+  dark: 'bg-{{=i.bgSoft.dark[0]}} dark:bg-{{=i.bgSoft.dark[1]}} ',
+  white: 'bg-{{=i.bgSoft.white[0]}} dark:bg-{{=i.bgSoft.white[1]}}',
+};
+
+export const BgColorSoftHover = {
+  unstyled: '',
+  primary: 'hover:bg-{{=i.bgSoft.primaryH[0]}} dark:hover:bg-{{=i.bgSoft.primaryH[1]}}',
+  secondary: 'hover:bg-{{=i.bgSoft.secondaryH[0]}} dark:hover:bg-{{=i.bgSoft.secondaryH[1]}}',
+  tertiary: 'hover:bg-{{=i.bgSoft.tertiaryH[0]}} dark:hover:bg-{{=i.bgSoft.tertiaryH[1]}}',
+  danger: 'hover:bg-{{=i.bgSoft.dangerH[0]}} dark:hover:bg-{{=i.bgSoft.dangerH[1]}}',
+  warning: 'hover:bg-{{=i.bgSoft.warningH[0]}} dark:hover:bg-{{=i.bgSoft.warningH[1]}}',
+  success: 'hover:bg-{{=i.bgSoft.successH[0]}} dark:hover:bg-{{=i.bgSoft.successH[1]}}',
+  info: 'hover:bg-{{=i.bgSoft.infoH[0]}} dark:hover:bg-{{=i.bgSoft.infoH[1]}}',
+  light: 'hover:bg-{{=i.bgSoft.lightH[0]}} dark:hover:bg-{{=i.bgSoft.lightH[1]}}',
+  dark: 'hover:bg-{{=i.bgSoft.darkH[0]}} dark:hover:bg-{{=i.bgSoft.darkH[1]}} ',
+  white: 'hover:bg-{{=i.bgSoft.whiteH[0]}} dark:hover:bg-{{=i.bgSoft.whiteH[1]}}',
+};
+
+export const BgColorGhostHover = {
+  unstyled: '',
+  primary: 'hover:bg-{{=i.bgGhost.primary[0]}} dark:hover:bg-{{=i.bgGhost.primary[1]}}',
+  secondary: 'hover:bg-{{=i.bgGhost.secondary[0]}} dark:hover:bg-{{=i.bgGhost.secondary[1]}}',
+  tertiary: 'hover:bg-{{=i.bgGhost.tertiary[0]}} dark:hover:bg-{{=i.bgGhost.tertiary[1]}}',
+  danger: 'hover:bg-{{=i.bgGhost.danger[0]}} dark:hover:bg-{{=i.bgGhost.danger[1]}}',
+  warning: 'hover:bg-{{=i.bgGhost.warning[0]}} dark:hover:bg-{{=i.bgGhost.warning[1]}}',
+  success: 'hover:bg-{{=i.bgGhost.success[0]}} dark:hover:bg-{{=i.bgGhost.success[1]}}',
+  info: 'hover:bg-{{=i.bgGhost.info[0]}} dark:hover:bg-{{=i.bgGhost.info[1]}}',
+  light: 'hover:bg-{{=i.bgGhost.light[0]}} dark:hover:bg-{{=i.bgGhost.light[1]}}',
+  dark: 'hover:bg-{{=i.bgGhost.dark[0]}} dark:hover:bg-{{=i.bgGhost.dark[1]}} ',
+  white: 'hover:bg-{{=i.bgGhost.white[0]}} dark:hover:bg-{{=i.bgGhost.white[1]}}',
+};
+
+export const BgColorSoftGroupHover = {
+  unstyled: '',
+  primary: 'group-hover:bg-{{=i.bgSoft.primaryH[0]}} dark:group-hover:bg-{{=i.bgSoft.primaryH[1]}}',
+  secondary: 'group-hover:bg-{{=i.bgSoft.secondaryH[0]}} dark:group-hover:bg-{{=i.bgSoft.secondaryH[1]}}',
+  tertiary: 'group-hover:bg-{{=i.bgSoft.tertiaryH[0]}} dark:group-hover:bg-{{=i.bgSoft.tertiaryH[1]}}',
+  danger: 'group-hover:bg-{{=i.bgSoft.dangerH[0]}} dark:group-hover:bg-{{=i.bgSoft.dangerH[1]}}',
+  warning: 'group-hover:bg-{{=i.bgSoft.warningH[0]}} dark:group-hover:bg-{{=i.bgSoft.warningH[1]}}',
+  success: 'group-hover:bg-{{=i.bgSoft.successH[0]}} dark:group-hover:bg-{{=i.bgSoft.successH[1]}}',
+  info: 'group-hover:bg-{{=i.bgSoft.infoH[0]}} dark:group-hover:bg-{{=i.bgSoft.infoH[1]}}',
+  light: 'group-hover:bg-{{=i.bgSoft.lightH[0]}} dark:group-hover:bg-{{=i.bgSoft.lightH[1]}}',
+  dark: 'group-hover:bg-{{=i.bgSoft.darkH[0]}} dark:group-hover:bg-{{=i.bgSoft.darkH[1]}} ',
+  white: 'group-hover:bg-{{=i.bgSoft.whiteH[0]}} dark:group-hover:bg-{{=i.bgSoft.whiteH[1]}}',
+};
+
+export const BgColorSelected = {
+  unstyled: '',
+  primary: 'aria-selected:bg-{{=i.bgDropSelect.primary[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.primary[1]}}',
+  secondary: 'aria-selected:bg-{{=i.bgDropSelect.secondary[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.secondary[1]}}',
+  tertiary: 'aria-selected:bg-{{=i.bgDropSelect.tertiary[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.tertiary[1]}}',
+  danger: 'aria-selected:bg-{{=i.bgDropSelect.danger[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.danger[1]}}',
+  warning: 'aria-selected:bg-{{=i.bgDropSelect.warning[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.warning[1]}}',
+  success: 'aria-selected:bg-{{=i.bgDropSelect.success[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.success[1]}}',
+  info: 'aria-selected:bg-{{=i.bgDropSelect.info[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.info[1]}}',
+  light: 'aria-selected:bg-{{=i.bgDropSelect.light[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.light[1]}}',
+  dark: 'aria-selected:bg-{{=i.bgDropSelect.dark[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.dark[1]}} ',
+  white: 'aria-selected:bg-{{=i.bgDropSelect.white[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.white[1]}}',
+};
+
+export const BgColorDropSelected = {
+  unstyled: '',
+  primary: 'aria-selected:bg-{{=i.bgDropSelect.primary[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.primary[1]}}',
+  secondary: 'aria-selected:bg-{{=i.bgDropSelect.secondary[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.secondary[1]}}',
+  tertiary: 'aria-selected:bg-{{=i.bgDropSelect.tertiary[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.tertiary[1]}}',
+  danger: 'aria-selected:bg-{{=i.bgDropSelect.danger[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.danger[1]}}',
+  warning: 'aria-selected:bg-{{=i.bgDropSelect.warning[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.warning[1]}}',
+  success: 'aria-selected:bg-{{=i.bgDropSelect.success[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.success[1]}}',
+  info: 'aria-selected:bg-{{=i.bgDropSelect.info[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.info[1]}}',
+  light: 'aria-selected:bg-{{=i.bgDropSelect.light[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.light[1]}}',
+  dark: 'aria-selected:bg-{{=i.bgDropSelect.dark[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.dark[1]}} ',
+  white: 'aria-selected:bg-{{=i.bgDropSelect.white[0]}} dark:aria-selected:bg-{{=i.bgDropSelect.white[1]}}',
+};
+
+export const BgColorSoftSelected = {
+  unstyled: '',
+  primary: 'aria-selected:bg-{{=i.bgSoftSelect.primary[0]}} dark:aria-selected:bg-{{=i.bgSoftSelect.primary[1]}}',
+  secondary: 'aria-selected:bg-{{=i.bgSoftSelect.secondary[0]}} dark:aria-selected:bg-{{=i.bgSoftSelect.secondary[1]}}',
+  tertiary: 'aria-selected:bg-{{=i.bgSoftSelect.tertiary[0]}} dark:aria-selected:bg-{{=i.bgSoftSelect.tertiary[1]}}',
+  danger: 'aria-selected:bg-{{=i.bgSoftSelect.danger[0]}} dark:aria-selected:bg-{{=i.bgSoftSelect.danger[1]}}',
+  warning: 'aria-selected:bg-{{=i.bgSoftSelect.warning[0]}} dark:aria-selected:bg-{{=i.bgSoftSelect.warning[1]}}',
+  success: 'aria-selected:bg-{{=i.bgSoftSelect.success[0]}} dark:aria-selected:bg-{{=i.bgSoftSelect.success[1]}}',
+  info: 'aria-selected:bg-{{=i.bgSoftSelect.info[0]}} dark:aria-selected:bg-{{=i.bgSoftSelect.info[1]}}',
+  light: 'aria-selected:bg-{{=i.bgSoftSelect.light[0]}} dark:aria-selected:bg-{{=i.bgSoftSelect.light[1]}}',
+  dark: 'aria-selected:bg-{{=i.bgSoftSelect.dark[0]}} dark:aria-selected:bg-{{=i.bgSoftSelect.dark[1]}} ',
+  white: 'aria-selected:bg-{{=i.bgSoftSelect.white[0]}} dark:aria-selected:bg-{{=i.bgSoftSelect.white[1]}}',
+};
+
+export const BgColorSoftDropSelected = {
+  unstyled: '',
+  primary: 'aria-selected:bg-{{=i.bgSoftDropSelect.primary[0]}} dark:aria-selected:bg-{{=i.bgSoftDropSelect.primary[1]}}',
+  secondary: 'aria-selected:bg-{{=i.bgSoftDropSelect.secondary[0]}} dark:aria-selected:bg-{{=i.bgSoftDropSelect.secondary[1]}}',
+  tertiary: 'aria-selected:bg-{{=i.bgSoftDropSelect.tertiary[0]}} dark:aria-selected:bg-{{=i.bgSoftDropSelect.tertiary[1]}}',
+  danger: 'aria-selected:bg-{{=i.bgSoftDropSelect.danger[0]}} dark:aria-selected:bg-{{=i.bgSoftDropSelect.danger[1]}}',
+  warning: 'aria-selected:bg-{{=i.bgSoftDropSelect.warning[0]}} dark:aria-selected:bg-{{=i.bgSoftDropSelect.warning[1]}}',
+  success: 'aria-selected:bg-{{=i.bgSoftDropSelect.success[0]}} dark:aria-selected:bg-{{=i.bgSoftDropSelect.success[1]}}',
+  info: 'aria-selected:bg-{{=i.bgSoftDropSelect.info[0]}} dark:aria-selected:bg-{{=i.bgSoftDropSelect.info[1]}}',
+  light: 'aria-selected:bg-{{=i.bgSoftDropSelect.light[0]}} dark:aria-selected:bg-{{=i.bgSoftDropSelect.light[1]}}',
+  dark: 'aria-selected:bg-{{=i.bgSoftDropSelect.dark[0]}} dark:aria-selected:bg-{{=i.bgSoftDropSelect.dark[1]}} ',
+  white: 'aria-selected:bg-{{=i.bgSoftDropSelect.white[0]}} dark:aria-selected:bg-{{=i.bgSoftDropSelect.white[1]}}',
+};
+
+export const BgColorExpanded = {
+  unstyled: '',
+  primary: 'aria-expanded:bg-{{=i.bgDropSelect.primary[0]}} dark:aria-expanded:bg-{{=i.bgDropSelect.primary[1]}}',
+  secondary: 'aria-expanded:bg-{{=i.bgDropSelect.secondary[0]}} dark:aria-expanded:bg-{{=i.bgDropSelect.secondary[1]}}',
+  tertiary: 'aria-expanded:bg-{{=i.bgDropSelect.tertiary[0]}} dark:aria-expanded:bg-{{=i.bgDropSelect.tertiary[1]}}',
+  danger: 'aria-expanded:bg-{{=i.bgDropSelect.danger[0]}} dark:aria-expanded:bg-{{=i.bgDropSelect.danger[1]}}',
+  warning: 'aria-expanded:bg-{{=i.bgDropSelect.warning[0]}} dark:aria-expanded:bg-{{=i.bgDropSelect.warning[1]}}',
+  success: 'aria-expanded:bg-{{=i.bgDropSelect.success[0]}} dark:aria-expanded:bg-{{=i.bgDropSelect.success[1]}}',
+  info: 'aria-expanded:bg-{{=i.bgDropSelect.info[0]}} dark:aria-expanded:bg-{{=i.bgDropSelect.info[1]}}',
+  light: 'aria-expanded:bg-{{=i.bgDropSelect.light[0]}} dark:aria-expanded:bg-{{=i.bgDropSelect.light[1]}}',
+  dark: 'aria-expanded:bg-{{=i.bgDropSelect.dark[0]}} dark:aria-expanded:bg-{{=i.bgDropSelect.dark[1]}} ',
+  white: 'aria-expanded:bg-{{=i.bgDropSelect.white[0]}} dark:aria-expanded:bg-{{=i.bgDropSelect.white[1]}}',
+};
+
+export const BgColorSoftExpanded = {
+  unstyled: '',
+  primary: 'aria-expanded:bg-{{=i.bgSoftSelect.primary[0]}} dark:aria-expanded:bg-{{=i.bgSoftSelect.primary[1]}}',
+  secondary: 'aria-expanded:bg-{{=i.bgSoftSelect.secondary[0]}} dark:aria-expanded:bg-{{=i.bgSoftSelect.secondary[1]}}',
+  tertiary: 'aria-expanded:bg-{{=i.bgSoftSelect.tertiary[0]}} dark:aria-expanded:bg-{{=i.bgSoftSelect.tertiary[1]}}',
+  danger: 'aria-expanded:bg-{{=i.bgSoftSelect.danger[0]}} dark:aria-expanded:bg-{{=i.bgSoftSelect.danger[1]}}',
+  warning: 'aria-expanded:bg-{{=i.bgSoftSelect.warning[0]}} dark:aria-expanded:bg-{{=i.bgSoftSelect.warning[1]}}',
+  success: 'aria-expanded:bg-{{=i.bgSoftSelect.success[0]}} dark:aria-expanded:bg-{{=i.bgSoftSelect.success[1]}}',
+  info: 'aria-expanded:bg-{{=i.bgSoftSelect.info[0]}} dark:aria-expanded:bg-{{=i.bgSoftSelect.info[1]}}',
+  light: 'aria-expanded:bg-{{=i.bgSoftSelect.light[0]}} dark:aria-expanded:bg-{{=i.bgSoftSelect.light[1]}}',
+  dark: 'aria-expanded:bg-{{=i.bgSoftSelect.dark[0]}} dark:aria-expanded:bg-{{=i.bgSoftSelect.dark[1]}} ',
+  white: 'aria-expanded:bg-{{=i.bgSoftSelect.white[0]}} dark:aria-expanded:bg-{{=i.bgSoftSelect.white[1]}}',
+};
+
+
+export const BgColorChecked = {
+  unstyled: '',
+  primary: 'aria-checked:bg-{{=i.bgDropSelect.primary[0]}} dark:aria-checked:bg-{{=i.bgDropSelect.primary[1]}}',
+  secondary: 'aria-checked:bg-{{=i.bgDropSelect.secondary[0]}} dark:aria-checked:bg-{{=i.bgDropSelect.secondary[1]}}',
+  tertiary: 'aria-checked:bg-{{=i.bgDropSelect.tertiary[0]}} dark:aria-checked:bg-{{=i.bgDropSelect.tertiary[1]}}',
+  danger: 'aria-checked:bg-{{=i.bgDropSelect.danger[0]}} dark:aria-checked:bg-{{=i.bgDropSelect.danger[1]}}',
+  warning: 'aria-checked:bg-{{=i.bgDropSelect.warning[0]}} dark:aria-checked:bg-{{=i.bgDropSelect.warning[1]}}',
+  success: 'aria-checked:bg-{{=i.bgDropSelect.success[0]}} dark:aria-checked:bg-{{=i.bgDropSelect.success[1]}}',
+  info: 'aria-checked:bg-{{=i.bgDropSelect.info[0]}} dark:aria-checked:bg-{{=i.bgDropSelect.info[1]}}',
+  light: 'aria-checked:bg-{{=i.bgDropSelect.light[0]}} dark:aria-checked:bg-{{=i.bgDropSelect.light[1]}}',
+  dark: 'aria-checked:bg-{{=i.bgDropSelect.dark[0]}} dark:aria-checked:bg-{{=i.bgDropSelect.dark[1]}} ',
+  white: 'aria-checked:bg-{{=i.bgDropSelect.white[0]}} dark:aria-checked:bg-{{=i.bgDropSelect.white[1]}}',
+};
+
+export const BgColorSoftChecked = {
+  unstyled: '',
+  primary: 'aria-checked:bg-{{=i.bgSoftSelect.primary[0]}} dark:aria-checked:bg-{{=i.bgSoftSelect.primary[1]}}',
+  secondary: 'aria-checked:bg-{{=i.bgSoftSelect.secondary[0]}} dark:aria-checked:bg-{{=i.bgSoftSelect.secondary[1]}}',
+  tertiary: 'aria-checked:bg-{{=i.bgSoftSelect.tertiary[0]}} dark:aria-checked:bg-{{=i.bgSoftSelect.tertiary[1]}}',
+  danger: 'aria-checked:bg-{{=i.bgSoftSelect.danger[0]}} dark:aria-checked:bg-{{=i.bgSoftSelect.danger[1]}}',
+  warning: 'aria-checked:bg-{{=i.bgSoftSelect.warning[0]}} dark:aria-checked:bg-{{=i.bgSoftSelect.warning[1]}}',
+  success: 'aria-checked:bg-{{=i.bgSoftSelect.success[0]}} dark:aria-checked:bg-{{=i.bgSoftSelect.success[1]}}',
+  info: 'aria-checked:bg-{{=i.bgSoftSelect.info[0]}} dark:aria-checked:bg-{{=i.bgSoftSelect.info[1]}}',
+  light: 'aria-checked:bg-{{=i.bgSoftSelect.light[0]}} dark:aria-checked:bg-{{=i.bgSoftSelect.light[1]}}',
+  dark: 'aria-checked:bg-{{=i.bgSoftSelect.dark[0]}} dark:aria-checked:bg-{{=i.bgSoftSelect.dark[1]}} ',
+  white: 'aria-checked:bg-{{=i.bgSoftSelect.white[0]}} dark:aria-checked:bg-{{=i.bgSoftSelect.white[1]}}',
+};
+
+
+export const BgColorCurrent = {
+  unstyled: '',
+  primary: 'aria-[current="page"]:bg-{{=i.bgDropSelect.primary[0]}} dark:aria-[current="page"]:bg-{{=i.bgDropSelect.primary[1]}}',
+  secondary: 'aria-[current="page"]:bg-{{=i.bgDropSelect.secondary[0]}} dark: aria - [current = "page"]: bg- {{=i.bgDropSelect.secondary[1]}}',
+  tertiary: 'aria-[current="page"]:bg-{{=i.bgDropSelect.tertiary[0]}} dark: aria - [current = "page"]: bg - {{=i.bgDropSelect.tertiary[1] }}',
+  danger: 'aria-[current="page"]:bg-{{=i.bgDropSelect.danger[0]}} dark:aria-[current="page"]:bg-{{=i.bgDropSelect.danger[1]}}',
+  warning: 'aria-[current="page"]:bg-{{=i.bgDropSelect.warning[0]}} dark:aria-[current="page"]:bg-{{=i.bgDropSelect.warning[1]}}',
+  success: 'aria-[current="page"]:bg-{{=i.bgDropSelect.success[0]}} dark:aria-[current="page"]:bg-{{=i.bgDropSelect.success[1]}}',
+  info: 'aria-[current="page"]:bg-{{=i.bgDropSelect.info[0]}} dark:aria-[current="page"]:bg-{{=i.bgDropSelect.info[1]}}',
+  light: 'aria-[current="page"]:bg-{{=i.bgDropSelect.light[0]}} dark:aria-[current="page"]:bg-{{=i.bgDropSelect.light[1]}}',
+  dark: 'aria-[current="page"]:bg-{{=i.bgDropSelect.dark[0]}} dark:aria-[current="page"]:bg-{{=i.bgDropSelect.dark[1]}} ',
+  white: 'aria-[current="page"]:bg-{{=i.bgDropSelect.white[0]}} dark:aria-[current="page"]:bg-{{=i.bgDropSelect.white[1]}}',
+};
+
+export const BgColorSoftCurrent = {
+  unstyled: '',
+  primary: 'aria-[current="page"]:bg-{{=i.bgSoftSelect.primary[0]}} dark: aria - [current = "page"]: bg- {{=i.bgSoftSelect.primary[1]}}',
+  secondary: 'aria-[current="page"]:bg-{{=i.bgSoftSelect.secondary[0]}} dark: aria - [current = "page"]: bg - {{=i.bgSoftSelect.secondary[1] }}',
+  tertiary: 'aria-[current="page"]:bg-{{=i.bgSoftSelect.tertiary[0]}} dark: aria - [current = "page"]: bg - {{=i.bgSoftSelect.tertiary[1] }}',
+  danger: 'aria-[current="page"]:bg-{{=i.bgSoftSelect.danger[0]}} dark: aria - [current = "page"]: bg - {{=i.bgSoftSelect.danger[1] }}',
+  warning: 'aria-[current="page"]:bg-{{=i.bgSoftSelect.warning[0]}} dark: aria - [current = "page"]: bg - {{=i.bgSoftSelect.warning[1] }}',
+  success: 'aria-[current="page"]:bg-{{=i.bgSoftSelect.success[0]}} dark: aria - [current = "page"]: bg - {{=i.bgSoftSelect.success[1] }}',
+  info: 'aria-[current="page"]:bg-{{=i.bgSoftSelect.info[0]}} dark:aria-[current="page"]:bg-{{=i.bgSoftSelect.info[1]}}',
+  light: 'aria-[current="page"]:bg-{{=i.bgSoftSelect.light[0]}} dark: aria - [current = "page"]: bg - {{=i.bgSoftSelect.light[1] }}',
+  dark: 'aria-[current="page"]:bg-{{=i.bgSoftSelect.dark[0]}} dark:aria-[current="page"]:bg-{{=i.bgSoftSelect.dark[1]}} ',
+  white: 'aria-[current="page"]:bg-{{=i.bgSoftSelect.white[0]}} dark: aria - [current = "page"]: bg - {{=i.bgSoftSelect.white[1] }}',
+};
+
+
+export const RingColor = {
+  unstyled: '',
+  primary: 'ring-{{=i.outline.primary[0]}} dark:ring-{{=i.outline.primary[1]}}',
+  secondary: 'ring-{{=i.outline.secondary[0]}} dark:ring-{{=i.outline.secondary[1]}}',
+  tertiary: 'ring-{{=i.outline.tertiary[0]}} dark:ring-{{=i.outline.tertiary[1]}}',
+  danger: 'ring-{{=i.outline.danger[0]}} dark:ring-{{=i.outline.danger[1]}}',
+  warning: 'ring-{{=i.outline.warning[0]}} dark:ring-{{=i.outline.warning[1]}}',
+  success: 'ring-{{=i.outline.success[0]}} dark:ring-{{=i.outline.success[1]}}',
+  info: 'ring-{{=i.outline.info[0]}} dark:ring-{{=i.outline.info[1]}}',
+  light: 'ring-{{=i.outline.light[0]}} dark:ring-{{=i.outline.light[1]}}',
+  dark: 'ring-{{=i.outline.dark[0]}} dark:ring-{{=i.outline.dark[1]}}',
+  white: 'ring-{{=i.outline.white[0]}} dark:ring-{{=i.outline.white[1]}}',
+};
+
+export const RingColorFocus = {
+  unstyled: '',
+  primary: 'focus:ring-{{=i.outline.primary[0]}} dark:focus:ring-{{=i.outline.primary[1]}}',
+  secondary: 'focus:ring-{{=i.outline.secondary[0]}} dark:focus:ring-{{=i.outline.secondary[1]}}',
+  tertiary: 'focus:ring-{{=i.outline.tertiary[0]}} dark:focus:ring-{{=i.outline.tertiary[1]}}',
+  danger: 'focus:ring-{{=i.outline.danger[0]}} dark:focus:ring-{{=i.outline.danger[1]}}',
+  warning: 'focus:ring-{{=i.outline.warning[0]}} dark:focus:ring-{{=i.outline.warning[1]}}',
+  success: 'focus:ring-{{=i.outline.success[0]}} dark:focus:ring-{{=i.outline.success[1]}}',
+  info: 'focus:ring-{{=i.outline.info[0]}} dark:focus:ring-{{=i.outline.info[1]}}',
+  light: 'focus:ring-{{=i.outline.light[0]}} dark:focus:ring-{{=i.outline.light[1]}}',
+  dark: 'focus:ring-{{=i.outline.dark[0]}} dark:focus:ring-{{=i.outline.dark[1]}}',
+  white: 'focus:ring-{{=i.outline.white[0]}} dark:focus:ring-{{=i.outline.white[1]}}',
+};
+
+export const RingColorHover = {
+  unstyled: '',
+  primary: 'hover:ring-{{=i.outline.primaryH[0]}} dark:hover:ring-{{=i.outline.primaryH[1]}}',
+  secondary: 'hover:ring-{{=i.outline.secondaryH[0]}} dark:hover:ring-{{=i.outline.secondaryH[1]}}',
+  tertiary: 'hover:ring-{{=i.outline.tertiaryH[0]}} dark:hover:ring-{{=i.outline.tertiaryH[1]}}',
+  danger: 'hover:ring-{{=i.outline.dangerH[0]}} dark:hover:ring-{{=i.outline.dangerH[1]}}',
+  warning: 'hover:ring-{{=i.outline.warningH[0]}} dark:hover:ring-{{=i.outline.warningH[1]}}',
+  success: 'hover:ring-{{=i.outline.successH[0]}} dark:hover:ring-{{=i.outline.successH[1]}}',
+  info: 'hover:ring-{{=i.outline.infoH[0]}} dark:hover:ring-{{=i.outline.infoH[1]}}',
+  light: 'hover:ring-{{=i.outline.lightH[0]}} dark:hover:ring-{{=i.outline.lightH[1]}}',
+  dark: 'hover:ring-{{=i.outline.darkH[0]}} dark:hover:ring-{{=i.outline.darkH[1]}}',
+  white: 'hover:ring-{{=i.outline.whiteH[0]}} dark:hover:ring-{{=i.outline.whiteH[1]}}',
+};
+
+export const BorderColor = {
+  unstyled: '',
+  primary: 'border-{{=i.outline.primary[0]}} dark:border-{{=i.outline.primary[1]}}',
+  secondary: 'border-{{=i.outline.secondary[0]}} dark:border-{{=i.outline.secondary[1]}}',
+  tertiary: 'border-{{=i.outline.tertiary[0]}} dark:border-{{=i.outline.tertiary[1]}}',
+  danger: 'border-{{=i.outline.danger[0]}} dark:border-{{=i.outline.danger[1]}}',
+  warning: 'border-{{=i.outline.warning[0]}} dark:border-{{=i.outline.warning[1]}}',
+  success: 'border-{{=i.outline.success[0]}} dark:border-{{=i.outline.success[1]}}',
+  info: 'border-{{=i.outline.info[0]}} dark:border-{{=i.outline.info[1]}}',
+  light: 'border-{{=i.outline.light[0]}} dark:border-{{=i.outline.light[1]}}',
+  dark: 'border-{{=i.outline.dark[0]}} dark:border-{{=i.outline.dark[1]}}',
+  white: 'border-{{=i.outline.white[0]}} dark:border-{{=i.outline.white[1]}}',
+};
+
+export const BorderColorHover = {
+  unstyled: '',
+  primary: 'hover:border-{{=i.outline.primaryH[0]}} dark:hover:border-{{=i.outline.primaryH[1]}}',
+  secondary: 'hover:border-{{=i.outline.secondaryH[0]}} dark:hover:border-{{=i.outline.secondaryH[1]}}',
+  tertiary: 'hover:border-{{=i.outline.tertiaryH[0]}} dark:hover:border-{{=i.outline.tertiaryH[1]}}',
+  danger: 'hover:border-{{=i.outline.dangerH[0]}} dark:hover:border-{{=i.outline.dangerH[1]}}',
+  warning: 'hover:border-{{=i.outline.warningH[0]}} dark:hover:border-{{=i.outline.warningH[1]}}',
+  success: 'hover:border-{{=i.outline.successH[0]}} dark:hover:border-{{=i.outline.successH[1]}}',
+  info: 'hover:border-{{=i.outline.infoH[0]}} dark:hover:border-{{=i.outline.infoH[1]}}',
+  light: 'hover:border-{{=i.outline.lightH[0]}} dark:hover:border-{{=i.outline.lightH[1]}}',
+  dark: 'hover:border-{{=i.outline.darkH[0]}} dark:hover:border-{{=i.outline.darkH[1]}}',
+  white: 'hover:border-{{=i.outline.whiteH[0]}} dark:hover:border-{{=i.outline.whiteH[1]}}',
+};
+
+export const DivideColor = {
+  unstyled: '',
+  primary: 'divide-{{=i.divide.primary[0]}} dark:divide-{{=i.divide.primary[1]}}',
+  secondary: 'divide-{{=i.divide.secondary[0]}} dark:divide-{{=i.divide.secondary[1]}}',
+  tertiary: 'divide-{{=i.divide.tertiary[0]}} dark:divide-{{=i.divide.tertiary[1]}}',
+  danger: 'divide-{{=i.divide.danger[0]}} dark:divide-{{=i.divide.danger[1]}}',
+  warning: 'divide-{{=i.divide.warning[0]}} dark:divide-{{=i.divide.warning[1]}}',
+  success: 'divide-{{=i.divide.success[0]}} dark:divide-{{=i.divide.success[1]}}',
+  info: 'divide-{{=i.divide.info[0]}} dark:divide-{{=i.divide.info[1]}}',
+  light: 'divide-{{=i.divide.light[0]}} dark:divide-{{=i.divide.light[1]}}',
+  dark: 'divide-{{=i.divide.dark[0]}} dark:divide-{{=i.divide.dark[1]}}',
+  white: 'divide-{{=i.divide.white[0]}} dark:divide-{{=i.divide.white[1]}}',
+};
+
+export const DivideBeforeColor = {
+  unstyled: '',
+  primary: 'before:bg-{{=i.divide.primary[0]}} dark:before:bg-{{=i.divide.primary[1]}}',
+  secondary: 'before:bg-{{=i.divide.secondary[0]}} dark:before:bg-{{=i.divide.secondary[1]}}',
+  tertiary: 'before:bg-{{=i.divide.tertiary[0]}} dark:before:bg-{{=i.divide.tertiary[1]}}',
+  danger: 'before:bg-{{=i.divide.danger[0]}} dark:before:bg-{{=i.divide.danger[1]}}',
+  warning: 'before:bg-{{=i.divide.warning[0]}} dark:before:bg-{{=i.divide.warning[1]}}',
+  success: 'before:bg-{{=i.divide.success[0]}} dark:before:bg-{{=i.divide.success[1]}}',
+  info: 'before:bg-{{=i.divide.info[0]}} dark:before:bg-{{=i.divide.info[1]}}',
+  light: 'before:bg-{{=i.divide.light[0]}} dark:before:bg-{{=i.divide.light[1]}}',
+  dark: 'before:bg-{{=i.divide.dark[0]}} dark:before:bg-{{=i.divide.dark[1]}}',
+  white: 'before:bg-{{=i.divide.white[0]}} dark:before:bg-{{=i.divide.white[1]}}',
+};
+
+export const DivideAfterColor = {
+  unstyled: '',
+  primary: 'after:bg-{{=i.divide.primary[0]}} dark:after:bg-{{=i.divide.primary[1]}}',
+  secondary: 'after:bg-{{=i.divide.secondary[0]}} dark:after:bg-{{=i.divide.secondary[1]}}',
+  tertiary: 'after:bg-{{=i.divide.tertiary[0]}} dark:after:bg-{{=i.divide.tertiary[1]}}',
+  danger: 'after:bg-{{=i.divide.danger[0]}} dark:after:bg-{{=i.divide.danger[1]}}',
+  warning: 'after:bg-{{=i.divide.warning[0]}} dark:after:bg-{{=i.divide.warning[1]}}',
+  success: 'after:bg-{{=i.divide.success[0]}} dark:after:bg-{{=i.divide.success[1]}}',
+  info: 'after:bg-{{=i.divide.info[0]}} dark:after:bg-{{=i.divide.info[1]}}',
+  light: 'after:bg-{{=i.divide.light[0]}} dark:after:bg-{{=i.divide.light[1]}}',
+  dark: 'after:bg-{{=i.divide.dark[0]}} dark:after:bg-{{=i.divide.dark[1]}}',
+  white: 'after:bg-{{=i.divide.white[0]}} dark:after:bg-{{=i.divide.white[1]}}',
+};
+
+
+
+export const OutlineColorFocus = {
+  unstyled: '',
+  primary: 'focus:outline-{{=i.outlineFocus.primary[0]}} dark:focus:outline-{{=i.outlineFocus.primary[1]}}',
+  secondary: 'focus:outline-{{=i.outlineFocus.secondary[0]}} dark:focus:outline-{{=i.outlineFocus.secondary[1]}}',
+  tertiary: 'focus:outline-{{=i.outlineFocus.tertiary[0]}} dark:focus:outline-{{=i.outlineFocus.tertiary[1]}}',
+  danger: 'focus:outline-{{=i.outlineFocus.danger[0]}} dark:focus:outline-{{=i.outlineFocus.danger[1]}}',
+  warning: 'focus:outline-{{=i.outlineFocus.warning[0]}} dark:focus:outline-{{=i.outlineFocus.warning[1]}}',
+  success: 'focus:outline-{{=i.outlineFocus.success[0]}} dark:focus:outline-{{=i.outlineFocus.success[1]}}',
+  info: 'focus:outline-{{=i.outlineFocus.info[0]}} dark:focus:outline-{{=i.outlineFocus.info[1]}}',
+  light: 'focus:outline-{{=i.outlineFocus.light[0]}} dark:focus:outline-{{=i.outlineFocus.light[1]}}',
+  dark: 'focus:outline-{{=i.outlineFocus.dark[0]}} dark:focus:outline-{{=i.outlineFocus.dark[1]}} ',
+  white: 'focus:outline-{{=i.outlineFocus.white[0]}} dark:focus:outline-{{=i.outlineFocus.white[1]}}',
+};
+
+export const OutlineColorFocusVisible = {
+  unstyled: '',
+  primary: 'focus-visible:outline-{{=i.outlineFocus.primary[0]}} dark:focus-visible:outline-{{=i.outlineFocus.primary[1]}}',
+  secondary: 'focus-visible:outline-{{=i.outlineFocus.secondary[0]}} dark:focus-visible:outline-{{=i.outlineFocus.secondary[1]}}',
+  tertiary: 'focus-visible:outline-{{=i.outlineFocus.tertiary[0]}} dark:focus-visible:outline-{{=i.outlineFocus.tertiary[1]}}',
+  danger: 'focus-visible:outline-{{=i.outlineFocus.danger[0]}} dark:focus-visible:outline-{{=i.outlineFocus.danger[1]}}',
+  warning: 'focus-visible:outline-{{=i.outlineFocus.warning[0]}} dark: focus - visible: outline- {{=i.outlineFocus.warning[1]}}',
+  success: 'focus-visible:outline-{{=i.outlineFocus.success[0]}} dark: focus - visible: outline - {{=i.outlineFocus.success[1] }}',
+  info: 'focus-visible:outline-{{=i.outlineFocus.info[0]}} dark:focus-visible:outline-{{=i.outlineFocus.info[1]}}',
+  light: 'focus-visible:outline-{{=i.outlineFocus.light[0]}} dark:focus-visible:outline-{{=i.outlineFocus.light[1]}}',
+  dark: 'focus-visible:outline-{{=i.outlineFocus.dark[0]}} dark:focus-visible:outline-{{=i.outlineFocus.dark[1]}} ',
+  white: 'focus-visible:outline-{{=i.outlineFocus.white[0]}} dark:focus-visible:outline-{{=i.outlineFocus.white[1]}}',
+};
+
+export const OutlineColorFocusGroup = {
+  unstyled: '',
+  primary: 'group-focus:outline-{{=i.outlineFocus.primary[0]}} dark:group-focus:outline-{{=i.outlineFocus.primary[1]}}',
+  secondary: 'group-focus:outline-{{=i.outlineFocus.secondary[0]}} dark:group-focus:outline-{{=i.outlineFocus.secondary[1]}}',
+  tertiary: 'group-focus:outline-{{=i.outlineFocus.tertiary[0]}} dark:group-focus:outline-{{=i.outlineFocus.tertiary[1]}}',
+  danger: 'group-focus:outline-{{=i.outlineFocus.danger[0]}} dark:group-focus:outline-{{=i.outlineFocus.danger[1]}}',
+  warning: 'group-focus:outline-{{=i.outlineFocus.warning[0]}} dark:group-focus:outline-{{=i.outlineFocus.warning[1]}}',
+  success: 'group-focus:outline-{{=i.outlineFocus.success[0]}} dark:group-focus:outline-{{=i.outlineFocus.success[1]}}',
+  info: 'group-focus:outline-{{=i.outlineFocus.info[0]}} dark:group-focus:outline-{{=i.outlineFocus.info[1]}}',
+  light: 'group-focus:outline-{{=i.outlineFocus.light[0]}} dark:group-focus:outline-{{=i.outlineFocus.light[1]}}',
+  dark: 'group-focus:outline-{{=i.outlineFocus.dark[0]}} dark:group-focus:outline-{{=i.outlineFocus.dark[1]}} ',
+  white: 'group-focus:outline-{{=i.outlineFocus.white[0]}} dark:group-focus:outline-{{=i.outlineFocus.white[1]}}',
+};
+
+export const OutlineColorFocusWithin = {
+  unstyled: '',
+  primary: 'focus-within:outline-{{=i.outlineFocus.primary[0]}} dark:focus-within:outline-{{=i.outlineFocus.primary[1]}}',
+  secondary: 'focus-within:outline-{{=i.outlineFocus.secondary[0]}} dark: focus - within: outline- {{=i.outlineFocus.secondary[1]}}',
+  tertiary: 'focus-within:outline-{{=i.outlineFocus.tertiary[0]}} dark: focus - within: outline - {{=i.outlineFocus.tertiary[1] }}',
+  danger: 'focus-within:outline-{{=i.outlineFocus.danger[0]}} dark:focus-within:outline-{{=i.outlineFocus.danger[1]}}',
+  warning: 'focus-within:outline-{{=i.outlineFocus.warning[0]}} dark:focus-within:outline-{{=i.outlineFocus.warning[1]}}',
+  success: 'focus-within:outline-{{=i.outlineFocus.success[0]}} dark:focus-within:outline-{{=i.outlineFocus.success[1]}}',
+  info: 'focus-within:outline-{{=i.outlineFocus.info[0]}} dark:focus-within:outline-{{=i.outlineFocus.info[1]}}',
+  light: 'focus-within:outline-{{=i.outlineFocus.light[0]}} dark:focus-within:outline-{{=i.outlineFocus.light[1]}}',
+  dark: 'focus-within:outline-{{=i.outlineFocus.dark[0]}} dark:focus-within:outline-{{=i.outlineFocus.dark[1]}} ',
+  white: 'focus-within:outline-{{=i.outlineFocus.white[0]}} dark:focus-within:outline-{{=i.outlineFocus.white[1]}}',
+};
+
+export const OutlineColorFocusPeer = {
+  unstyled: '',
+  primary: 'peer-focus:outline-{{=i.outlineFocus.primary[0]}} dark:peer-focus:outline-{{=i.outlineFocus.primary[1]}}',
+  secondary: 'peer-focus:outline-{{=i.outlineFocus.secondary[0]}} dark: peer - focus: outline- {{=i.outlineFocus.secondary[1]}}',
+  tertiary: 'peer-focus:outline-{{=i.outlineFocus.tertiary[0]}} dark:peer-focus:outline-{{=i.outlineFocus.tertiary[1]}}',
+  danger: 'peer-focus:outline-{{=i.outlineFocus.danger[0]}} dark:peer-focus:outline-{{=i.outlineFocus.danger[1]}}',
+  warning: 'peer-focus:outline-{{=i.outlineFocus.warning[0]}} dark:peer-focus:outline-{{=i.outlineFocus.warning[1]}}',
+  success: 'peer-focus:outline-{{=i.outlineFocus.success[0]}} dark:peer-focus:outline-{{=i.outlineFocus.success[1]}}',
+  info: 'peer-focus:outline-{{=i.outlineFocus.info[0]}} dark:peer-focus:outline-{{=i.outlineFocus.info[1]}}',
+  light: 'peer-focus:outline-{{=i.outlineFocus.light[0]}} dark:peer-focus:outline-{{=i.outlineFocus.light[1]}}',
+  dark: 'peer-focus:outline-{{=i.outlineFocus.dark[0]}} dark:peer-focus:outline-{{=i.outlineFocus.dark[1]}} ',
+  white: 'peer-focus:outline-{{=i.outlineFocus.white[0]}} dark:peer-focus:outline-{{=i.outlineFocus.white[1]}}',
+};
+
+export const MozillaProgressBarBg ={
+  unstyled: '',
+  primary: '[&::-moz-progress-bar]:bg-{{=i.progress.primary[0]}} dark:[&::-moz-progress-bar]:bg-{{=i.progress.primary[1]}}',
+  secondary: '[&::-moz-progress-bar]:bg-{{=i.progress.secondary[0]}} dark:[&::-moz-progress-bar]:bg-{{=i.progress.secondary[1]}}',
+  tertiary: '[&::-moz-progress-bar]:bg-{{=i.progress.tertiary[0]}} dark:[&::-moz-progress-bar]:bg-{{=i.progress.tertiary[1]}}',
+  danger: '[&::-moz-progress-bar]:bg-{{=i.progress.danger[0]}} dark:[&::-moz-progress-bar]:bg-{{=i.progress.danger[0]}}',
+  warning: '[&::-moz-progress-1ar]:bg-{{=i.progress.warning[0]}} dark:[&::-moz-progress-bar]:bg-{{=i.progress.info[1]}}',
+  success: '[&::-moz-progress-bar]:bg-{{=i.progress.success[0]}} dark:[&::-moz-progress-bar]:bg-{{=i.progress.info[1]}}',
+  info: '[&::-moz-progress-bar]:bg-{{=i.progress.info[0]}} dark:[&::-moz-progress-bar]:bg-{{=i.progress.info[1]}}',
+  light: '[&::-moz-progress-bar]:bg-{{=i.progress.light[0]}} dark:[&::-moz-progress-bar]:bg-{{=i.progress.light[1]}}',
+  dark:  '[&::-moz-progress-bar]:bg-{{=i.progress.dark[0]}} dark:[&::-moz-progress-bar]:bg-{{=i.progress.dark[1]}}',
+  white: '[&::-moz-progress-bar]:bg-{{=i.progress.white[0]}} dark:[&::-moz-progress-bar]:bg-{{=i.progress.white[1]}}'
+};
+
+export const WebkitProgressValue ={
+  unstyled: '',
+  primary: '[&::-webkit-progress-value]:bg-{{=i.progress.primary[0]}} dark:[&::-webkit-progress-value]:bg-{{=i.progress.primary[1]}}',
+  secondary: '[&::-webkit-progress-value]:bg-{{=i.progress.secondary[0]}} dark:[&::-webkit-progress-value]:bg-{{=i.progress.secondary[1]}}',
+  tertiary: '[&::-webkit-progress-value]:bg-{{=i.progress.tertiary[0]}} dark:[&::-webkit-progress-value]:bg-{{=i.progress.tertiary[1]}}',
+  danger: '[&::-webkit-progress-value]:bg-{{=i.progress.danger[0]}} dark:[&::-webkit-progress-value]:bg-{{=i.progress.danger[1]}}',
+  warning: '[&::-webkit-progress-value]:bg-{{=i.progress.warning[0]}} dark:[&::-webkit-progress-value]:bg-{{=i.progress.warning[1]}}',
+  success: '[&::-webkit-progress-value]:bg-{{=i.progress.success[0]}} dark:[&::-webkit-progress-value]:bg-{{=i.progress.success[1]}}',
+  info: '[&::-webkit-progress-value]:bg-{{=i.progress.info[0]}} dark:[&::-webkit-progress-value]:bg-{{=i.progress.info[1]}}',
+  light: '[&::-webkit-progress-value]:bg-{{=i.progress.light[0]}} dark:[&::-webkit-progress-value]:bg-{{=i.progress.light[1]}}',
+  dark: '[&::-webkit-progress-value]:bg-{{=i.progress.dark[0]}} dark:[&::-webkit-progress-value]:bg-{{=i.progress.dark[1]}}',
+  white: '[&::-webkit-progress-value]:bg-{{=i.progress.white[0]}} dark:[&::-webkit-progress-value]:bg-{{=i.progress.white[1]}}'
+};
+
+export const FocusTypes = {
+  unstyled: Placeholder,
+  focus: OutlineColorFocus,
+  visible: OutlineColorFocusVisible,
+  within: OutlineColorFocusWithin,
+  group: OutlineColorFocusGroup,
+  peer: OutlineColorFocusPeer
+};
+
+export const SelectedTypes = {
+  unstyled: Placeholder,
+  selected: BgColorSelected,
+  expanded: BgColorExpanded,
+  checked: BgColorChecked,
+  current: BgColorCurrent
+};
+
+export const SelectedSoftTypes = {
+  unstyled: Placeholder,
+  selected: BgColorSoftSelected,
+  expanded: BgColorSoftExpanded,
+  checked: BgColorSoftChecked,
+  current: BgColorSoftCurrent
+};
+
+export interface GlobalSettings {
+  focusWidth: Size | 'none';
+  focusOffset?: Size | 'none';
+  prose: boolean; // when true enable prose for content (requries typography plugin)
+  rounded: boolean; // when true rounding are permitted.
+  shadow: boolean; // when true shadows are permitted.
+};
+
+export interface GlobalOptions {
+  border: string;
+  card: string;
+  disabled: string;
+  divide: string;
+  placeholder: string;
+  ring: string;
+  input: string;
+  transition: string;
+}
+
+export interface Theme {
+  readonly dark: boolean;
+  settings: GlobalSettings;
+  options: GlobalOptions;
+}
+
+export type ThemeInternal = Theme & { dark: boolean };
+
+

@@ -6,7 +6,7 @@
 	import { getContext, type Snippet } from 'svelte';
 	import type { DropdownContext } from './Dropdown.svelte';
 
-	export interface DropdownSectionProps {
+	export interface DropdownFooterProps {
 		size?: Size;
 		children: Snippet;
 	}
@@ -18,7 +18,7 @@
 		size = context.size,
 		children,
 		...rest
-	}: DropdownSectionProps & ElementProps<'div'> = $props();
+	}: DropdownFooterProps & ElementProps<'div'> = $props();
 
 	const classes = $derived(
 		clsxm(
